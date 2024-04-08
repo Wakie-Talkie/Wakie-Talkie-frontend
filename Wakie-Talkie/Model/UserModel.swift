@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct User: Identifiable, Codable {
     var id: String            // 사용자 고유 ID
     var nickname: String      // 사용자 닉네임

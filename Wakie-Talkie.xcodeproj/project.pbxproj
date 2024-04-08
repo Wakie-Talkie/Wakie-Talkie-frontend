@@ -12,6 +12,13 @@
 		AE9F0C2B2BC3F253007B2B1E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */; };
 		AE9F0C2D2BC3F369007B2B1E /* AIProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */; };
 		AE9F0C2F2BC3F38A007B2B1E /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */; };
+		AE9F0C312BC3F8B0007B2B1E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C302BC3F8B0007B2B1E /* CustomTextField.swift */; };
+		AE9F0C332BC3F8C2007B2B1E /* CustomButtonBig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C322BC3F8C2007B2B1E /* CustomButtonBig.swift */; };
+		AE9F0C352BC3F95A007B2B1E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C342BC3F95A007B2B1E /* LoginView.swift */; };
+		AE9F0C372BC3FA31007B2B1E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C362BC3FA31007B2B1E /* MainTabView.swift */; };
+		AE9F0C392BC3FA48007B2B1E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C382BC3FA48007B2B1E /* ProfileView.swift */; };
+		AE9F0C3B2BC3FA5A007B2B1E /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C3A2BC3FA5A007B2B1E /* AlarmView.swift */; };
+		AE9F0C3D2BC3FA6D007B2B1E /* CallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C3C2BC3FA6D007B2B1E /* CallView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +28,13 @@
 		AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIProfileModel.swift; sourceTree = "<group>"; };
 		AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
+		AE9F0C302BC3F8B0007B2B1E /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		AE9F0C322BC3F8C2007B2B1E /* CustomButtonBig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonBig.swift; sourceTree = "<group>"; };
+		AE9F0C342BC3F95A007B2B1E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		AE9F0C362BC3FA31007B2B1E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
+		AE9F0C382BC3FA48007B2B1E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		AE9F0C3A2BC3FA5A007B2B1E /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
+		AE9F0C3C2BC3FA6D007B2B1E /* CallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +100,11 @@
 			isa = PBXGroup;
 			children = (
 				AE9F0C292BC3F078007B2B1E /* Components */,
+				AE9F0C342BC3F95A007B2B1E /* LoginView.swift */,
+				AE9F0C362BC3FA31007B2B1E /* MainTabView.swift */,
+				AE9F0C382BC3FA48007B2B1E /* ProfileView.swift */,
+				AE9F0C3A2BC3FA5A007B2B1E /* AlarmView.swift */,
+				AE9F0C3C2BC3FA6D007B2B1E /* CallView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -122,6 +141,8 @@
 		AE9F0C292BC3F078007B2B1E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				AE9F0C302BC3F8B0007B2B1E /* CustomTextField.swift */,
+				AE9F0C322BC3F8C2007B2B1E /* CustomButtonBig.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -197,8 +218,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE9F0C392BC3FA48007B2B1E /* ProfileView.swift in Sources */,
+				AE9F0C352BC3F95A007B2B1E /* LoginView.swift in Sources */,
+				AE9F0C312BC3F8B0007B2B1E /* CustomTextField.swift in Sources */,
 				AE9F0C2B2BC3F253007B2B1E /* UserModel.swift in Sources */,
 				AE9F0C2D2BC3F369007B2B1E /* AIProfileModel.swift in Sources */,
+				AE9F0C372BC3FA31007B2B1E /* MainTabView.swift in Sources */,
+				AE9F0C332BC3F8C2007B2B1E /* CustomButtonBig.swift in Sources */,
+				AE9F0C3B2BC3FA5A007B2B1E /* AlarmView.swift in Sources */,
+				AE9F0C3D2BC3FA6D007B2B1E /* CallView.swift in Sources */,
 				AE9F0C2F2BC3F38A007B2B1E /* AlarmModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
