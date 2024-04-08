@@ -9,12 +9,18 @@
 /* Begin PBXBuildFile section */
 		50142C1B2BBD050A00791488 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50142C1A2BBD050A00791488 /* Assets.xcassets */; };
 		50142C1E2BBD050A00791488 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50142C1D2BBD050A00791488 /* Preview Assets.xcassets */; };
+		AE9F0C2B2BC3F253007B2B1E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */; };
+		AE9F0C2D2BC3F369007B2B1E /* AIProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */; };
+		AE9F0C2F2BC3F38A007B2B1E /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		50142C132BBD050900791488 /* Wakie-Talkie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wakie-Talkie.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50142C1A2BBD050A00791488 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50142C1D2BBD050A00791488 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIProfileModel.swift; sourceTree = "<group>"; };
+		AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +53,11 @@
 		50142C152BBD050900791488 /* Wakie-Talkie */ = {
 			isa = PBXGroup;
 			children = (
+				AE9F0C272BC3F067007B2B1E /* Utilities */,
+				AE9F0C262BC3F061007B2B1E /* Services */,
+				AE9F0C252BC3F05C007B2B1E /* ViewModel */,
+				AE9F0C242BC3F056007B2B1E /* View */,
+				AE9F0C232BC3EFB5007B2B1E /* Model */,
 				50142C1A2BBD050A00791488 /* Assets.xcassets */,
 				50142C1C2BBD050A00791488 /* Preview Content */,
 			);
@@ -59,6 +70,60 @@
 				50142C1D2BBD050A00791488 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AE9F0C232BC3EFB5007B2B1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */,
+				AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */,
+				AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		AE9F0C242BC3F056007B2B1E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AE9F0C292BC3F078007B2B1E /* Components */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AE9F0C252BC3F05C007B2B1E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		AE9F0C262BC3F061007B2B1E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				AE9F0C282BC3F06F007B2B1E /* NetworkService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		AE9F0C272BC3F067007B2B1E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		AE9F0C282BC3F06F007B2B1E /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		AE9F0C292BC3F078007B2B1E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -93,6 +158,7 @@
 				TargetAttributes = {
 					50142C122BBD050900791488 = {
 						CreatedOnToolsVersion = 15.2;
+						LastSwiftMigration = 1530;
 					};
 				};
 			};
@@ -131,6 +197,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE9F0C2B2BC3F253007B2B1E /* UserModel.swift in Sources */,
+				AE9F0C2D2BC3F369007B2B1E /* AIProfileModel.swift in Sources */,
+				AE9F0C2F2BC3F38A007B2B1E /* AlarmModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +330,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wakie-Talkie/Preview Content\"";
@@ -280,6 +350,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "ontheway.Wakie-Talkie";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -290,6 +361,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wakie-Talkie/Preview Content\"";
