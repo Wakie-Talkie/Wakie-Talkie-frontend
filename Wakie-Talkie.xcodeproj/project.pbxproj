@@ -7,38 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		50142C172BBD050900791488 /* Wakie_TalkieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50142C162BBD050900791488 /* Wakie_TalkieApp.swift */; };
-		50142C192BBD050900791488 /* NicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50142C182BBD050900791488 /* NicknameView.swift */; };
 		50142C1B2BBD050A00791488 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50142C1A2BBD050A00791488 /* Assets.xcassets */; };
 		50142C1E2BBD050A00791488 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50142C1D2BBD050A00791488 /* Preview Assets.xcassets */; };
-		50142C252BBD42C600791488 /* LanguageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50142C242BBD42C600791488 /* LanguageView.swift */; };
-		50142C272BBD7C4F00791488 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50142C262BBD7C4F00791488 /* LoginView.swift */; };
-		50142C2A2BBE555100791488 /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50142C292BBE555100791488 /* TabBarView.swift */; };
-		50142C2D2BBE66C500791488 /* CallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50142C2C2BBE66C500791488 /* CallView.swift */; };
-		50142C2F2BBE66D900791488 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50142C2E2BBE66D900791488 /* AlarmView.swift */; };
-		50142C312BBE66F900791488 /* AddAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50142C302BBE66F900791488 /* AddAlarmView.swift */; };
-		50142C362BBE677F00791488 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50142C352BBE677F00791488 /* MyPageView.swift */; };
-		50142C382BBE739E00791488 /* AlarmAddedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50142C372BBE739E00791488 /* AlarmAddedView.swift */; };
-		50142C3A2BBE8C8000791488 /* AlarmCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50142C392BBE8C8000791488 /* AlarmCellView.swift */; };
-		50142C3D2BBE8D2A00791488 /* AlarmData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50142C3C2BBE8D2A00791488 /* AlarmData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		50142C132BBD050900791488 /* Wakie-Talkie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wakie-Talkie.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		50142C162BBD050900791488 /* Wakie_TalkieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wakie_TalkieApp.swift; sourceTree = "<group>"; };
-		50142C182BBD050900791488 /* NicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameView.swift; sourceTree = "<group>"; };
 		50142C1A2BBD050A00791488 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50142C1D2BBD050A00791488 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		50142C242BBD42C600791488 /* LanguageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageView.swift; sourceTree = "<group>"; };
-		50142C262BBD7C4F00791488 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		50142C292BBE555100791488 /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
-		50142C2C2BBE66C500791488 /* CallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallView.swift; sourceTree = "<group>"; };
-		50142C2E2BBE66D900791488 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
-		50142C302BBE66F900791488 /* AddAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmView.swift; sourceTree = "<group>"; };
-		50142C352BBE677F00791488 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
-		50142C372BBE739E00791488 /* AlarmAddedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAddedView.swift; sourceTree = "<group>"; };
-		50142C392BBE8C8000791488 /* AlarmCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCellView.swift; sourceTree = "<group>"; };
-		50142C3C2BBE8D2A00791488 /* AlarmData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,11 +47,6 @@
 		50142C152BBD050900791488 /* Wakie-Talkie */ = {
 			isa = PBXGroup;
 			children = (
-				50142C3B2BBE8D1600791488 /* Data */,
-				50142C262BBD7C4F00791488 /* LoginView.swift */,
-				50142C282BBD7C5700791488 /* Join */,
-				50142C2B2BBE664100791488 /* Tab */,
-				50142C162BBD050900791488 /* Wakie_TalkieApp.swift */,
 				50142C1A2BBD050A00791488 /* Assets.xcassets */,
 				50142C1C2BBD050A00791488 /* Preview Content */,
 			);
@@ -88,61 +59,6 @@
 				50142C1D2BBD050A00791488 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		50142C282BBD7C5700791488 /* Join */ = {
-			isa = PBXGroup;
-			children = (
-				50142C182BBD050900791488 /* NicknameView.swift */,
-				50142C242BBD42C600791488 /* LanguageView.swift */,
-			);
-			path = Join;
-			sourceTree = "<group>";
-		};
-		50142C2B2BBE664100791488 /* Tab */ = {
-			isa = PBXGroup;
-			children = (
-				50142C292BBE555100791488 /* TabBarView.swift */,
-				50142C342BBE672E00791488 /* MyPage */,
-				50142C322BBE66FE00791488 /* CallPage */,
-				50142C332BBE670F00791488 /* AlarmPage */,
-			);
-			path = Tab;
-			sourceTree = "<group>";
-		};
-		50142C322BBE66FE00791488 /* CallPage */ = {
-			isa = PBXGroup;
-			children = (
-				50142C2C2BBE66C500791488 /* CallView.swift */,
-			);
-			path = CallPage;
-			sourceTree = "<group>";
-		};
-		50142C332BBE670F00791488 /* AlarmPage */ = {
-			isa = PBXGroup;
-			children = (
-				50142C2E2BBE66D900791488 /* AlarmView.swift */,
-				50142C302BBE66F900791488 /* AddAlarmView.swift */,
-				50142C372BBE739E00791488 /* AlarmAddedView.swift */,
-				50142C392BBE8C8000791488 /* AlarmCellView.swift */,
-			);
-			path = AlarmPage;
-			sourceTree = "<group>";
-		};
-		50142C342BBE672E00791488 /* MyPage */ = {
-			isa = PBXGroup;
-			children = (
-				50142C352BBE677F00791488 /* MyPageView.swift */,
-			);
-			path = MyPage;
-			sourceTree = "<group>";
-		};
-		50142C3B2BBE8D1600791488 /* Data */ = {
-			isa = PBXGroup;
-			children = (
-				50142C3C2BBE8D2A00791488 /* AlarmData.swift */,
-			);
-			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,18 +131,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50142C2D2BBE66C500791488 /* CallView.swift in Sources */,
-				50142C192BBD050900791488 /* NicknameView.swift in Sources */,
-				50142C252BBD42C600791488 /* LanguageView.swift in Sources */,
-				50142C272BBD7C4F00791488 /* LoginView.swift in Sources */,
-				50142C2A2BBE555100791488 /* TabBarView.swift in Sources */,
-				50142C382BBE739E00791488 /* AlarmAddedView.swift in Sources */,
-				50142C362BBE677F00791488 /* MyPageView.swift in Sources */,
-				50142C3A2BBE8C8000791488 /* AlarmCellView.swift in Sources */,
-				50142C2F2BBE66D900791488 /* AlarmView.swift in Sources */,
-				50142C3D2BBE8D2A00791488 /* AlarmData.swift in Sources */,
-				50142C312BBE66F900791488 /* AddAlarmView.swift in Sources */,
-				50142C172BBD050900791488 /* Wakie_TalkieApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
