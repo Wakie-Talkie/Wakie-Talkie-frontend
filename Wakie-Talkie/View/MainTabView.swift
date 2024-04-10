@@ -34,7 +34,7 @@ struct MainTabView: View {
                 .tag(3)
         }
         .onAppear {
-            //alarmDataFetcher.fetchAlarms()
+            alarmDataFetcher.fetchAlarms()
         }
     }
 }

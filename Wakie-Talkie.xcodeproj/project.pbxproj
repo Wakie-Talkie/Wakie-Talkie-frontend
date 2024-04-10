@@ -12,6 +12,10 @@
 		50F726402BC6525B00078A6D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7263F2BC6525B00078A6D /* OnboardingView.swift */; };
 		50F726422BC655A800078A6D /* WakieTalkieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726412BC655A800078A6D /* WakieTalkieApp.swift */; };
 		50F726452BC664D700078A6D /* AlarmDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726442BC664D700078A6D /* AlarmDataFetcher.swift */; };
+		50F726482BC66D0400078A6D /* AddAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726472BC66D0400078A6D /* AddAlarmView.swift */; };
+		50F7264A2BC66D7100078A6D /* CustomButtonSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726492BC66D7100078A6D /* CustomButtonSmall.swift */; };
+		50F7264C2BC66D9B00078A6D /* CustomButtonCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7264B2BC66D9B00078A6D /* CustomButtonCircle.swift */; };
+		50F7264E2BC676AC00078A6D /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7264D2BC676AC00078A6D /* AlarmCell.swift */; };
 		AE9F0C2B2BC3F253007B2B1E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */; };
 		AE9F0C2D2BC3F369007B2B1E /* AIProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */; };
 		AE9F0C2F2BC3F38A007B2B1E /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */; };
@@ -31,6 +35,10 @@
 		50F7263F2BC6525B00078A6D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		50F726412BC655A800078A6D /* WakieTalkieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakieTalkieApp.swift; sourceTree = "<group>"; };
 		50F726442BC664D700078A6D /* AlarmDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmDataFetcher.swift; path = "Wakie-Talkie/AlarmDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
+		50F726472BC66D0400078A6D /* AddAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAlarmView.swift; sourceTree = "<group>"; };
+		50F726492BC66D7100078A6D /* CustomButtonSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonSmall.swift; sourceTree = "<group>"; };
+		50F7264B2BC66D9B00078A6D /* CustomButtonCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonCircle.swift; sourceTree = "<group>"; };
+		50F7264D2BC676AC00078A6D /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIProfileModel.swift; sourceTree = "<group>"; };
 		AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
@@ -96,9 +104,21 @@
 		50F726432BC657DC00078A6D /* AlarmTabViews */ = {
 			isa = PBXGroup;
 			children = (
+				50F726462BC66CE400078A6D /* Components */,
 				AE9F0C3A2BC3FA5A007B2B1E /* AlarmView.swift */,
+				50F726472BC66D0400078A6D /* AddAlarmView.swift */,
 			);
 			path = AlarmTabViews;
+			sourceTree = "<group>";
+		};
+		50F726462BC66CE400078A6D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				50F726492BC66D7100078A6D /* CustomButtonSmall.swift */,
+				50F7264B2BC66D9B00078A6D /* CustomButtonCircle.swift */,
+				50F7264D2BC676AC00078A6D /* AlarmCell.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		AE9F0C232BC3EFB5007B2B1E /* Model */ = {
@@ -244,9 +264,13 @@
 				AE9F0C372BC3FA31007B2B1E /* MainTabView.swift in Sources */,
 				AE9F0C332BC3F8C2007B2B1E /* CustomButtonBig.swift in Sources */,
 				50F726422BC655A800078A6D /* WakieTalkieApp.swift in Sources */,
+				50F7264E2BC676AC00078A6D /* AlarmCell.swift in Sources */,
+				50F7264A2BC66D7100078A6D /* CustomButtonSmall.swift in Sources */,
 				AE9F0C3B2BC3FA5A007B2B1E /* AlarmView.swift in Sources */,
 				AE9F0C3D2BC3FA6D007B2B1E /* CallView.swift in Sources */,
+				50F7264C2BC66D9B00078A6D /* CustomButtonCircle.swift in Sources */,
 				AE9F0C2F2BC3F38A007B2B1E /* AlarmModel.swift in Sources */,
+				50F726482BC66D0400078A6D /* AddAlarmView.swift in Sources */,
 				50F726402BC6525B00078A6D /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

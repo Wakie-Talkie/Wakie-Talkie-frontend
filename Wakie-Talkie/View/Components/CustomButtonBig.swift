@@ -10,6 +10,7 @@ import SwiftUI
 struct CustomButtonBig: View {
     var text: String
     var action: () -> Void
+    var color: Color
     @Binding var isActive: Bool
     
     var body: some View {
@@ -17,10 +18,10 @@ struct CustomButtonBig: View {
             Text(text)
                 .foregroundColor(.white)
                 .fontWeight(.semibold)
-                .frame(maxWidth: .infinity)
+                .frame(maxWidth: .infinity, minHeight: 35)
                 .padding()
         }
-        .background(isActive ? Color.blue : Color.gray)
+        .background(color)
         .cornerRadius(10)
         .padding(.horizontal)
         .disabled(!isActive)

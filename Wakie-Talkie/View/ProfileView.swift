@@ -29,7 +29,7 @@ struct ProfileView: View {
             
             CustomButtonBig(text: "프로필 수정하기", action: {
                 // 프로필 수정 로직
-            }, isActive: .constant(true))
+            }, color: Color("Black"), isActive: .constant(true))
             
             List {
                 Text("동화 기록 보기")
