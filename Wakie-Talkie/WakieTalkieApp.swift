@@ -11,7 +11,8 @@ import SwiftUI
 struct WakieTalkieApp: App {
     var body: some Scene {
         WindowGroup{
-            LoginView()
+            //LoginView()
+            MainTabView()
         }
     }
 }
