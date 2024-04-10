@@ -16,6 +16,11 @@ struct AlarmCell: View {
                 .fill(Color("Grey3").opacity(0.12))
                 .frame(maxWidth: .infinity)
                 .frame(height: 150)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color("Main").opacity(0.3), lineWidth: 2)
+                )
+                
             HStack{
                 VStack(alignment: .leading,spacing: 5){
                     Text("언어: " + alarmData.language)

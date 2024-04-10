@@ -21,6 +21,9 @@ struct AlarmView: View {
                 }
             }
             VStack(spacing: alarms.isEmpty ? 30 : 0) {
+                Text("전화 알람")
+                    .fontWeight(.bold)
+                    .font(.system(size: 25))
                 if alarms.isEmpty {
                     Spacer()
                     Text("아직 알람이 없어요!")
