@@ -6,15 +6,21 @@
 //
 import SwiftUI
 
+enum Destination {
+    case onboarding
+    case mainTab
+}
+
 struct LoginView: View {
     @State private var id: String = ""
     @State private var password: String = ""
-    @State private var navigationPath = NavigationPath()
+    @State private var selectedDestination: Destination?
+    //@State private var navigationPath = NavigationPath()
     //@State private var isLoggedIn: Bool = false
     @State private var isFirstLogin: Bool = true
     
     var body: some View {
-        NavigationStack(path: $navigationPath) {
+        NavigationStack {
             VStack {
                 Text("Wakie Talkie")
                     .font(.largeTitle)
@@ -24,9 +30,9 @@ struct LoginView: View {
                 Button("로그인하기") {
                     if !(id.isEmpty || password.isEmpty) {
                         if isFirstLogin {
-                            //navigationPath.append(OnboardingView.self)
+                            selectedDestination = .onboarding
                         } else {
-                            navigationPath.append(MainTabView.self)
+                            selectedDestination = .mainTab
                         }
                     }
                 }
@@ -40,12 +46,18 @@ struct LoginView: View {
                 .padding(.top, 20)
             }
             .padding()
-        }
-//        .navigationDestination(for: OnboardingView.self) { _ in
-//            OnboardingView()
-//        }
-        .navigationDestination(for: MainTabView.self) { _ in
-            MainTabView()
+            .navigationDestination(for: Destination.self) { destination in
+                switch destination {
+                case .onboarding:
+                    OnboardingView()
+                case .mainTab:
+                    MainTabView()
+                }
+            }
         }
     }
+}
+
+#Preview {
+    LoginView()
 }
