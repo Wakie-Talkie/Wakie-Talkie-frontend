@@ -1,18 +1,18 @@
 //
-//  AddAlarmView.swift
+//  CallView.swift
 //  Wakie-Talkie
 //
-//  Created by 이은화 on 2024/04/04.
+//  Created by jiin on 4/8/24.
 //
 
 import SwiftUI
 
-struct AddAlarmView: View {
+struct CallView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
 #Preview {
-    AddAlarmView()
+    CallView()
 }
