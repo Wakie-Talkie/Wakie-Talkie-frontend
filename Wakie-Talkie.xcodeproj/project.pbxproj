@@ -22,6 +22,7 @@
 		AE9F0C3D2BC3FA6D007B2B1E /* CallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C3C2BC3FA6D007B2B1E /* CallView.swift */; };
 		AEDDEDC92BC65B5400D20C01 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDDEDC82BC65B5400D20C01 /* MypageView.swift */; };
 		AEDDEDCB2BC65BB500D20C01 /* CustomButtonMid.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDDEDCA2BC65BB500D20C01 /* CustomButtonMid.swift */; };
+		AEDDEDCD2BC6751F00D20C01 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDDEDCC2BC6751F00D20C01 /* EditProfileView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		AE9F0C3C2BC3FA6D007B2B1E /* CallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallView.swift; sourceTree = "<group>"; };
 		AEDDEDC82BC65B5400D20C01 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
 		AEDDEDCA2BC65BB500D20C01 /* CustomButtonMid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonMid.swift; sourceTree = "<group>"; };
+		AEDDEDCC2BC6751F00D20C01 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				AE9F0C3C2BC3FA6D007B2B1E /* CallView.swift */,
 				50F7263F2BC6525B00078A6D /* OnboardingView.swift */,
 				AEDDEDC82BC65B5400D20C01 /* MypageView.swift */,
+				AEDDEDCC2BC6751F00D20C01 /* EditProfileView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEDDEDCD2BC6751F00D20C01 /* EditProfileView.swift in Sources */,
 				AE9F0C352BC3F95A007B2B1E /* LoginView.swift in Sources */,
 				AE9F0C312BC3F8B0007B2B1E /* CustomTextField.swift in Sources */,
 				AE9F0C2B2BC3F253007B2B1E /* UserModel.swift in Sources */,

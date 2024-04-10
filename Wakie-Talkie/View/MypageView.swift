@@ -8,18 +8,21 @@
 import SwiftUI
 
 struct MypageView: View {
-    @State private var isActive = true // 버튼 활성화 상태를 위한 State
+    @State private var isActive = true
+    @State private var profileImage: Image = Image(systemName: "person.crop.circle") // 기본 이미지
+    @State private var nickname: String = "민민아"
+    @State private var selectedLanguage: String = "영어"
 
     var body: some View {
         NavigationView {
             VStack {
                 // 프로필 상단 부분
-                ProfileHeaderView(name: "민민아", language: "배우고 싶은 언어: English")
+                ProfileHeaderView(name: nickname, language: "배우고 싶은 언어: \(selectedLanguage)")
 
                 // '프로필 수정하기' 버튼
-                CustomButtonMid(text: "프로필 수정하기", action: {
-                    // 프로필 수정 액션
-                }, isActive: $isActive)
+                NavigationLink(destination: EditProfileView()) {
+                    CustomButtonMid(text: "프로필 수정하기", action: {}, isActive: $isActive)
+                }
                 
                 // 메뉴 항목들
                 CustomMenuListView()
@@ -48,7 +51,6 @@ struct ProfileHeaderView: View {
                 Text(name)
                     .font(.title)
                     .fontWeight(.bold)
-                
                 
                 Text(language)
                     .font(.subheadline)
