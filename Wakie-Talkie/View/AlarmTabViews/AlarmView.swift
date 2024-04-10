@@ -20,7 +20,7 @@ struct AlarmView: View {
                     }
                 }
             }
-            VStack(spacing: 30) {
+            VStack(spacing: alarms.isEmpty ? 30 : 0) {
                 if alarms.isEmpty {
                     Spacer()
                     Text("아직 알람이 없어요!")
@@ -32,17 +32,17 @@ struct AlarmView: View {
                     Spacer()
                 }
                 else{
-                    ScrollView{
-                        List {
-                            ForEach($alarms){ alarm in
-                                AlarmCell(alarmData: alarm)
-                            }
+                    ScrollView {
+                        ForEach($alarms){ alarm in
+                            AlarmCell(alarmData: alarm)
+                                .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
                         }
                     }
                     CustomButtonBig(text: "알람 추가하기", action: {
                         // 알람 추가 로직
                     }, color: Color("Black"), isActive: .constant(true))
                     .frame(alignment: .bottom)
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                 }
             }
             .navigationTitle("알람")

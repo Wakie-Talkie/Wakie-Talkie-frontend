@@ -14,7 +14,8 @@ struct AlarmCell: View {
         ZStack{
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color("Grey3").opacity(0.12))
-                .frame(maxWidth: .infinity, maxHeight: 150)
+                .frame(maxWidth: .infinity)
+                .frame(height: 150)
             HStack{
                 VStack(alignment: .leading,spacing: 5){
                     Text("언어: " + alarmData.language)
@@ -25,6 +26,8 @@ struct AlarmCell: View {
                     Text(extractFormattedTime(from: alarmData.time))
                         .font(.system(size: 45))
                         .fontWeight(.light)
+                        .lineLimit(1)
+                        .frame(minWidth: 200,alignment: .leading)
                     
                     HStack(alignment: .top, spacing: 5){
                         ForEach(0..<week.count, id: \.self) { index in
@@ -39,9 +42,9 @@ struct AlarmCell: View {
                     .labelsHidden()
                     .toggleStyle(SwitchToggleStyle(tint: Color("Black")))
             }
-            .padding()
+            .padding([.horizontal])
         }
-        .padding()
+        .padding([.horizontal])
     }
     
     func extractFormattedTime(from date: Date) -> String {
