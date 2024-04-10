@@ -22,7 +22,7 @@ struct MainTabView: View {
                     Text("알람")
                 }
             
-            ProfileView()
+            MypageView()
                 .tabItem {
                     Image(systemName: "person.fill")
                     Text("마이페이지")

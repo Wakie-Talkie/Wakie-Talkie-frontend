@@ -18,9 +18,10 @@
 		AE9F0C332BC3F8C2007B2B1E /* CustomButtonBig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C322BC3F8C2007B2B1E /* CustomButtonBig.swift */; };
 		AE9F0C352BC3F95A007B2B1E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C342BC3F95A007B2B1E /* LoginView.swift */; };
 		AE9F0C372BC3FA31007B2B1E /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C362BC3FA31007B2B1E /* MainTabView.swift */; };
-		AE9F0C392BC3FA48007B2B1E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C382BC3FA48007B2B1E /* ProfileView.swift */; };
 		AE9F0C3B2BC3FA5A007B2B1E /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C3A2BC3FA5A007B2B1E /* AlarmView.swift */; };
 		AE9F0C3D2BC3FA6D007B2B1E /* CallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C3C2BC3FA6D007B2B1E /* CallView.swift */; };
+		AEDDEDC92BC65B5400D20C01 /* MypageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDDEDC82BC65B5400D20C01 /* MypageView.swift */; };
+		AEDDEDCB2BC65BB500D20C01 /* CustomButtonMid.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDDEDCA2BC65BB500D20C01 /* CustomButtonMid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,9 +37,10 @@
 		AE9F0C322BC3F8C2007B2B1E /* CustomButtonBig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonBig.swift; sourceTree = "<group>"; };
 		AE9F0C342BC3F95A007B2B1E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		AE9F0C362BC3FA31007B2B1E /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
-		AE9F0C382BC3FA48007B2B1E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		AE9F0C3A2BC3FA5A007B2B1E /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		AE9F0C3C2BC3FA6D007B2B1E /* CallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallView.swift; sourceTree = "<group>"; };
+		AEDDEDC82BC65B5400D20C01 /* MypageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MypageView.swift; sourceTree = "<group>"; };
+		AEDDEDCA2BC65BB500D20C01 /* CustomButtonMid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonMid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,10 +109,10 @@
 				AE9F0C292BC3F078007B2B1E /* Components */,
 				AE9F0C342BC3F95A007B2B1E /* LoginView.swift */,
 				AE9F0C362BC3FA31007B2B1E /* MainTabView.swift */,
-				AE9F0C382BC3FA48007B2B1E /* ProfileView.swift */,
 				AE9F0C3A2BC3FA5A007B2B1E /* AlarmView.swift */,
 				AE9F0C3C2BC3FA6D007B2B1E /* CallView.swift */,
 				50F7263F2BC6525B00078A6D /* OnboardingView.swift */,
+				AEDDEDC82BC65B5400D20C01 /* MypageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -149,6 +151,7 @@
 			children = (
 				AE9F0C302BC3F8B0007B2B1E /* CustomTextField.swift */,
 				AE9F0C322BC3F8C2007B2B1E /* CustomButtonBig.swift */,
+				AEDDEDCA2BC65BB500D20C01 /* CustomButtonMid.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -224,7 +227,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE9F0C392BC3FA48007B2B1E /* ProfileView.swift in Sources */,
 				AE9F0C352BC3F95A007B2B1E /* LoginView.swift in Sources */,
 				AE9F0C312BC3F8B0007B2B1E /* CustomTextField.swift in Sources */,
 				AE9F0C2B2BC3F253007B2B1E /* UserModel.swift in Sources */,
@@ -234,6 +236,8 @@
 				50F726422BC655A800078A6D /* WakieTalkieApp.swift in Sources */,
 				AE9F0C3B2BC3FA5A007B2B1E /* AlarmView.swift in Sources */,
 				AE9F0C3D2BC3FA6D007B2B1E /* CallView.swift in Sources */,
+				AEDDEDC92BC65B5400D20C01 /* MypageView.swift in Sources */,
+				AEDDEDCB2BC65BB500D20C01 /* CustomButtonMid.swift in Sources */,
 				AE9F0C2F2BC3F38A007B2B1E /* AlarmModel.swift in Sources */,
 				50F726402BC6525B00078A6D /* OnboardingView.swift in Sources */,
 			);
