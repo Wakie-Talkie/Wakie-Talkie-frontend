@@ -16,6 +16,7 @@
 		50F7264A2BC66D7100078A6D /* CustomButtonSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726492BC66D7100078A6D /* CustomButtonSmall.swift */; };
 		50F7264C2BC66D9B00078A6D /* CustomButtonCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7264B2BC66D9B00078A6D /* CustomButtonCircle.swift */; };
 		50F7264E2BC676AC00078A6D /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7264D2BC676AC00078A6D /* AlarmCell.swift */; };
+		50F726522BC6BB9700078A6D /* ModifyAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726512BC6BB9700078A6D /* ModifyAlarmView.swift */; };
 		AE9F0C2B2BC3F253007B2B1E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */; };
 		AE9F0C2D2BC3F369007B2B1E /* AIProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */; };
 		AE9F0C2F2BC3F38A007B2B1E /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */; };
@@ -39,6 +40,7 @@
 		50F726492BC66D7100078A6D /* CustomButtonSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonSmall.swift; sourceTree = "<group>"; };
 		50F7264B2BC66D9B00078A6D /* CustomButtonCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonCircle.swift; sourceTree = "<group>"; };
 		50F7264D2BC676AC00078A6D /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
+		50F726512BC6BB9700078A6D /* ModifyAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyAlarmView.swift; sourceTree = "<group>"; };
 		AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIProfileModel.swift; sourceTree = "<group>"; };
 		AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				50F726462BC66CE400078A6D /* Components */,
 				AE9F0C3A2BC3FA5A007B2B1E /* AlarmView.swift */,
 				50F726472BC66D0400078A6D /* AddAlarmView.swift */,
+				50F726512BC6BB9700078A6D /* ModifyAlarmView.swift */,
 			);
 			path = AlarmTabViews;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				AE9F0C2D2BC3F369007B2B1E /* AIProfileModel.swift in Sources */,
 				AE9F0C372BC3FA31007B2B1E /* MainTabView.swift in Sources */,
 				AE9F0C332BC3F8C2007B2B1E /* CustomButtonBig.swift in Sources */,
+				50F726522BC6BB9700078A6D /* ModifyAlarmView.swift in Sources */,
 				50F726422BC655A800078A6D /* WakieTalkieApp.swift in Sources */,
 				50F7264E2BC676AC00078A6D /* AlarmCell.swift in Sources */,
 				50F7264A2BC66D7100078A6D /* CustomButtonSmall.swift in Sources */,

@@ -15,14 +15,13 @@ struct CustomButtonSmall: View {
     var body: some View {
         Button(action: action) {
             Text(text)
-                .padding()
-                .frame(minWidth: 100, minHeight: 50)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 8)
                 .foregroundColor(isActive ? Color("Grey1") : Color("Black"))
-                .font(.system(size: 16))
+                .font(.system(size: 14))
                 .fontWeight(.regular)
         }
         .background(isActive ? Color("Black") : Color("Grey1"))
         .cornerRadius(10)
-        .padding(.horizontal)
     }
 }

@@ -38,7 +38,5 @@ struct ProfileView: View {
                 Text("로그아웃")
             }
         }
-        .navigationTitle("마이페이지")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }

@@ -11,6 +11,7 @@ struct CustomButtonCircle: View {
     var text: String
     var textSize: CGFloat
     var action: (() -> Void)?
+    var padding: CGFloat
     @Binding var isActive: Bool
     
     var body: some View {
@@ -18,10 +19,10 @@ struct CustomButtonCircle: View {
             isActive = !isActive
         }) {
             Text(text)
-                .frame(minWidth: 20, minHeight: 20)
+                .padding(.all, padding)
                 .foregroundColor(isActive ? Color("Grey1") : Color("Black"))
                 .font(.system(size: textSize))
-                .fontWeight(.regular)
+                .fontWeight(.thin)
         }
         .background(Circle().fill(isActive ? Color("Black") : Color("Grey1")))
         .cornerRadius(10)

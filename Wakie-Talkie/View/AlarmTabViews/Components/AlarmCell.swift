@@ -34,12 +34,11 @@ struct AlarmCell: View {
                         .lineLimit(1)
                         .frame(minWidth: 200,alignment: .leading)
                     
-                    HStack(alignment: .top, spacing: 5){
+                    HStack(alignment: .top, spacing: 8){
                         ForEach(0..<week.count, id: \.self) { index in
-                            CustomButtonCircle(text: week[index], textSize: 12, isActive: $alarmData.repeatDays[index])
+                            CustomButtonCircle(text: week[index], textSize: 12, padding: 7, isActive: $alarmData.repeatDays[index])
                                 .disabled(true)
                         }
-                        
                     }
                 }
                 Spacer()

@@ -9,47 +9,55 @@ import SwiftUI
 
 struct AlarmView: View {
     @State var alarms: [Alarm]
+    @State private var isPresentingAddAlarm = false
+    @State private var selectedAlarm: Alarm?
     var body: some View {
-        ZStack{
-            GeometryReader { geometry in
-                VStack {
-                    HStack {
-                        Spacer()
-                        Image("alarm_background")
-                            .edgesIgnoringSafeArea(.all)
-                    }
-                }
-            }
-            VStack(spacing: alarms.isEmpty ? 30 : 0) {
-                Text("전화 알람")
-                    .fontWeight(.bold)
-                    .font(.system(size: 25))
-                if alarms.isEmpty {
-                    Spacer()
-                    Text("아직 알람이 없어요!")
-                        .font(.system(size: 25))
-                        .fontWeight(.light)
-                    CustomButtonBig(text: "알람 추가하기", action: {
-                        // 알람 추가 로직
-                    }, color: Color("Black"), isActive: .constant(true))
-                    Spacer()
-                }
-                else{
-                    ScrollView {
-                        ForEach($alarms){ alarm in
-                            AlarmCell(alarmData: alarm)
-                                .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+        NavigationStack {
+            ZStack{
+                GeometryReader { geometry in
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Image("alarm_background")
+                                .edgesIgnoringSafeArea(.all)
                         }
                     }
-                    CustomButtonBig(text: "알람 추가하기", action: {
-                        // 알람 추가 로직
-                    }, color: Color("Black"), isActive: .constant(true))
-                    .frame(alignment: .bottom)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+                }
+                VStack(spacing: alarms.isEmpty ? 30 : 0) {
+                    Text("전화 알람")
+                        .fontWeight(.bold)
+                        .font(.system(size: 25))
+                    if alarms.isEmpty {
+                        Spacer()
+                        Text("아직 알람이 없어요!")
+                            .font(.system(size: 25))
+                            .fontWeight(.light)
+                        CustomButtonBig(text: "알람 추가하기", action: {
+                            isPresentingAddAlarm = true;
+                        }, color: Color("Black"), isActive: .constant(true))
+                        Spacer()
+                    }
+                    else{
+                        ScrollView {
+                            ForEach($alarms){ alarm in
+                                NavigationLink(destination: ModifyAlarmView(alarmList: $alarms, alarmData: alarm)){
+                                    AlarmCell(alarmData: alarm)
+                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                                }
+                            }
+                            
+                        }
+                        CustomButtonBig(text: "알람 추가하기", action: {
+                            isPresentingAddAlarm = true
+                        }, color: Color("Black"), isActive: .constant(true))
+                        .frame(alignment: .bottom)
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+                    }
                 }
             }
-            .navigationTitle("알람")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationDestination(isPresented: $isPresentingAddAlarm){
+                AddAlarmView(alarmList: $alarms)
+            }
         }
     }
 }
