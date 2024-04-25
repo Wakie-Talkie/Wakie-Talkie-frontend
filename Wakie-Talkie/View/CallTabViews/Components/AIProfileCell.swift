@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AIProfileCell: View{
-    @Binding var aiData: AIProfile
+    @State var aiData: AIProfile
     var body: some View{
         ZStack{
             RoundedRectangle(cornerRadius: 20)
@@ -20,7 +20,7 @@ struct AIProfileCell: View{
                         .stroke(Color("Stroke").opacity(0.3), lineWidth: 2)
                 )
             HStack(spacing: 15){
-                Image(aiData.profileImg ?? "AIProfileImg")
+                Image(aiData.profileImg ?? "ai_profile_img")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .scaledToFill()
@@ -55,7 +55,7 @@ struct AIProfileCell: View{
 struct AICellTestView: View{
     @State var aiProfile: AIProfile = AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "AIProfileImg",description: "I like watching animation and go out for a walk.", language: "ENGLISH")
     var body: some View{
-        AIProfileCell(aiData: $aiProfile)
+        AIProfileCell(aiData: aiProfile)
     }
 }
 

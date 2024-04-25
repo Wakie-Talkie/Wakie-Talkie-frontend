@@ -27,6 +27,7 @@ struct AlarmView: View {
                     Text("전화 알람")
                         .fontWeight(.bold)
                         .font(.system(size: 25))
+                        .padding(EdgeInsets(top: 30, leading: 0, bottom: 20, trailing: 0))
                     if alarms.isEmpty {
                         Spacer()
                         Text("아직 알람이 없어요!")

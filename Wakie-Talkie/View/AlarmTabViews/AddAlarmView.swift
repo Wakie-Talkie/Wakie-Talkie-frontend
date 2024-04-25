@@ -129,7 +129,7 @@ struct AddAlarmView: View {
         .navigationTitle(Text("알람 추가하기")
             .fontWeight(.bold)
             .font(.system(size: 25))
-        )// 네비게이션 바 중앙의 제목
+        ).padding(EdgeInsets(top: 30, leading: 0, bottom: 20, trailing: 0))
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button("취소") {

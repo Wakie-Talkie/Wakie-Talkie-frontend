@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CallView: View {
     @State var aiProfileList: [AIProfile]
+    @State private var selection: AIProfile? = nil
+    @State private var showModal: Bool = false
     
     @State private var languages: [String] = ["영어", "한국어", "중국어", "일본어"]
     @State private var isLanguageSelected: [Bool] = [false, false, false, false]
@@ -27,6 +29,7 @@ struct CallView: View {
                 Text("전화하기")
                     .fontWeight(.bold)
                     .font(.system(size: 25))
+                    .padding(EdgeInsets(top: 30, leading: 0, bottom: 0, trailing: 0))
                 HStack{
                     Text("현재 언어: ")
                     ForEach(0..<languages.count, id: \.self) { index in
@@ -41,16 +44,23 @@ struct CallView: View {
                             }
                         }, isActive: $isLanguageSelected[index])
                     }
-                }.padding(EdgeInsets(top: 50, leading: 0, bottom: 30, trailing: 0))
+                }.padding(EdgeInsets(top: 40, leading: 0, bottom: 30, trailing: 0))
                 
                 //여기서 이제 언어 별 ai 띄우도록 거르는 function
                 ScrollView {
-                    ForEach($aiProfileList){ aiProfile in
-                        NavigationLink(destination: ProfileView()//Modal Popup)
-                        ){
-                            AIProfileCell(aiData: aiProfile)
+                    ForEach(aiProfileList.indices, id: \.self){ index in
+                        AIProfileCell(aiData: aiProfileList[index])
                                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
-                        }
+                                .onTapGesture {
+                                    self.showModal = true
+                                    self.selection = aiProfileList[index]
+                                }
+                    }
+                }
+                .sheet(isPresented: $showModal){
+                    if let selectedItem = selection{
+                        CallPopupView(aiProfile: selectedItem)
+                            .presentationDetents([.fraction(0.7)])
                     }
                 }
                 Spacer()
@@ -60,9 +70,9 @@ struct CallView: View {
 }
 struct CallTestView: View{
     @State var aipofileData: [AIProfile] = [
-        AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "AIProfileImg", description: "like watching animation and go out for a walk.", language: "ENGLISH"),
-        AIProfile(id: "aiNo.2", nickname: "Sandy",profileImg: "AIProfileImg",description: "FUCK YOU", language: "ENGLISH"),
-        AIProfile(id: "aiNo.3", nickname: "Lily",profileImg: "AIProfileImg",description: "SHUT UP ㅗ", language: "ENGLISH")
+        AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "ai_profile_img", description: "like watching animation and go out for a walk.", language: "ENGLISH"),
+        AIProfile(id: "aiNo.2", nickname: "Sandy",profileImg: "ai_profile_img",description: "FUCK YOU", language: "ENGLISH"),
+        AIProfile(id: "aiNo.3", nickname: "Alice",profileImg: "ai_profile_alice",description: "SHUT UP ㅗ", language: "ENGLISH")
     ]
     var body: some View{
         CallView(aiProfileList: aipofileData)
