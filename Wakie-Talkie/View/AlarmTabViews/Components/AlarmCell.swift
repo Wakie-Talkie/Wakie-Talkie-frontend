@@ -31,6 +31,7 @@ struct AlarmCell: View {
                     Text(extractFormattedTime(from: alarmData.time))
                         .font(.system(size: 45))
                         .fontWeight(.light)
+                        .foregroundColor(Color("Black"))
                         .lineLimit(1)
                         .frame(minWidth: 200,alignment: .leading)
                     

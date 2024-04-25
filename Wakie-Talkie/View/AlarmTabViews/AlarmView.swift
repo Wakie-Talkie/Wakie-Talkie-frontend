@@ -40,12 +40,12 @@ struct AlarmView: View {
                     else{
                         ScrollView {
                             ForEach($alarms){ alarm in
-                                NavigationLink(destination: ModifyAlarmView(alarmList: $alarms, alarmData: alarm)){
+                                NavigationLink(destination: ModifyAlarmView(alarmList: $alarms, alarmData: alarm)
+                                ){
                                     AlarmCell(alarmData: alarm)
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
                                 }
                             }
-                            
                         }
                         CustomButtonBig(text: "알람 추가하기", action: {
                             isPresentingAddAlarm = true
@@ -73,7 +73,6 @@ struct AlarmTestView: View{
     var body: some View{
         AlarmView(alarms: alarmDatas)
     }
-    
 }
 
 
