@@ -11,19 +11,12 @@ import Foundation
 class AIProfileDataFetcher: ObservableObject {
     @Published var aiProfiles: [AIProfile]?
     
-    func fetchAlarms(){
-        let fetchedAlarms = [
-            
+    func fetchAIProfiles(){
+        let fetchedAIProfiles = [
+            AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "AIProfileImg", description: "like watching animation and go out for a walk.", language: "ENGLISH"),
+            AIProfile(id: "aiNo.2", nickname: "Sandy",profileImg: "AIProfileImg",description: "FUCK YOU", language: "ENGLISH"),
+            AIProfile(id: "aiNo.3", nickname: "Lily",profileImg: "AIProfileImg",description: "SHUT UP ㅗ", language: "ENGLISH")
         ]
-        self.alarms = fetchedAlarms
-    }
-    
-    func transformToDate(dateString: String) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h:mm a"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        
-        let date = dateFormatter.date(from: dateString)
-        return date!
+        self.aiProfiles = fetchedAIProfiles
     }
 }

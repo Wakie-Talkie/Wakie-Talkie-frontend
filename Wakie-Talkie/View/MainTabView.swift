@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MainTabView: View {
     @StateObject private var alarmDataFetcher = AlarmDataFetcher()
+    @StateObject private var aiProfileDataFetcher = AIProfileDataFetcher()
     @State private var selectedTab = 2
     
     var body: some View {
@@ -16,7 +17,7 @@ struct MainTabView: View {
             // 컨텐츠 영역
             switch selectedTab {
             case 1:
-                CallView()
+                CallView(aiProfileList: aiProfileDataFetcher.aiProfiles ?? [])
             case 2:
                 AlarmView(alarms: alarmDataFetcher.alarms ?? [])
             default:
@@ -89,40 +90,10 @@ struct MainTabView: View {
         }
         .onAppear {
             alarmDataFetcher.fetchAlarms()
+            aiProfileDataFetcher.fetchAIProfiles()
         }
     }
 }
-//    }
-//
-//        
-//        
-//        TabView(selection: $selectedTab) {
-//            CallView()
-//                .tabItem {
-//                    Image(systemName: "phone.fill")
-//                    Text("전화하기")
-//                }
-//                .tag(1)
-//            
-//            AlarmView(alarms: alarmDataFetcher.alarms ?? [])
-//                .tabItem {
-//                    Image(systemName: "alarm.fill")
-//                    Text("알람")
-//                }
-//                .tag(2)
-//            ProfileView()
-//                .tabItem {
-//                    Image(systemName: "person.fill")
-//                    Text("마이페이지")
-//                }
-//                .tag(3)
-//        }
-//        .onAppear {
-//            alarmDataFetcher.fetchAlarms()
-//        }
-//        .background(Color("Black"))
-//    }
-//}
 
 #Preview {
     MainTabView()
