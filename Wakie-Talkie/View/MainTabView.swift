@@ -11,6 +11,7 @@ struct MainTabView: View {
     @StateObject private var alarmDataFetcher = AlarmDataFetcher()
     @StateObject private var aiProfileDataFetcher = AIProfileDataFetcher()
     @State private var selectedTab = 2
+    var alarmManager = AlarmManager()
     
     var body: some View {
         VStack {
@@ -91,6 +92,7 @@ struct MainTabView: View {
         .onAppear {
             alarmDataFetcher.fetchAlarms()
             aiProfileDataFetcher.fetchAIProfiles()
+            alarmManager.scheduleAlarms(alarms: alarmDataFetcher.alarms ?? []) //TODO: async
         }
     }
 }
