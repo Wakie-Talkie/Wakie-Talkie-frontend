@@ -13,7 +13,7 @@ class AlarmDataFetcher: ObservableObject {
     
     func fetchAlarms(){
         let fetchedAlarms = [
-            Alarm(id: "alarm1", userId: "eunhwa813", time: transformToDate(dateString: "8:33 PM"), language: "ENGLISH", repeatDays: [false, false, false, false, false, false, false], isOn: true),
+            Alarm(id: "alarm1", userId: "eunhwa813", time: transformToDate(dateString: "9:05 PM"), language: "ENGLISH", repeatDays: [false, false, false, false, false, false, false], isOn: true),
             Alarm(id: "alarm2", userId: "eunhwa813", time: transformToDate(dateString: "8:00 AM"), language: "KOREAN", repeatDays: [false, false, true, false, false, false, false], isOn: true),
             Alarm(id: "alarm3", userId: "eunhwa813", time: transformToDate(dateString: "12:00 PM"), language: "JAPANESE", repeatDays: [true, false, false, false, true, false, false], isOn: false),
             Alarm(id: "alarm4", userId: "eunhwa813", time: transformToDate(dateString: "7:00 PM"), language: "FRENCH", repeatDays: [false, true, false, false, false, false, false], isOn: true),
