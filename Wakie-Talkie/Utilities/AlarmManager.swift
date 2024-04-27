@@ -11,79 +11,92 @@ import UserNotifications
 class AlarmManager {
     static let shared = AlarmManager()
 
-    func scheduleAlarms(alarms: [Alarm]) {
-        let center = UNUserNotificationCenter.current()
-
-        // 이미 스케줄된 모든 알림을 제거
-        center.removeAllPendingNotificationRequests()
-
-        // 알람을 스케줄
-        for alarm in alarms where alarm.isOn {
-            scheduleAlarm(alarm: alarm)
-        }
-    }
-
-    private func scheduleAlarm(alarm: Alarm) {
-        let center = UNUserNotificationCenter.current()
-        let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: alarm.time)
-        
-        print("함수 안임")
-        print(dateComponents)
-        print(alarm.repeatDays)
-        
-        if alarm.repeatDays.allSatisfy({ !$0 }) {
-            // repeatDays가 모두 false일 경우, 단 한 번만 알람을 설정합니다.
-            let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-            createNotificationRequest(with: alarm, trigger: trigger)
-        } else {
-            // repeatDays가 하나 이상 true일 경우, 각 요일에 맞게 반복 알람을 설정합니다.
-            let weekdays = alarm.repeatDays.enumerated().compactMap { $0.element ? $0.offset + 1 : nil }
-            for weekday in weekdays {
-                var components = dateComponents
-                components.weekday = weekday
-                
-                let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
-                createNotificationRequest(with: alarm, trigger: trigger)
-            }
-        }
-        print("------------")
-    }
-
-    private func createNotificationRequest(with alarm: Alarm, trigger: UNNotificationTrigger) {
-        let content = UNMutableNotificationContent()
-        content.title = "Alarm!"
-        content.body = "Time for your \(alarm.language) lesson!"
-        content.sound = UNNotificationSound.default
-
-        let request = UNNotificationRequest(identifier: alarm.id, content: content, trigger: trigger)
-        
-        print("request is \(request)")
-
-        UNUserNotificationCenter.current().add(request) { error in
-            if let error = error {
-                print("Error scheduling notification: \(error)")
-            }
-        }
-    }
-
     
-    func checkIfShouldTriggerNotification() {
-        UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
-            let currentComponents = Calendar.current.dateComponents([.weekday, .hour, .minute], from: Date())
-            for request in requests {
-                if let trigger = request.trigger as? UNCalendarNotificationTrigger,
-                   let triggerDate = trigger.nextTriggerDate(),
-                   Calendar.current.isDate(triggerDate, equalTo: Date(), toGranularity: .minute) {
-                    self.triggerLocalNotification(request: request)
+    func scheduleNextAlarm(alarms: [Alarm]) {
+//        print("scheduledFuncssss")
+//        print(alarms)
+//        print("----")
+        guard let nextAlarm = findNextAlarm(alarms: alarms) else {
+            print("No alarms to schedule")
+            return
+        }
+//        print("Next alarm: \(nextAlarm)")
+        scheduleAlarmNotifications(alarm: nextAlarm)
+    }
+    
+    private func findNextAlarm(alarms: [Alarm]) -> Alarm? {
+        let now = Date()
+        var closestAlarm: Alarm?
+        var minimumTimeInterval: TimeInterval = .greatestFiniteMagnitude
+        
+        for alarm in alarms.filter({ $0.isOn }) {
+            guard let nextAlarmTime = getNextAlarmTime(for: alarm, from: now) else {
+                continue
+            }
+            let timeInterval = nextAlarmTime.timeIntervalSince(now)
+            if timeInterval < minimumTimeInterval {
+                minimumTimeInterval = timeInterval
+                closestAlarm = alarm
+            }
+        }
+        return closestAlarm
+    }
+    
+    private func getNextAlarmTime(for alarm: Alarm, from referenceDate: Date) -> Date? {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute, .second], from: alarm.time)
+
+        if alarm.repeatDays.allSatisfy({ !$0 }) {
+            // 단발성 알람: 현재 시간이 알람 시간 이전이면 그대로 반환, 그렇지 않다면 다음날 반환
+            let nextTime = calendar.date(byAdding: components, to: calendar.startOfDay(for: referenceDate))!
+            if nextTime > referenceDate {
+                return nextTime
+            } else {
+                // 다음날 같은 시간에 알람을 설정
+                return calendar.date(byAdding: .day, value: 1, to: nextTime)
+            }
+        } else {
+            // 반복 알람: 현재 요일로부터 다음 발생 요일을 찾음
+            for i in 0..<7 {
+                let daysToAdd = (i - calendar.component(.weekday, from: referenceDate) + 8) % 7
+                if alarm.repeatDays[(calendar.component(.weekday, from: referenceDate) + daysToAdd - 1) % 7] {
+                    let nextDate = calendar.date(byAdding: .day, value: daysToAdd, to: calendar.startOfDay(for: referenceDate))
+                    return calendar.date(byAdding: components, to: nextDate!)
                 }
             }
         }
+        return nil
     }
+
     
-    private func triggerLocalNotification(request: UNNotificationRequest) {
-        // 여기에서 실제로 로컬 알림을 발동시키는 코드를 작성합니다.
-        // 예를 들어 테스트 목적으로 콘솔에 출력을 하거나, 더 복잡한 동작을 수행할 수 있습니다.
-        print("Triggering notification with id: \(request.identifier)")
-        // TODO: 실제 앱에서는 여기에 UserNotifications 프레임워크를 사용하여 알림을 표시하는 코드를 작성합니다.
+    private func scheduleAlarmNotifications(alarm: Alarm) {
+        let notificationTimes: [TimeInterval] = [0, 5, 10]  // 0초, 5초, 10초 후
+        for secondsToAdd in notificationTimes {
+            scheduleNotification(alarm: alarm, date: getNextAlarmTime(for: alarm, from: Date())!, secondsToAdd: secondsToAdd)
+        }
     }
+
+    private func scheduleNotification(alarm: Alarm, date: Date, secondsToAdd: TimeInterval) {
+        let content = UNMutableNotificationContent()
+        content.title = "Alarm for \(alarm.language)"
+        content.body = "Alarm set for \(alarm.language) at \(alarm.time.formatted())"
+        content.sound = UNNotificationSound.default
+
+        var dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
+        if let second = dateComponents.second {
+            dateComponents.second = second + Int(secondsToAdd)
+        }
+
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+        let request = UNNotificationRequest(identifier: "\(alarm.id)-\(secondsToAdd)", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error scheduling notification: \(error)")
+            } else {
+                print("Scheduled notification for \(alarm.language) at \(dateComponents) plus \(secondsToAdd) seconds")
+            }
+        }
+    }
+
 }
