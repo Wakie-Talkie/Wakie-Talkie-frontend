@@ -120,9 +120,6 @@ struct AddAlarmView: View {
                     addAlarmData.repeatDays = repeatDays
                     
                     alarmList.append(addAlarmData)
-                    let AlarmManager = AlarmManager()
-                    AlarmManager.scheduleAlarms(alarms: alarmList)
-                    print("ALARMMM")
                     dismiss()
                 }
             }, color: Color("Black"), isActive: .constant(true))

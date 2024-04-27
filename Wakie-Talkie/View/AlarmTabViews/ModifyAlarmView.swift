@@ -101,10 +101,6 @@ struct ModifyAlarmView: View {
                 
                 time = dateFormatter.date(from: alarmTime + (isAmActive ? " AM":" PM")) ?? Date()
                 alarmData.time = time
-                
-                let AlarmManager = AlarmManager()
-                AlarmManager.scheduleAlarms(alarms: alarmList)
-                print("ALARMMMMM")
                 dismiss()
             }, color: Color("Black"), isActive: .constant(true))
             .frame(alignment: .bottom)
@@ -112,9 +108,6 @@ struct ModifyAlarmView: View {
             
             CustomButtonBig(text: "알람 삭제하기", action: {
                 alarmList.removeAll{$0.id == alarmData.id}
-                let AlarmManager = AlarmManager()
-                AlarmManager.scheduleAlarms(alarms: alarmList)
-                print("ALAMRNNNNNNMNN")
                 dismiss()
             }, color: Color("Accent1"), isActive: .constant(true))
             .frame(alignment: .bottom)
