@@ -26,6 +26,14 @@ class AlarmManager {
         scheduleAlarmNotifications(alarm: nextAlarm)
     }
     
+    static func findNextAlarmTime(alarms: [Alarm]) -> Date? {
+        var closestAlarmTime: Date?
+        
+        return getNextAlarmTime(for: AlarmManager.findNextAlarm(alarms: alarms) ?? Alarm())
+        
+        //return closestAlarmTime
+    }
+    
     static func findNextAlarm(alarms: [Alarm]) -> Alarm? {
         var closestAlarm: Alarm?
         var minimumTimeInterval: TimeInterval = .greatestFiniteMagnitude
@@ -35,12 +43,17 @@ class AlarmManager {
                 continue
             }
             let timeInterval = nextAlarmTime.timeIntervalSince(Date())
+            print("NEXTALARMTIME:\(nextAlarmTime)")
             if timeInterval < minimumTimeInterval {
                 minimumTimeInterval = timeInterval
                 closestAlarm = alarm
+                print("CLOSEST NOW: \(String(describing: closestAlarm))")
             }
         }
-        return closestAlarm 
+//        print("= = = = ")
+//        print("closest alarm is: \(String(describing: closestAlarm))")
+//        print("= = = = ")
+        return closestAlarm
     }
     
     static func getNextAlarmTime(for alarm: Alarm) -> Date? {
@@ -60,15 +73,19 @@ class AlarmManager {
         } else {
             // 반복 알람: 현재 요일로부터 다음 발생 요일을 찾음
             for i in 0..<7 {
+                
+                print("NOW: \(referenceDate)")
                 let dayindex = i + calendar.component(.weekday, from: referenceDate) - 1//일월화수목금토
                 if alarm.repeatDays[dayindex % 7] {
                     let daysToAdd = dayindex + 1 - calendar.component(.weekday, from: referenceDate)
-                    let nextDate = calendar.date(byAdding: .day, value: daysToAdd, to: calendar.startOfDay(for: referenceDate))!
-                    
+                    print("DAYs to ADD: \(daysToAdd)")
+                    var nextDate = calendar.date(byAdding: .day, value: daysToAdd, to: calendar.startOfDay(for: referenceDate))!
+                    nextDate = calendar.date(byAdding: components, to: nextDate)!
+                    print("ALARM: \(alarm.language) \(nextDate)")
                     if nextDate < referenceDate {
                         continue
                     }
-                    return calendar.date(byAdding: components, to: nextDate)
+                    return nextDate
                 }
             }
         }
