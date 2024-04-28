@@ -13,38 +13,40 @@ class AlarmManager {
 
     
     func scheduleNextAlarm(alarms: [Alarm]) {
-//        print("scheduledFuncssss")
-//        print(alarms)
-//        print("----")
-        guard let nextAlarm = findNextAlarm(alarms: alarms) else {
+        let center = UNUserNotificationCenter.current()
+        
+        // 이미 스케줄된 모든 알림을 제거
+        center.removeAllPendingNotificationRequests()
+        
+        guard let nextAlarm = AlarmManager.findNextAlarm(alarms: alarms) else {
             print("No alarms to schedule")
             return
         }
-//        print("Next alarm: \(nextAlarm)")
+        print("Next alarm : \(nextAlarm)")
         scheduleAlarmNotifications(alarm: nextAlarm)
     }
     
-    private func findNextAlarm(alarms: [Alarm]) -> Alarm? {
-        let now = Date()
+    static func findNextAlarm(alarms: [Alarm]) -> Alarm? {
         var closestAlarm: Alarm?
         var minimumTimeInterval: TimeInterval = .greatestFiniteMagnitude
         
         for alarm in alarms.filter({ $0.isOn }) {
-            guard let nextAlarmTime = getNextAlarmTime(for: alarm, from: now) else {
+            guard let nextAlarmTime = AlarmManager.getNextAlarmTime(for: alarm) else {
                 continue
             }
-            let timeInterval = nextAlarmTime.timeIntervalSince(now)
+            let timeInterval = nextAlarmTime.timeIntervalSince(Date())
             if timeInterval < minimumTimeInterval {
                 minimumTimeInterval = timeInterval
                 closestAlarm = alarm
             }
         }
-        return closestAlarm
+        return closestAlarm 
     }
     
-    private func getNextAlarmTime(for alarm: Alarm, from referenceDate: Date) -> Date? {
-        let calendar = Calendar.current
+    static func getNextAlarmTime(for alarm: Alarm) -> Date? {
+        var calendar = Calendar.current
         let components = calendar.dateComponents([.hour, .minute, .second], from: alarm.time)
+        let referenceDate = Date()
 
         if alarm.repeatDays.allSatisfy({ !$0 }) {
             // 단발성 알람: 현재 시간이 알람 시간 이전이면 그대로 반환, 그렇지 않다면 다음날 반환
@@ -58,10 +60,15 @@ class AlarmManager {
         } else {
             // 반복 알람: 현재 요일로부터 다음 발생 요일을 찾음
             for i in 0..<7 {
-                let daysToAdd = (i - calendar.component(.weekday, from: referenceDate) + 8) % 7
-                if alarm.repeatDays[(calendar.component(.weekday, from: referenceDate) + daysToAdd - 1) % 7] {
-                    let nextDate = calendar.date(byAdding: .day, value: daysToAdd, to: calendar.startOfDay(for: referenceDate))
-                    return calendar.date(byAdding: components, to: nextDate!)
+                let dayindex = i + calendar.component(.weekday, from: referenceDate) - 1//일월화수목금토
+                if alarm.repeatDays[dayindex % 7] {
+                    let daysToAdd = dayindex + 1 - calendar.component(.weekday, from: referenceDate)
+                    let nextDate = calendar.date(byAdding: .day, value: daysToAdd, to: calendar.startOfDay(for: referenceDate))!
+                    
+                    if nextDate < referenceDate {
+                        continue
+                    }
+                    return calendar.date(byAdding: components, to: nextDate)
                 }
             }
         }
@@ -72,7 +79,7 @@ class AlarmManager {
     private func scheduleAlarmNotifications(alarm: Alarm) {
         let notificationTimes: [TimeInterval] = [0, 5, 10]  // 0초, 5초, 10초 후
         for secondsToAdd in notificationTimes {
-            scheduleNotification(alarm: alarm, date: getNextAlarmTime(for: alarm, from: Date())!, secondsToAdd: secondsToAdd)
+            scheduleNotification(alarm: alarm, date: AlarmManager.getNextAlarmTime(for: alarm)!, secondsToAdd: secondsToAdd)
         }
     }
 

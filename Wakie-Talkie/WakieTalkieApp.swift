@@ -10,10 +10,13 @@ import SwiftUI
 @main
 struct WakieTalkieApp: App {
     @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
+    var alarmTimer = AlarmTimer()
+    
     var body: some Scene {
         WindowGroup{
             //LoginView()
             MainTabView()
+                .environmentObject(alarmTimer)
         }
     }
 }
