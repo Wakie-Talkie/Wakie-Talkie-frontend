@@ -1,5 +1,5 @@
 //
-//  CallingView.swift
+//  SendCallView.swift
 //  Wakie-Talkie
 //
 //  Created by 이은화 on 4/25/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CallingView: View {
+struct SendCallView: View {
     @Environment(\.dismiss) var dismiss
     @State var aiProfile: AIProfile
     @State private var callReceived: Bool = false
@@ -62,8 +62,9 @@ struct CallingView: View {
                     Text(self.audioRecorder.getRecording() ? "recording" : "playing")
                     CustomButtonBig(text: "전화 끊기", action: {
                         self.callReceived = false
+                        self.audioRecorder.finishRecording(success: true)
                         dismiss()
-                    }, color: Color("Black"), isActive: .constant(true))
+                    }, color: Color("Accent1"), isActive: .constant(true))
                 }
                 else{
                     Text("Speak " + aiProfile.language)
@@ -83,19 +84,24 @@ struct CallingView: View {
         .onChange(of: self.audioRecorder.getRecording()){
             //logic problem
             if(!self.audioRecorder.getRecording()){
-                audioRecorder.startRecording()
-            }else{
+                print("seting audioplayer")
                 audioPlayer.setupAudioPlayer(audioFilePath: audioRecorder.getDocumentsDirectory())
                 audioPlayer.playAudio()
             }
         }
+//        .onChange(of: audioRecorder.getDocumentsDirectory()){
+//            if(self.audioPlayer.audioPlayer != nil && !self.audioPlayer.getAudioPlaying()){
+//                print("recording restart")
+//                audioRecorder.startRecording()
+//            }
+//        }
     }
 }
 struct CallingTestView: View{
     @State var aipofileData: AIProfile =
         AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "ai_profile_img", description: "like watching animation and go out for a walk.", language: "ENGLISH")
     var body: some View{
-        CallingView(aiProfile: aipofileData)
+        SendCallView(aiProfile: aipofileData)
     }
 }
 //#Preview {

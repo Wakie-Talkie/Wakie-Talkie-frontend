@@ -42,7 +42,7 @@ struct CallPopupView: View {
             }, color: Color("Black"), isActive: .constant(true))
         }
         .fullScreenCover(isPresented: $startCalling){
-            CallingView(aiProfile: aiProfile)
+            SendCallView(aiProfile: aiProfile)
         }
     }
 }

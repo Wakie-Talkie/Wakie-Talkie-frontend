@@ -28,4 +28,8 @@ class AudioPlayerFunc: NSObject, AVAudioPlayerDelegate{
     func playAudio(){
         audioPlayer.play()
     }
+    
+    func getAudioPlaying() -> Bool{
+        return audioPlayer.isPlaying ?? true
+    }
 }
