@@ -11,6 +11,10 @@ struct CallingView: View {
     @Environment(\.dismiss) var dismiss
     @State var aiProfile: AIProfile
     @State private var callReceived: Bool = false
+    //@State private var isRecoding: Bool = false
+    @State private var audioRecorder: AudioRecordingFunc = AudioRecordingFunc()
+    @State private var audioPlayer: AudioPlayerFunc = AudioPlayerFunc()
+    
     var body: some View {
         ZStack{
             GeometryReader { geometry in
@@ -54,7 +58,12 @@ struct CallingView: View {
                 Spacer()
                 
                 if callReceived{
-                    CustomButtonBig(text: "전화 끊기", action: {dismiss()}, color: Color("Black"), isActive: .constant(true))
+                    Text(self.audioRecorder.getRecording() ? String(self.audioRecorder.getDecibelLevel()) : "")
+                    Text(self.audioRecorder.getRecording() ? "recording" : "playing")
+                    CustomButtonBig(text: "전화 끊기", action: {
+                        self.callReceived = false
+                        dismiss()
+                    }, color: Color("Black"), isActive: .constant(true))
                 }
                 else{
                     Text("Speak " + aiProfile.language)
@@ -68,6 +77,16 @@ struct CallingView: View {
         }.onAppear{
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.callReceived = true
+                audioRecorder.startRecording()
+            }
+        }
+        .onChange(of: self.audioRecorder.getRecording()){
+            //logic problem
+            if(!self.audioRecorder.getRecording()){
+                audioRecorder.startRecording()
+            }else{
+                audioPlayer.setupAudioPlayer(audioFilePath: audioRecorder.getDocumentsDirectory())
+                audioPlayer.playAudio()
             }
         }
     }
@@ -79,6 +98,6 @@ struct CallingTestView: View{
         CallingView(aiProfile: aipofileData)
     }
 }
-#Preview {
-    CallingTestView()
-}
+//#Preview {
+//    CallingTestView()
+//}

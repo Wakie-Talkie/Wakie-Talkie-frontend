@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		50142C1B2BBD050A00791488 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50142C1A2BBD050A00791488 /* Assets.xcassets */; };
 		50142C1E2BBD050A00791488 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50142C1D2BBD050A00791488 /* Preview Assets.xcassets */; };
+		50158D2D2BDEA1FA0086BF05 /* AudioPlayerFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50158D2C2BDEA1FA0086BF05 /* AudioPlayerFunc.swift */; };
 		5016492D2BDA029F00A5EE32 /* AIProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5016492C2BDA029F00A5EE32 /* AIProfileCell.swift */; };
 		5016492F2BDA168700A5EE32 /* CallPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5016492E2BDA168700A5EE32 /* CallPopupView.swift */; };
 		501649312BDA18CF00A5EE32 /* AIProfileDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501649302BDA18CF00A5EE32 /* AIProfileDataFetcher.swift */; };
 		501649332BDA292C00A5EE32 /* CallingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501649322BDA292C00A5EE32 /* CallingView.swift */; };
+		501649362BDA7A3800A5EE32 /* AudioRecordingFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501649352BDA7A3800A5EE32 /* AudioRecordingFunc.swift */; };
 		50F726402BC6525B00078A6D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7263F2BC6525B00078A6D /* OnboardingView.swift */; };
 		50F726422BC655A800078A6D /* WakieTalkieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726412BC655A800078A6D /* WakieTalkieApp.swift */; };
 		50F726452BC664D700078A6D /* AlarmDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726442BC664D700078A6D /* AlarmDataFetcher.swift */; };
@@ -37,10 +39,12 @@
 		50142C132BBD050900791488 /* Wakie-Talkie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wakie-Talkie.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50142C1A2BBD050A00791488 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50142C1D2BBD050A00791488 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		50158D2C2BDEA1FA0086BF05 /* AudioPlayerFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerFunc.swift; sourceTree = "<group>"; };
 		5016492C2BDA029F00A5EE32 /* AIProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIProfileCell.swift; sourceTree = "<group>"; };
 		5016492E2BDA168700A5EE32 /* CallPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallPopupView.swift; sourceTree = "<group>"; };
 		501649302BDA18CF00A5EE32 /* AIProfileDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AIProfileDataFetcher.swift; path = "Wakie-Talkie/View/CallTabViews/AIProfileDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
 		501649322BDA292C00A5EE32 /* CallingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingView.swift; sourceTree = "<group>"; };
+		501649352BDA7A3800A5EE32 /* AudioRecordingFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordingFunc.swift; sourceTree = "<group>"; };
 		50F7263F2BC6525B00078A6D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		50F726412BC655A800078A6D /* WakieTalkieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakieTalkieApp.swift; sourceTree = "<group>"; };
 		50F726442BC664D700078A6D /* AlarmDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmDataFetcher.swift; path = "Wakie-Talkie/AlarmDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
@@ -114,6 +118,7 @@
 		5016492A2BD9FB7A00A5EE32 /* CallTabViews */ = {
 			isa = PBXGroup;
 			children = (
+				501649342BDA7A2800A5EE32 /* Functions */,
 				5016492B2BDA028200A5EE32 /* Components */,
 				AE9F0C3C2BC3FA6D007B2B1E /* CallView.swift */,
 				5016492E2BDA168700A5EE32 /* CallPopupView.swift */,
@@ -128,6 +133,15 @@
 				5016492C2BDA029F00A5EE32 /* AIProfileCell.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		501649342BDA7A2800A5EE32 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				501649352BDA7A3800A5EE32 /* AudioRecordingFunc.swift */,
+				50158D2C2BDEA1FA0086BF05 /* AudioPlayerFunc.swift */,
+			);
+			path = Functions;
 			sourceTree = "<group>";
 		};
 		50F726432BC657DC00078A6D /* AlarmTabViews */ = {
@@ -292,6 +306,7 @@
 				AE9F0C2B2BC3F253007B2B1E /* UserModel.swift in Sources */,
 				50F726452BC664D700078A6D /* AlarmDataFetcher.swift in Sources */,
 				AE9F0C2D2BC3F369007B2B1E /* AIProfileModel.swift in Sources */,
+				501649362BDA7A3800A5EE32 /* AudioRecordingFunc.swift in Sources */,
 				AE9F0C372BC3FA31007B2B1E /* MainTabView.swift in Sources */,
 				AE9F0C332BC3F8C2007B2B1E /* CustomButtonBig.swift in Sources */,
 				50F726522BC6BB9700078A6D /* ModifyAlarmView.swift in Sources */,
@@ -304,6 +319,7 @@
 				5016492D2BDA029F00A5EE32 /* AIProfileCell.swift in Sources */,
 				AE9F0C3D2BC3FA6D007B2B1E /* CallView.swift in Sources */,
 				501649312BDA18CF00A5EE32 /* AIProfileDataFetcher.swift in Sources */,
+				50158D2D2BDEA1FA0086BF05 /* AudioPlayerFunc.swift in Sources */,
 				50F7264C2BC66D9B00078A6D /* CustomButtonCircle.swift in Sources */,
 				AE9F0C2F2BC3F38A007B2B1E /* AlarmModel.swift in Sources */,
 				50F726482BC66D0400078A6D /* AddAlarmView.swift in Sources */,
@@ -442,9 +458,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wakie-Talkie/Preview Content\"";
-				DEVELOPMENT_TEAM = 57QLLZQ6H9;
+				DEVELOPMENT_TEAM = CT9F24W469;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "마이크를 사용하여 음성을 녹음합니다";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -473,9 +490,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wakie-Talkie/Preview Content\"";
-				DEVELOPMENT_TEAM = 57QLLZQ6H9;
+				DEVELOPMENT_TEAM = CT9F24W469;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "마이크를 사용하여 음성을 녹음합니다";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
