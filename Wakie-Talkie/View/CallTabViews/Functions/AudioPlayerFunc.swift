@@ -10,13 +10,7 @@ import AVFoundation
 
 class AudioPlayerFunc: NSObject,ObservableObject, AVAudioPlayerDelegate{
     var audioPlayer: AVAudioPlayer!
-    @Published var isPlayerPlaying: Bool = false{
-        willSet {
-            if newValue == true {
-                playAudio()
-            }
-        }
-    }
+    @Published var isPlayerPlaying: Bool = false
     //var audioFilePath: URL!
     
     override init() {
@@ -25,32 +19,29 @@ class AudioPlayerFunc: NSObject,ObservableObject, AVAudioPlayerDelegate{
     
     func setupAudioPlayer(audioFilePath: URL!) {
         do {
+            print("prepare to play \(audioFilePath)")
             audioPlayer = try AVAudioPlayer(contentsOf: audioFilePath)
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
-            print("prepare to play \(audioFilePath)")
         } catch {
             print("Failed to play")
         }
     }
     func playAudio(){
-//        if (audioPlayer != nil && !audioPlayer.isPlaying){
-//            audioPlayer.play()
-//            isPlayerPlaying = true
-//        }else{
-//            print("audioPlayer nilll")
-//        }
-        audioPlayer.play()
-        isPlayerPlaying = true
-        
+        if (audioPlayer != nil && !audioPlayer.isPlaying){
+            audioPlayer.play()
+            DispatchQueue.main.async {
+                self.isPlayerPlaying = true
+            }
+        }else{
+            print("audioPlayer nilll")
+        }
     }
-    
-    func getAudioPlaying() -> Bool{
-        return audioPlayer.isPlaying ?? true
-    }
-    
+
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         print("Did finish Playing")
-        isPlayerPlaying = false
+        DispatchQueue.main.async {
+            self.isPlayerPlaying = false
+        }
     }
 }

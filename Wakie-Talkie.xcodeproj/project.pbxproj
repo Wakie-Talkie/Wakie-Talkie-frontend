@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5013022E2BE0F27300F20086 /* AudioEngineFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5013022D2BE0F27300F20086 /* AudioEngineFunc.swift */; };
 		50142C1B2BBD050A00791488 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50142C1A2BBD050A00791488 /* Assets.xcassets */; };
 		50142C1E2BBD050A00791488 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50142C1D2BBD050A00791488 /* Preview Assets.xcassets */; };
 		50158D2D2BDEA1FA0086BF05 /* AudioPlayerFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50158D2C2BDEA1FA0086BF05 /* AudioPlayerFunc.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5013022D2BE0F27300F20086 /* AudioEngineFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEngineFunc.swift; sourceTree = "<group>"; };
 		50142C132BBD050900791488 /* Wakie-Talkie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wakie-Talkie.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50142C1A2BBD050A00791488 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50142C1D2BBD050A00791488 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			children = (
 				501649352BDA7A3800A5EE32 /* AudioRecordingFunc.swift */,
 				50158D2C2BDEA1FA0086BF05 /* AudioPlayerFunc.swift */,
+				5013022D2BE0F27300F20086 /* AudioEngineFunc.swift */,
 			);
 			path = Functions;
 			sourceTree = "<group>";
@@ -321,6 +324,7 @@
 				AE9F0C3B2BC3FA5A007B2B1E /* AlarmView.swift in Sources */,
 				5016492D2BDA029F00A5EE32 /* AIProfileCell.swift in Sources */,
 				AE9F0C3D2BC3FA6D007B2B1E /* CallView.swift in Sources */,
+				5013022E2BE0F27300F20086 /* AudioEngineFunc.swift in Sources */,
 				501649312BDA18CF00A5EE32 /* AIProfileDataFetcher.swift in Sources */,
 				50158D2D2BDEA1FA0086BF05 /* AudioPlayerFunc.swift in Sources */,
 				50F7264C2BC66D9B00078A6D /* CustomButtonCircle.swift in Sources */,

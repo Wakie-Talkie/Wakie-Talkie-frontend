@@ -16,7 +16,8 @@ struct SendCallView: View {
 //    @State private var isRecoding: Bool = false
 //    @State private var isPlaying: Bool = false
     @StateObject private var audioRecorder: AudioRecordingFunc = AudioRecordingFunc()
-    @StateObject private var audioPlayer: AudioPlayerFunc = AudioPlayerFunc()
+    @StateObject private var audioEngine: AudioEngineFunc = AudioEngineFunc()
+//    @StateObject private var audioPlayer: AudioPlayerFunc = AudioPlayerFunc()
     
     var body: some View {
         ZStack{
@@ -90,13 +91,14 @@ struct SendCallView: View {
             print("is it recording? " + String(self.audioRecorder.isRecording))
             if(!self.audioRecorder.isRecording){
                 print("start player")
-                audioPlayer.setupAudioPlayer(audioFilePath: audioRecorder.audioFilePath)
-                
-                audioPlayer.playAudio()
+                audioEngine.setupAudioPlayer(audioFilePath: audioRecorder.audioFilePath)
+                audioEngine.audioPlay()
+//                audioPlayer.setupAudioPlayer(audioFilePath: audioRecorder.audioFilePath)
+//                audioPlayer.playAudio()
             }
         }
-        .onChange(of: self.audioPlayer.isPlayerPlaying){
-            if(!self.audioPlayer.isPlayerPlaying){
+        .onChange(of: self.audioEngine.isPlaying){
+            if(!self.audioEngine.isPlaying){
                 audioRecorder.startRecording()
             }
         }

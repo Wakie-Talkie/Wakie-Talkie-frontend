@@ -27,7 +27,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject{
 
     private func setupAudioSession() {
         do {
-            try recordingSession.setCategory(.playAndRecord, mode: .default)
+            try recordingSession.setCategory(.playAndRecord, options: [.defaultToSpeaker])
             try recordingSession.setActive(true)
             recordingSession.requestRecordPermission {
                 (accepted) in
@@ -58,7 +58,9 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject{
             audioRecorder?.delegate = self
             audioRecorder?.isMeteringEnabled = true
             audioRecorder?.record()
-            isRecording = audioRecorder?.isRecording ?? false
+            DispatchQueue.main.async{
+                self.isRecording = self.audioRecorder?.isRecording ?? false
+            }
             startLevelTimer()
         } catch {
             finishRecording(success: false)
@@ -98,7 +100,9 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject{
 
     func finishRecording(success: Bool) {
         audioRecorder?.stop()
-        isRecording = audioRecorder?.isRecording ?? false
+        DispatchQueue.main.async{
+            self.isRecording = self.audioRecorder?.isRecording ?? false
+        }
         levelTimer?.invalidate()
         levelTimer = nil
         if success {
@@ -114,7 +118,9 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject{
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        audioFilePath = paths[0].appendingPathComponent(dateFormatter.string(from: Date.now)+".wav")
-        return audioFilePath ?? paths[0].appendingPathComponent(dateFormatter.string(from: Date.now)+".wav")
+        DispatchQueue.main.async{
+            self.audioFilePath = paths[0].appending(path:(dateFormatter.string(from: Date.now)+".wav"))
+        }
+        return audioFilePath ?? paths[0].appending(path:(dateFormatter.string(from: Date.now)+".wav"))
     }
 }
