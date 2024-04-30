@@ -94,7 +94,7 @@ class AlarmManager {
 
     
     private func scheduleAlarmNotifications(alarm: Alarm) {
-        let notificationTimes: [TimeInterval] = [0, 5, 10]  // 0초, 5초, 10초 후
+        let notificationTimes: [TimeInterval] = [0, 5, 10]  // 0초, 5초, 10초 후 -> 100개나 500개로 늘릴거임
         for secondsToAdd in notificationTimes {
             scheduleNotification(alarm: alarm, date: AlarmManager.getNextAlarmTime(for: alarm)!, secondsToAdd: secondsToAdd)
         }

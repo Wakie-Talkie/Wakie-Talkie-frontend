@@ -14,8 +14,6 @@ class AlarmTimer: ObservableObject {
     private var timer: AnyCancellable?
 
     init() {
-        // 1분마다 시간을 체크
-        timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect().sink { [weak self] _ in
         // 1초마다 시간을 체크
         timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect().sink { [weak self] _ in
             self?.checkTime()
