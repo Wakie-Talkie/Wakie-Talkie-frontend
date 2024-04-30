@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AlarmCell: View {
-    @State private var week: [String] = ["월", "화", "수", "목", "금","토","일"]
+    @State private var week: [String] = ["일", "월", "화", "수", "목", "금","토"]
     @Binding var alarmData: Alarm
     var body: some View {
         ZStack{
