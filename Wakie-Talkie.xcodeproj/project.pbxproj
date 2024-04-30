@@ -23,6 +23,8 @@
 		50F726522BC6BB9700078A6D /* ModifyAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726512BC6BB9700078A6D /* ModifyAlarmView.swift */; };
 		AE228E722BDB81BF00B35657 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E712BDB81BF00B35657 /* AppDelegate.swift */; };
 		AE228E742BDB96A100B35657 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E732BDB96A100B35657 /* AlarmManager.swift */; };
+		AE228E772BDE14DC00B35657 /* ReceiveCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E762BDE14DC00B35657 /* ReceiveCallView.swift */; };
+		AE228E792BDE2CD200B35657 /* AlarmTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E782BDE2CD200B35657 /* AlarmTimer.swift */; };
 		AE9F0C2B2BC3F253007B2B1E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */; };
 		AE9F0C2D2BC3F369007B2B1E /* AIProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */; };
 		AE9F0C2F2BC3F38A007B2B1E /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */; };
@@ -54,6 +56,9 @@
 		AE228E702BDB818E00B35657 /* Wakie-Talkie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Wakie-Talkie.entitlements"; sourceTree = "<group>"; };
 		AE228E712BDB81BF00B35657 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE228E732BDB96A100B35657 /* AlarmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmManager.swift; sourceTree = "<group>"; };
+		AE228E752BDBDC1000B35657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AE228E762BDE14DC00B35657 /* ReceiveCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveCallView.swift; sourceTree = "<group>"; };
+		AE228E782BDE2CD200B35657 /* AlarmTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTimer.swift; sourceTree = "<group>"; };
 		AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIProfileModel.swift; sourceTree = "<group>"; };
 		AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
@@ -96,6 +101,7 @@
 		50142C152BBD050900791488 /* Wakie-Talkie */ = {
 			isa = PBXGroup;
 			children = (
+				AE228E752BDBDC1000B35657 /* Info.plist */,
 				AE228E712BDB81BF00B35657 /* AppDelegate.swift */,
 				AE228E702BDB818E00B35657 /* Wakie-Talkie.entitlements */,
 				AE9F0C272BC3F067007B2B1E /* Utilities */,
@@ -125,6 +131,7 @@
 				AE9F0C3C2BC3FA6D007B2B1E /* CallView.swift */,
 				5016492E2BDA168700A5EE32 /* CallPopupView.swift */,
 				501649322BDA292C00A5EE32 /* CallingView.swift */,
+				AE228E762BDE14DC00B35657 /* ReceiveCallView.swift */,
 			);
 			path = CallTabViews;
 			sourceTree = "<group>";
@@ -202,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				AE228E732BDB96A100B35657 /* AlarmManager.swift */,
+				AE228E782BDE2CD200B35657 /* AlarmTimer.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -305,6 +313,7 @@
 				AE9F0C372BC3FA31007B2B1E /* MainTabView.swift in Sources */,
 				AE9F0C332BC3F8C2007B2B1E /* CustomButtonBig.swift in Sources */,
 				50F726522BC6BB9700078A6D /* ModifyAlarmView.swift in Sources */,
+				AE228E792BDE2CD200B35657 /* AlarmTimer.swift in Sources */,
 				501649332BDA292C00A5EE32 /* CallingView.swift in Sources */,
 				5016492F2BDA168700A5EE32 /* CallPopupView.swift in Sources */,
 				50F726422BC655A800078A6D /* WakieTalkieApp.swift in Sources */,
@@ -316,6 +325,7 @@
 				501649312BDA18CF00A5EE32 /* AIProfileDataFetcher.swift in Sources */,
 				50F7264C2BC66D9B00078A6D /* CustomButtonCircle.swift in Sources */,
 				AE9F0C2F2BC3F38A007B2B1E /* AlarmModel.swift in Sources */,
+				AE228E772BDE14DC00B35657 /* ReceiveCallView.swift in Sources */,
 				50F726482BC66D0400078A6D /* AddAlarmView.swift in Sources */,
 				50F726402BC6525B00078A6D /* OnboardingView.swift in Sources */,
 			);
@@ -456,6 +466,7 @@
 				DEVELOPMENT_TEAM = 57QLLZQ6H9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Wakie-Talkie/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -488,6 +499,7 @@
 				DEVELOPMENT_TEAM = 57QLLZQ6H9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Wakie-Talkie/Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
