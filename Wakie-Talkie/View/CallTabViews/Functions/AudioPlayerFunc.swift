@@ -8,8 +8,15 @@
 import Foundation
 import AVFoundation
 
-class AudioPlayerFunc: NSObject, AVAudioPlayerDelegate{
+class AudioPlayerFunc: NSObject,ObservableObject, AVAudioPlayerDelegate{
     var audioPlayer: AVAudioPlayer!
+    @Published var isPlayerPlaying: Bool = false{
+        willSet {
+            if newValue == true {
+                playAudio()
+            }
+        }
+    }
     //var audioFilePath: URL!
     
     override init() {
@@ -21,15 +28,29 @@ class AudioPlayerFunc: NSObject, AVAudioPlayerDelegate{
             audioPlayer = try AVAudioPlayer(contentsOf: audioFilePath)
             audioPlayer.delegate = self
             audioPlayer.prepareToPlay()
+            print("prepare to play \(audioFilePath)")
         } catch {
             print("Failed to play")
         }
     }
     func playAudio(){
+//        if (audioPlayer != nil && !audioPlayer.isPlaying){
+//            audioPlayer.play()
+//            isPlayerPlaying = true
+//        }else{
+//            print("audioPlayer nilll")
+//        }
         audioPlayer.play()
+        isPlayerPlaying = true
+        
     }
     
     func getAudioPlaying() -> Bool{
         return audioPlayer.isPlaying ?? true
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        print("Did finish Playing")
+        isPlayerPlaying = false
     }
 }

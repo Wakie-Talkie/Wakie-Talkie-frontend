@@ -11,9 +11,12 @@ struct SendCallView: View {
     @Environment(\.dismiss) var dismiss
     @State var aiProfile: AIProfile
     @State private var callReceived: Bool = false
-    //@State private var isRecoding: Bool = false
-    @State private var audioRecorder: AudioRecordingFunc = AudioRecordingFunc()
-    @State private var audioPlayer: AudioPlayerFunc = AudioPlayerFunc()
+//    @State private var audioDecibel: String = ""
+//    @State private var audioState: String = ""
+//    @State private var isRecoding: Bool = false
+//    @State private var isPlaying: Bool = false
+    @StateObject private var audioRecorder: AudioRecordingFunc = AudioRecordingFunc()
+    @StateObject private var audioPlayer: AudioPlayerFunc = AudioPlayerFunc()
     
     var body: some View {
         ZStack{
@@ -58,8 +61,8 @@ struct SendCallView: View {
                 Spacer()
                 
                 if callReceived{
-                    Text(self.audioRecorder.getRecording() ? String(self.audioRecorder.getDecibelLevel()) : "")
-                    Text(self.audioRecorder.getRecording() ? "recording" : "playing")
+                    Text("decibel \(audioRecorder.dbLevel)")
+                    Text(self.audioRecorder.isRecording ? "recording" : "player")
                     CustomButtonBig(text: "전화 끊기", action: {
                         self.callReceived = false
                         self.audioRecorder.finishRecording(success: true)
@@ -78,17 +81,39 @@ struct SendCallView: View {
         }.onAppear{
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.callReceived = true
+//                isRecoding = self.audioRecorder.isRecording
+//                isPlaying = self.audioPlayer.isPlayerPlaying
                 audioRecorder.startRecording()
             }
         }
-        .onChange(of: self.audioRecorder.getRecording()){
-            //logic problem
-            if(!self.audioRecorder.getRecording()){
-                print("seting audioplayer")
-                audioPlayer.setupAudioPlayer(audioFilePath: audioRecorder.getDocumentsDirectory())
+        .onChange(of: self.audioRecorder.isRecording){
+            print("is it recording? " + String(self.audioRecorder.isRecording))
+            if(!self.audioRecorder.isRecording){
+                print("start player")
+                audioPlayer.setupAudioPlayer(audioFilePath: audioRecorder.audioFilePath)
+                
                 audioPlayer.playAudio()
             }
         }
+        .onChange(of: self.audioPlayer.isPlayerPlaying){
+            if(!self.audioPlayer.isPlayerPlaying){
+                audioRecorder.startRecording()
+            }
+        }
+//        .onChange(of: self.audioRecorder.getDecibelLevel()){
+//            audioDecibel = String(self.audioRecorder.getDecibelLevel())
+//        }
+//        .onChange(of: self.audioRecorder.getRecording()){
+//            print("audio recording??: " + String(self.audioRecorder.getRecording()))
+//            //logic problem
+//            if(!self.audioRecorder.getRecording()){
+//                audioState = "playing"
+//                audioDecibel = "00"
+//                print("seting audioplayer")
+//                audioPlayer.setupAudioPlayer(audioFilePath: audioRecorder.getDocumentsDirectory())
+//                audioPlayer.playAudio()
+//            }
+//        }
 //        .onChange(of: audioRecorder.getDocumentsDirectory()){
 //            if(self.audioPlayer.audioPlayer != nil && !self.audioPlayer.getAudioPlaying()){
 //                print("recording restart")

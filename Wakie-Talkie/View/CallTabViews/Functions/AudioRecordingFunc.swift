@@ -8,13 +8,15 @@
 import Foundation
 import AVFoundation
 //NSObject, ObservableObject,
-class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate{
-    var dbLevel: Float = 0.0
+class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject{
+    @Published var dbLevel: Float = 0.0
+    @Published var isRecording: Bool = false
+    @Published var audioFilePath: URL?
     var audioRecorder: AVAudioRecorder?
     var recordingSession: AVAudioSession
     var levelTimer: Timer?
-    let silenceThreshold: Float = -40.0 // dB
-    let maxSilenceDuration: TimeInterval = 3.0 // 최대 지속 시간 (초)
+    let silenceThreshold: Float = -27.0 // dB
+    let maxSilenceDuration: TimeInterval = 1.5 // 최대 지속 시간 (초)
     var silenceStartTime: Date?
     
     override init() {
@@ -40,7 +42,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate{
 
     func startRecording() {
         let audioFilename = getDocumentsDirectory()
-        
+        print("from recorder \(audioFilename)")
         let settings = [
             AVFormatIDKey: Int(kAudioFormatLinearPCM),
             AVSampleRateKey: 44100,
@@ -56,6 +58,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate{
             audioRecorder?.delegate = self
             audioRecorder?.isMeteringEnabled = true
             audioRecorder?.record()
+            isRecording = audioRecorder?.isRecording ?? false
             startLevelTimer()
         } catch {
             finishRecording(success: false)
@@ -78,6 +81,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate{
     private func updateAudioLevels() {
         audioRecorder?.updateMeters()
         let level = audioRecorder?.averagePower(forChannel: 0) ?? 0
+        print("decibel", String(level))
         dbLevel = level
         if level < silenceThreshold {
             if let silenceStartTime = silenceStartTime {
@@ -94,6 +98,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate{
 
     func finishRecording(success: Bool) {
         audioRecorder?.stop()
+        isRecording = audioRecorder?.isRecording ?? false
         levelTimer?.invalidate()
         levelTimer = nil
         if success {
@@ -109,6 +114,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate{
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        return paths[0].appendingPathComponent(dateFormatter.string(from: Date.now)+".wav")
+        audioFilePath = paths[0].appendingPathComponent(dateFormatter.string(from: Date.now)+".wav")
+        return audioFilePath ?? paths[0].appendingPathComponent(dateFormatter.string(from: Date.now)+".wav")
     }
 }
