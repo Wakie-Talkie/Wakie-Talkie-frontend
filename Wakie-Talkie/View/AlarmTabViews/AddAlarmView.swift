@@ -10,8 +10,9 @@ import SwiftUI
 struct AddAlarmView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var alarmList: [Alarm]
+    @EnvironmentObject var alarmTimer: AlarmTimer
     
-    @State private var week: [String] = ["월", "화", "수", "목", "금","토","일"]
+    @State private var week: [String] = ["일", "월", "화", "수", "목", "금","토"]
     @State private var languages: [String] = ["영어", "한국어", "중국어", "일본어"]
     @State private var translatedLanguages: [String] = ["ENGLISH", "KOREAN", "CHINESE", "JAPANESE"]
     @State private var addAlarmData: Alarm = Alarm()
@@ -120,6 +121,7 @@ struct AddAlarmView: View {
                     addAlarmData.repeatDays = repeatDays
                     
                     alarmList.append(addAlarmData)
+                    alarmTimer.updateNextAlarmTime(time:(AlarmManager.findNextAlarmTime(alarms: alarmList) ) ?? Calendar.current.date(from: DateComponents(year: 2099, month: 1, day: 1))!)
                     dismiss()
                 }
             }, color: Color("Black"), isActive: .constant(true))

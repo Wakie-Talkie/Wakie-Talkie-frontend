@@ -11,87 +11,102 @@ struct MainTabView: View {
     @StateObject private var alarmDataFetcher = AlarmDataFetcher()
     @StateObject private var aiProfileDataFetcher = AIProfileDataFetcher()
     @State private var selectedTab = 2
+    @State private var navigateToReceiveCall = false
     
     var body: some View {
-        VStack {
-            // 컨텐츠 영역
-            switch selectedTab {
-            case 1:
-                CallView(aiProfileList: aiProfileDataFetcher.aiProfiles ?? [])
-            case 2:
-                AlarmView(alarms: alarmDataFetcher.alarms ?? [])
-            default:
-                ProfileView()
-            }
-    
-            HStack(alignment: .center){
-                Button(action: {
-                    self.selectedTab = 1
-                }) {
-                    VStack {
-                        Spacer()
-                        Image(systemName: selectedTab == 1 ? "phone.fill" : "phone")
-                            .foregroundColor(.black)
-                            .imageScale(.large)
-                            .padding(EdgeInsets(top: 25, leading: 0, bottom: 0, trailing: 0))
-                        Text("전화하기")
-                            .font(.system(size: 12))
-                            .fontWeight(.light)
-                            .foregroundStyle(.black)
-                            .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
-                    }
+        NavigationStack {
+            VStack {
+                // 컨텐츠 영역
+                switch selectedTab {
+                case 1:
+                    CallView(aiProfileList: aiProfileDataFetcher.aiProfiles ?? [])
+                case 2:
+                    AlarmView(alarms: alarmDataFetcher.alarms ?? [])
+                default:
+                    ProfileView()
+                }
+                
+                HStack(alignment: .center){
+                    Button(action: {
+                        self.selectedTab = 1
+                    }) {
+                        VStack {
+                            Spacer()
+                            Image(systemName: selectedTab == 1 ? "phone.fill" : "phone")
+                                .foregroundColor(.black)
+                                .imageScale(.large)
+                                .padding(EdgeInsets(top: 25, leading: 0, bottom: 0, trailing: 0))
+                            Text("전화하기")
+                                .font(.system(size: 12))
+                                .fontWeight(.light)
+                                .foregroundStyle(.black)
+                                .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
+                        }
                         
-                }
-                .padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 0))
-                
-                Spacer()
-                
-                Button(action: {
-                    self.selectedTab = 2
-                }) {
-                    VStack {
-                        Spacer()
-                        Image(systemName: selectedTab == 2 ? "alarm.fill" : "alarm")
-                            .foregroundColor(.black)
-                            .imageScale(.large)
-                            .padding(EdgeInsets(top: 25, leading: 0, bottom: 0, trailing: 0))
-                        Text("전화알람")
-                            .font(.system(size: 12))
-                            .fontWeight(.light)
-                            .foregroundStyle(.black)
-                            .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
                     }
-                }
-                
-                Spacer()
-                
-                Button(action: {
-                    self.selectedTab = 3
-                }) {
-                    VStack {
-                        Spacer()
-                        Image(systemName: selectedTab == 3 ? "person.fill" : "person")
-                            .foregroundColor(.black)
-                            .imageScale(.large)
-                            .padding(EdgeInsets(top: 25, leading: 0, bottom: 0, trailing: 0))
-                        Text("마이페이지")
-                            .font(.system(size: 12))
-                            .fontWeight(.light)
-                            .foregroundStyle(.black)
-                            .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
+                    .padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 0))
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        self.selectedTab = 2
+                    }) {
+                        VStack {
+                            Spacer()
+                            Image(systemName: selectedTab == 2 ? "alarm.fill" : "alarm")
+                                .foregroundColor(.black)
+                                .imageScale(.large)
+                                .padding(EdgeInsets(top: 25, leading: 0, bottom: 0, trailing: 0))
+                            Text("전화알람")
+                                .font(.system(size: 12))
+                                .fontWeight(.light)
+                                .foregroundStyle(.black)
+                                .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
+                        }
                     }
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        self.selectedTab = 3
+                    }) {
+                        VStack {
+                            Spacer()
+                            Image(systemName: selectedTab == 3 ? "person.fill" : "person")
+                                .foregroundColor(.black)
+                                .imageScale(.large)
+                                .padding(EdgeInsets(top: 25, leading: 0, bottom: 0, trailing: 0))
+                            Text("마이페이지")
+                                .font(.system(size: 12))
+                                .fontWeight(.light)
+                                .foregroundStyle(.black)
+                                .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
+                        }
+                    }
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 40))
                 }
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 40))
+                .frame(height: 50, alignment: .bottom)
+                .padding(EdgeInsets(top: 15, leading: 0, bottom: -10, trailing: 0))
+                .background(Color("Main").opacity(0.7))
+                
             }
-            .frame(height: 50, alignment: .bottom)
-            .padding(EdgeInsets(top: 15, leading: 0, bottom: -10, trailing: 0))
-            .background(Color("Main").opacity(0.7))
-            
+            .onAppear {
+                alarmDataFetcher.fetchAlarms()
+                aiProfileDataFetcher.fetchAIProfiles()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: .init("TriggerReceiveCallView"))) { _ in
+                navigateToReceiveCall = true
+                print("ALARMVIEW: navigateToReceivecall true")
+            }
+            .navigationDestination(isPresented: $navigateToReceiveCall) {
+                ReceiveCallView(
+                                navigateToReceiveCall: $navigateToReceiveCall,
+                                aiProfile: AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "ai_profile_img", description: "like watching animation and go out for a walk.", language: "ENGLISH"),
+                                alarmList: alarmDataFetcher.alarms ?? [Alarm]()
+                )
+            }
         }
-        .onAppear {
-            alarmDataFetcher.fetchAlarms()
-            aiProfileDataFetcher.fetchAIProfiles()
-        }
+        
     }
 }
 

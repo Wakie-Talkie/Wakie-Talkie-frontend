@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ModifyAlarmView: View {
     @Environment(\.dismiss) var dismiss
-    @State private var week: [String] = ["월", "화", "수", "목", "금","토","일"]
+    @State private var week: [String] = ["일", "월", "화", "수", "목", "금","토"]
     @State private var languages: [String] = ["영어", "한국어", "중국어", "일본어"]
     @State private var translatedLanguages: [String] = ["ENGLISH", "KOREAN", "CHINESE", "JAPANESE"]
     @State private var time: Date = Date()

@@ -11,6 +11,7 @@ struct AlarmView: View {
     @State var alarms: [Alarm]
     @State private var isPresentingAddAlarm = false
     @State private var selectedAlarm: Alarm?
+    
     var body: some View {
         NavigationStack {
             ZStack{
@@ -71,6 +72,7 @@ struct AlarmTestView: View{
         Alarm(id: "alarm4", userId: "eunhwa813", time: Date.now, language: "FRENCH", repeatDays: [false, true, false, false, false, false, false], isOn: true),
         Alarm(id: "alarm5", userId: "eunhwa813", time: Date.now, language: "CHINESE", repeatDays: [false, false, false, false, false, true, false], isOn: false)
     ]
+
     var body: some View{
         AlarmView(alarms: alarmDatas)
     }
