@@ -11,7 +11,6 @@
 		50142C1B2BBD050A00791488 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50142C1A2BBD050A00791488 /* Assets.xcassets */; };
 		50142C1E2BBD050A00791488 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50142C1D2BBD050A00791488 /* Preview Assets.xcassets */; };
 		50158D2D2BDEA1FA0086BF05 /* AudioPlayerFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50158D2C2BDEA1FA0086BF05 /* AudioPlayerFunc.swift */; };
-		50158D2F2BDF29630086BF05 /* ReceiveCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50158D2E2BDF29630086BF05 /* ReceiveCallView.swift */; };
 		5016492D2BDA029F00A5EE32 /* AIProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5016492C2BDA029F00A5EE32 /* AIProfileCell.swift */; };
 		5016492F2BDA168700A5EE32 /* CallPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5016492E2BDA168700A5EE32 /* CallPopupView.swift */; };
 		501649312BDA18CF00A5EE32 /* AIProfileDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501649302BDA18CF00A5EE32 /* AIProfileDataFetcher.swift */; };
@@ -47,7 +46,6 @@
 		50142C1A2BBD050A00791488 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50142C1D2BBD050A00791488 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		50158D2C2BDEA1FA0086BF05 /* AudioPlayerFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioPlayerFunc.swift; sourceTree = "<group>"; };
-		50158D2E2BDF29630086BF05 /* ReceiveCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveCallView.swift; sourceTree = "<group>"; };
 		5016492C2BDA029F00A5EE32 /* AIProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIProfileCell.swift; sourceTree = "<group>"; };
 		5016492E2BDA168700A5EE32 /* CallPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallPopupView.swift; sourceTree = "<group>"; };
 		501649302BDA18CF00A5EE32 /* AIProfileDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AIProfileDataFetcher.swift; path = "Wakie-Talkie/View/CallTabViews/AIProfileDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
@@ -500,7 +498,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ontheway.Wakie-Talkie";
+				PRODUCT_BUNDLE_IDENTIFIER = "ontheway.capstone.Wakie-Talkie";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -522,6 +520,7 @@
 				DEVELOPMENT_TEAM = CT9F24W469;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "마이크를 사용하여 음성을 녹음합니다";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -532,7 +531,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "ontheway.Wakie-Talkie";
+				PRODUCT_BUNDLE_IDENTIFIER = "ontheway.capstone.Wakie-Talkie";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

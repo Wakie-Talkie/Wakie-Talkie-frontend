@@ -13,9 +13,9 @@ class AIProfileDataFetcher: ObservableObject {
     
     func fetchAIProfiles(){
         let fetchedAIProfiles = [
-            AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "ai_profile_img", description: "like watching animation and go out for a walk.", language: "ENGLISH"),
-            AIProfile(id: "aiNo.2", nickname: "Sandy",profileImg: "ai_profile_img",description: "FUCK YOU", language: "ENGLISH"),
-            AIProfile(id: "aiNo.3", nickname: "Lily",profileImg: "ai_profile_alice",description: "SHUT UP ㅗ", language: "ENGLISH")
+            AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "ai_profile_me1", description: "like watching animation and go out for a walk.", language: "ENGLISH"),
+            AIProfile(id: "aiNo.2", nickname: "Sandy",profileImg: "ai_profile_me2",description: "LUV U", language: "ENGLISH"),
+            AIProfile(id: "aiNo.3", nickname: "Lily",profileImg: "ai_profile_me3",description: "HIHIHIHI", language: "ENGLISH")
         ]
         self.aiProfiles = fetchedAIProfiles
     }
