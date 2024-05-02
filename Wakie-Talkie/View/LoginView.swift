@@ -5,6 +5,7 @@
 //  Created by jiin on 4/8/24.
 //
 import SwiftUI
+import Authenticator
 
 enum Destination {
     case onboarding
@@ -18,6 +19,7 @@ struct LoginView: View {
     //@State private var navigationPath = NavigationPath()
     //@State private var isLoggedIn: Bool = false
     @State private var isFirstLogin: Bool = true
+    @ObservedObject var state: SignInState
     
     var body: some View {
         NavigationStack {
@@ -25,20 +27,22 @@ struct LoginView: View {
                 Text("Wakie Talkie")
                     .font(.largeTitle)
                     .padding(.bottom, 50)
-                CustomTextField(placeholder: "id", text: $id)
-                CustomTextField(placeholder: "password", text: $password)
+                CustomTextField(placeholder: "id", text: $state.username)
+                CustomTextField(placeholder: "password", text: $state.password) //TODO: password blur처리
                 Button("로그인하기") {
-                    if !(id.isEmpty || password.isEmpty) {
+                    Task {
+                        try? await state.signIn()
+                    }
                         if isFirstLogin {
                             selectedDestination = .onboarding
                         } else {
                             selectedDestination = .mainTab
                         }
-                    }
+                    
                 }
                 .buttonStyle(.bordered)
                 .controlSize(.large)
-                .disabled(id.isEmpty || password.isEmpty)
+                .disabled(state.username.isEmpty || state.password.isEmpty )
                 
                 Button("아이디/비밀번호 찾기") {
                     // 비밀번호 찾기 로직
@@ -58,6 +62,6 @@ struct LoginView: View {
     }
 }
 
-#Preview {
-    LoginView()
-}
+//#Preview {
+//    LoginView()
+//}
