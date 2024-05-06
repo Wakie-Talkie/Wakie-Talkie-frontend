@@ -10,6 +10,7 @@ import SwiftUI
 struct MainTabView: View {
     @StateObject private var alarmDataFetcher = AlarmDataFetcher()
     @StateObject private var aiProfileDataFetcher = AIProfileDataFetcher()
+    @StateObject private var vocabDataFetcher = VocabDataFetcher()
     @State private var selectedTab = 2
     @State private var navigateToReceiveCall = false
     
@@ -23,7 +24,8 @@ struct MainTabView: View {
                 case 2:
                     AlarmView(alarms: alarmDataFetcher.alarms ?? [])
                 default:
-                    ProfileView()
+//                    ProfileView()
+                    VocabView(vocabs: vocabDataFetcher.vocabs ?? [])
                 }
                 
                 HStack(alignment: .center){
@@ -64,19 +66,17 @@ struct MainTabView: View {
                                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
                         }
                     }
-                    
                     Spacer()
-                    
                     Button(action: {
                         self.selectedTab = 3
                     }) {
                         VStack {
                             Spacer()
-                            Image(systemName: selectedTab == 3 ? "person.fill" : "person")
+                            Image(systemName: selectedTab == 3 ? "text.book.closed.fill" : "text.book.closed")
                                 .foregroundColor(.black)
                                 .imageScale(.large)
                                 .padding(EdgeInsets(top: 25, leading: 0, bottom: 0, trailing: 0))
-                            Text("마이페이지")
+                            Text("단어장")
                                 .font(.system(size: 12))
                                 .fontWeight(.light)
                                 .foregroundStyle(.black)
@@ -93,6 +93,7 @@ struct MainTabView: View {
             .onAppear {
                 alarmDataFetcher.fetchAlarms()
                 aiProfileDataFetcher.fetchAIProfiles()
+                vocabDataFetcher.fetchVocabs()
             }
             .onReceive(NotificationCenter.default.publisher(for: .init("TriggerReceiveCallView"))) { _ in
                 navigateToReceiveCall = true

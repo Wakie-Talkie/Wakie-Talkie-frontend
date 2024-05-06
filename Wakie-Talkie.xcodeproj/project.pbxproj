@@ -16,6 +16,9 @@
 		501649312BDA18CF00A5EE32 /* AIProfileDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501649302BDA18CF00A5EE32 /* AIProfileDataFetcher.swift */; };
 		501649332BDA292C00A5EE32 /* SendCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501649322BDA292C00A5EE32 /* SendCallView.swift */; };
 		501649362BDA7A3800A5EE32 /* AudioRecordingFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501649352BDA7A3800A5EE32 /* AudioRecordingFunc.swift */; };
+		5065F8DE2BE88CF1009E6EDB /* VocabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DD2BE88CF1009E6EDB /* VocabView.swift */; };
+		5065F8E02BE88E26009E6EDB /* VocabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DF2BE88E26009E6EDB /* VocabModel.swift */; };
+		5065F8E22BE88F94009E6EDB /* VocabDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */; };
 		50F726402BC6525B00078A6D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7263F2BC6525B00078A6D /* OnboardingView.swift */; };
 		50F726422BC655A800078A6D /* WakieTalkieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726412BC655A800078A6D /* WakieTalkieApp.swift */; };
 		50F726452BC664D700078A6D /* AlarmDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726442BC664D700078A6D /* AlarmDataFetcher.swift */; };
@@ -51,6 +54,9 @@
 		501649302BDA18CF00A5EE32 /* AIProfileDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AIProfileDataFetcher.swift; path = "Wakie-Talkie/View/CallTabViews/AIProfileDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
 		501649322BDA292C00A5EE32 /* SendCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCallView.swift; sourceTree = "<group>"; };
 		501649352BDA7A3800A5EE32 /* AudioRecordingFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordingFunc.swift; sourceTree = "<group>"; };
+		5065F8DD2BE88CF1009E6EDB /* VocabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabView.swift; sourceTree = "<group>"; };
+		5065F8DF2BE88E26009E6EDB /* VocabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabModel.swift; sourceTree = "<group>"; };
+		5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VocabDataFetcher.swift; path = "Wakie-Talkie/Model/VocabDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
 		50F7263F2BC6525B00078A6D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		50F726412BC655A800078A6D /* WakieTalkieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakieTalkieApp.swift; sourceTree = "<group>"; };
 		50F726442BC664D700078A6D /* AlarmDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmDataFetcher.swift; path = "Wakie-Talkie/AlarmDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
@@ -161,6 +167,14 @@
 			path = Functions;
 			sourceTree = "<group>";
 		};
+		5065F8DC2BE88CD5009E6EDB /* VocabTabViews */ = {
+			isa = PBXGroup;
+			children = (
+				5065F8DD2BE88CF1009E6EDB /* VocabView.swift */,
+			);
+			path = VocabTabViews;
+			sourceTree = "<group>";
+		};
 		50F726432BC657DC00078A6D /* AlarmTabViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,6 +201,7 @@
 				AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */,
 				AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */,
 				AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */,
+				5065F8DF2BE88E26009E6EDB /* VocabModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -195,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				AE9F0C292BC3F078007B2B1E /* Components */,
+				5065F8DC2BE88CD5009E6EDB /* VocabTabViews */,
 				5016492A2BD9FB7A00A5EE32 /* CallTabViews */,
 				50F726432BC657DC00078A6D /* AlarmTabViews */,
 				AE9F0C342BC3F95A007B2B1E /* LoginView.swift */,
@@ -210,6 +226,7 @@
 			children = (
 				50F726442BC664D700078A6D /* AlarmDataFetcher.swift */,
 				501649302BDA18CF00A5EE32 /* AIProfileDataFetcher.swift */,
+				5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -342,11 +359,14 @@
 				AE9F0C3D2BC3FA6D007B2B1E /* CallView.swift in Sources */,
 				5013022E2BE0F27300F20086 /* AudioEngineFunc.swift in Sources */,
 				501649312BDA18CF00A5EE32 /* AIProfileDataFetcher.swift in Sources */,
+				5065F8E22BE88F94009E6EDB /* VocabDataFetcher.swift in Sources */,
 				50158D2D2BDEA1FA0086BF05 /* AudioPlayerFunc.swift in Sources */,
 				50F7264C2BC66D9B00078A6D /* CustomButtonCircle.swift in Sources */,
 				AE9F0C2F2BC3F38A007B2B1E /* AlarmModel.swift in Sources */,
 				AE228E772BDE14DC00B35657 /* ReceiveCallView.swift in Sources */,
+				5065F8E02BE88E26009E6EDB /* VocabModel.swift in Sources */,
 				50F726482BC66D0400078A6D /* AddAlarmView.swift in Sources */,
+				5065F8DE2BE88CF1009E6EDB /* VocabView.swift in Sources */,
 				50F726402BC6525B00078A6D /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
