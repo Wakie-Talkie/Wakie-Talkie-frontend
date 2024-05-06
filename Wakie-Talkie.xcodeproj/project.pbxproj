@@ -22,6 +22,7 @@
 		5065F8E52BE89465009E6EDB /* VocabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E42BE89465009E6EDB /* VocabCell.swift */; };
 		5065F8E72BE8A275009E6EDB /* PastVocabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E62BE8A275009E6EDB /* PastVocabView.swift */; };
 		5065F8E92BE8A4FA009E6EDB /* VocabDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E82BE8A4FA009E6EDB /* VocabDetailView.swift */; };
+		5065F8EB2BE8EFFB009E6EDB /* PastVocabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8EA2BE8EFFB009E6EDB /* PastVocabCell.swift */; };
 		50F726402BC6525B00078A6D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7263F2BC6525B00078A6D /* OnboardingView.swift */; };
 		50F726422BC655A800078A6D /* WakieTalkieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726412BC655A800078A6D /* WakieTalkieApp.swift */; };
 		50F726452BC664D700078A6D /* AlarmDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726442BC664D700078A6D /* AlarmDataFetcher.swift */; };
@@ -63,6 +64,7 @@
 		5065F8E42BE89465009E6EDB /* VocabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabCell.swift; sourceTree = "<group>"; };
 		5065F8E62BE8A275009E6EDB /* PastVocabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastVocabView.swift; sourceTree = "<group>"; };
 		5065F8E82BE8A4FA009E6EDB /* VocabDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabDetailView.swift; sourceTree = "<group>"; };
+		5065F8EA2BE8EFFB009E6EDB /* PastVocabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastVocabCell.swift; sourceTree = "<group>"; };
 		50F7263F2BC6525B00078A6D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		50F726412BC655A800078A6D /* WakieTalkieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakieTalkieApp.swift; sourceTree = "<group>"; };
 		50F726442BC664D700078A6D /* AlarmDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmDataFetcher.swift; path = "Wakie-Talkie/AlarmDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
@@ -188,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				5065F8E42BE89465009E6EDB /* VocabCell.swift */,
+				5065F8EA2BE8EFFB009E6EDB /* PastVocabCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				AE9F0C352BC3F95A007B2B1E /* LoginView.swift in Sources */,
 				AE9F0C312BC3F8B0007B2B1E /* CustomTextField.swift in Sources */,
 				AE9F0C2B2BC3F253007B2B1E /* UserModel.swift in Sources */,
+				5065F8EB2BE8EFFB009E6EDB /* PastVocabCell.swift in Sources */,
 				AE228E722BDB81BF00B35657 /* AppDelegate.swift in Sources */,
 				5065F8E52BE89465009E6EDB /* VocabCell.swift in Sources */,
 				AE228E742BDB96A100B35657 /* AlarmManager.swift in Sources */,

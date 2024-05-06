@@ -21,4 +21,12 @@ class VocabDataFetcher: ObservableObject {
         ]
         self.vocabs = fetchVocabs
     }
+    func transformToDate(dateString: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy MM dd h:mm a"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        
+        let date = dateFormatter.date(from: dateString)
+        return date!
+    }
 }
