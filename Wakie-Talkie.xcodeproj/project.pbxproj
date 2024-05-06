@@ -19,6 +19,9 @@
 		5065F8DE2BE88CF1009E6EDB /* VocabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DD2BE88CF1009E6EDB /* VocabView.swift */; };
 		5065F8E02BE88E26009E6EDB /* VocabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DF2BE88E26009E6EDB /* VocabModel.swift */; };
 		5065F8E22BE88F94009E6EDB /* VocabDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */; };
+		5065F8E52BE89465009E6EDB /* VocabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E42BE89465009E6EDB /* VocabCell.swift */; };
+		5065F8E72BE8A275009E6EDB /* PastVocabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E62BE8A275009E6EDB /* PastVocabView.swift */; };
+		5065F8E92BE8A4FA009E6EDB /* VocabDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E82BE8A4FA009E6EDB /* VocabDetailView.swift */; };
 		50F726402BC6525B00078A6D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7263F2BC6525B00078A6D /* OnboardingView.swift */; };
 		50F726422BC655A800078A6D /* WakieTalkieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726412BC655A800078A6D /* WakieTalkieApp.swift */; };
 		50F726452BC664D700078A6D /* AlarmDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726442BC664D700078A6D /* AlarmDataFetcher.swift */; };
@@ -57,6 +60,9 @@
 		5065F8DD2BE88CF1009E6EDB /* VocabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabView.swift; sourceTree = "<group>"; };
 		5065F8DF2BE88E26009E6EDB /* VocabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabModel.swift; sourceTree = "<group>"; };
 		5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VocabDataFetcher.swift; path = "Wakie-Talkie/Model/VocabDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
+		5065F8E42BE89465009E6EDB /* VocabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabCell.swift; sourceTree = "<group>"; };
+		5065F8E62BE8A275009E6EDB /* PastVocabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastVocabView.swift; sourceTree = "<group>"; };
+		5065F8E82BE8A4FA009E6EDB /* VocabDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabDetailView.swift; sourceTree = "<group>"; };
 		50F7263F2BC6525B00078A6D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		50F726412BC655A800078A6D /* WakieTalkieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakieTalkieApp.swift; sourceTree = "<group>"; };
 		50F726442BC664D700078A6D /* AlarmDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmDataFetcher.swift; path = "Wakie-Talkie/AlarmDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
@@ -170,9 +176,20 @@
 		5065F8DC2BE88CD5009E6EDB /* VocabTabViews */ = {
 			isa = PBXGroup;
 			children = (
+				5065F8E32BE89453009E6EDB /* Components */,
 				5065F8DD2BE88CF1009E6EDB /* VocabView.swift */,
+				5065F8E62BE8A275009E6EDB /* PastVocabView.swift */,
+				5065F8E82BE8A4FA009E6EDB /* VocabDetailView.swift */,
 			);
 			path = VocabTabViews;
+			sourceTree = "<group>";
+		};
+		5065F8E32BE89453009E6EDB /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5065F8E42BE89465009E6EDB /* VocabCell.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		50F726432BC657DC00078A6D /* AlarmTabViews */ = {
@@ -337,10 +354,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE9F0C392BC3FA48007B2B1E /* ProfileView.swift in Sources */,
+				5065F8E92BE8A4FA009E6EDB /* VocabDetailView.swift in Sources */,
 				AE9F0C352BC3F95A007B2B1E /* LoginView.swift in Sources */,
 				AE9F0C312BC3F8B0007B2B1E /* CustomTextField.swift in Sources */,
 				AE9F0C2B2BC3F253007B2B1E /* UserModel.swift in Sources */,
 				AE228E722BDB81BF00B35657 /* AppDelegate.swift in Sources */,
+				5065F8E52BE89465009E6EDB /* VocabCell.swift in Sources */,
 				AE228E742BDB96A100B35657 /* AlarmManager.swift in Sources */,
 				50F726452BC664D700078A6D /* AlarmDataFetcher.swift in Sources */,
 				AE9F0C2D2BC3F369007B2B1E /* AIProfileModel.swift in Sources */,
@@ -349,6 +368,7 @@
 				AE9F0C332BC3F8C2007B2B1E /* CustomButtonBig.swift in Sources */,
 				50F726522BC6BB9700078A6D /* ModifyAlarmView.swift in Sources */,
 				501649332BDA292C00A5EE32 /* SendCallView.swift in Sources */,
+				5065F8E72BE8A275009E6EDB /* PastVocabView.swift in Sources */,
 				AE228E792BDE2CD200B35657 /* AlarmTimer.swift in Sources */,
 				5016492F2BDA168700A5EE32 /* CallPopupView.swift in Sources */,
 				50F726422BC655A800078A6D /* WakieTalkieApp.swift in Sources */,
