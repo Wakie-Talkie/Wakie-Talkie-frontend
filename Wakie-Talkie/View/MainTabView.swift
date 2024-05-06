@@ -25,7 +25,7 @@ struct MainTabView: View {
                     AlarmView(alarms: alarmDataFetcher.alarms ?? [])
                 default:
 //                    ProfileView()
-                    VocabView(vocabs: vocabDataFetcher.vocabs ?? [])
+                    VocabView(vocabs: vocabDataFetcher.vocabs ?? [], changeTab: $selectedTab)
                 }
                 
                 HStack(alignment: .center){

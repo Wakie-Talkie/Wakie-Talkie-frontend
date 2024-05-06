@@ -11,6 +11,7 @@ struct VocabView: View {
     @State var vocabs: [Vocab]
     @State private var isPresentingCallView = false
     @State private var isPresentingPastVocab = false
+    @Binding var changeTab: Int
     //@State private var selectedAlarm: Alarm?
     var body: some View {
         NavigationStack {
@@ -73,6 +74,7 @@ struct VocabView: View {
                     
                     if vocabs.isEmpty {
                         CustomButtonBig(text: "전화하러 가기", action: {
+                            changeTab = 1
                         }, color: Color("Black"), isActive: .constant(true))
                         .frame(alignment: .bottom)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
@@ -100,9 +102,9 @@ struct VocabTestView: View{
         Vocab(id: "vocab4",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성"),
         Vocab(id: "vocab5",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성"),
     ]
-
+    @State private var int: Int = 3
     var body: some View{
-        VocabView(vocabs: vocabDatas)
+        VocabView(vocabs: vocabDatas,changeTab: $int)
 //        VocabView(vocabs: [])
     }
     func transformToDate(dateString: String) -> Date {
