@@ -23,6 +23,11 @@
 		5065F8E72BE8A275009E6EDB /* PastVocabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E62BE8A275009E6EDB /* PastVocabView.swift */; };
 		5065F8E92BE8A4FA009E6EDB /* VocabDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E82BE8A4FA009E6EDB /* VocabDetailView.swift */; };
 		5065F8EB2BE8EFFB009E6EDB /* PastVocabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8EA2BE8EFFB009E6EDB /* PastVocabCell.swift */; };
+		50C7A1B32BEA6F4B00743D9E /* CustomCircleImg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7A1B22BEA6F4B00743D9E /* CustomCircleImg.swift */; };
+		50C7A1B52BEA7C6D00743D9E /* ProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7A1B42BEA7C6D00743D9E /* ProfileEditView.swift */; };
+		50C7A1B72BEA7E7800743D9E /* CallRecodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7A1B62BEA7E7800743D9E /* CallRecodView.swift */; };
+		50C7A1B92BEA7E9600743D9E /* AiVoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7A1B82BEA7E9600743D9E /* AiVoiceView.swift */; };
+		50C7A1BB2BEA7EAF00743D9E /* LogoutPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7A1BA2BEA7EAF00743D9E /* LogoutPopupView.swift */; };
 		50F726402BC6525B00078A6D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7263F2BC6525B00078A6D /* OnboardingView.swift */; };
 		50F726422BC655A800078A6D /* WakieTalkieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726412BC655A800078A6D /* WakieTalkieApp.swift */; };
 		50F726452BC664D700078A6D /* AlarmDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726442BC664D700078A6D /* AlarmDataFetcher.swift */; };
@@ -65,6 +70,11 @@
 		5065F8E62BE8A275009E6EDB /* PastVocabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastVocabView.swift; sourceTree = "<group>"; };
 		5065F8E82BE8A4FA009E6EDB /* VocabDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabDetailView.swift; sourceTree = "<group>"; };
 		5065F8EA2BE8EFFB009E6EDB /* PastVocabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastVocabCell.swift; sourceTree = "<group>"; };
+		50C7A1B22BEA6F4B00743D9E /* CustomCircleImg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCircleImg.swift; sourceTree = "<group>"; };
+		50C7A1B42BEA7C6D00743D9E /* ProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditView.swift; sourceTree = "<group>"; };
+		50C7A1B62BEA7E7800743D9E /* CallRecodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallRecodView.swift; sourceTree = "<group>"; };
+		50C7A1B82BEA7E9600743D9E /* AiVoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiVoiceView.swift; sourceTree = "<group>"; };
+		50C7A1BA2BEA7EAF00743D9E /* LogoutPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutPopupView.swift; sourceTree = "<group>"; };
 		50F7263F2BC6525B00078A6D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		50F726412BC655A800078A6D /* WakieTalkieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakieTalkieApp.swift; sourceTree = "<group>"; };
 		50F726442BC664D700078A6D /* AlarmDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmDataFetcher.swift; path = "Wakie-Talkie/AlarmDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
@@ -195,6 +205,27 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		50C7A1B02BEA6EC300743D9E /* MypageViews */ = {
+			isa = PBXGroup;
+			children = (
+				50C7A1B12BEA6F3400743D9E /* Components */,
+				AE9F0C382BC3FA48007B2B1E /* ProfileView.swift */,
+				50C7A1B42BEA7C6D00743D9E /* ProfileEditView.swift */,
+				50C7A1B62BEA7E7800743D9E /* CallRecodView.swift */,
+				50C7A1B82BEA7E9600743D9E /* AiVoiceView.swift */,
+				50C7A1BA2BEA7EAF00743D9E /* LogoutPopupView.swift */,
+			);
+			path = MypageViews;
+			sourceTree = "<group>";
+		};
+		50C7A1B12BEA6F3400743D9E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				50C7A1B22BEA6F4B00743D9E /* CustomCircleImg.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		50F726432BC657DC00078A6D /* AlarmTabViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,9 +264,9 @@
 				5065F8DC2BE88CD5009E6EDB /* VocabTabViews */,
 				5016492A2BD9FB7A00A5EE32 /* CallTabViews */,
 				50F726432BC657DC00078A6D /* AlarmTabViews */,
+				50C7A1B02BEA6EC300743D9E /* MypageViews */,
 				AE9F0C342BC3F95A007B2B1E /* LoginView.swift */,
 				AE9F0C362BC3FA31007B2B1E /* MainTabView.swift */,
-				AE9F0C382BC3FA48007B2B1E /* ProfileView.swift */,
 				50F7263F2BC6525B00078A6D /* OnboardingView.swift */,
 			);
 			path = View;
@@ -370,6 +401,7 @@
 				501649362BDA7A3800A5EE32 /* AudioRecordingFunc.swift in Sources */,
 				AE9F0C372BC3FA31007B2B1E /* MainTabView.swift in Sources */,
 				AE9F0C332BC3F8C2007B2B1E /* CustomButtonBig.swift in Sources */,
+				50C7A1B52BEA7C6D00743D9E /* ProfileEditView.swift in Sources */,
 				50F726522BC6BB9700078A6D /* ModifyAlarmView.swift in Sources */,
 				501649332BDA292C00A5EE32 /* SendCallView.swift in Sources */,
 				5065F8E72BE8A275009E6EDB /* PastVocabView.swift in Sources */,
@@ -383,14 +415,18 @@
 				AE9F0C3D2BC3FA6D007B2B1E /* CallView.swift in Sources */,
 				5013022E2BE0F27300F20086 /* AudioEngineFunc.swift in Sources */,
 				501649312BDA18CF00A5EE32 /* AIProfileDataFetcher.swift in Sources */,
+				50C7A1B32BEA6F4B00743D9E /* CustomCircleImg.swift in Sources */,
 				5065F8E22BE88F94009E6EDB /* VocabDataFetcher.swift in Sources */,
 				50158D2D2BDEA1FA0086BF05 /* AudioPlayerFunc.swift in Sources */,
+				50C7A1B92BEA7E9600743D9E /* AiVoiceView.swift in Sources */,
 				50F7264C2BC66D9B00078A6D /* CustomButtonCircle.swift in Sources */,
+				50C7A1B72BEA7E7800743D9E /* CallRecodView.swift in Sources */,
 				AE9F0C2F2BC3F38A007B2B1E /* AlarmModel.swift in Sources */,
 				AE228E772BDE14DC00B35657 /* ReceiveCallView.swift in Sources */,
 				5065F8E02BE88E26009E6EDB /* VocabModel.swift in Sources */,
 				50F726482BC66D0400078A6D /* AddAlarmView.swift in Sources */,
 				5065F8DE2BE88CF1009E6EDB /* VocabView.swift in Sources */,
+				50C7A1BB2BEA7EAF00743D9E /* LogoutPopupView.swift in Sources */,
 				50F726402BC6525B00078A6D /* OnboardingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
