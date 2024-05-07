@@ -87,9 +87,12 @@ struct VocabView: View {
                     }
                 }
             }
-            .navigationDestination(isPresented: $isPresentingPastVocab){
-                PastVocabView()
+            .fullScreenCover(isPresented: $isPresentingPastVocab){
+                PastVocabView(vocabs: vocabs)
             }
+//            .navigationDestination(isPresented: $isPresentingPastVocab){
+//                PastVocabView(vocabs: vocabs)
+//            }
         }
     }
 }

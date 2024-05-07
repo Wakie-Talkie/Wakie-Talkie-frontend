@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PastVocabCell: View{
     @Binding var pastVocabData: Vocab
-    @Binding var numOfVocab: Int
+    @State var numOfVocab: Int
     var body: some View{
         ZStack{
             RoundedRectangle(cornerRadius: 20)
@@ -59,7 +59,7 @@ struct PastVocabCellTestView: View{
     @State var vocab: Vocab = Vocab(id: "vocab1",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성")
     @State var numOfVocab: Int = 3
     var body: some View{
-        PastVocabCell(pastVocabData: $vocab,numOfVocab: $numOfVocab)
+        PastVocabCell(pastVocabData: $vocab,numOfVocab: numOfVocab)
     }
 }
 
