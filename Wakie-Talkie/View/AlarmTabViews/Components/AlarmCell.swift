@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AlarmCell: View {
     @State private var week: [String] = ["일", "월", "화", "수", "목", "금","토"]
-    @Binding var alarmData: Alarm
+    @Binding var alarmData: AlarmTemp
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 20)
@@ -63,7 +63,7 @@ struct AlarmCell: View {
 
 
 struct AlarmCellTestView: View{
-    @State var alarm: Alarm = Alarm(id: "alarm1", userId: "eunhwa813", time: Date.now, language: "ENGLISH", repeatDays: [false, false, true, false, false, false, false], isOn: true)
+    @State var alarm: AlarmTemp = AlarmTemp(id: "alarm1", userId: "eunhwa813", time: Date.now, language: "ENGLISH", repeatDays: [false, false, true, false, false, false, false], isOn: true)
     var body: some View{
         AlarmCell(alarmData: $alarm)
     }

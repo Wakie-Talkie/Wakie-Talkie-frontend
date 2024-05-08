@@ -18,8 +18,8 @@ struct ModifyAlarmView: View {
     @State private var isLanguageSelected: [Bool] = [false, false, false, false]
     @State private var alarmTime: String = "12:00"
     
-    @Binding var alarmList: [Alarm]
-    @Binding var alarmData: Alarm
+    @Binding var alarmList: [AlarmTemp]
+    @Binding var alarmData: AlarmTemp
     var body: some View {
         VStack() {
             ScrollView {
@@ -149,19 +149,4 @@ struct ModifyAlarmView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
     }
-}
-struct ModifyAlarmTestView: View{
-    @State var alarmDatas: [Alarm] = [
-        Alarm(id: "alarm1", userId: "eunhwa813", time: Date.now, language: "ENGLISH", repeatDays: [false, false, false, false, false, false, false], isOn: true),
-        Alarm(id: "alarm2", userId: "eunhwa813", time: Date.now, language: "KOREAN", repeatDays: [false, false, true, false, false, false, false], isOn: true),
-        Alarm(id: "alarm3", userId: "eunhwa813", time: Date.now, language: "JAPANESE", repeatDays: [true, false, false, false, true, false, false], isOn: false),
-        Alarm(id: "alarm4", userId: "eunhwa813", time: Date.now, language: "FRENCH", repeatDays: [false, true, false, false, false, false, false], isOn: true),
-        Alarm(id: "alarm5", userId: "eunhwa813", time: Date.now, language: "CHINESE", repeatDays: [false, false, false, false, false, true, false], isOn: false)
-    ]
-    var body: some View{
-        ModifyAlarmView(alarmList: $alarmDatas, alarmData: $alarmDatas[2])
-    }
-}
-#Preview {
-    ModifyAlarmTestView()
 }

@@ -103,7 +103,7 @@ struct MainTabView: View {
                 ReceiveCallView(
                                 navigateToReceiveCall: $navigateToReceiveCall,
                                 aiProfile: AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "ai_profile_img", description: "like watching animation and go out for a walk.", language: "ENGLISH"),
-                                alarmList: alarmDataFetcher.alarms ?? [Alarm]()
+                                alarmList: alarmDataFetcher.alarms ?? [AlarmTemp]()
                 )
             }
         }

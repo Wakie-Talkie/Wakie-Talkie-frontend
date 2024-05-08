@@ -13,7 +13,7 @@ struct ReceiveCallView: View {
     @State var aiProfile: AIProfile
     @State private var callReceived: Bool = false
     @EnvironmentObject var alarmTimer: AlarmTimer
-    var alarmList: [Alarm]
+    var alarmList: [AlarmTemp]
     
     var body: some View {
         ZStack{

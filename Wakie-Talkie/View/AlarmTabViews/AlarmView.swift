@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct AlarmView: View {
-    @State var alarms: [Alarm]
+    @State var alarms: [AlarmTemp]
     @State private var isPresentingAddAlarm = false
     @State private var isPresentingMypage = false
-    @State private var selectedAlarm: Alarm?
+    @State private var selectedAlarm: AlarmTemp?
     
     var body: some View {
         NavigationStack {
@@ -86,12 +86,12 @@ struct AlarmView: View {
 }
 
 struct AlarmTestView: View{
-    @State var alarmDatas: [Alarm] = [
-        Alarm(id: "alarm1", userId: "eunhwa813", time: Date.now, language: "ENGLISH", repeatDays: [false, false, false, false, false, false, false], isOn: true),
-        Alarm(id: "alarm2", userId: "eunhwa813", time: Date.now, language: "KOREAN", repeatDays: [false, false, true, false, false, false, false], isOn: true),
-        Alarm(id: "alarm3", userId: "eunhwa813", time: Date.now, language: "JAPANESE", repeatDays: [true, false, false, false, true, false, false], isOn: false),
-        Alarm(id: "alarm4", userId: "eunhwa813", time: Date.now, language: "FRENCH", repeatDays: [false, true, false, false, false, false, false], isOn: true),
-        Alarm(id: "alarm5", userId: "eunhwa813", time: Date.now, language: "CHINESE", repeatDays: [false, false, false, false, false, true, false], isOn: false)
+    @State var alarmDatas: [AlarmTemp] = [
+        AlarmTemp(id: "alarm1", userId: "eunhwa813", time: Date.now, language: "ENGLISH", repeatDays: [false, false, false, false, false, false, false], isOn: true),
+        AlarmTemp(id: "alarm2", userId: "eunhwa813", time: Date.now, language: "KOREAN", repeatDays: [false, false, true, false, false, false, false], isOn: true),
+        AlarmTemp(id: "alarm3", userId: "eunhwa813", time: Date.now, language: "JAPANESE", repeatDays: [true, false, false, false, true, false, false], isOn: false),
+        AlarmTemp(id: "alarm4", userId: "eunhwa813", time: Date.now, language: "FRENCH", repeatDays: [false, true, false, false, false, false, false], isOn: true),
+        AlarmTemp(id: "alarm5", userId: "eunhwa813", time: Date.now, language: "CHINESE", repeatDays: [false, false, false, false, false, true, false], isOn: false)
     ]
 
     var body: some View{

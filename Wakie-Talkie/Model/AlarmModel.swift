@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Alarm: Identifiable, Codable {
+struct AlarmTemp: Identifiable, Codable {
     var id: String
     var userId: String    // 사용자 ID (FK)
     var time: Date // Date 타입으로 처리 -> transformToDate(dateString: "8:54 PM") 이런 형식으로 데이터가 들어옴

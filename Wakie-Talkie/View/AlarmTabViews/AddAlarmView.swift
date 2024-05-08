@@ -9,13 +9,13 @@ import SwiftUI
 
 struct AddAlarmView: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var alarmList: [Alarm]
+    @Binding var alarmList: [AlarmTemp]
     @EnvironmentObject var alarmTimer: AlarmTimer
     
     @State private var week: [String] = ["일", "월", "화", "수", "목", "금","토"]
     @State private var languages: [String] = ["영어", "한국어", "중국어", "일본어"]
     @State private var translatedLanguages: [String] = ["ENGLISH", "KOREAN", "CHINESE", "JAPANESE"]
-    @State private var addAlarmData: Alarm = Alarm()
+    @State private var addAlarmData: AlarmTemp = AlarmTemp()
     @State private var isAmActive: Bool = false
     @State private var isPmActive: Bool = false
     @State private var isLanguageSelected: [Bool] = [false, false, false, false]

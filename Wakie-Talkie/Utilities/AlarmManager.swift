@@ -12,7 +12,7 @@ class AlarmManager {
     static let shared = AlarmManager()
 
     
-    func scheduleNextAlarm(alarms: [Alarm]) {
+    func scheduleNextAlarm(alarms: [AlarmTemp]) {
         let center = UNUserNotificationCenter.current()
         
         // 이미 스케줄된 모든 알림을 제거
@@ -26,16 +26,16 @@ class AlarmManager {
         scheduleAlarmNotifications(alarm: nextAlarm)
     }
     
-    static func findNextAlarmTime(alarms: [Alarm]) -> Date? {
+    static func findNextAlarmTime(alarms: [AlarmTemp]) -> Date? {
         var closestAlarmTime: Date?
         
-        return getNextAlarmTime(for: AlarmManager.findNextAlarm(alarms: alarms) ?? Alarm())
+        return getNextAlarmTime(for: AlarmManager.findNextAlarm(alarms: alarms) ?? AlarmTemp())
         
         //return closestAlarmTime
     }
     
-    static func findNextAlarm(alarms: [Alarm]) -> Alarm? {
-        var closestAlarm: Alarm?
+    static func findNextAlarm(alarms: [AlarmTemp]) -> AlarmTemp? {
+        var closestAlarm: AlarmTemp?
         var minimumTimeInterval: TimeInterval = .greatestFiniteMagnitude
         
         for alarm in alarms.filter({ $0.isOn }) {
@@ -56,7 +56,7 @@ class AlarmManager {
         return closestAlarm
     }
     
-    static func getNextAlarmTime(for alarm: Alarm) -> Date? {
+    static func getNextAlarmTime(for alarm: AlarmTemp) -> Date? {
         var calendar = Calendar.current
         let components = calendar.dateComponents([.hour, .minute, .second], from: alarm.time)
         let referenceDate = Date()
@@ -93,14 +93,14 @@ class AlarmManager {
     }
 
     
-    private func scheduleAlarmNotifications(alarm: Alarm) {
+    private func scheduleAlarmNotifications(alarm: AlarmTemp) {
         let notificationTimes: [TimeInterval] = [0, 5, 10]  // 0초, 5초, 10초 후 -> 100개나 500개로 늘릴거임
         for secondsToAdd in notificationTimes {
             scheduleNotification(alarm: alarm, date: AlarmManager.getNextAlarmTime(for: alarm)!, secondsToAdd: secondsToAdd)
         }
     }
 
-    private func scheduleNotification(alarm: Alarm, date: Date, secondsToAdd: TimeInterval) {
+    private func scheduleNotification(alarm: AlarmTemp, date: Date, secondsToAdd: TimeInterval) {
         let content = UNMutableNotificationContent()
         content.title = "Alarm for \(alarm.language)"
         content.body = "Alarm set for \(alarm.language) at \(alarm.time.formatted())"
