@@ -21,6 +21,9 @@ struct AddAlarmView: View {
     @State private var isLanguageSelected: [Bool] = [false, false, false, false]
     @State private var time: Date = Date()
     @State private var alarmTime: String = "12:00"
+    @State private var isEditing: Bool = false
+    @State private var editingHour: String = ""
+    @State private var editingMin: String = ""
     @State private var language: String = ""
     @State private var repeatDays: [Bool] = [false, false, false, false, false, false, false]
     @State private var userId: String = "eunhwa813"
@@ -53,10 +56,39 @@ struct AddAlarmView: View {
                                 self.isAmActive = false
                                 self.isPmActive = true
                             }, isActive: $isPmActive)
-                            Text(alarmTime)
-                                .font(.system(size: 25))
-                                .fontWeight(.light)
+                            if !isEditing{
+                                Text(alarmTime)
+                                    .font(.system(size: 25))
+                                    .fontWeight(.light)
+                            }else{
+                                HStack{
+                                    TextField(editingHour, text: $editingHour)
+                                        .padding()
+                                        .background(Color.white)
+                                        .cornerRadius(5)
+                                        .shadow(radius: 1)
+                                        .frame(maxWidth:50,maxHeight: 30)
+                                    Text(":")
+                                    TextField(editingMin, text: $editingMin)
+                                        .padding()
+                                        .background(Color.white)
+                                        .cornerRadius(5)
+                                        .shadow(radius: 1)
+                                        .frame(maxHeight: 30)
+                                }
+                            }
                             Spacer()
+                            CustomButtonSmall(text: isEditing ? "확인": "수정", action: {
+                                if isEditing {
+                                    alarmTime = editingHour + ":" + editingMin
+                                }else{
+                                    var arr = alarmTime.components(separatedBy: ":")
+                                    editingHour = arr[0]
+                                    editingMin = arr[1]
+                                }
+                                isEditing = !isEditing
+                            }, isActive: .constant(true))
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                         }.padding(EdgeInsets(top: 5, leading: 0, bottom: 60, trailing: 0))
                         
                         //Section: 반복 주기
