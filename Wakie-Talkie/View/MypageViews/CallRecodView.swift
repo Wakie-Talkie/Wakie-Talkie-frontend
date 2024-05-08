@@ -34,7 +34,7 @@ struct CallRecodView: View {
                 ForEach(recordList.indices, id: \.self) { index in
                     let binding = $recordList[index]  // Creating a Binding<Record>
                     VStack{
-                        if !shouldUpdateDate(for: binding.date.wrappedValue) {
+                        if (index == 0)||((index != 0)&&(binding.date.wrappedValue != $recordList[index-1].date.wrappedValue)) {
                             Text(extractFormattedTime(from: binding.date.wrappedValue))
                                 .fontWeight(.medium)
                                 .font(.system(size: 18))
@@ -46,17 +46,17 @@ struct CallRecodView: View {
         }
         .navigationBarBackButtonHidden(true)
     }
-    private func shouldUpdateDate(for recordDate: Date) -> Bool{
-        var isEqual: Bool = false
-        print("lastDate : " + self.lastDate)
-        print("binding : " + extractFormattedTime(from: recordDate))
-        if self.lastDate != extractFormattedTime(from: recordDate){
-            self.lastDate = extractFormattedTime(from: recordDate)
-        }else{
-            isEqual = true
-        }
-        return isEqual
-    }
+//    private func shouldUpdateDate(for recordDate: Date) -> Bool{
+//        var isEqual: Bool = false
+//        print("lastDate : " + self.lastDate)
+//        print("binding : " + extractFormattedTime(from: recordDate))
+//        if self.lastDate != extractFormattedTime(from: recordDate){
+//            self.lastDate = extractFormattedTime(from: recordDate)
+//        }else{
+//            isEqual = true
+//        }
+//        return isEqual
+//    }
     private func extractFormattedTime(from date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M월 d일"
