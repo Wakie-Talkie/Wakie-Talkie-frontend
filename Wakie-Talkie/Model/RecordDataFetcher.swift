@@ -28,7 +28,15 @@ class RecordDataFetcher: ObservableObject {
             Record(id: "record4",
                    userId: "eunhwa813",
                    aiProfile: AIProfile(id: "aiNo.2", nickname: "Sandy",profileImg: "ai_profile_me2",description: "LUV U", language: "ENGLISH"),
-                   date: transformToDate(dateString: "2023 05 05"), recordedTime: "9:3")
+                   date: transformToDate(dateString: "2023 05 05"), recordedTime: "9:3"),
+            Record(id: "record5",
+                   userId: "eunhwa813",
+                   aiProfile: AIProfile(id: "aiNo.2", nickname: "Sandy",profileImg: "ai_profile_me1",description: "LUV U", language: "ENGLISH"),
+                   date: transformToDate(dateString: "2023 05 10"), recordedTime: "9:3"),
+            Record(id: "record6",
+                   userId: "eunhwa813",
+                   aiProfile: AIProfile(id: "aiNo.2", nickname: "Sandy",profileImg: "ai_profile_me3",description: "LUV U", language: "ENGLISH"),
+                   date: transformToDate(dateString: "2023 04 30"), recordedTime: "9:3")
         ]
         self.records = fetchRecords
     }
