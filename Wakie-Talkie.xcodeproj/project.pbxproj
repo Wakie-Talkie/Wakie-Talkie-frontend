@@ -28,6 +28,10 @@
 		50C7A1B72BEA7E7800743D9E /* CallRecodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7A1B62BEA7E7800743D9E /* CallRecodView.swift */; };
 		50C7A1B92BEA7E9600743D9E /* AiVoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7A1B82BEA7E9600743D9E /* AiVoiceView.swift */; };
 		50C7A1BB2BEA7EAF00743D9E /* LogoutPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7A1BA2BEA7EAF00743D9E /* LogoutPopupView.swift */; };
+		50C7A1BD2BEA80FC00743D9E /* CustomLanguageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7A1BC2BEA80FC00743D9E /* CustomLanguageButton.swift */; };
+		50C7A1BF2BEB0FF100743D9E /* CallRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7A1BE2BEB0FF100743D9E /* CallRecordCell.swift */; };
+		50C7A1C12BEB11AC00743D9E /* RecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7A1C02BEB11AC00743D9E /* RecordModel.swift */; };
+		50C7A1C32BEB122700743D9E /* RecordDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C7A1C22BEB122700743D9E /* RecordDataFetcher.swift */; };
 		50F726402BC6525B00078A6D /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7263F2BC6525B00078A6D /* OnboardingView.swift */; };
 		50F726422BC655A800078A6D /* WakieTalkieApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726412BC655A800078A6D /* WakieTalkieApp.swift */; };
 		50F726452BC664D700078A6D /* AlarmDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726442BC664D700078A6D /* AlarmDataFetcher.swift */; };
@@ -75,6 +79,10 @@
 		50C7A1B62BEA7E7800743D9E /* CallRecodView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallRecodView.swift; sourceTree = "<group>"; };
 		50C7A1B82BEA7E9600743D9E /* AiVoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AiVoiceView.swift; sourceTree = "<group>"; };
 		50C7A1BA2BEA7EAF00743D9E /* LogoutPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutPopupView.swift; sourceTree = "<group>"; };
+		50C7A1BC2BEA80FC00743D9E /* CustomLanguageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLanguageButton.swift; sourceTree = "<group>"; };
+		50C7A1BE2BEB0FF100743D9E /* CallRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallRecordCell.swift; sourceTree = "<group>"; };
+		50C7A1C02BEB11AC00743D9E /* RecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordModel.swift; sourceTree = "<group>"; };
+		50C7A1C22BEB122700743D9E /* RecordDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecordDataFetcher.swift; path = "Wakie-Talkie/Model/RecordDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
 		50F7263F2BC6525B00078A6D /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		50F726412BC655A800078A6D /* WakieTalkieApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakieTalkieApp.swift; sourceTree = "<group>"; };
 		50F726442BC664D700078A6D /* AlarmDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AlarmDataFetcher.swift; path = "Wakie-Talkie/AlarmDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
@@ -222,6 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				50C7A1B22BEA6F4B00743D9E /* CustomCircleImg.swift */,
+				50C7A1BC2BEA80FC00743D9E /* CustomLanguageButton.swift */,
+				50C7A1BE2BEB0FF100743D9E /* CallRecordCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -253,6 +263,7 @@
 				AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */,
 				AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */,
 				5065F8DF2BE88E26009E6EDB /* VocabModel.swift */,
+				50C7A1C02BEB11AC00743D9E /* RecordModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -278,6 +289,7 @@
 				50F726442BC664D700078A6D /* AlarmDataFetcher.swift */,
 				501649302BDA18CF00A5EE32 /* AIProfileDataFetcher.swift */,
 				5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */,
+				50C7A1C22BEB122700743D9E /* RecordDataFetcher.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -397,6 +409,7 @@
 				5065F8E52BE89465009E6EDB /* VocabCell.swift in Sources */,
 				AE228E742BDB96A100B35657 /* AlarmManager.swift in Sources */,
 				50F726452BC664D700078A6D /* AlarmDataFetcher.swift in Sources */,
+				50C7A1BD2BEA80FC00743D9E /* CustomLanguageButton.swift in Sources */,
 				AE9F0C2D2BC3F369007B2B1E /* AIProfileModel.swift in Sources */,
 				501649362BDA7A3800A5EE32 /* AudioRecordingFunc.swift in Sources */,
 				AE9F0C372BC3FA31007B2B1E /* MainTabView.swift in Sources */,
@@ -406,10 +419,12 @@
 				501649332BDA292C00A5EE32 /* SendCallView.swift in Sources */,
 				5065F8E72BE8A275009E6EDB /* PastVocabView.swift in Sources */,
 				AE228E792BDE2CD200B35657 /* AlarmTimer.swift in Sources */,
+				50C7A1C12BEB11AC00743D9E /* RecordModel.swift in Sources */,
 				5016492F2BDA168700A5EE32 /* CallPopupView.swift in Sources */,
 				50F726422BC655A800078A6D /* WakieTalkieApp.swift in Sources */,
 				50F7264E2BC676AC00078A6D /* AlarmCell.swift in Sources */,
 				50F7264A2BC66D7100078A6D /* CustomButtonSmall.swift in Sources */,
+				50C7A1BF2BEB0FF100743D9E /* CallRecordCell.swift in Sources */,
 				AE9F0C3B2BC3FA5A007B2B1E /* AlarmView.swift in Sources */,
 				5016492D2BDA029F00A5EE32 /* AIProfileCell.swift in Sources */,
 				AE9F0C3D2BC3FA6D007B2B1E /* CallView.swift in Sources */,
@@ -425,6 +440,7 @@
 				AE228E772BDE14DC00B35657 /* ReceiveCallView.swift in Sources */,
 				5065F8E02BE88E26009E6EDB /* VocabModel.swift in Sources */,
 				50F726482BC66D0400078A6D /* AddAlarmView.swift in Sources */,
+				50C7A1C32BEB122700743D9E /* RecordDataFetcher.swift in Sources */,
 				5065F8DE2BE88CF1009E6EDB /* VocabView.swift in Sources */,
 				50C7A1BB2BEA7EAF00743D9E /* LogoutPopupView.swift in Sources */,
 				50F726402BC6525B00078A6D /* OnboardingView.swift in Sources */,
