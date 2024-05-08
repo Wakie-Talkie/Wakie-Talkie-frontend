@@ -64,6 +64,7 @@ struct ProfileView: View {
                     }
                 }
             }
+            .navigationBarBackButtonHidden(true)
             .navigationDestination(isPresented: $isPresentingProfileEdit){
                 ProfileEditView()
             }

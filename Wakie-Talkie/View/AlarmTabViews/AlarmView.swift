@@ -10,6 +10,7 @@ import SwiftUI
 struct AlarmView: View {
     @State var alarms: [Alarm]
     @State private var isPresentingAddAlarm = false
+    @State private var isPresentingMypage = false
     @State private var selectedAlarm: Alarm?
     
     var body: some View {
@@ -25,10 +26,27 @@ struct AlarmView: View {
                     }
                 }
                 VStack(spacing: alarms.isEmpty ? 30 : 0) {
-                    Text("전화 알람")
-                        .fontWeight(.bold)
-                        .font(.system(size: 25))
+                    HStack {
+                        Text("")
+                            .frame(width: 25, height: 25)
+                            .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0))
+                        Spacer()
+                        Text("전화 알람")
+                            .fontWeight(.bold)
+                            .font(.system(size: 25))
                         .padding(EdgeInsets(top: 30, leading: 0, bottom: 20, trailing: 0))
+                        Spacer()
+                        Button(action: {
+                            isPresentingMypage = true
+                        }){
+                            Image(systemName: "person.fill")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(.black)
+                        }
+                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 30))
+                    }
                     if alarms.isEmpty {
                         Spacer()
                         Text("아직 알람이 없어요!")
@@ -59,6 +77,9 @@ struct AlarmView: View {
             }
             .navigationDestination(isPresented: $isPresentingAddAlarm){
                 AddAlarmView(alarmList: $alarms)
+            }
+            .navigationDestination(isPresented: $isPresentingMypage){
+                ProfileView()
             }
         }
     }
