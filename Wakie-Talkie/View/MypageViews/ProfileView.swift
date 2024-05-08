@@ -12,6 +12,8 @@ struct ProfileView: View {
     @State private var isPresentingRecodings = false
     @State private var isPresentingAiVoice = false
     @State private var isPresentingLogout = false
+    @State private var recordDataFetcher = RecordDataFetcher()
+    @State private var recordDatas:[Record] = []
     
     var body: some View {
         NavigationStack {
@@ -64,12 +66,16 @@ struct ProfileView: View {
                 ProfileEditView()
             }
             .navigationDestination(isPresented: $isPresentingRecodings){
-                CallRecodView()
+                CallRecodView(recordList: recordDatas)
             }
             .navigationDestination(isPresented: $isPresentingAiVoice){
                 AiVoiceView()
             }
         }
+        .onAppear(perform: {
+            recordDataFetcher.fetchRecords()
+            recordDatas = recordDataFetcher.records?.sorted{$0.date < $1.date} ?? []
+        })
     }
 }
 
