@@ -64,7 +64,7 @@ struct AlarmView: View {
                     else{
                         ScrollView {
                             ForEach(alarms){ alarm in
-                                NavigationLink(destination: ModifyAlarmView(alarmData: alarm)
+                                NavigationLink(destination: ModifyAlarmView(alarmTime: transformDateToStr(date: alarm.time), alarmData: alarm)
                                 ){
                                     AlarmCell(alarmData: alarm)
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
@@ -93,5 +93,14 @@ struct AlarmView: View {
                 ProfileView()
             }
         }
+    }
+    
+    func transformDateToStr(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mm"
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        
+        let date = dateFormatter.string(from: date)
+        return date
     }
 }

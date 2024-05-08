@@ -17,7 +17,7 @@ struct ModifyAlarmView: View {
     @State private var isAmActive: Bool = false
     @State private var isPmActive: Bool = false
     @State private var isLanguageSelected: [Bool] = [false, false, false, false]
-    @State private var alarmTime: String = "12:00"
+    @State var alarmTime: String
     @State private var isEditing: Bool = false
     @State private var editingHour: String = ""
     @State private var editingMin: String = ""
