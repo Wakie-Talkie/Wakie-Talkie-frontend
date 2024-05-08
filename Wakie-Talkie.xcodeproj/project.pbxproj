@@ -45,6 +45,10 @@
 		AE228E742BDB96A100B35657 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E732BDB96A100B35657 /* AlarmManager.swift */; };
 		AE228E772BDE14DC00B35657 /* ReceiveCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E762BDE14DC00B35657 /* ReceiveCallView.swift */; };
 		AE228E792BDE2CD200B35657 /* AlarmTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E782BDE2CD200B35657 /* AlarmTimer.swift */; };
+		AE91B3E92BEB7A9F008B8CFB /* WakieTalkie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AE91B3E72BEB7A9F008B8CFB /* WakieTalkie.xcdatamodeld */; };
+		AE91B3F02BEB7F5E008B8CFB /* Alarm+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE91B3EE2BEB7F5E008B8CFB /* Alarm+CoreDataClass.swift */; };
+		AE91B3F12BEB7F5E008B8CFB /* Alarm+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE91B3EF2BEB7F5E008B8CFB /* Alarm+CoreDataProperties.swift */; };
+		AE91B3F32BEB81E3008B8CFB /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE91B3F22BEB81E3008B8CFB /* DataManager.swift */; };
 		AE9F0C2B2BC3F253007B2B1E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */; };
 		AE9F0C2D2BC3F369007B2B1E /* AIProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */; };
 		AE9F0C2F2BC3F38A007B2B1E /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */; };
@@ -99,6 +103,10 @@
 		AE228E752BDBDC1000B35657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AE228E762BDE14DC00B35657 /* ReceiveCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveCallView.swift; sourceTree = "<group>"; };
 		AE228E782BDE2CD200B35657 /* AlarmTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTimer.swift; sourceTree = "<group>"; };
+		AE91B3E82BEB7A9F008B8CFB /* Alarm.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Alarm.xcdatamodel; sourceTree = "<group>"; };
+		AE91B3EE2BEB7F5E008B8CFB /* Alarm+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alarm+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AE91B3EF2BEB7F5E008B8CFB /* Alarm+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alarm+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AE91B3F22BEB81E3008B8CFB /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIProfileModel.swift; sourceTree = "<group>"; };
 		AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
@@ -125,6 +133,8 @@
 		50142C0A2BBD050900791488 = {
 			isa = PBXGroup;
 			children = (
+				AE91B3EE2BEB7F5E008B8CFB /* Alarm+CoreDataClass.swift */,
+				AE91B3EF2BEB7F5E008B8CFB /* Alarm+CoreDataProperties.swift */,
 				50142C152BBD050900791488 /* Wakie-Talkie */,
 				50142C142BBD050900791488 /* Products */,
 			);
@@ -150,6 +160,7 @@
 				AE9F0C242BC3F056007B2B1E /* View */,
 				AE9F0C232BC3EFB5007B2B1E /* Model */,
 				50142C1A2BBD050A00791488 /* Assets.xcassets */,
+				AE91B3E72BEB7A9F008B8CFB /* WakieTalkie.xcdatamodeld */,
 				50142C1C2BBD050A00791488 /* Preview Content */,
 				50F726412BC655A800078A6D /* WakieTalkieApp.swift */,
 			);
@@ -310,6 +321,7 @@
 			children = (
 				AE228E732BDB96A100B35657 /* AlarmManager.swift */,
 				AE228E782BDE2CD200B35657 /* AlarmTimer.swift */,
+				AE91B3F22BEB81E3008B8CFB /* DataManager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -423,7 +435,10 @@
 				5065F8E72BE8A275009E6EDB /* PastVocabView.swift in Sources */,
 				AE228E792BDE2CD200B35657 /* AlarmTimer.swift in Sources */,
 				50C7A1C52BEB378800743D9E /* AiVoiceCell.swift in Sources */,
+				AE91B3F32BEB81E3008B8CFB /* DataManager.swift in Sources */,
 				50C7A1C12BEB11AC00743D9E /* RecordModel.swift in Sources */,
+				AE91B3F02BEB7F5E008B8CFB /* Alarm+CoreDataClass.swift in Sources */,
+				AE91B3F12BEB7F5E008B8CFB /* Alarm+CoreDataProperties.swift in Sources */,
 				5016492F2BDA168700A5EE32 /* CallPopupView.swift in Sources */,
 				50F726422BC655A800078A6D /* WakieTalkieApp.swift in Sources */,
 				50F7264E2BC676AC00078A6D /* AlarmCell.swift in Sources */,
@@ -436,6 +451,7 @@
 				501649312BDA18CF00A5EE32 /* AIProfileDataFetcher.swift in Sources */,
 				50C7A1B32BEA6F4B00743D9E /* CustomCircleImg.swift in Sources */,
 				5065F8E22BE88F94009E6EDB /* VocabDataFetcher.swift in Sources */,
+				AE91B3E92BEB7A9F008B8CFB /* WakieTalkie.xcdatamodeld in Sources */,
 				50158D2D2BDEA1FA0086BF05 /* AudioPlayerFunc.swift in Sources */,
 				50C7A1B92BEA7E9600743D9E /* AiVoiceView.swift in Sources */,
 				50F7264C2BC66D9B00078A6D /* CustomButtonCircle.swift in Sources */,
@@ -661,6 +677,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AE91B3E72BEB7A9F008B8CFB /* WakieTalkie.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AE91B3E82BEB7A9F008B8CFB /* Alarm.xcdatamodel */,
+			);
+			currentVersion = AE91B3E82BEB7A9F008B8CFB /* Alarm.xcdatamodel */;
+			path = WakieTalkie.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 50142C0B2BBD050900791488 /* Project object */;
 }

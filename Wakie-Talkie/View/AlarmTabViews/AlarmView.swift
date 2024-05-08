@@ -8,10 +8,11 @@
 import SwiftUI
 
 struct AlarmView: View {
-    @State var alarms: [Alarm]
+    @FetchRequest(sortDescriptors: []) private var Alarms: FetchedResults<Alarm>
+    @State var alarms: [AlarmDummy]
     @State private var isPresentingAddAlarm = false
     @State private var isPresentingMypage = false
-    @State private var selectedAlarm: Alarm?
+    @State private var selectedAlarm: AlarmDummy?
     
     var body: some View {
         NavigationStack {
@@ -59,13 +60,18 @@ struct AlarmView: View {
                     }
                     else{
                         ScrollView {
-                            ForEach($alarms){ alarm in
-                                NavigationLink(destination: ModifyAlarmView(alarmList: $alarms, alarmData: alarm)
-                                ){
-                                    AlarmCell(alarmData: alarm)
-                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                            ForEach(Alarms, id: \.self) {alarm in
+                                NavigationLink(destination: ModifyAlarmView(alarmList: AlarmDummy, alarmData: alarm)) {
+                                    AlarmCell(alarmData: alarm).padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
                                 }
                             }
+//                            ForEach($alarms){ alarm in
+//                                NavigationLink(destination: ModifyAlarmView(alarmList: $alarms, alarmData: alarm)
+//                                ){
+//                                    AlarmCell(alarmData: alarm)
+//                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+//                                }
+//                            }
                         }
                         CustomButtonBig(text: "알람 추가하기", action: {
                             isPresentingAddAlarm = true
@@ -86,12 +92,12 @@ struct AlarmView: View {
 }
 
 struct AlarmTestView: View{
-    @State var alarmDatas: [Alarm] = [
-        Alarm(id: "alarm1", userId: "eunhwa813", time: Date.now, language: "ENGLISH", repeatDays: [false, false, false, false, false, false, false], isOn: true),
-        Alarm(id: "alarm2", userId: "eunhwa813", time: Date.now, language: "KOREAN", repeatDays: [false, false, true, false, false, false, false], isOn: true),
-        Alarm(id: "alarm3", userId: "eunhwa813", time: Date.now, language: "JAPANESE", repeatDays: [true, false, false, false, true, false, false], isOn: false),
-        Alarm(id: "alarm4", userId: "eunhwa813", time: Date.now, language: "FRENCH", repeatDays: [false, true, false, false, false, false, false], isOn: true),
-        Alarm(id: "alarm5", userId: "eunhwa813", time: Date.now, language: "CHINESE", repeatDays: [false, false, false, false, false, true, false], isOn: false)
+    @State var alarmDatas: [AlarmDummy] = [
+        AlarmDummy(id: "alarm1", time: Date.now, language: "ENGLISH", repeatDays: [false, false, false, false, false, false, false], isOn: true),
+        AlarmDummy(id: "alarm2", time: Date.now, language: "KOREAN", repeatDays: [false, false, true, false, false, false, false], isOn: true),
+        AlarmDummy(id: "alarm3", time: Date.now, language: "JAPANESE", repeatDays: [true, false, false, false, true, false, false], isOn: false),
+        AlarmDummy(id: "alarm4", time: Date.now, language: "FRENCH", repeatDays: [false, true, false, false, false, false, false], isOn: true),
+        AlarmDummy(id: "alarm5", time: Date.now, language: "CHINESE", repeatDays: [false, false, false, false, false, true, false], isOn: false)
     ]
 
     var body: some View{

@@ -8,8 +8,12 @@
 import SwiftUI
 
 struct AddAlarmView: View {
+    @EnvironmentObject var manager: DataManager
+    @Environment(\.managedObjectContext) var viewContext
+    
+    
     @Environment(\.dismiss) var dismiss
-    @Binding var alarmList: [Alarm]
+    @Binding var alarmList: [AlarmDummy]
     @EnvironmentObject var alarmTimer: AlarmTimer
     
     @State private var week: [String] = ["일", "월", "화", "수", "목", "금","토"]
@@ -19,21 +23,21 @@ struct AddAlarmView: View {
     @State private var isAmActive: Bool = false
     @State private var isPmActive: Bool = false
     @State private var isLanguageSelected: [Bool] = [false, false, false, false]
+    
     @State private var time: Date = Date()
-    @State private var alarmTime: String = "12:00"
+    @State private var alarmTime: String = "12:00" //-> 이게 시간이군요^^^
     @State private var language: String = ""
     @State private var repeatDays: [Bool] = [false, false, false, false, false, false, false]
-    @State private var userId: String = "eunhwa813"
     
     var body: some View {
         VStack() {
-//            HStack{
-//                Spacer()
-//                Text("알람 추가하기")
-//                    .fontWeight(.bold)
-//                    .font(.system(size: 25))
-//                Button
-//            }
+            //            HStack{
+            //                Spacer()
+            //                Text("알람 추가하기")
+            //                    .fontWeight(.bold)
+            //                    .font(.system(size: 25))
+            //                Button
+            //            }
             ScrollView {
                 ZStack {
                     VStack(alignment: .leading){
@@ -108,20 +112,23 @@ struct AddAlarmView: View {
             }
             CustomButtonBig(text: "알람 추가하기", action: {
                 if((isAmActive || isPmActive) && !(language.isEmpty)){
-                    addAlarmData.id = "alarm7"
-                    addAlarmData.userId = "eunhwa813"
-                    addAlarmData.isOn = true
-                    addAlarmData.language = language
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "h:mm a"
                     dateFormatter.locale = Locale(identifier: "en_US_POSIX")
                     
                     time = dateFormatter.date(from: alarmTime + (isAmActive ? " AM":" PM")) ?? Date()
-                    addAlarmData.time = time
-                    addAlarmData.repeatDays = repeatDays
                     
-                    alarmList.append(addAlarmData)
-                    alarmTimer.updateNextAlarmTime(time:(AlarmManager.findNextAlarmTime(alarms: alarmList) ) ?? Calendar.current.date(from: DateComponents(year: 2099, month: 1, day: 1))!)
+                    self.saveAlarm(language: language, repeatDays: repeatDays, time: time, aiProfileId: "AIID")
+                    
+//                    addAlarmData.id = "alarm7"
+//                    addAlarmData.isOn = true
+//                    addAlarmData.language = language
+//                    addAlarmData.time = time
+//                    addAlarmData.repeatDays = repeatDays
+//                    alarmList.append(addAlarmData)
+                    
+                    
+//                    alarmTimer.updateNextAlarmTime(time:(AlarmManager.findNextAlarmTime(alarms: alarmList) ) ?? Calendar.current.date(from: DateComponents(year: 2099, month: 1, day: 1))!)
                     dismiss()
                 }
             }, color: Color("Black"), isActive: .constant(true))
@@ -132,15 +139,34 @@ struct AddAlarmView: View {
             .fontWeight(.bold)
             .font(.system(size: 25))
         ).padding(EdgeInsets(top: 30, leading: 0, bottom: 20, trailing: 0))
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button("취소") {
-                    dismiss() // 현재 뷰 닫기
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("취소") {
+                        dismiss() // 현재 뷰 닫기
+                    }
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                 }
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
             }
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+    }
+    
+    
+    
+    func saveAlarm(language: String, repeatDays: [Bool], time: Date, aiProfileId: String){
+        var alarm = Alarm(context: self.viewContext)
+        alarm.id = UUID()
+        alarm.language = language
+        alarm.repeatDays = repeatDays
+        alarm.time = time
+        alarm.aiProfileId = aiProfileId
+        
+        do {
+            try self.viewContext.save()
+            print("알람 추가 되나?")
+        } catch {
+            print("알람 추가 안댐~ㅋㅋ")
         }
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden(true)
+        
     }
 }
