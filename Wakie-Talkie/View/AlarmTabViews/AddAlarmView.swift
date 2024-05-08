@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddAlarmView: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var alarmList: [AlarmTemp]
+  //  @Binding var alarmList: [AlarmTemp]
     @EnvironmentObject var alarmTimer: AlarmTimer
     
     @State private var week: [String] = ["일", "월", "화", "수", "목", "금","토"]
@@ -24,6 +24,9 @@ struct AddAlarmView: View {
     @State private var language: String = ""
     @State private var repeatDays: [Bool] = [false, false, false, false, false, false, false]
     @State private var userId: String = "eunhwa813"
+    
+    @State private var alarm = Alarm() //SD
+    @Environment(\.modelContext) var context
     
     var body: some View {
         VStack() {
@@ -120,8 +123,16 @@ struct AddAlarmView: View {
                     addAlarmData.time = time
                     addAlarmData.repeatDays = repeatDays
                     
-                    alarmList.append(addAlarmData)
-                    alarmTimer.updateNextAlarmTime(time:(AlarmManager.findNextAlarmTime(alarms: alarmList) ) ?? Calendar.current.date(from: DateComponents(year: 2099, month: 1, day: 1))!)
+                  //  alarmList.append(addAlarmData)
+                    alarm.id = UUID()
+                    alarm.time = time
+                    alarm.isOn = true
+                    alarm.language = language
+                    alarm.repeatDays = repeatDays
+                    
+                    context.insert(alarm)
+                    
+//                    alarmTimer.updateNextAlarmTime(time:(AlarmManager.findNextAlarmTime(alarms: alarmList) ) ?? Calendar.current.date(from: DateComponents(year: 2099, month: 1, day: 1))!)
                     dismiss()
                 }
             }, color: Color("Black"), isActive: .constant(true))

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ModifyAlarmView: View {
     @Environment(\.dismiss) var dismiss
@@ -18,8 +19,12 @@ struct ModifyAlarmView: View {
     @State private var isLanguageSelected: [Bool] = [false, false, false, false]
     @State private var alarmTime: String = "12:00"
     
-    @Binding var alarmList: [AlarmTemp]
-    @Binding var alarmData: AlarmTemp
+//    @Binding var alarmList: [AlarmTemp]
+//    @Binding var alarmData: AlarmTemp
+  //  @Query var alarmList: [Alarm]
+    @Bindable var alarmData: Alarm
+    @Environment(\.modelContext) var context
+    
     var body: some View {
         VStack() {
             ScrollView {
@@ -107,7 +112,8 @@ struct ModifyAlarmView: View {
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
             
             CustomButtonBig(text: "알람 삭제하기", action: {
-                alarmList.removeAll{$0.id == alarmData.id}
+                //alarmList.removeAll{$0.id == alarmData.id}
+                context.delete(alarmData)
                 dismiss()
             }, color: Color("Accent1"), isActive: .constant(true))
             .frame(alignment: .bottom)

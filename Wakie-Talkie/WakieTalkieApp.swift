@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct WakieTalkieApp: App {
@@ -17,6 +18,7 @@ struct WakieTalkieApp: App {
             //LoginView()
             MainTabView()
                 .environmentObject(alarmTimer)
+                .modelContainer(for: Alarm.self)
         }
     }
 }

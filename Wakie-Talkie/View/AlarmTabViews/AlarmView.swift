@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import SwiftData
+
 
 struct AlarmView: View {
-    @State var alarms: [AlarmTemp]
+   // @State var tempAlarms: [AlarmTemp]
     @State private var isPresentingAddAlarm = false
     @State private var isPresentingMypage = false
     @State private var selectedAlarm: AlarmTemp?
+    
+    @Query private var alarms: [Alarm]
     
     var body: some View {
         NavigationStack {
@@ -25,7 +29,7 @@ struct AlarmView: View {
                         }
                     }
                 }
-                VStack(spacing: alarms.isEmpty ? 30 : 0) {
+                VStack(spacing: alarms.isEmpty ? 30 : 0) {//tempAlarms.isEmpty ? 30 : 0) {
                     HStack {
                         Text("")
                             .frame(width: 25, height: 25)
@@ -47,7 +51,7 @@ struct AlarmView: View {
                         }
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 30))
                     }
-                    if alarms.isEmpty {
+                    if alarms.isEmpty{ //tempAlarms.isEmpty {
                         Spacer()
                         Text("아직 알람이 없어요!")
                             .font(.system(size: 25))
@@ -59,13 +63,20 @@ struct AlarmView: View {
                     }
                     else{
                         ScrollView {
-                            ForEach($alarms){ alarm in
-                                NavigationLink(destination: ModifyAlarmView(alarmList: $alarms, alarmData: alarm)
+                            ForEach(alarms){ alarm in
+                                NavigationLink(destination: ModifyAlarmView(alarmData: alarm)
                                 ){
                                     AlarmCell(alarmData: alarm)
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
                                 }
                             }
+//                            ForEach($tempAlarms){ alarm in
+//                                NavigationLink(destination: ModifyAlarmView(alarmList: $tempAlarms, alarmData: alarm)
+//                                ){
+//                                    AlarmCell(alarmData: alarm)
+//                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+//                                }
+//                            }
                         }
                         CustomButtonBig(text: "알람 추가하기", action: {
                             isPresentingAddAlarm = true
@@ -76,30 +87,11 @@ struct AlarmView: View {
                 }
             }
             .navigationDestination(isPresented: $isPresentingAddAlarm){
-                AddAlarmView(alarmList: $alarms)
+                AddAlarmView()
             }
             .navigationDestination(isPresented: $isPresentingMypage){
                 ProfileView()
             }
         }
     }
-}
-
-struct AlarmTestView: View{
-    @State var alarmDatas: [AlarmTemp] = [
-        AlarmTemp(id: "alarm1", userId: "eunhwa813", time: Date.now, language: "ENGLISH", repeatDays: [false, false, false, false, false, false, false], isOn: true),
-        AlarmTemp(id: "alarm2", userId: "eunhwa813", time: Date.now, language: "KOREAN", repeatDays: [false, false, true, false, false, false, false], isOn: true),
-        AlarmTemp(id: "alarm3", userId: "eunhwa813", time: Date.now, language: "JAPANESE", repeatDays: [true, false, false, false, true, false, false], isOn: false),
-        AlarmTemp(id: "alarm4", userId: "eunhwa813", time: Date.now, language: "FRENCH", repeatDays: [false, true, false, false, false, false, false], isOn: true),
-        AlarmTemp(id: "alarm5", userId: "eunhwa813", time: Date.now, language: "CHINESE", repeatDays: [false, false, false, false, false, true, false], isOn: false)
-    ]
-
-    var body: some View{
-        AlarmView(alarms: alarmDatas)
-    }
-}
-
-
-#Preview {
-    AlarmTestView()
 }

@@ -45,9 +45,10 @@
 		AE228E742BDB96A100B35657 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E732BDB96A100B35657 /* AlarmManager.swift */; };
 		AE228E772BDE14DC00B35657 /* ReceiveCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E762BDE14DC00B35657 /* ReceiveCallView.swift */; };
 		AE228E792BDE2CD200B35657 /* AlarmTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E782BDE2CD200B35657 /* AlarmTimer.swift */; };
+		AE91B3F52BEB8A34008B8CFB /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE91B3F42BEB8A34008B8CFB /* AlarmModel.swift */; };
 		AE9F0C2B2BC3F253007B2B1E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */; };
 		AE9F0C2D2BC3F369007B2B1E /* AIProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */; };
-		AE9F0C2F2BC3F38A007B2B1E /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */; };
+		AE9F0C2F2BC3F38A007B2B1E /* AlarmTempModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2E2BC3F38A007B2B1E /* AlarmTempModel.swift */; };
 		AE9F0C312BC3F8B0007B2B1E /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C302BC3F8B0007B2B1E /* CustomTextField.swift */; };
 		AE9F0C332BC3F8C2007B2B1E /* CustomButtonBig.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C322BC3F8C2007B2B1E /* CustomButtonBig.swift */; };
 		AE9F0C352BC3F95A007B2B1E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C342BC3F95A007B2B1E /* LoginView.swift */; };
@@ -99,9 +100,10 @@
 		AE228E752BDBDC1000B35657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AE228E762BDE14DC00B35657 /* ReceiveCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveCallView.swift; sourceTree = "<group>"; };
 		AE228E782BDE2CD200B35657 /* AlarmTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTimer.swift; sourceTree = "<group>"; };
+		AE91B3F42BEB8A34008B8CFB /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 		AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIProfileModel.swift; sourceTree = "<group>"; };
-		AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
+		AE9F0C2E2BC3F38A007B2B1E /* AlarmTempModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTempModel.swift; sourceTree = "<group>"; };
 		AE9F0C302BC3F8B0007B2B1E /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		AE9F0C322BC3F8C2007B2B1E /* CustomButtonBig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonBig.swift; sourceTree = "<group>"; };
 		AE9F0C342BC3F95A007B2B1E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -264,9 +266,10 @@
 			children = (
 				AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */,
 				AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */,
-				AE9F0C2E2BC3F38A007B2B1E /* AlarmModel.swift */,
+				AE9F0C2E2BC3F38A007B2B1E /* AlarmTempModel.swift */,
 				5065F8DF2BE88E26009E6EDB /* VocabModel.swift */,
 				50C7A1C02BEB11AC00743D9E /* RecordModel.swift */,
+				AE91B3F42BEB8A34008B8CFB /* AlarmModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				AE9F0C332BC3F8C2007B2B1E /* CustomButtonBig.swift in Sources */,
 				50C7A1B52BEA7C6D00743D9E /* ProfileEditView.swift in Sources */,
 				50F726522BC6BB9700078A6D /* ModifyAlarmView.swift in Sources */,
+				AE91B3F52BEB8A34008B8CFB /* AlarmModel.swift in Sources */,
 				501649332BDA292C00A5EE32 /* SendCallView.swift in Sources */,
 				5065F8E72BE8A275009E6EDB /* PastVocabView.swift in Sources */,
 				AE228E792BDE2CD200B35657 /* AlarmTimer.swift in Sources */,
@@ -440,7 +444,7 @@
 				50C7A1B92BEA7E9600743D9E /* AiVoiceView.swift in Sources */,
 				50F7264C2BC66D9B00078A6D /* CustomButtonCircle.swift in Sources */,
 				50C7A1B72BEA7E7800743D9E /* CallRecodView.swift in Sources */,
-				AE9F0C2F2BC3F38A007B2B1E /* AlarmModel.swift in Sources */,
+				AE9F0C2F2BC3F38A007B2B1E /* AlarmTempModel.swift in Sources */,
 				AE228E772BDE14DC00B35657 /* ReceiveCallView.swift in Sources */,
 				5065F8E02BE88E26009E6EDB /* VocabModel.swift in Sources */,
 				50F726482BC66D0400078A6D /* AddAlarmView.swift in Sources */,

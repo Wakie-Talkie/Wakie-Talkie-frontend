@@ -22,7 +22,7 @@ struct MainTabView: View {
                 case 1:
                     CallView(aiProfileList: aiProfileDataFetcher.aiProfiles ?? [])
                 case 2:
-                    AlarmView(alarms: alarmDataFetcher.alarms ?? [])
+                    AlarmView() //alarms: alarmDataFetcher.alarms ?? [])
                 default:
 //                    ProfileView()
                     VocabView(vocabs: vocabDataFetcher.vocabs ?? [], changeTab: $selectedTab)
