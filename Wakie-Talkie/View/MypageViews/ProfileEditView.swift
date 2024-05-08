@@ -81,7 +81,7 @@ struct ProfileEditView: View {
             CustomButtonBig(text: "수정하기", action: {
                 dismiss()
             }, color: Color("Black"), isActive: .constant(true))
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 30, trailing: 0))
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
             
         }
         .navigationBarBackButtonHidden(true)
