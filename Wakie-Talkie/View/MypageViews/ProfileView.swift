@@ -60,6 +60,12 @@ struct ProfileView: View {
                         Text("로그아웃")
                             .onTapGesture {
                                 isPresentingLogout = true
+                            }.alert(isPresented: $isPresentingLogout) {
+                                Alert(
+                                    title : Text("Wakie-Talkie에서 로그아웃하시겠어요?"),
+                                    primaryButton : .default(Text("네"), action: {  }),
+                                    secondaryButton : .cancel(Text("아니오"))
+                                )
                             }
                     }
                 }
