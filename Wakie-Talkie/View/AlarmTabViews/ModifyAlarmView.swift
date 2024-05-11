@@ -24,7 +24,8 @@ struct ModifyAlarmView: View {
     
 //    @Binding var alarmList: [AlarmTemp]
 //    @Binding var alarmData: AlarmTemp
-  //  @Query var alarmList: [Alarm]
+    @EnvironmentObject var alarmTimer: AlarmTimer
+    @Query var alarmList: [Alarm]
     @Bindable var alarmData: Alarm
     @Environment(\.modelContext) var context
     
@@ -138,6 +139,8 @@ struct ModifyAlarmView: View {
                 
                 time = dateFormatter.date(from: alarmTime + (isAmActive ? " AM":" PM")) ?? Date()
                 alarmData.time = time
+                AlarmManager.scheduleNextAlarm(alarms: alarmList)
+                    alarmTimer.updateNextAlarmTime(time:(AlarmManager.findNextAlarmTime(alarms: alarmList) ) ?? Calendar.current.date(from: DateComponents(year: 2099, month: 1, day: 1))!)
                 dismiss()
             }, color: Color("Black"), isActive: .constant(true))
             .frame(alignment: .bottom)
@@ -146,6 +149,7 @@ struct ModifyAlarmView: View {
             CustomButtonBig(text: "알람 삭제하기", action: {
                 //alarmList.removeAll{$0.id == alarmData.id}
                 context.delete(alarmData)
+                alarmTimer.updateNextAlarmTime(time:(AlarmManager.findNextAlarmTime(alarms: alarmList) ) ?? Calendar.current.date(from: DateComponents(year: 2099, month: 1, day: 1))!)
                 dismiss()
             }, color: Color("Accent1"), isActive: .constant(true))
             .frame(alignment: .bottom)

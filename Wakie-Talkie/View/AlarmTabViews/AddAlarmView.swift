@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddAlarmView: View {
     @Environment(\.dismiss) var dismiss
@@ -30,6 +31,7 @@ struct AddAlarmView: View {
     
     @State private var alarm = Alarm() //SD
     @Environment(\.modelContext) var context
+    @Query private var alarmList: [Alarm]
     
     var body: some View {
         VStack() {
@@ -164,7 +166,8 @@ struct AddAlarmView: View {
                     
                     context.insert(alarm)
                     
-//                    alarmTimer.updateNextAlarmTime(time:(AlarmManager.findNextAlarmTime(alarms: alarmList) ) ?? Calendar.current.date(from: DateComponents(year: 2099, month: 1, day: 1))!)
+                    AlarmManager.scheduleNextAlarm(alarms: alarmList)
+                    alarmTimer.updateNextAlarmTime(time:(AlarmManager.findNextAlarmTime(alarms: alarmList) ) ?? Calendar.current.date(from: DateComponents(year: 2099, month: 1, day: 1))!)
                     dismiss()
                 }
             }, color: Color("Black"), isActive: .constant(true))

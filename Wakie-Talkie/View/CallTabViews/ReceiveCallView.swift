@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ReceiveCallView: View {
     @Binding var navigateToReceiveCall: Bool
@@ -13,7 +14,7 @@ struct ReceiveCallView: View {
     @State var aiProfile: AIProfile
     @State private var callReceived: Bool = false
     @EnvironmentObject var alarmTimer: AlarmTimer
-    var alarmList: [AlarmTemp]
+    @Query private var alarmList: [Alarm]
     
     var body: some View {
         ZStack{
@@ -60,6 +61,7 @@ struct ReceiveCallView: View {
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 15, trailing: 0))
                     CustomButtonBig(text: "전화 받기", action: {dismiss()
                         navigateToReceiveCall = false
+                        AlarmManager.scheduleNextAlarm(alarms: alarmList)
                         alarmTimer.updateNextAlarmTime(time: (AlarmManager.findNextAlarmTime(alarms: alarmList) ) ?? Calendar.current.date(from: DateComponents(year: 2099, month: 1, day: 1))!) //TODO:empty array checking
                     }, color: Color("Black"), isActive: .constant(true))
                 }
