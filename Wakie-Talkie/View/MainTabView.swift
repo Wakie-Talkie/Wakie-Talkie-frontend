@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MainTabView: View {
-    @StateObject private var alarmDataFetcher = AlarmDataFetcher()
     @StateObject private var aiProfileDataFetcher = AIProfileDataFetcher()
     @StateObject private var vocabDataFetcher = VocabDataFetcher()
     @State private var selectedTab = 2
@@ -22,7 +21,7 @@ struct MainTabView: View {
                 case 1:
                     CallView(aiProfileList: aiProfileDataFetcher.aiProfiles ?? [])
                 case 2:
-                    AlarmView() //alarms: alarmDataFetcher.alarms ?? [])
+                    AlarmView()
                 default:
 //                    ProfileView()
                     VocabView(vocabs: vocabDataFetcher.vocabs ?? [], changeTab: $selectedTab)
@@ -91,7 +90,6 @@ struct MainTabView: View {
                 
             }
             .onAppear {
-               // $alarmDataFetcher.fetchAlarms()
                 aiProfileDataFetcher.fetchAIProfiles()
                 vocabDataFetcher.fetchVocabs()
             }
@@ -103,7 +101,6 @@ struct MainTabView: View {
                 ReceiveCallView(
                                 navigateToReceiveCall: $navigateToReceiveCall,
                                 aiProfile: AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "ai_profile_img", description: "like watching animation and go out for a walk.", language: "ENGLISH")
-                               // alarmList: alarmDataFetcher.alarms ?? [Alarm]()
                 )
             }
         }

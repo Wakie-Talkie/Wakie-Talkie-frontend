@@ -10,7 +10,6 @@ import SwiftData
 
 struct AlarmCell: View {
     @State private var week: [String] = ["일", "월", "화", "수", "목", "금","토"]
-    //@Binding var alarmData: AlarmTemp
     
     @Bindable var alarmData: Alarm
     var body: some View {
@@ -64,13 +63,3 @@ struct AlarmCell: View {
     }
 }
 
-//
-//struct AlarmCellTestView: View{
-//    @State var alarm: AlarmTemp = AlarmTemp(id: "alarm1", userId: "eunhwa813", time: Date.now, language: "ENGLISH", repeatDays: [false, false, true, false, false, false, false], isOn: true)
-//    var body: some View{
-//        AlarmCell(alarmData: alarm)
-//    }
-//}
-//#Preview {
-//    AlarmCellTestView()
-//}

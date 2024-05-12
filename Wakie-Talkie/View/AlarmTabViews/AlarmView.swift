@@ -10,10 +10,8 @@ import SwiftData
 
 
 struct AlarmView: View {
-   // @State var tempAlarms: [AlarmTemp]
     @State private var isPresentingAddAlarm = false
     @State private var isPresentingMypage = false
-    @State private var selectedAlarm: AlarmTemp?
     
     @Query private var alarms: [Alarm]
     
@@ -29,7 +27,7 @@ struct AlarmView: View {
                         }
                     }
                 }
-                VStack(spacing: alarms.isEmpty ? 30 : 0) {//tempAlarms.isEmpty ? 30 : 0) {
+                VStack(spacing: alarms.isEmpty ? 30 : 0) {
                     HStack {
                         Text("")
                             .frame(width: 25, height: 25)
@@ -51,7 +49,7 @@ struct AlarmView: View {
                         }
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 30))
                     }
-                    if alarms.isEmpty{ //tempAlarms.isEmpty {
+                    if alarms.isEmpty{
                         Spacer()
                         Text("아직 알람이 없어요!")
                             .font(.system(size: 25))
@@ -70,13 +68,6 @@ struct AlarmView: View {
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
                                 }
                             }
-//                            ForEach($tempAlarms){ alarm in
-//                                NavigationLink(destination: ModifyAlarmView(alarmList: $tempAlarms, alarmData: alarm)
-//                                ){
-//                                    AlarmCell(alarmData: alarm)
-//                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-//                                }
-//                            }
                         }
                         CustomButtonBig(text: "알람 추가하기", action: {
                             isPresentingAddAlarm = true
