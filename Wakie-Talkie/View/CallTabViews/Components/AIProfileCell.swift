@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AIProfileCell: View{
-    @State var aiData: AIProfile
+    var aiData: AIProfile
     var body: some View{
         ZStack{
             RoundedRectangle(cornerRadius: 20)
@@ -59,6 +59,6 @@ struct AICellTestView: View{
     }
 }
 
-#Preview {
-    AICellTestView()
-}
+//#Preview {
+//    AICellTestView()
+//}

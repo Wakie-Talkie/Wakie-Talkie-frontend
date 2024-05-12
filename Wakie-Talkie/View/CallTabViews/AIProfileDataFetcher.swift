@@ -19,6 +19,15 @@ class AIProfileDataFetcher: ObservableObject {
                 // 여기에서 UI 업데이트를 트리거할 수 있습니다.
                 // 예: NotificationCenter를 사용하거나, SwiftUI에서는 @Published 프로퍼티를 업데이트할 수 있습니다.
             }
+       }
+    }
+    func loadAiProfileSortedData() {
+        getAiProfileData { [weak self] aiProfilesData in
+            DispatchQueue.main.async {
+                self?.aiProfiles = aiProfilesData.sorted{$0.language < $1.language}
+                // 여기에서 UI 업데이트를 트리거할 수 있습니다.
+                // 예: NotificationCenter를 사용하거나, SwiftUI에서는 @Published 프로퍼티를 업데이트할 수 있습니다.
+            }
         }
     }
     func loadAiProfileDataFromLang(language: Int) {

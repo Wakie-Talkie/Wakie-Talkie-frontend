@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct AiVoiceCell: View {
-    @Binding var aiProfile: AIProfile
+    var aiProfile: AIProfile
     var action: () -> Void
     @Binding var isActive: Bool
     var body: some View{
@@ -38,7 +38,7 @@ struct AiVoiceCellTextView: View{
     @State var aiProfile: AIProfile = AIProfile(id: 1, nickname: "Alexis",profileImg: "ai_profile_me1", description: "like watching animation and go out for a walk.", language: 1)
     @State var isSelected: Bool = false
     var body: some View{
-        AiVoiceCell(aiProfile: $aiProfile,action: {
+        AiVoiceCell(aiProfile: aiProfile,action: {
             isSelected = !isSelected
             print("clicl?: " + String(isSelected))
         },isActive: $isSelected)

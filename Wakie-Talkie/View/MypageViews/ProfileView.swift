@@ -18,7 +18,7 @@ struct ProfileView: View {
     @State private var aiProfileDatas:[AIProfile] = []
     
     @ObservedObject var userData = UserDataFetcher()
-    @ObservedObject var aiProfileData = AIProfileDataFetcher()
+//    @ObservedObject var aiProfileData = AIProfileDataFetcher()
     
     var body: some View {
         NavigationStack {
@@ -101,16 +101,16 @@ struct ProfileView: View {
                 CallRecodView(recordList: recordDatas)
             }
             .navigationDestination(isPresented: $isPresentingAiVoice){
-                AiVoiceView(aiVoiceList: aiProfileDatas)
+                AiVoiceView()
             }
         }
         .onAppear(perform: {
             recordDataFetcher.fetchRecords()
             recordDatas = recordDataFetcher.records?.sorted{$0.date < $1.date} ?? []
             userData.loadUserData()
-            aiProfileData.loadAiProfileData()
+//            aiProfileData.loadAiProfileData()
 //            aiProfileDataFetcher.getAIProfiles()
-            aiProfileDatas = aiProfileData.aiProfiles?.sorted{$0.language < $1.language} ?? []
+//            aiProfileDatas = aiProfileData.aiProfiles?.sorted{$0.language < $1.language} ?? []
         })
     }
 }
