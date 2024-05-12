@@ -33,15 +33,33 @@ struct ProfileView: View {
                 }
                 VStack(alignment: .leading) {
                     HStack {
-                        CustomCircleImg(imageUrl: "ai_profile_me1", size: 90)
+                        CustomCircleImg(imageUrl: userData.user?.profileImg, size: 90)
                             .padding()
                         VStack(alignment: .leading) {
                             if let nickname = userData.user?.nickname {
                                 Text("\(nickname)")
                                     .font(.headline)
                             }
-                            Text("배우고 싶은 언어: English")
-                                .font(.subheadline)
+                            if let wantLanguage =  userData.user?.wantLanguage {
+                                switch (wantLanguage) {
+                                case 1:
+                                    Text("배우고 싶은 언어: English")
+                                        .font(.subheadline)
+                                case 2:
+                                    Text("배우고 싶은 언어: Korean")
+                                        .font(.subheadline)
+                                case 3:
+                                    Text("배우고 싶은 언어: Japanese")
+                                        .font(.subheadline)
+                                case 4:
+                                    Text("배우고 싶은 언어: Chinese")
+                                        .font(.subheadline)
+                                default:
+                                    Text("배우고 싶은 언어: 없음")
+                                        .font(.subheadline)
+                                }
+                                
+                            }
                         }
                         Spacer()
                     }

@@ -8,18 +8,40 @@
 import SwiftUI
 
 struct CustomCircleImg: View {
-    var imageUrl: String
+    var imageUrl: String?
     var showEditBtn: Bool = false
     var size: CGFloat
     
     var body: some View {
         ZStack {
-            Image(imageUrl) // 프로필 이미지 자리
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: size, height: size)
-                .clipShape(Circle())
-                .shadow(radius: 3)
+            if let imageUrl = imageUrl, let url = URL(string: imageUrl) {
+                AsyncImage(url: url) { phase in
+                    if let image = phase.image {
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: size, height: size)
+                            .clipShape(Circle())
+                            .shadow(radius: 3)
+                    } else if phase.error != nil {
+                        Image("profile") // 기본 이미지
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: size, height: size)
+                            .clipShape(Circle())
+                            .shadow(radius: 3)
+                    } else {
+                        ProgressView() // 로딩 중 표시
+                    }
+                }
+            } else {
+                Image("profile") // 기본 이미지
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: size, height: size)
+                    .clipShape(Circle())
+                    .shadow(radius: 3)
+            }
             if showEditBtn {
                 HStack {
                     Spacer()
