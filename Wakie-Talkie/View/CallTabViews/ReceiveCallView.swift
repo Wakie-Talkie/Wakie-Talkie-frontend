@@ -54,7 +54,7 @@ struct ReceiveCallView: View {
                     CustomButtonBig(text: "전화 끊기", action: {dismiss()}, color: Color("Accent1"), isActive: .constant(true))
                 }
                 else{
-                    Text("Speak " + aiProfile.language)
+                    Text("Speak " + String(aiProfile.language))
                         .fontWeight(.regular)
                         .font(.system(size: 20))
                         .foregroundColor(Color("Black"))

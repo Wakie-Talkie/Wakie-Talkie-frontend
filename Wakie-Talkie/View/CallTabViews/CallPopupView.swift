@@ -33,7 +33,7 @@ struct CallPopupView: View {
                 .foregroundColor(Color("Black"))
                 .frame(width:250, alignment: .center)
             Spacer()
-            Text("Speak " + aiProfile.language)
+            Text("Speak " + String(aiProfile.language))
                 .fontWeight(.light)
                 .font(.system(size: 20))
                 .foregroundColor(Color("Black"))
@@ -49,7 +49,7 @@ struct CallPopupView: View {
 
 struct CallPopupTestView: View{
     @State var aipofileData: AIProfile =
-        AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "ai_profile_img", description: "like watching animation and go out for a walk.", language: "ENGLISH")
+        AIProfile(id: 1, nickname: "Alexis",profileImg: "ai_profile_img", description: "like watching animation and go out for a walk.", language: 1)
     var body: some View{
         CallPopupView(aiProfile: aipofileData)
     }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainTabView: View {
     @StateObject private var alarmDataFetcher = AlarmDataFetcher()
-    @StateObject private var aiProfileDataFetcher = AIProfileDataFetcher()
+//    @StateObject private var aiProfileDataFetcher = AIProfileDataFetcher()
     @StateObject private var vocabDataFetcher = VocabDataFetcher()
     @State private var selectedTab = 2
     @State private var navigateToReceiveCall = false
@@ -20,7 +20,7 @@ struct MainTabView: View {
                 // 컨텐츠 영역
                 switch selectedTab {
                 case 1:
-                    CallView(aiProfileList: aiProfileDataFetcher.aiProfiles ?? [])
+                    CallView().environmentObject(AIProfileDataFetcher())
                 case 2:
                     AlarmView() //alarms: alarmDataFetcher.alarms ?? [])
                 default:
@@ -92,7 +92,7 @@ struct MainTabView: View {
             }
             .onAppear {
                // $alarmDataFetcher.fetchAlarms()
-                aiProfileDataFetcher.fetchAIProfiles()
+//                aiProfileDataFetcher.fetchAIProfiles()
                 vocabDataFetcher.fetchVocabs()
             }
             .onReceive(NotificationCenter.default.publisher(for: .init("TriggerReceiveCallView"))) { _ in
@@ -102,12 +102,11 @@ struct MainTabView: View {
             .navigationDestination(isPresented: $navigateToReceiveCall) {
                 ReceiveCallView(
                                 navigateToReceiveCall: $navigateToReceiveCall,
-                                aiProfile: AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "ai_profile_img", description: "like watching animation and go out for a walk.", language: "ENGLISH")
+                                aiProfile: AIProfile(id: 1, nickname: "Alexis",profileImg: "ai_profile_img", description: "like watching animation and go out for a walk.", language: 1)
                                // alarmList: alarmDataFetcher.alarms ?? [Alarm]()
                 )
             }
         }
-        
     }
 }
 

@@ -18,7 +18,7 @@ struct CallRecordCell: View {
                     .fontWeight(.medium)
                     .font(.system(size: 20))
                     .foregroundColor(Color("Black"))
-                Text(recordData.aiProfile.language + " - " + transTime(time: recordData.recordedTime))
+                Text(String(recordData.aiProfile.language) + " - " + transTime(time: recordData.recordedTime))
                     .fontWeight(.light)
                     .font(.system(size: 16))
                     .foregroundColor(Color("Black"))
@@ -40,7 +40,7 @@ struct CallRecordCell: View {
 struct CallRecordCellTestView: View{
     @State var record: Record = Record(id: "record1",
                                  userId: "eunhwa813",
-                                 aiProfile: AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "ai_profile_me1", description: "like watching animation and go out for a walk.", language: "영어"),
+                                 aiProfile: AIProfile(id: 1, nickname: "Alexis",profileImg: "ai_profile_me1", description: "like watching animation and go out for a walk.", language: 1),
                                        date: Date.now, recordedTime: "10:13")
     var body: some View{
         CallRecordCell(recordData: $record)

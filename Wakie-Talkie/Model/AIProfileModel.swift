@@ -8,13 +8,13 @@
 import Foundation
 
 struct AIProfile: Identifiable, Codable {
-    var id: String
+    var id: Int
     var nickname: String
     var profileImg: String?   // 옵셔널로 처리
     var description: String?
-    var language: String      // 외래키(FK) 대신 연관된 언어의 ID나 이름을 저장
+    var language: Int      // 외래키(FK) 대신 연관된 언어의 ID나 이름을 저장
     
-    init(id: String, nickname: String, profileImg: String? = nil, description: String? = nil, language: String) {
+    init(id: Int, nickname: String, profileImg: String? = nil, description: String? = nil, language: Int) {
         self.id = id
         self.nickname = nickname
         self.profileImg = profileImg

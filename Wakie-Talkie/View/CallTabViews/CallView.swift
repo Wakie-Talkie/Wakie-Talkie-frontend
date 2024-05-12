@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CallView: View {
-    @State var aiProfileList: [AIProfile]
+    @EnvironmentObject var aiDataFetcher: AIProfileDataFetcher
     @State private var selection: AIProfile? = nil
     @State private var showModal: Bool = false
     
@@ -48,12 +48,12 @@ struct CallView: View {
                 
                 //여기서 이제 언어 별 ai 띄우도록 거르는 function
                 ScrollView {
-                    ForEach(aiProfileList.indices, id: \.self){ index in
-                        AIProfileCell(aiData: aiProfileList[index])
+                    ForEach(aiDataFetcher.aiProfiles?.indices ?? [].indices, id: \.self){ index in
+                        AIProfileCell(aiData: aiDataFetcher.aiProfiles![index])
                                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                                 .onTapGesture {
                                     self.showModal = true
-                                    self.selection = aiProfileList[index]
+                                    self.selection = aiDataFetcher.aiProfiles![index]
                                 }
                     }
                 }
@@ -66,16 +66,14 @@ struct CallView: View {
                 Spacer()
             }
         }
+        .onAppear{
+            aiDataFetcher.getAIProfiles()
+        }
     }
 }
 struct CallTestView: View{
-    @State var aipofileData: [AIProfile] = [
-        AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "ai_profile_img", description: "like watching animation and go out for a walk.", language: "ENGLISH"),
-        AIProfile(id: "aiNo.2", nickname: "Sandy",profileImg: "ai_profile_img",description: "FUCK YOU", language: "ENGLISH"),
-        AIProfile(id: "aiNo.3", nickname: "Alice",profileImg: "ai_profile_alice",description: "SHUT UP ㅗ", language: "ENGLISH")
-    ]
     var body: some View{
-        CallView(aiProfileList: aipofileData)
+        CallView().environmentObject(AIProfileDataFetcher())
     }
 }
 
