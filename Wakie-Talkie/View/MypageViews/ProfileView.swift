@@ -13,11 +13,12 @@ struct ProfileView: View {
     @State private var isPresentingAiVoice = false
     @State private var isPresentingLogout = false
     @State private var recordDataFetcher = RecordDataFetcher()
-    @EnvironmentObject var aiProfileDataFetcher : AIProfileDataFetcher
+//    @EnvironmentObject var aiProfileDataFetcher : AIProfileDataFetcher
     @State private var recordDatas:[Record] = []
     @State private var aiProfileDatas:[AIProfile] = []
     
     @ObservedObject var userData = UserDataFetcher()
+    @ObservedObject var aiProfileData = AIProfileDataFetcher()
     
     var body: some View {
         NavigationStack {
@@ -107,12 +108,13 @@ struct ProfileView: View {
             recordDataFetcher.fetchRecords()
             recordDatas = recordDataFetcher.records?.sorted{$0.date < $1.date} ?? []
             userData.loadUserData()
-            aiProfileDataFetcher.getAIProfiles()
-            aiProfileDatas = aiProfileDataFetcher.aiProfiles?.sorted{$0.language < $1.language} ?? []
+            aiProfileData.loadAiProfileData()
+//            aiProfileDataFetcher.getAIProfiles()
+            aiProfileDatas = aiProfileData.aiProfiles?.sorted{$0.language < $1.language} ?? []
         })
     }
 }
 
-#Preview {
-    ProfileView()
-}
+//#Preview {
+//    ProfileView()
+//}

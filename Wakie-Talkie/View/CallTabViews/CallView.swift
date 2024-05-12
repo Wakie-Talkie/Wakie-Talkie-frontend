@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct CallView: View {
-    @EnvironmentObject var aiDataFetcher: AIProfileDataFetcher
+//    @EnvironmentObject var aiDataFetcher: AIProfileDataFetcher
+    @ObservedObject var aiProfileData = AIProfileDataFetcher()
     @State private var selection: AIProfile? = nil
     @State private var showModal: Bool = false
     
@@ -39,7 +40,7 @@ struct CallView: View {
                                     isLanguageSelected[i] = false
                                 }else{
                                     isLanguageSelected[i] = true
-                                    aiDataFetcher.getLanguageAIProfiles(language: i+1)
+                                    aiProfileData.loadAiProfileDataFromLang(language: i+1)
                                     //click한 언어 별로 알맞은 aiprofile들 띄워주는 funciton
                                 }
                             }
@@ -49,12 +50,12 @@ struct CallView: View {
                 
                 //여기서 이제 언어 별 ai 띄우도록 거르는 function
                 ScrollView {
-                    ForEach(aiDataFetcher.aiProfiles?.indices ?? [].indices, id: \.self){ index in
-                        AIProfileCell(aiData: aiDataFetcher.aiProfiles![index])
+                    ForEach(aiProfileData.aiProfiles?.indices ?? [].indices, id: \.self){ index in
+                        AIProfileCell(aiData: aiProfileData.aiProfiles![index])
                                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                                 .onTapGesture {
                                     self.showModal = true
-                                    self.selection = aiDataFetcher.aiProfiles![index]
+                                    self.selection = aiProfileData.aiProfiles![index]
                                 }
                     }
                 }
@@ -68,10 +69,12 @@ struct CallView: View {
             }
         }
         .onAppear{
-            aiDataFetcher.getAIProfiles()
+//            aiDataFetcher.getAIProfiles()
+            aiProfileData.loadAiProfileData()
         }
-        .onChange(of: aiDataFetcher.aiProfiles){ 
-            print(aiDataFetcher.aiProfiles)
+        .onChange(of: aiProfileData.aiProfiles){
+            print(aiProfileData.aiProfiles)
+            print("profile nickname!!!! : \(aiProfileData.aiProfiles?[0].nickname)")
         }
     }
 }
@@ -81,6 +84,6 @@ struct CallTestView: View{
     }
 }
 
-#Preview {
-    CallTestView()
-}
+//#Preview {
+//    CallTestView()
+//}

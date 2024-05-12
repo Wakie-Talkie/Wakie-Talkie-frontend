@@ -81,7 +81,7 @@ struct AlarmView: View {
                 AddAlarmView()
             }
             .navigationDestination(isPresented: $isPresentingMypage){
-                ProfileView().environmentObject(AIProfileDataFetcher())
+                ProfileView()
             }
         }
     }
