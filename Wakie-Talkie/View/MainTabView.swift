@@ -19,7 +19,7 @@ struct MainTabView: View {
                 // 컨텐츠 영역
                 switch selectedTab {
                 case 1:
-                    CallView().environmentObject(AIProfileDataFetcher())
+                    CallView()
                 case 2:
                     AlarmView()
                 default:
@@ -106,6 +106,6 @@ struct MainTabView: View {
     }
 }
 
-#Preview {
-    MainTabView()
-}
+//#Preview {
+//    MainTabView()
+//}
