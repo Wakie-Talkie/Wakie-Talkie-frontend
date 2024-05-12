@@ -71,7 +71,7 @@ struct SendCallView: View {
                     }, color: Color("Accent1"), isActive: .constant(true))
                 }
                 else{
-                    Text("Speak " + aiProfile.language)
+                    Text("Speak " + String(aiProfile.language))
                         .fontWeight(.regular)
                         .font(.system(size: 20))
                         .foregroundColor(Color("Black"))
@@ -126,7 +126,7 @@ struct SendCallView: View {
 }
 struct CallingTestView: View{
     @State var aipofileData: AIProfile =
-        AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "ai_profile_img", description: "like watching animation and go out for a walk.", language: "ENGLISH")
+        AIProfile(id: 1, nickname: "Alexis",profileImg: "ai_profile_img", description: "like watching animation and go out for a walk.", language: 1)
     var body: some View{
         SendCallView(aiProfile: aipofileData)
     }

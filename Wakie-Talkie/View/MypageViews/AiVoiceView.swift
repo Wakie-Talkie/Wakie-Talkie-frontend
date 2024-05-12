@@ -35,7 +35,7 @@ struct AiVoiceView: View {
                     VStack{
                         if (index == 0)||((index != 0)&&(binding.language.wrappedValue != $aiVoiceList[index-1].language.wrappedValue)) {
                             HStack {
-                                Text(binding.language.wrappedValue)
+                                Text(String(binding.language.wrappedValue))
                                     .fontWeight(.medium)
                                     .font(.system(size: 18))
                                 .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing: 0))
@@ -55,10 +55,10 @@ struct AiVoiceView: View {
 
 struct AiVoiceTestView: View{
     @State var aipofileData: [AIProfile] = [
-        AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "ai_profile_me1", description: "like watching animation and go out for a walk.", language: "영어"),
-        AIProfile(id: "aiNo.2", nickname: "Sandy",profileImg: "ai_profile_me2",description: "FUCK YOU", language: "영어"),
-        AIProfile(id: "aiNo.3", nickname: "七星",profileImg: "ai_profile_me3",description: "因縁は 偶然に 尋ねて", language: "일본어"),
-        AIProfile(id: "aiNo.4", nickname: "フレーズ",profileImg: "ai_profile_me1",description: "時は 人を 待たず", language: "일본어")
+        AIProfile(id: 1, nickname: "Alexis",profileImg: "ai_profile_me1", description: "like watching animation and go out for a walk.", language: 1),
+        AIProfile(id: 1, nickname: "Sandy",profileImg: "ai_profile_me2",description: "FUCK YOU", language: 1),
+        AIProfile(id: 3, nickname: "七星",profileImg: "ai_profile_me3",description: "因縁は 偶然に 尋ねて", language: 2),
+        AIProfile(id: 4, nickname: "フレーズ",profileImg: "ai_profile_me1",description: "時は 人を 待たず", language: 2)
     ]
     var body: some View{
         AiVoiceView(aiVoiceList: aipofileData)

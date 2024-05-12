@@ -63,19 +63,19 @@ struct CallRecordTestView: View{
     @State var recordDatas: [Record] = [
         Record(id: "record1",
                userId: "eunhwa813",
-               aiProfile: AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "ai_profile_me1", description: "like watching animation and go out for a walk.", language: "영어"),
+               aiProfile: AIProfile(id: 1, nickname: "Alexis",profileImg: "ai_profile_me1", description: "like watching animation and go out for a walk.", language: 1),
                date: Date.now, recordedTime: "10:13"),
         Record(id: "record2",
                userId: "eunhwa813",
-               aiProfile: AIProfile(id: "aiNo.2", nickname: "Sandy",profileImg: "ai_profile_me2",description: "LUV U", language: "영어"),
+               aiProfile: AIProfile(id: 2, nickname: "Sandy",profileImg: "ai_profile_me2",description: "LUV U", language: 1),
                date: Date.now, recordedTime: "12:3"),
         Record(id: "record3",
                userId: "eunhwa813",
-               aiProfile: AIProfile(id: "aiNo.1", nickname: "Alexis",profileImg: "ai_profile_me1", description: "like watching animation and go out for a walk.", language: "영어"),
+               aiProfile: AIProfile(id: 1, nickname: "Alexis",profileImg: "ai_profile_me1", description: "like watching animation and go out for a walk.", language: 1),
                date: Date.now, recordedTime: "10:13"),
         Record(id: "record4",
                userId: "eunhwa813",
-               aiProfile: AIProfile(id: "aiNo.2", nickname: "Sandy",profileImg: "ai_profile_me2",description: "LUV U", language: "영어"),
+               aiProfile: AIProfile(id: 2, nickname: "Sandy",profileImg: "ai_profile_me2",description: "LUV U", language: 1),
                date: Date.now, recordedTime: "9:3")
     ]
 

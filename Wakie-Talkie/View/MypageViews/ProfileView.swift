@@ -13,7 +13,7 @@ struct ProfileView: View {
     @State private var isPresentingAiVoice = false
     @State private var isPresentingLogout = false
     @State private var recordDataFetcher = RecordDataFetcher()
-    @State private var aiProfileDataFetcher = AIProfileDataFetcher()
+    @EnvironmentObject var aiProfileDataFetcher : AIProfileDataFetcher
     @State private var recordDatas:[Record] = []
     @State private var aiProfileDatas:[AIProfile] = []
     
@@ -84,7 +84,7 @@ struct ProfileView: View {
         .onAppear(perform: {
             recordDataFetcher.fetchRecords()
             recordDatas = recordDataFetcher.records?.sorted{$0.date < $1.date} ?? []
-            aiProfileDataFetcher.fetchAIProfiles()
+            aiProfileDataFetcher.getAIProfiles()
             aiProfileDatas = aiProfileDataFetcher.aiProfiles?.sorted{$0.language < $1.language} ?? []
         })
     }

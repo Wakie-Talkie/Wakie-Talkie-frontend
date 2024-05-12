@@ -12,7 +12,7 @@ import SwiftData
 struct WakieTalkieApp: App {
     @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
     var alarmTimer = AlarmTimer()
-    
+
     var body: some Scene {
         WindowGroup{
             //LoginView()
