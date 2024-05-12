@@ -39,6 +39,7 @@ struct CallView: View {
                                     isLanguageSelected[i] = false
                                 }else{
                                     isLanguageSelected[i] = true
+                                    aiDataFetcher.getLanguageAIProfiles(language: i+1)
                                     //click한 언어 별로 알맞은 aiprofile들 띄워주는 funciton
                                 }
                             }
@@ -68,6 +69,9 @@ struct CallView: View {
         }
         .onAppear{
             aiDataFetcher.getAIProfiles()
+        }
+        .onChange(of: aiDataFetcher.aiProfiles){ 
+            print(aiDataFetcher.aiProfiles)
         }
     }
 }

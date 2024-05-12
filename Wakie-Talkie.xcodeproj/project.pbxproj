@@ -17,6 +17,7 @@
 		501649332BDA292C00A5EE32 /* SendCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501649322BDA292C00A5EE32 /* SendCallView.swift */; };
 		501649362BDA7A3800A5EE32 /* AudioRecordingFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501649352BDA7A3800A5EE32 /* AudioRecordingFunc.swift */; };
 		504611EF2BF0706B006161EB /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504611EE2BF0706B006161EB /* HTTPManager.swift */; };
+		504611F12BF091C3006161EB /* JSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504611F02BF091C2006161EB /* JSONConverter.swift */; };
 		5065F8DE2BE88CF1009E6EDB /* VocabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DD2BE88CF1009E6EDB /* VocabView.swift */; };
 		5065F8E02BE88E26009E6EDB /* VocabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DF2BE88E26009E6EDB /* VocabModel.swift */; };
 		5065F8E22BE88F94009E6EDB /* VocabDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */; };
@@ -71,6 +72,7 @@
 		501649322BDA292C00A5EE32 /* SendCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCallView.swift; sourceTree = "<group>"; };
 		501649352BDA7A3800A5EE32 /* AudioRecordingFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordingFunc.swift; sourceTree = "<group>"; };
 		504611EE2BF0706B006161EB /* HTTPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
+		504611F02BF091C2006161EB /* JSONConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JSONConverter.swift; path = "Wakie-Talkie/Utilities/JSONConverter.swift"; sourceTree = SOURCE_ROOT; };
 		5065F8DD2BE88CF1009E6EDB /* VocabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabView.swift; sourceTree = "<group>"; };
 		5065F8DF2BE88E26009E6EDB /* VocabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabModel.swift; sourceTree = "<group>"; };
 		5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VocabDataFetcher.swift; path = "Wakie-Talkie/Model/VocabDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
@@ -316,6 +318,7 @@
 				AE228E732BDB96A100B35657 /* AlarmManager.swift */,
 				AE228E782BDE2CD200B35657 /* AlarmTimer.swift */,
 				504611EE2BF0706B006161EB /* HTTPManager.swift */,
+				504611F02BF091C2006161EB /* JSONConverter.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				501649312BDA18CF00A5EE32 /* AIProfileDataFetcher.swift in Sources */,
 				50C7A1B32BEA6F4B00743D9E /* CustomCircleImg.swift in Sources */,
 				5065F8E22BE88F94009E6EDB /* VocabDataFetcher.swift in Sources */,
+				504611F12BF091C3006161EB /* JSONConverter.swift in Sources */,
 				50158D2D2BDEA1FA0086BF05 /* AudioPlayerFunc.swift in Sources */,
 				50C7A1B92BEA7E9600743D9E /* AiVoiceView.swift in Sources */,
 				50F7264C2BC66D9B00078A6D /* CustomButtonCircle.swift in Sources */,

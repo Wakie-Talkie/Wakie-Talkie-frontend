@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AIProfile: Identifiable, Codable {
+struct AIProfile: Identifiable, Codable, Equatable {
     var id: Int
     var nickname: String
     var profileImg: String?   // 옵셔널로 처리
