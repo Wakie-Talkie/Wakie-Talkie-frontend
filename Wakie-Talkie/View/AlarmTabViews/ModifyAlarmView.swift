@@ -22,8 +22,6 @@ struct ModifyAlarmView: View {
     @State private var editingHour: String = ""
     @State private var editingMin: String = ""
     
-//    @Binding var alarmList: [AlarmTemp]
-//    @Binding var alarmData: AlarmTemp
     @EnvironmentObject var alarmTimer: AlarmTimer
     @Query var alarmList: [Alarm]
     @Bindable var alarmData: Alarm
@@ -147,7 +145,6 @@ struct ModifyAlarmView: View {
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
             
             CustomButtonBig(text: "알람 삭제하기", action: {
-                //alarmList.removeAll{$0.id == alarmData.id}
                 context.delete(alarmData)
                 alarmTimer.updateNextAlarmTime(time:(AlarmManager.findNextAlarmTime(alarms: alarmList) ) ?? Calendar.current.date(from: DateComponents(year: 2099, month: 1, day: 1))!)
                 dismiss()

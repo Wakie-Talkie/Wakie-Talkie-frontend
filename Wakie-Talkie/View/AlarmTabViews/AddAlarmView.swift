@@ -10,13 +10,11 @@ import SwiftData
 
 struct AddAlarmView: View {
     @Environment(\.dismiss) var dismiss
-  //  @Binding var alarmList: [AlarmTemp]
     @EnvironmentObject var alarmTimer: AlarmTimer
     
     @State private var week: [String] = ["일", "월", "화", "수", "목", "금","토"]
     @State private var languages: [String] = ["영어", "한국어", "중국어", "일본어"]
     @State private var translatedLanguages: [String] = ["ENGLISH", "KOREAN", "CHINESE", "JAPANESE"]
-    @State private var addAlarmData: AlarmTemp = AlarmTemp()
     @State private var isAmActive: Bool = false
     @State private var isPmActive: Bool = false
     @State private var isLanguageSelected: [Bool] = [false, false, false, false]
@@ -145,19 +143,12 @@ struct AddAlarmView: View {
             }
             CustomButtonBig(text: "알람 추가하기", action: {
                 if((isAmActive || isPmActive) && !(language.isEmpty)){
-                    addAlarmData.id = "alarm7"
-                    addAlarmData.userId = "eunhwa813"
-                    addAlarmData.isOn = true
-                    addAlarmData.language = language
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "h:mm a"
                     dateFormatter.locale = Locale(identifier: "en_US_POSIX")
                     
                     time = dateFormatter.date(from: alarmTime + (isAmActive ? " AM":" PM")) ?? Date()
-                    addAlarmData.time = time
-                    addAlarmData.repeatDays = repeatDays
-                    
-                  //  alarmList.append(addAlarmData)
+
                     alarm.id = UUID()
                     alarm.time = time
                     alarm.isOn = true
