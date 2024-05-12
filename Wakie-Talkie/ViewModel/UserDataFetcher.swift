@@ -9,7 +9,7 @@ import Foundation
 
 
 final class UserDataFetcher: ObservableObject {
-    var user: User?
+    @Published var user: User?
     
     func loadUserData() {
         getUserData { [weak self] userData in
