@@ -43,6 +43,7 @@
 		50F7264C2BC66D9B00078A6D /* CustomButtonCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7264B2BC66D9B00078A6D /* CustomButtonCircle.swift */; };
 		50F7264E2BC676AC00078A6D /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7264D2BC676AC00078A6D /* AlarmCell.swift */; };
 		50F726522BC6BB9700078A6D /* ModifyAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726512BC6BB9700078A6D /* ModifyAlarmView.swift */; };
+		AE0BF2412BF092AA008016AA /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0BF2402BF092AA008016AA /* HTTPMethod.swift */; };
 		AE228E722BDB81BF00B35657 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E712BDB81BF00B35657 /* AppDelegate.swift */; };
 		AE228E742BDB96A100B35657 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E732BDB96A100B35657 /* AlarmManager.swift */; };
 		AE228E772BDE14DC00B35657 /* ReceiveCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E762BDE14DC00B35657 /* ReceiveCallView.swift */; };
@@ -98,6 +99,7 @@
 		50F7264B2BC66D9B00078A6D /* CustomButtonCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonCircle.swift; sourceTree = "<group>"; };
 		50F7264D2BC676AC00078A6D /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		50F726512BC6BB9700078A6D /* ModifyAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyAlarmView.swift; sourceTree = "<group>"; };
+		AE0BF2402BF092AA008016AA /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		AE228E702BDB818E00B35657 /* Wakie-Talkie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Wakie-Talkie.entitlements"; sourceTree = "<group>"; };
 		AE228E712BDB81BF00B35657 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE228E732BDB96A100B35657 /* AlarmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmManager.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				5065F8DF2BE88E26009E6EDB /* VocabModel.swift */,
 				50C7A1C02BEB11AC00743D9E /* RecordModel.swift */,
 				AE91B3F42BEB8A34008B8CFB /* AlarmModel.swift */,
+				AE0BF2402BF092AA008016AA /* HTTPMethod.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				50F7264E2BC676AC00078A6D /* AlarmCell.swift in Sources */,
 				50F7264A2BC66D7100078A6D /* CustomButtonSmall.swift in Sources */,
 				50C7A1BF2BEB0FF100743D9E /* CallRecordCell.swift in Sources */,
+				AE0BF2412BF092AA008016AA /* HTTPMethod.swift in Sources */,
 				AE9F0C3B2BC3FA5A007B2B1E /* AlarmView.swift in Sources */,
 				5016492D2BDA029F00A5EE32 /* AIProfileCell.swift in Sources */,
 				AE9F0C3D2BC3FA6D007B2B1E /* CallView.swift in Sources */,
@@ -595,7 +599,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wakie-Talkie/Preview Content\"";
-				DEVELOPMENT_TEAM = CT9F24W469;
+				DEVELOPMENT_TEAM = 57QLLZQ6H9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Wakie-Talkie/Info.plist";
@@ -629,7 +633,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wakie-Talkie/Preview Content\"";
-				DEVELOPMENT_TEAM = CT9F24W469;
+				DEVELOPMENT_TEAM = 57QLLZQ6H9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "마이크를 사용하여 음성을 녹음합니다";

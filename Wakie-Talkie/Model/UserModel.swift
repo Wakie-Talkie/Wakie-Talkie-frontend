@@ -15,6 +15,12 @@ struct User: Identifiable, Codable {
     var language: String      // 사용자의 모국어
     var wantLanguage: [String]// 사용자가 배우고 싶어하는 언어 목록
     
+    enum CodingKeys: String, CodingKey {
+        case id, nickname, description, language
+        case profileImg = "profile_img"
+        case wantLanguage = "want_language"
+    }
+    
     // 커스텀 초기화 메소드 (옵셔널 필드를 처리하기 위해)
     init(id: String, nickname: String, profileImg: String? = nil, description: String? = nil, language: String, wantLanguage: [String]) {
         self.id = id
