@@ -17,6 +17,8 @@ struct ProfileView: View {
     @State private var recordDatas:[Record] = []
     @State private var aiProfileDatas:[AIProfile] = []
     
+    @ObservedObject var userData = UserDataFetcher()
+    
     var body: some View {
         NavigationStack {
             ZStack{
@@ -34,8 +36,10 @@ struct ProfileView: View {
                         CustomCircleImg(imageUrl: "ai_profile_me1", size: 90)
                             .padding()
                         VStack(alignment: .leading) {
-                            Text("민지민")
-                                .font(.headline)
+                            if let nickname = userData.user?.nickname {
+                                Text("\(nickname)")
+                                    .font(.headline)
+                            }
                             Text("배우고 싶은 언어: English")
                                 .font(.subheadline)
                         }
@@ -84,6 +88,7 @@ struct ProfileView: View {
         .onAppear(perform: {
             recordDataFetcher.fetchRecords()
             recordDatas = recordDataFetcher.records?.sorted{$0.date < $1.date} ?? []
+            userData.loadUserData()
             aiProfileDataFetcher.getAIProfiles()
             aiProfileDatas = aiProfileDataFetcher.aiProfiles?.sorted{$0.language < $1.language} ?? []
         })

@@ -44,6 +44,7 @@
 		50F7264E2BC676AC00078A6D /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7264D2BC676AC00078A6D /* AlarmCell.swift */; };
 		50F726522BC6BB9700078A6D /* ModifyAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726512BC6BB9700078A6D /* ModifyAlarmView.swift */; };
 		AE0BF2412BF092AA008016AA /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0BF2402BF092AA008016AA /* HTTPMethod.swift */; };
+		AE0BF2432BF0986F008016AA /* UserDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0BF2422BF0986F008016AA /* UserDataFetcher.swift */; };
 		AE228E722BDB81BF00B35657 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E712BDB81BF00B35657 /* AppDelegate.swift */; };
 		AE228E742BDB96A100B35657 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E732BDB96A100B35657 /* AlarmManager.swift */; };
 		AE228E772BDE14DC00B35657 /* ReceiveCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E762BDE14DC00B35657 /* ReceiveCallView.swift */; };
@@ -100,6 +101,7 @@
 		50F7264D2BC676AC00078A6D /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		50F726512BC6BB9700078A6D /* ModifyAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyAlarmView.swift; sourceTree = "<group>"; };
 		AE0BF2402BF092AA008016AA /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		AE0BF2422BF0986F008016AA /* UserDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataFetcher.swift; sourceTree = "<group>"; };
 		AE228E702BDB818E00B35657 /* Wakie-Talkie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Wakie-Talkie.entitlements"; sourceTree = "<group>"; };
 		AE228E712BDB81BF00B35657 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE228E732BDB96A100B35657 /* AlarmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmManager.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				501649302BDA18CF00A5EE32 /* AIProfileDataFetcher.swift */,
 				5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */,
 				50C7A1C22BEB122700743D9E /* RecordDataFetcher.swift */,
+				AE0BF2422BF0986F008016AA /* UserDataFetcher.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -451,6 +454,7 @@
 				5013022E2BE0F27300F20086 /* AudioEngineFunc.swift in Sources */,
 				501649312BDA18CF00A5EE32 /* AIProfileDataFetcher.swift in Sources */,
 				50C7A1B32BEA6F4B00743D9E /* CustomCircleImg.swift in Sources */,
+				AE0BF2432BF0986F008016AA /* UserDataFetcher.swift in Sources */,
 				5065F8E22BE88F94009E6EDB /* VocabDataFetcher.swift in Sources */,
 				504611F12BF091C3006161EB /* JSONConverter.swift in Sources */,
 				50158D2D2BDEA1FA0086BF05 /* AudioPlayerFunc.swift in Sources */,
