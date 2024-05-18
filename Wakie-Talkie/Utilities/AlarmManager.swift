@@ -95,7 +95,7 @@ class AlarmManager {
 
     
     static func scheduleAlarmNotifications(alarm: Alarm) {
-        let notificationTimes: [TimeInterval] = [0, 5, 10]  // 0초, 5초, 10초 후 -> 100개나 500개로 늘릴거임
+        let notificationTimes: [TimeInterval] = Array(stride(from: 0, to: 5 * 120, by: 5))
         for secondsToAdd in notificationTimes {
             scheduleNotification(alarm: alarm, date: AlarmManager.getNextAlarmTime(for: alarm)!, secondsToAdd: secondsToAdd)
         }
@@ -104,7 +104,7 @@ class AlarmManager {
     static func scheduleNotification(alarm: Alarm, date: Date, secondsToAdd: TimeInterval) {
         let content = UNMutableNotificationContent()
         content.title = "Alarm for \(alarm.language)"
-        content.body = "Alarm set for \(alarm.language) at \(alarm.time.formatted())"
+        content.body = "제 전화를 받아주세요!"
         content.sound = UNNotificationSound.default
 
         var dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)

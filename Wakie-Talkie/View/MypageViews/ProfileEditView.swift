@@ -10,6 +10,10 @@ import SwiftUI
 struct ProfileEditView: View {
     @Environment(\.dismiss) var dismiss
     @State private var islanguageSelected: [Bool] = [false,false,false,false,false]
+    
+    @ObservedObject var userData = UserDataFetcher()
+    @ObservedObject var aiProfileData = AIProfileDataFetcher()
+    
     var body: some View {
         VStack(spacing: 0){
             HStack {
@@ -29,7 +33,7 @@ struct ProfileEditView: View {
                 Text("")
                     .padding(EdgeInsets(top: 30, leading: 0, bottom: 30, trailing: 30))
             }
-            CustomCircleImg(imageUrl: "ai_profile_me1",showEditBtn: true, size: 150)
+            CustomCircleImg(imageUrl: userData.user?.profileImg,showEditBtn: true, size: 150)
                 .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
             HStack(){
                 Text("닉네임")
@@ -37,11 +41,15 @@ struct ProfileEditView: View {
                     .font(.system(size: 25))
                     .foregroundColor(Color("Black"))
                     .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 0))
+                if let nickname = userData.user?.nickname {
+                    Text("\(nickname)")
+                        .fontWeight(.light)
+                        .font(.system(size: 25))
+                        .foregroundColor(Color("Black"))
+                        .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 0))
+                }
                 Text("밍밍망")
-                    .fontWeight(.light)
-                    .font(.system(size: 25))
-                    .foregroundColor(Color("Black"))
-                    .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 0))
+                    
                 Spacer()
             }
             VStack(){
@@ -79,6 +87,7 @@ struct ProfileEditView: View {
             }
             Spacer()
             CustomButtonBig(text: "수정하기", action: {
+                //TODO: 수정사항 반영하기
                 dismiss()
             }, color: Color("Black"), isActive: .constant(true))
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))

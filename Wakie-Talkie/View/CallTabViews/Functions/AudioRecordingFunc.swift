@@ -18,7 +18,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject{
     let silenceThreshold: Float = -27.0 // dB
     let maxSilenceDuration: TimeInterval = 1.5 // 최대 지속 시간 (초)
     var silenceStartTime: Date?
-    
+
     override init() {
         recordingSession = AVAudioSession.sharedInstance()
         super.init()
@@ -41,8 +41,10 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject{
     }
 
     func startRecording() {
+        print("==레코딩 시작!!!")
         let audioFilename = getDocumentsDirectory()
-        print("from recorder \(audioFilename)")
+        self.audioFilePath = audioFilename
+        print("오디오파일경로를 만들엇어용 \(self.audioFilePath)")
         let settings = [
             AVFormatIDKey: Int(kAudioFormatLinearPCM),
             AVSampleRateKey: 44100,
@@ -71,7 +73,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject{
     func getDecibelLevel()->Float{
         return dbLevel
     }
-    
+
     private func startLevelTimer() {
         levelTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { [unowned self] _ in
             updateAudioLevels()
@@ -112,9 +114,9 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject{
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        
+
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        self.audioFilePath = paths[0].appending(path:(dateFormatter.string(from: Date.now)+".wav"))
-        return audioFilePath ?? paths[0].appending(path:(dateFormatter.string(from: Date.now)+".wav"))
+            self.audioFilePath = paths[0].appending(path:(dateFormatter.string(from: Date.now)+".wav"))
+        return audioFilePath!
     }
 }

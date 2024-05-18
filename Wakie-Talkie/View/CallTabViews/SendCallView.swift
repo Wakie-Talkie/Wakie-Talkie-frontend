@@ -21,7 +21,7 @@ struct SendCallView: View {
     private let postModel = UploadRecordingModel(userId: 1, aiPartnerId: 1)
 //    @State var postModel: UploadRecordingModel
 //    @StateObject private var audioPlayer: AudioPlayerFunc = AudioPlayerFunc()
-    
+
     var body: some View {
         ZStack{
             GeometryReader { geometry in
@@ -45,7 +45,7 @@ struct SendCallView: View {
                         .font(.system(size: 25))
                         .padding(EdgeInsets(top: 30, leading: 0, bottom: 80, trailing: 0))
                 }
-                
+
                 Image(aiProfile.profileImg ?? "ai_profile_img")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
@@ -63,7 +63,7 @@ struct SendCallView: View {
                     .foregroundColor(Color("Black"))
                     .frame(width:250, alignment: .center)
                 Spacer()
-                
+
                 if callReceived{
                     Text("decibel \(audioRecorder.dbLevel)")
                     Text(self.audioRecorder.isRecording ? "recording" : "player")
@@ -91,7 +91,7 @@ struct SendCallView: View {
             }
         }
         .onChange(of: self.audioRecorder.isRecording){
-            print("is it recording? " + String(self.audioRecorder.isRecording))
+           // print("is it recording? " + String(self.audioRecorder.isRecording))
             if(!self.audioRecorder.isRecording){
                 if(audioRecorder.audioFilePath != nil){
                     audioFileDataUploader.uploadAudioFile(url: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/upload-audio/" , model: postModel, audioFilePath: audioRecorder.audioFilePath?.path() ?? "") { result in
@@ -107,10 +107,18 @@ struct SendCallView: View {
                     }
                     print("start player")
                 }
+//=======
+//                print("1. start player, 오디오레코더 레코딩중인가요?", self.audioRecorder.isRecording)
+//                audioEngine.setupAudioPlayer(audioFilePath: audioRecorder.audioFilePath)
+//                audioEngine.audioPlay()
+////                audioPlayer.setupAudioPlayer(audioFilePath: audioRecorder.audioFilePath)
+////                audioPlayer.playAudio()
+//>>>>>>> Stashed changes
             }
         }
         .onChange(of: self.audioEngine.isPlaying){
             if(!self.audioEngine.isPlaying){
+                print("2. answer, 파일 재생이 끝났나요? ", self.audioEngine.isPlaying)
                 audioRecorder.startRecording()
             }
         }

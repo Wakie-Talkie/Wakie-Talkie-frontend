@@ -10,7 +10,7 @@ import Foundation
 
 final class UserDataFetcher: ObservableObject {
     @Published var user: User?
-    
+
     func loadUserData() {
         getUserData { [weak self] userData in
             DispatchQueue.main.async {
@@ -20,10 +20,10 @@ final class UserDataFetcher: ObservableObject {
             }
         }
     }
-    
+
     func getUserData(completion: @escaping (User) -> Void){
         HTTPManager.requestGET(url:
-                                "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/users/2/"
+            "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/users/2/"
         ) { data in
             guard let data: User = JSONConverter.decodeJson(data: data) else { return
             }
