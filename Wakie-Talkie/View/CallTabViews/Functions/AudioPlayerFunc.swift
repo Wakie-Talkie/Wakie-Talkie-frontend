@@ -29,10 +29,8 @@ class AudioPlayerFunc: NSObject,ObservableObject, AVAudioPlayerDelegate{
     }
     func playAudio(){
         if (audioPlayer != nil && !audioPlayer.isPlaying){
+            self.isPlayerPlaying = true
             audioPlayer.play()
-            DispatchQueue.main.async {
-                self.isPlayerPlaying = true
-            }
         }else{
             print("audioPlayer nilll")
         }
@@ -40,8 +38,6 @@ class AudioPlayerFunc: NSObject,ObservableObject, AVAudioPlayerDelegate{
 
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         print("Did finish Playing")
-        DispatchQueue.main.async {
-            self.isPlayerPlaying = false
-        }
+        self.isPlayerPlaying = false
     }
 }

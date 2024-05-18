@@ -16,6 +16,9 @@
 		501649312BDA18CF00A5EE32 /* AIProfileDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501649302BDA18CF00A5EE32 /* AIProfileDataFetcher.swift */; };
 		501649332BDA292C00A5EE32 /* SendCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501649322BDA292C00A5EE32 /* SendCallView.swift */; };
 		501649362BDA7A3800A5EE32 /* AudioRecordingFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501649352BDA7A3800A5EE32 /* AudioRecordingFunc.swift */; };
+		5037546C2BF890D900817459 /* AudioDataFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037546B2BF890D900817459 /* AudioDataFetch.swift */; };
+		5037546E2BF8C3C000817459 /* UploadRecordingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037546D2BF8C3C000817459 /* UploadRecordingModel.swift */; };
+		503754702BF8D03100817459 /* AudioFileDataUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5037546F2BF8D03100817459 /* AudioFileDataUploader.swift */; };
 		504611EF2BF0706B006161EB /* HTTPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504611EE2BF0706B006161EB /* HTTPManager.swift */; };
 		504611F12BF091C3006161EB /* JSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504611F02BF091C2006161EB /* JSONConverter.swift */; };
 		5065F8DE2BE88CF1009E6EDB /* VocabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DD2BE88CF1009E6EDB /* VocabView.swift */; };
@@ -73,6 +76,9 @@
 		501649302BDA18CF00A5EE32 /* AIProfileDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AIProfileDataFetcher.swift; path = "Wakie-Talkie/View/CallTabViews/AIProfileDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
 		501649322BDA292C00A5EE32 /* SendCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendCallView.swift; sourceTree = "<group>"; };
 		501649352BDA7A3800A5EE32 /* AudioRecordingFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioRecordingFunc.swift; sourceTree = "<group>"; };
+		5037546B2BF890D900817459 /* AudioDataFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioDataFetch.swift; sourceTree = "<group>"; };
+		5037546D2BF8C3C000817459 /* UploadRecordingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadRecordingModel.swift; sourceTree = "<group>"; };
+		5037546F2BF8D03100817459 /* AudioFileDataUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioFileDataUploader.swift; sourceTree = "<group>"; };
 		504611EE2BF0706B006161EB /* HTTPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPManager.swift; sourceTree = "<group>"; };
 		504611F02BF091C2006161EB /* JSONConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JSONConverter.swift; path = "Wakie-Talkie/Utilities/JSONConverter.swift"; sourceTree = SOURCE_ROOT; };
 		5065F8DD2BE88CF1009E6EDB /* VocabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabView.swift; sourceTree = "<group>"; };
@@ -279,6 +285,7 @@
 				50C7A1C02BEB11AC00743D9E /* RecordModel.swift */,
 				AE91B3F42BEB8A34008B8CFB /* AlarmModel.swift */,
 				AE0BF2402BF092AA008016AA /* HTTPMethod.swift */,
+				5037546D2BF8C3C000817459 /* UploadRecordingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -306,6 +313,8 @@
 				5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */,
 				50C7A1C22BEB122700743D9E /* RecordDataFetcher.swift */,
 				AE0BF2422BF0986F008016AA /* UserDataFetcher.swift */,
+				5037546B2BF890D900817459 /* AudioDataFetch.swift */,
+				5037546F2BF8D03100817459 /* AudioFileDataUploader.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -421,11 +430,13 @@
 				5065F8E92BE8A4FA009E6EDB /* VocabDetailView.swift in Sources */,
 				50C7A1C72BEB85CB00743D9E /* AddAiVoiceView.swift in Sources */,
 				AE9F0C352BC3F95A007B2B1E /* LoginView.swift in Sources */,
+				5037546E2BF8C3C000817459 /* UploadRecordingModel.swift in Sources */,
 				AE9F0C312BC3F8B0007B2B1E /* CustomTextField.swift in Sources */,
 				AE9F0C2B2BC3F253007B2B1E /* UserModel.swift in Sources */,
 				5065F8EB2BE8EFFB009E6EDB /* PastVocabCell.swift in Sources */,
 				504611EF2BF0706B006161EB /* HTTPManager.swift in Sources */,
 				AE228E722BDB81BF00B35657 /* AppDelegate.swift in Sources */,
+				5037546C2BF890D900817459 /* AudioDataFetch.swift in Sources */,
 				5065F8E52BE89465009E6EDB /* VocabCell.swift in Sources */,
 				AE228E742BDB96A100B35657 /* AlarmManager.swift in Sources */,
 				50F726452BC664D700078A6D /* AlarmDataFetcher.swift in Sources */,
@@ -445,6 +456,7 @@
 				5016492F2BDA168700A5EE32 /* CallPopupView.swift in Sources */,
 				50F726422BC655A800078A6D /* WakieTalkieApp.swift in Sources */,
 				50F7264E2BC676AC00078A6D /* AlarmCell.swift in Sources */,
+				503754702BF8D03100817459 /* AudioFileDataUploader.swift in Sources */,
 				50F7264A2BC66D7100078A6D /* CustomButtonSmall.swift in Sources */,
 				50C7A1BF2BEB0FF100743D9E /* CallRecordCell.swift in Sources */,
 				AE0BF2412BF092AA008016AA /* HTTPMethod.swift in Sources */,
@@ -603,7 +615,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wakie-Talkie/Preview Content\"";
-				DEVELOPMENT_TEAM = 57QLLZQ6H9;
+				DEVELOPMENT_TEAM = CT9F24W469;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Wakie-Talkie/Info.plist";
@@ -637,7 +649,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wakie-Talkie/Preview Content\"";
-				DEVELOPMENT_TEAM = 57QLLZQ6H9;
+				DEVELOPMENT_TEAM = CT9F24W469;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "마이크를 사용하여 음성을 녹음합니다";

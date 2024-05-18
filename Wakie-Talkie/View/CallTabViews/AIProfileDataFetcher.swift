@@ -9,7 +9,6 @@ import Combine
 import Foundation
 
 class AIProfileDataFetcher: ObservableObject {
-//    @Published var aiProfiles: [AIProfile]?
     @Published var aiProfiles: [AIProfile]?
     
     func loadAiProfileData() {
@@ -41,7 +40,9 @@ class AIProfileDataFetcher: ObservableObject {
     }
     
     func getAiProfileData(completion: @escaping ([AIProfile]) -> Void){
-        HTTPManager.requestGET(url: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/") { data in
+        HTTPManager.requestGET(url:
+        "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/"
+        ) { data in
             guard let data: [AIProfile] = JSONConverter.decodeJsonArray(data: data) else { return
             }
             completion(data)
@@ -49,7 +50,9 @@ class AIProfileDataFetcher: ObservableObject {
     }
     
     func getAiProfileDataFromLang(language: Int, completion: @escaping ([AIProfile]) -> Void){
-        HTTPManager.requestGET(url: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/language/\(language)/") { data in
+        HTTPManager.requestGET(url:
+       "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/language/\(language)/"
+        ) { data in
             guard let data: [AIProfile] = JSONConverter.decodeJsonArray(data: data) else { return
             }
             completion(data)

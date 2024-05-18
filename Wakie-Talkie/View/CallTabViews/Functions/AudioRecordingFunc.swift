@@ -58,9 +58,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject{
             audioRecorder?.delegate = self
             audioRecorder?.isMeteringEnabled = true
             audioRecorder?.record()
-            DispatchQueue.main.async{
-                self.isRecording = self.audioRecorder?.isRecording ?? false
-            }
+            self.isRecording = self.audioRecorder?.isRecording ?? false
             startLevelTimer()
         } catch {
             finishRecording(success: false)
@@ -100,9 +98,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject{
 
     func finishRecording(success: Bool) {
         audioRecorder?.stop()
-        DispatchQueue.main.async{
-            self.isRecording = self.audioRecorder?.isRecording ?? false
-        }
+        self.isRecording = self.audioRecorder?.isRecording ?? false
         levelTimer?.invalidate()
         levelTimer = nil
         if success {
@@ -118,9 +114,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject{
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        DispatchQueue.main.async{
-            self.audioFilePath = paths[0].appending(path:(dateFormatter.string(from: Date.now)+".wav"))
-        }
+        self.audioFilePath = paths[0].appending(path:(dateFormatter.string(from: Date.now)+".wav"))
         return audioFilePath ?? paths[0].appending(path:(dateFormatter.string(from: Date.now)+".wav"))
     }
 }

@@ -17,6 +17,9 @@ struct SendCallView: View {
 //    @State private var isPlaying: Bool = false
     @StateObject private var audioRecorder: AudioRecordingFunc = AudioRecordingFunc()
     @StateObject private var audioEngine: AudioEngineFunc = AudioEngineFunc()
+    private let audioFileDataUploader = AudioFileDataUploader()
+    private let postModel = UploadRecordingModel(userId: 1, aiPartnerId: 1)
+//    @State var postModel: UploadRecordingModel
 //    @StateObject private var audioPlayer: AudioPlayerFunc = AudioPlayerFunc()
     
     var body: some View {
@@ -90,11 +93,20 @@ struct SendCallView: View {
         .onChange(of: self.audioRecorder.isRecording){
             print("is it recording? " + String(self.audioRecorder.isRecording))
             if(!self.audioRecorder.isRecording){
-                print("start player")
-                audioEngine.setupAudioPlayer(audioFilePath: audioRecorder.audioFilePath)
-                audioEngine.audioPlay()
-//                audioPlayer.setupAudioPlayer(audioFilePath: audioRecorder.audioFilePath)
-//                audioPlayer.playAudio()
+                if(audioRecorder.audioFilePath != nil){
+                    audioFileDataUploader.uploadAudioFile(url: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/upload-audio/" , model: postModel, audioFilePath: audioRecorder.audioFilePath?.path() ?? "") { result in
+                        switch result {
+                        case .success(let responseURL):
+                            DispatchQueue.main.async {
+                                print("response url!!!!!! \(responseURL)")
+                                audioEngine.audioPlay(from: responseURL)
+                            }
+                        case .failure(let error):
+                            print("Upload failed: \(error)")
+                        }
+                    }
+                    print("start player")
+                }
             }
         }
         .onChange(of: self.audioEngine.isPlaying){
@@ -102,26 +114,6 @@ struct SendCallView: View {
                 audioRecorder.startRecording()
             }
         }
-//        .onChange(of: self.audioRecorder.getDecibelLevel()){
-//            audioDecibel = String(self.audioRecorder.getDecibelLevel())
-//        }
-//        .onChange(of: self.audioRecorder.getRecording()){
-//            print("audio recording??: " + String(self.audioRecorder.getRecording()))
-//            //logic problem
-//            if(!self.audioRecorder.getRecording()){
-//                audioState = "playing"
-//                audioDecibel = "00"
-//                print("seting audioplayer")
-//                audioPlayer.setupAudioPlayer(audioFilePath: audioRecorder.getDocumentsDirectory())
-//                audioPlayer.playAudio()
-//            }
-//        }
-//        .onChange(of: audioRecorder.getDocumentsDirectory()){
-//            if(self.audioPlayer.audioPlayer != nil && !self.audioPlayer.getAudioPlaying()){
-//                print("recording restart")
-//                audioRecorder.startRecording()
-//            }
-//        }
     }
 }
 struct CallingTestView: View{
