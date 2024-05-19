@@ -8,12 +8,13 @@
 import Foundation
 import AVFoundation
 //NSObject, ObservableObject,
-class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject{
+class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AVAudioPlayerDelegate{
     @Published var dbLevel: Float = 0.0
     @Published var isRecording: Bool = false
     @Published var audioFilePath: URL?
     var audioRecorder: AVAudioRecorder?
     var recordingSession: AVAudioSession
+    var callSoundPlayer: AVAudioPlayer?
     var levelTimer: Timer?
     let silenceThreshold: Float = -27.0 // dB
     let maxSilenceDuration: TimeInterval = 1.5 // 최대 지속 시간 (초)
@@ -118,5 +119,29 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject{
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
             self.audioFilePath = paths[0].appending(path:(dateFormatter.string(from: Date.now)+".wav"))
         return audioFilePath!
+    }
+    
+    func playCallSoundAndStartRecording() {
+        guard let callSoundPath = Bundle.main.url(forResource: "calling", withExtension: "wav") else {
+            print("calling.wav 파일을 찾을 수 없습니다.")
+            return
+        }
+
+        do {
+            callSoundPlayer = try AVAudioPlayer(contentsOf: callSoundPath)
+            callSoundPlayer?.delegate = self
+            callSoundPlayer?.play()
+        } catch {
+            print("calling.wav 파일을 재생하는 중 오류 발생: \(error)")
+        }
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        if player == callSoundPlayer {
+            print("calling.wav 파일 재생 완료")
+            DispatchQueue.main.async {
+                self.startRecording()
+            }
+        }
     }
 }

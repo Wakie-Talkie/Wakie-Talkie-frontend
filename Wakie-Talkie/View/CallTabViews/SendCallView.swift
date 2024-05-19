@@ -15,6 +15,7 @@ struct SendCallView: View {
     @StateObject private var audioEngine: AudioEngineFunc = AudioEngineFunc()
     private let audioFileDataUploader = AudioFileDataUploader()
     private let postModel = UploadRecordingModel(userId: 1, aiPartnerId: 1)
+    @State var isGeneratingResponse: Bool = false
 
     var body: some View {
         ZStack{
@@ -80,22 +81,28 @@ struct SendCallView: View {
         }.onAppear{
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.callReceived = true
-                audioRecorder.startRecording()
+               // audioFileDataUploader.callStartFunc()
+                audioRecorder.playCallSoundAndStartRecording()
             }
         }
         .onChange(of: self.audioRecorder.isRecording){
+
            // print("is it recording? " + String(self.audioRecorder.isRecording))
             if(!self.audioRecorder.isRecording){
+                self.isGeneratingResponse = true
                 if(audioRecorder.audioFilePath != nil){
                     audioFileDataUploader.uploadAudioFile(url: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/upload-audio/" , model: postModel, audioFilePath: audioRecorder.audioFilePath?.path() ?? "") { result in
-                        switch result {
-                        case .success(let responseURL):
-                            DispatchQueue.main.async {
-//                                audioEngine.playAudioStream(data: audioData)
-                                audioEngine.audioPlay(from: responseURL)
+                        DispatchQueue.main.async {
+                            self.isGeneratingResponse = false
+                            switch result {
+                            case .success(let responseURL):
+                                DispatchQueue.main.async {
+                                    print("response url!!!!!! \(responseURL)")
+                                    audioEngine.audioPlay(from: responseURL)
+                                }
+                            case .failure(let error):
+                                print("Upload failed: \(error)")
                             }
-                        case .failure(let error):
-                            print("Upload failed: \(error)")
                         }
                     }
                     print("start player")
@@ -105,7 +112,9 @@ struct SendCallView: View {
         .onChange(of: self.audioEngine.isPlaying){
             if(!self.audioEngine.isPlaying){
                 print("2. answer, 파일 재생이 끝났나요? ", self.audioEngine.isPlaying)
-                audioRecorder.startRecording()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // 이걸 하거나 아니면 재생하는 이펙트 소리에 공백 1초정도 추가하기
+                    audioRecorder.startRecording()
+                }
             }
         }
     }

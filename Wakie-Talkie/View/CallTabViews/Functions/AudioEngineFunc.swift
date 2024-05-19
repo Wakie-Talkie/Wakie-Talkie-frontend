@@ -13,6 +13,7 @@ class AudioEngineFunc: NSObject, ObservableObject{
     private var audioPlayerNode = AVAudioPlayerNode()
     private var audioFile: AVAudioFile!
     private var audioFormat: AVAudioFormat?
+    var beepPlayer: AVAudioPlayer?
     var audioPath: URL!
     @Published var isPlaying: Bool = false
     //var audioFilePath: URL!
@@ -31,7 +32,7 @@ class AudioEngineFunc: NSObject, ObservableObject{
             print("Error starting audio engine: \(error)")
         }
     }
-    
+
     func playAudioStream(data: Data) {
         audioFormat = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 2)
         let buffer = AVAudioPCMBuffer(pcmFormat: audioFormat!, frameCapacity: AVAudioFrameCount(data.count) / audioFormat!.streamDescription.pointee.mBytesPerFrame)!
@@ -58,7 +59,8 @@ class AudioEngineFunc: NSObject, ObservableObject{
             if let audioFile = audioFile {
                 audioPlayerNode.scheduleFile(audioFile, at: nil,  completionCallbackType: .dataPlayedBack) {
                     _ in
-                    self.isPlaying = false
+                    //self.isPlaying = false
+                    self.playBeep()
                     print("Finished playing.")
                 }
                 audioPlayerNode.play()
@@ -68,9 +70,37 @@ class AudioEngineFunc: NSObject, ObservableObject{
             print("Error playing audio: \(error)")
         }
     }
-    
+
     func dismiss(){
         audioEngine.stop()
         isPlaying = false
+    }
+    func playBeep() {
+        guard let beepPath = Bundle.main.url(forResource: "effect", withExtension: "wav") else {
+            print("abc.mp3 파일을 찾을 수 없습니다.")
+            return
+        }
+
+        do {
+            beepPlayer = try AVAudioPlayer(contentsOf: beepPath)
+            beepPlayer?.delegate = self
+            beepPlayer?.play()
+        } catch {
+            print("abc.mp3 파일을 재생하는 중 오류 발생: \(error)")
+        }
+    }
+
+}
+
+
+
+extension AudioEngineFunc: AVAudioPlayerDelegate {
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        if player == beepPlayer {
+            print("abc.mp3 파일 재생 완료")
+            DispatchQueue.main.async {
+                self.isPlaying = false
+            }
+        }
     }
 }

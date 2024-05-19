@@ -7,6 +7,59 @@
 
 import Foundation
 struct AudioFileDataUploader{
+    
+    func callStartFunc() {
+            callStartData { result in
+                switch result {
+                case .success(let responseStr):
+                    print(responseStr)
+                case .failure(let error):
+                    print("Upload failed: \(error)")
+                }
+            }
+        }
+        func callStartData(completion: @escaping (Result<String, Error>) -> Void){
+            guard let validURL = URL(string: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/call/start/") else {
+                completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+                return
+            }
+
+            var request = URLRequest(url: validURL)
+            request.httpMethod = "POST"
+            
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+
+                guard let httpResponse = response as? HTTPURLResponse else {
+                    completion(.failure(NSError(domain: "Invalid response", code: 0, userInfo: nil)))
+                    return
+                }
+
+                print("Response Status Code: \(httpResponse.statusCode)")
+                print("Response Headers: \(httpResponse.allHeaderFields)")
+
+                guard httpResponse.statusCode == 200 else {
+                    print("Upload failed with status code: \(httpResponse.statusCode)")
+                    completion(.failure(NSError(domain: "Invalid response", code: httpResponse.statusCode, userInfo: nil)))
+                    return
+                }
+
+                guard let data = data else {
+                    completion(.failure(NSError(domain: "No data received", code: 0, userInfo: nil)))
+                    return
+                }
+    //            completion(.success(data))
+                
+                if let responseString = String(data: data, encoding: .utf8) {
+                    completion(.success(responseString))
+                    print("Response Body: \(responseString)")
+                }
+            }.resume()
+        }
+    
     func uploadAudioFile(url: String, model: UploadRecordingModel, audioFilePath: String, completion: @escaping (Result<URL, Error>) -> Void) {
         guard let validURL = URL(string: url) else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
