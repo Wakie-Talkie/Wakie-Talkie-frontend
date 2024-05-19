@@ -39,6 +39,7 @@ struct CallPopupView: View {
                 .foregroundColor(Color("Black"))
             CustomButtonBig(text: "이 친구에게 전화하기", action: {
                 self.startCalling = true
+                
             }, color: Color("Black"), isActive: .constant(true))
         }
         .fullScreenCover(isPresented: $startCalling){

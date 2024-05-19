@@ -80,6 +80,7 @@ struct SendCallView: View {
         }.onAppear{
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.callReceived = true
+                audioFileDataUploader.callStartFunc()
                 audioRecorder.startRecording()
             }
         }
