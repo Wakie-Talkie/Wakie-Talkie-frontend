@@ -29,14 +29,17 @@ final class HTTPManager{
         }.resume()
     }
     
-    static func requestPOST(url: String, encodingData: Data, complete: @escaping (Data) -> ()){
+    static func requestPOST(url: String, encodingData: Data? = nil, complete: @escaping (Data) -> ()){
         guard let validURL = URL(string: url) else { return }
         
         var urlRequest = URLRequest(url:validURL)
         urlRequest.httpMethod = HTTPMethod.post.description
-        urlRequest.httpBody = encodingData
-        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        urlRequest.setValue("\(encodingData.count)", forHTTPHeaderField: "Content-Length")
+        
+        if let data = encodingData{
+            urlRequest.httpBody = data
+            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.setValue("\(data.count)", forHTTPHeaderField: "Content-Length")
+        }
         
         URLSession.shared.dataTask(with: urlRequest) { data, urlResponse, error in
             guard let data = data else { return }
