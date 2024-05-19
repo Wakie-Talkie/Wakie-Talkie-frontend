@@ -61,10 +61,10 @@ struct SendCallView: View {
                 Spacer()
                 
                 if isGeneratingResponse {
-                    DotsAnimationView()
+                    DotsAnimationCell()
                     //Text("답변을 만들고 있어요")
                 } else if isGeneratingRecord {
-                    DecibelAnimationView(audioRecorder: audioRecorder)
+                    DecibelAnimationCell(audioRecorder: audioRecorder)
                 
                 }
                 
@@ -141,64 +141,3 @@ struct CallingTestView: View{
 //}
 
 
-
-// 애니메이션 뷰 예제 (점 세 개가 차례로 나타났다 사라지는 애니메이션)
-struct DotsAnimationView: View {
-    @State private var showDot1: Bool = false
-    @State private var showDot2: Bool = false
-    @State private var showDot3: Bool = false
-
-    var body: some View {
-        HStack(spacing: 5) {
-            Circle()
-                .fill( Color("Accent1"))
-                .frame(width: 8, height: 8)
-                .opacity(showDot1 ? 1 : 0)
-            Circle()
-                .fill( Color("Accent1"))
-                .frame(width: 8, height: 8)
-                .opacity(showDot2 ? 1 : 0)
-            Circle()
-                .fill( Color("Accent1"))
-                .frame(width: 8, height: 8)
-                .opacity(showDot3 ? 1 : 0)
-        }
-        .onAppear {
-            startAnimation()
-        }
-    }
-
-    private func startAnimation() {
-        withAnimation(Animation.easeInOut(duration: 0.6).repeatForever(autoreverses: true).delay(0.2)) { showDot1.toggle() }
-        withAnimation(Animation.easeInOut(duration: 0.6).repeatForever(autoreverses: true).delay(0.4)) { showDot2.toggle() }
-        withAnimation(Animation.easeInOut(duration: 0.6).repeatForever(autoreverses: true).delay(0.6)) { showDot3.toggle() }
-    }
-}
-
-
-// 말하는 점 애니메이션
-
-struct DecibelAnimationView: View {
-    @ObservedObject var audioRecorder: AudioRecordingFunc
-
-    var body: some View {
-        HStack(spacing: 5) {
-            DecibelBarView(dbLevel: audioRecorder.dbLevel - 5)
-            DecibelBarView(dbLevel: audioRecorder.dbLevel)
-            DecibelBarView(dbLevel: audioRecorder.dbLevel - 8)
-        }
-        .frame(height: 50)
-    }
-}
-
-struct DecibelBarView: View {
-    var dbLevel: Float
-
-    var body: some View {
-        let height = max(20, CGFloat(abs(60 + dbLevel))) // 데시벨 값을 적절히 스케일링
-        return RoundedRectangle(cornerRadius: 4)
-            .fill( Color("Accent1"))
-            .frame(width: 8, height: height)
-            .animation(.easeInOut(duration: 0.1), value: height) // 애니메이션 적용
-    }
-}
