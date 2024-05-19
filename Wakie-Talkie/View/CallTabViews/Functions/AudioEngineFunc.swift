@@ -77,8 +77,8 @@ class AudioEngineFunc: NSObject, ObservableObject{
         isPlaying = false
     }
     func playBeep() {
-        guard let beepPath = Bundle.main.url(forResource: "effect", withExtension: "wav") else {
-            print("abc.mp3 파일을 찾을 수 없습니다.")
+        guard let beepPath = Bundle.main.url(forResource: "mute", withExtension: "wav") else {
+            print("mute.mp3 파일을 찾을 수 없습니다.")
             return
         }
 
@@ -87,7 +87,7 @@ class AudioEngineFunc: NSObject, ObservableObject{
             beepPlayer?.delegate = self
             beepPlayer?.play()
         } catch {
-            print("abc.mp3 파일을 재생하는 중 오류 발생: \(error)")
+            print("mute.mp3 파일을 재생하는 중 오류 발생: \(error)")
         }
     }
 
@@ -98,7 +98,7 @@ class AudioEngineFunc: NSObject, ObservableObject{
 extension AudioEngineFunc: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         if player == beepPlayer {
-            print("abc.mp3 파일 재생 완료")
+            print("mute.mp3 파일 재생 완료")
             DispatchQueue.main.async {
                 self.isPlaying = false
             }

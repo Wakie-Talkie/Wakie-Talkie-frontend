@@ -17,7 +17,7 @@ struct ReceiveCallView: View {
     @StateObject private var audioRecorder: AudioRecordingFunc = AudioRecordingFunc()
     @State private var audioEngine: AudioEngineFunc? = nil
     private let audioFileDataUploader = AudioFileDataUploader()
-    private let postModel = UploadRecordingModel(userId: 1, aiPartnerId: 1) //temp
+    private let postModel = UploadRecordingModel(userId: 1, aiPartnerId: 3) //temp
     @State var isGeneratingResponse: Bool = false
     @State var isGeneratingRecord: Bool = false
     
@@ -70,6 +70,7 @@ struct ReceiveCallView: View {
                 if isGeneratingResponse {
                     DotsAnimationCell()
                     //Text("답변을 만들고 있어요")
+                    
                 } else if isGeneratingRecord {
                     DecibelAnimationCell(audioRecorder: audioRecorder)
                 }
@@ -89,7 +90,7 @@ struct ReceiveCallView: View {
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 15, trailing: 0))
                     CustomButtonBig(text: "전화 받기", action: { callReceived = true //dismiss()
                         print("이게 트리거되는거야???")
-                        audioRecorder.playCallSoundAndStartRecording()
+                        audioRecorder.playPartnerSoundAndStartRecording(for: postModel.aiPartnerId)
                         //navigateToReceiveCall = false
                         AlarmManager.scheduleNextAlarm(alarms: alarmList)
                         alarmTimer.updateNextAlarmTime(time: (AlarmManager.findNextAlarmTime(alarms: alarmList) ) ?? Calendar.current.date(from: DateComponents(year: 2099, month: 1, day: 1))!) //TODO:empty array checking

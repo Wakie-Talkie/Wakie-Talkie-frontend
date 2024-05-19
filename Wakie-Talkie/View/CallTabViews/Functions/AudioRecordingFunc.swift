@@ -14,7 +14,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AV
     @Published var audioFilePath: URL?
     var audioRecorder: AVAudioRecorder?
     var recordingSession: AVAudioSession
-    var callSoundPlayer: AVAudioPlayer?
+    var soundPlayer: AVAudioPlayer?
     var levelTimer: Timer?
     let silenceThreshold: Float = -27.0 // dB
     let maxSilenceDuration: TimeInterval = 1.5 // 최대 지속 시간 (초)
@@ -122,23 +122,47 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AV
     }
     
     func playCallSoundAndStartRecording() {
-        guard let callSoundPath = Bundle.main.url(forResource: "calling", withExtension: "wav") else {
-            print("calling.wav 파일을 찾을 수 없습니다.")
+        guard let callSoundPath = Bundle.main.url(forResource: "dialtone", withExtension: "wav") else {
+            print("dialtone.wav 파일을 찾을 수 없습니다.")
             return
         }
 
         do {
-            callSoundPlayer = try AVAudioPlayer(contentsOf: callSoundPath)
-            callSoundPlayer?.delegate = self
-            callSoundPlayer?.play()
+            soundPlayer = try AVAudioPlayer(contentsOf: callSoundPath)
+            soundPlayer?.delegate = self
+            soundPlayer?.play()
         } catch {
-            print("calling.wav 파일을 재생하는 중 오류 발생: \(error)")
+            print("dialtone.wav 파일을 재생하는 중 오류 발생: \(error)")
         }
     }
     
+    func playPartnerSoundAndStartRecording(for partnerId: Int) {
+            let fileNames = [
+                1: "alloys",
+                2: "echo",
+                3: "fable",
+                4: "nova",
+                5: "onyx",
+                6: "shimmer"
+            ]
+
+            guard let fileName = fileNames[partnerId], let partnerSoundPath = Bundle.main.url(forResource: fileName, withExtension: "mp3") else {
+                print("파트너 파일을 찾을 수 없습니다.")
+                return
+            }
+
+            do {
+                soundPlayer = try AVAudioPlayer(contentsOf: partnerSoundPath)
+                soundPlayer?.delegate = self
+                soundPlayer?.play()
+            } catch {
+                print("파트너 파일을 재생하는 중 오류 발생: \(error)")
+            }
+        }
+    
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        if player == callSoundPlayer {
-            print("calling.wav 파일 재생 완료")
+        if player == soundPlayer {
+            print("dialtone.wav 파일 재생 완료")
             DispatchQueue.main.async {
                 self.startRecording()
             }

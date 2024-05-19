@@ -46,7 +46,6 @@
 		50F7264C2BC66D9B00078A6D /* CustomButtonCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7264B2BC66D9B00078A6D /* CustomButtonCircle.swift */; };
 		50F7264E2BC676AC00078A6D /* AlarmCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F7264D2BC676AC00078A6D /* AlarmCell.swift */; };
 		50F726522BC6BB9700078A6D /* ModifyAlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F726512BC6BB9700078A6D /* ModifyAlarmView.swift */; };
-		AE0300A32BF9ADC9006E7838 /* effect.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE0300A22BF9ADC9006E7838 /* effect.wav */; };
 		AE0BF2412BF092AA008016AA /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0BF2402BF092AA008016AA /* HTTPMethod.swift */; };
 		AE0BF2432BF0986F008016AA /* UserDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0BF2422BF0986F008016AA /* UserDataFetcher.swift */; };
 		AE228E722BDB81BF00B35657 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E712BDB81BF00B35657 /* AppDelegate.swift */; };
@@ -64,9 +63,15 @@
 		AE9F0C392BC3FA48007B2B1E /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C382BC3FA48007B2B1E /* ProfileView.swift */; };
 		AE9F0C3B2BC3FA5A007B2B1E /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C3A2BC3FA5A007B2B1E /* AlarmView.swift */; };
 		AE9F0C3D2BC3FA6D007B2B1E /* CallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C3C2BC3FA6D007B2B1E /* CallView.swift */; };
-		AEB7914D2BF9B34700EB06A4 /* calling.wav in Resources */ = {isa = PBXBuildFile; fileRef = AEB7914C2BF9B34700EB06A4 /* calling.wav */; };
 		AEB7914F2BF9CA9600EB06A4 /* DotsAnimationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB7914E2BF9CA9600EB06A4 /* DotsAnimationCell.swift */; };
 		AEB791512BF9CAB300EB06A4 /* DecibelAnimationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB791502BF9CAB300EB06A4 /* DecibelAnimationCell.swift */; };
+		AEB791552BFA55FA00EB06A4 /* dialtone.wav in Resources */ = {isa = PBXBuildFile; fileRef = AEB791542BFA55FA00EB06A4 /* dialtone.wav */; };
+		AEB7915A2BFA571E00EB06A4 /* alloys.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEB791592BFA571E00EB06A4 /* alloys.mp3 */; };
+		AEB791602BFA6BA500EB06A4 /* fable.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEB7915B2BFA6BA500EB06A4 /* fable.mp3 */; };
+		AEB791612BFA6BA500EB06A4 /* nova.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEB7915C2BFA6BA500EB06A4 /* nova.mp3 */; };
+		AEB791622BFA6BA500EB06A4 /* onyx.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEB7915D2BFA6BA500EB06A4 /* onyx.mp3 */; };
+		AEB791632BFA6BA500EB06A4 /* echo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEB7915E2BFA6BA500EB06A4 /* echo.mp3 */; };
+		AEB791642BFA6BA500EB06A4 /* shimmer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEB7915F2BFA6BA500EB06A4 /* shimmer.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,7 +115,6 @@
 		50F7264B2BC66D9B00078A6D /* CustomButtonCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonCircle.swift; sourceTree = "<group>"; };
 		50F7264D2BC676AC00078A6D /* AlarmCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmCell.swift; sourceTree = "<group>"; };
 		50F726512BC6BB9700078A6D /* ModifyAlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModifyAlarmView.swift; sourceTree = "<group>"; };
-		AE0300A22BF9ADC9006E7838 /* effect.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = effect.wav; path = ../../Desktop/effect.wav; sourceTree = "<group>"; };
 		AE0BF2402BF092AA008016AA /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		AE0BF2422BF0986F008016AA /* UserDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataFetcher.swift; sourceTree = "<group>"; };
 		AE228E702BDB818E00B35657 /* Wakie-Talkie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Wakie-Talkie.entitlements"; sourceTree = "<group>"; };
@@ -130,9 +134,23 @@
 		AE9F0C382BC3FA48007B2B1E /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		AE9F0C3A2BC3FA5A007B2B1E /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		AE9F0C3C2BC3FA6D007B2B1E /* CallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallView.swift; sourceTree = "<group>"; };
-		AEB7914C2BF9B34700EB06A4 /* calling.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = calling.wav; path = ../../Desktop/calling.wav; sourceTree = "<group>"; };
 		AEB7914E2BF9CA9600EB06A4 /* DotsAnimationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsAnimationCell.swift; sourceTree = "<group>"; };
 		AEB791502BF9CAB300EB06A4 /* DecibelAnimationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecibelAnimationCell.swift; sourceTree = "<group>"; };
+		AEB791542BFA55FA00EB06A4 /* dialtone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = dialtone.wav; path = "../../Desktop/2024-01/캡스톤/audioAssets/dialtone.wav"; sourceTree = "<group>"; };
+		AEB791582BFA566B00EB06A4 /* mute.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mute.wav; sourceTree = "<group>"; };
+		AEB791592BFA571E00EB06A4 /* alloys.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = alloys.mp3; path = "../../Desktop/2024-01/캡스톤/audioAssets/alloys.mp3"; sourceTree = "<group>"; };
+		AEB7915B2BFA6BA500EB06A4 /* fable.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = fable.mp3; path = "../../Desktop/2024-01/캡스톤/audioAssets/fable.mp3"; sourceTree = "<group>"; };
+		AEB7915C2BFA6BA500EB06A4 /* nova.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = nova.mp3; path = "../../Desktop/2024-01/캡스톤/audioAssets/nova.mp3"; sourceTree = "<group>"; };
+		AEB7915D2BFA6BA500EB06A4 /* onyx.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = onyx.mp3; path = "../../Desktop/2024-01/캡스톤/audioAssets/onyx.mp3"; sourceTree = "<group>"; };
+		AEB7915E2BFA6BA500EB06A4 /* echo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = echo.mp3; path = "../../Desktop/2024-01/캡스톤/audioAssets/echo.mp3"; sourceTree = "<group>"; };
+		AEB7915F2BFA6BA500EB06A4 /* shimmer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = shimmer.mp3; path = "../../Desktop/2024-01/캡스톤/audioAssets/shimmer.mp3"; sourceTree = "<group>"; };
+		AEB791662BFA6C1300EB06A4 /* nova.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nova.mp3; sourceTree = "<group>"; };
+		AEB791672BFA6C1300EB06A4 /* fable.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = fable.mp3; sourceTree = "<group>"; };
+		AEB791682BFA6C1300EB06A4 /* shimmer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = shimmer.mp3; sourceTree = "<group>"; };
+		AEB791692BFA6C1300EB06A4 /* alloys.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alloys.mp3; sourceTree = "<group>"; };
+		AEB7916A2BFA6C1300EB06A4 /* onyx.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onyx.mp3; sourceTree = "<group>"; };
+		AEB7916B2BFA6C1300EB06A4 /* dialtone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dialtone.wav; sourceTree = "<group>"; };
+		AEB7916C2BFA6C1300EB06A4 /* echo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = echo.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,8 +167,13 @@
 		50142C0A2BBD050900791488 = {
 			isa = PBXGroup;
 			children = (
-				AEB7914C2BF9B34700EB06A4 /* calling.wav */,
-				AE0300A22BF9ADC9006E7838 /* effect.wav */,
+				AEB7915E2BFA6BA500EB06A4 /* echo.mp3 */,
+				AEB7915B2BFA6BA500EB06A4 /* fable.mp3 */,
+				AEB7915C2BFA6BA500EB06A4 /* nova.mp3 */,
+				AEB7915D2BFA6BA500EB06A4 /* onyx.mp3 */,
+				AEB7915F2BFA6BA500EB06A4 /* shimmer.mp3 */,
+				AEB791592BFA571E00EB06A4 /* alloys.mp3 */,
+				AEB791542BFA55FA00EB06A4 /* dialtone.wav */,
 				50142C152BBD050900791488 /* Wakie-Talkie */,
 				50142C142BBD050900791488 /* Products */,
 			);
@@ -167,6 +190,7 @@
 		50142C152BBD050900791488 /* Wakie-Talkie */ = {
 			isa = PBXGroup;
 			children = (
+				AEB791652BFA6C0100EB06A4 /* Sounds */,
 				AE228E752BDBDC1000B35657 /* Info.plist */,
 				AE228E712BDB81BF00B35657 /* AppDelegate.swift */,
 				AE228E702BDB818E00B35657 /* Wakie-Talkie.entitlements */,
@@ -367,6 +391,21 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		AEB791652BFA6C0100EB06A4 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				AEB7916C2BFA6C1300EB06A4 /* echo.mp3 */,
+				AEB791672BFA6C1300EB06A4 /* fable.mp3 */,
+				AEB791662BFA6C1300EB06A4 /* nova.mp3 */,
+				AEB7916A2BFA6C1300EB06A4 /* onyx.mp3 */,
+				AEB791682BFA6C1300EB06A4 /* shimmer.mp3 */,
+				AEB791692BFA6C1300EB06A4 /* alloys.mp3 */,
+				AEB791582BFA566B00EB06A4 /* mute.wav */,
+				AEB7916B2BFA6C1300EB06A4 /* dialtone.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -427,9 +466,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				50142C1E2BBD050A00791488 /* Preview Assets.xcassets in Resources */,
-				AEB7914D2BF9B34700EB06A4 /* calling.wav in Resources */,
 				50142C1B2BBD050A00791488 /* Assets.xcassets in Resources */,
-				AE0300A32BF9ADC9006E7838 /* effect.wav in Resources */,
+				AEB791612BFA6BA500EB06A4 /* nova.mp3 in Resources */,
+				AEB791552BFA55FA00EB06A4 /* dialtone.wav in Resources */,
+				AEB791622BFA6BA500EB06A4 /* onyx.mp3 in Resources */,
+				AEB791632BFA6BA500EB06A4 /* echo.mp3 in Resources */,
+				AEB7915A2BFA571E00EB06A4 /* alloys.mp3 in Resources */,
+				AEB791642BFA6BA500EB06A4 /* shimmer.mp3 in Resources */,
+				AEB791602BFA6BA500EB06A4 /* fable.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
