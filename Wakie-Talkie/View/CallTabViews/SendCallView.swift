@@ -11,16 +11,10 @@ struct SendCallView: View {
     @Environment(\.dismiss) var dismiss
     @State var aiProfile: AIProfile
     @State private var callReceived: Bool = false
-//    @State private var audioDecibel: String = ""
-//    @State private var audioState: String = ""
-//    @State private var isRecoding: Bool = false
-//    @State private var isPlaying: Bool = false
     @StateObject private var audioRecorder: AudioRecordingFunc = AudioRecordingFunc()
     @StateObject private var audioEngine: AudioEngineFunc = AudioEngineFunc()
     private let audioFileDataUploader = AudioFileDataUploader()
     private let postModel = UploadRecordingModel(userId: 1, aiPartnerId: 1)
-//    @State var postModel: UploadRecordingModel
-//    @StateObject private var audioPlayer: AudioPlayerFunc = AudioPlayerFunc()
 
     var body: some View {
         ZStack{
@@ -70,6 +64,7 @@ struct SendCallView: View {
                     CustomButtonBig(text: "전화 끊기", action: {
                         self.callReceived = false
                         self.audioRecorder.finishRecording(success: true)
+                        audioEngine.dismiss()
                         dismiss()
                     }, color: Color("Accent1"), isActive: .constant(true))
                 }
@@ -85,8 +80,6 @@ struct SendCallView: View {
         }.onAppear{
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.callReceived = true
-//                isRecoding = self.audioRecorder.isRecording
-//                isPlaying = self.audioPlayer.isPlayerPlaying
                 audioRecorder.startRecording()
             }
         }
@@ -98,7 +91,7 @@ struct SendCallView: View {
                         switch result {
                         case .success(let responseURL):
                             DispatchQueue.main.async {
-                                print("response url!!!!!! \(responseURL)")
+//                                audioEngine.playAudioStream(data: audioData)
                                 audioEngine.audioPlay(from: responseURL)
                             }
                         case .failure(let error):
@@ -107,13 +100,6 @@ struct SendCallView: View {
                     }
                     print("start player")
                 }
-//=======
-//                print("1. start player, 오디오레코더 레코딩중인가요?", self.audioRecorder.isRecording)
-//                audioEngine.setupAudioPlayer(audioFilePath: audioRecorder.audioFilePath)
-//                audioEngine.audioPlay()
-////                audioPlayer.setupAudioPlayer(audioFilePath: audioRecorder.audioFilePath)
-////                audioPlayer.playAudio()
-//>>>>>>> Stashed changes
             }
         }
         .onChange(of: self.audioEngine.isPlaying){
