@@ -16,6 +16,7 @@ struct SendCallView: View {
     private let audioFileDataUploader = AudioFileDataUploader()
     private let postModel = UploadRecordingModel(userId: 1, aiPartnerId: 1)
     @State var isGeneratingResponse: Bool = false
+    @State var isGeneratingRecord: Bool = false
 
     var body: some View {
         ZStack{
@@ -61,10 +62,10 @@ struct SendCallView: View {
                 
                 if isGeneratingResponse {
                     DotsAnimationView()
-                    Text("만드는중")
-                } else {
+                    //Text("답변을 만들고 있어요")
+                } else if isGeneratingRecord {
                     DecibelAnimationView(audioRecorder: audioRecorder)
-                    Text("말해")
+                
                 }
                 
 
@@ -95,7 +96,7 @@ struct SendCallView: View {
             }
         }
         .onChange(of: self.audioRecorder.isRecording){
-
+            self.isGeneratingRecord = self.audioRecorder.isRecording
            // print("is it recording? " + String(self.audioRecorder.isRecording))
             if(!self.audioRecorder.isRecording){
                 self.isGeneratingResponse = true
@@ -150,15 +151,15 @@ struct DotsAnimationView: View {
     var body: some View {
         HStack(spacing: 5) {
             Circle()
-                .fill(Color.gray)
+                .fill( Color("Accent1"))
                 .frame(width: 8, height: 8)
                 .opacity(showDot1 ? 1 : 0)
             Circle()
-                .fill(Color.gray)
+                .fill( Color("Accent1"))
                 .frame(width: 8, height: 8)
                 .opacity(showDot2 ? 1 : 0)
             Circle()
-                .fill(Color.gray)
+                .fill( Color("Accent1"))
                 .frame(width: 8, height: 8)
                 .opacity(showDot3 ? 1 : 0)
         }
@@ -182,9 +183,9 @@ struct DecibelAnimationView: View {
 
     var body: some View {
         HStack(spacing: 5) {
+            DecibelBarView(dbLevel: audioRecorder.dbLevel - 5)
             DecibelBarView(dbLevel: audioRecorder.dbLevel)
-            DecibelBarView(dbLevel: audioRecorder.dbLevel)
-            DecibelBarView(dbLevel: audioRecorder.dbLevel)
+            DecibelBarView(dbLevel: audioRecorder.dbLevel - 8)
         }
         .frame(height: 50)
     }
@@ -194,9 +195,9 @@ struct DecibelBarView: View {
     var dbLevel: Float
 
     var body: some View {
-        let height = max(10, CGFloat((dbLevel + 100) / 2)) // 데시벨 값을 적절히 스케일링
+        let height = max(20, CGFloat(abs(60 + dbLevel))) // 데시벨 값을 적절히 스케일링
         return RoundedRectangle(cornerRadius: 4)
-            .fill(Color.gray)
+            .fill( Color("Accent1"))
             .frame(width: 8, height: height)
             .animation(.easeInOut(duration: 0.1), value: height) // 애니메이션 적용
     }
