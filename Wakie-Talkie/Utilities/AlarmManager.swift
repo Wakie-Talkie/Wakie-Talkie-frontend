@@ -119,7 +119,7 @@ class AlarmManager {
             if let error = error {
                 print("Error scheduling notification: \(error)")
             } else {
-                print("Scheduled notification for \(alarm.language) at \(dateComponents) plus \(secondsToAdd) seconds")
+               // print("Scheduled notification for \(alarm.language) at \(dateComponents) plus \(secondsToAdd) seconds")
             }
         }
     }

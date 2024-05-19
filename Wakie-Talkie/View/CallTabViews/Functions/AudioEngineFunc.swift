@@ -24,6 +24,7 @@ class AudioEngineFunc: NSObject, ObservableObject{
     }
 
     func setupAudioPlayer(){
+        print("셋업됐니??????????")
         audioEngine.attach(audioPlayerNode)
         audioEngine.connect(audioPlayerNode, to: audioEngine.outputNode, format: nil)
         do {
