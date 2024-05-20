@@ -73,6 +73,7 @@ struct SendCallView: View {
                     Text("decibel \(audioRecorder.dbLevel)")
                     Text(self.audioRecorder.isRecording ? "recording" : "player")
                     CustomButtonBig(text: "전화 끊기", action: {
+                        audioFileDataUploader.callEndFunc(model: postModel)
                         self.callReceived = false
                         self.audioRecorder.finishRecording(success: true)
                         audioEngine.dismiss()
@@ -85,13 +86,15 @@ struct SendCallView: View {
                         .font(.system(size: 20))
                         .foregroundColor(Color("Black"))
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 15, trailing: 0))
-                    CustomButtonBig(text: "전화 취소하기", action: {dismiss()}, color: Color("Accent1"), isActive: .constant(true))
+                    CustomButtonBig(text: "전화 취소하기", action: {
+                        dismiss()
+                    }, color: Color("Accent1"), isActive: .constant(true))
                 }
             }
         }.onAppear{
+            audioFileDataUploader.callStartFunc(model: postModel)
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.callReceived = true
-               // audioFileDataUploader.callStartFunc()
                 audioRecorder.playCallSoundAndStartRecording()
             }
         }
@@ -122,7 +125,7 @@ struct SendCallView: View {
         .onChange(of: self.audioEngine.isPlaying){
             if(!self.audioEngine.isPlaying){
                 print("2. answer, 파일 재생이 끝났나요? ", self.audioEngine.isPlaying)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // 이걸 하거나 아니면 재생하는 이펙트 소리에 공백 1초정도 추가하기
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // 이걸 하거나 아니면 재생하는 이펙트 소리에 공백 1초정도 추가하기
                     audioRecorder.startRecording()
                 }
             }

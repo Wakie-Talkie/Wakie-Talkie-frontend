@@ -7,8 +7,8 @@
 
 import Foundation
 struct AudioFileDataUploader{
-    func callStartFunc() {
-        callStartData { result in
+    func callStartFunc(model: UploadRecordingModel) {
+        callStartData(model: model) { result in
             switch result {
             case .success(let responseStr):
                 print(responseStr)
@@ -17,7 +17,7 @@ struct AudioFileDataUploader{
             }
         }
     }
-    func callStartData(completion: @escaping (Result<String, Error>) -> Void){
+    func callStartData(model: UploadRecordingModel, completion: @escaping (Result< String, Error>) -> Void){
         guard let validURL = URL(string: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/call/start/") else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
             return
@@ -25,6 +25,23 @@ struct AudioFileDataUploader{
 
         var request = URLRequest(url: validURL)
         request.httpMethod = "POST"
+        
+        var body = Data()
+        let boundary = UUID().uuidString
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        // Add ai_partner_id
+        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"ai_partner_id\"\r\n\r\n".data(using: .utf8)!)
+        body.append("\(model.aiPartnerId)\r\n".data(using: .utf8)!)
+
+        // Add user_id
+        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"user_id\"\r\n\r\n".data(using: .utf8)!)
+        body.append("\(model.userId)\r\n".data(using: .utf8)!)
+        body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+
+        request.httpBody = body
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -38,22 +55,76 @@ struct AudioFileDataUploader{
             }
 
             print("Response Status Code: \(httpResponse.statusCode)")
-            print("Response Headers: \(httpResponse.allHeaderFields)")
 
             guard httpResponse.statusCode == 200 else {
                 print("Upload failed with status code: \(httpResponse.statusCode)")
                 completion(.failure(NSError(domain: "Invalid response", code: httpResponse.statusCode, userInfo: nil)))
                 return
             }
+        }.resume()
+    }
+    
+    func callEndFunc(model: UploadRecordingModel) {
+        callEndData(model: model) { result in
+            switch result {
+            case .success(let responseStr):
+                print(responseStr)
+            case .failure(let error):
+                print("Upload failed: \(error)")
+            }
+        }
+    }
+    func callEndData(model: UploadRecordingModel, completion: @escaping (Result< String, Error>) -> Void){
+        guard let validURL = URL(string: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/call/end/") else {
+            completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+            return
+        }
 
+        var request = URLRequest(url: validURL)
+        request.httpMethod = "POST"
+        
+        var body = Data()
+        let boundary = UUID().uuidString
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        
+        // Add ai_partner_id
+        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"ai_partner_id\"\r\n\r\n".data(using: .utf8)!)
+        body.append("\(model.aiPartnerId)\r\n".data(using: .utf8)!)
+
+        // Add user_id
+        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"user_id\"\r\n\r\n".data(using: .utf8)!)
+        body.append("\(model.userId)\r\n".data(using: .utf8)!)
+        body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+
+        request.httpBody = body
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(.failure(NSError(domain: "Invalid response", code: 0, userInfo: nil)))
+                return
+            }
+
+            print("Response Status Code: \(httpResponse.statusCode)")
+
+            guard httpResponse.statusCode == 200 else {
+                print("Upload failed with status code: \(httpResponse.statusCode)")
+                completion(.failure(NSError(domain: "Invalid response", code: httpResponse.statusCode, userInfo: nil)))
+                return
+            }
+            
             guard let data = data else {
                 completion(.failure(NSError(domain: "No data received", code: 0, userInfo: nil)))
                 return
             }
-//            completion(.success(data))
             
             if let responseString = String(data: data, encoding: .utf8) {
-                completion(.success(responseString))
                 print("Response Body: \(responseString)")
             }
         }.resume()
