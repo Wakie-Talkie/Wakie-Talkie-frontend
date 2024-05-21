@@ -18,7 +18,9 @@ struct CustomAiChatCell: View {
             Text(text)
                 .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 30))
         }
-        .frame(width: .infinity,alignment: .center)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal)
+        .background(Color.clear)
     }
 }
 

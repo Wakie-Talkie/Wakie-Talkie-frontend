@@ -61,17 +61,7 @@ struct CallRecordAudioView: View {
             }
         }
         .onAppear(perform: {
-            audioEngine.setupAudioPlayer()
-            audioEngine.getRecordedAudioData(url: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/recordings/record/", recordingId: recordId ){ result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let outputString):
-                        print("success? : \(outputString)")
-                    case .failure(let error):
-                        print("Upload failed: \(error)")
-                    }
-                }
-            }
+            audioEngine.getRecordedAudioData(url: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/recordings/record/", recordingId: recordId )
         })
     }
 }

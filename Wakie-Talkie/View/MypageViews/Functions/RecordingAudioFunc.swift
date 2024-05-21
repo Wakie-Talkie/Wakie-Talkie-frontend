@@ -11,7 +11,7 @@ import AVFoundation
 class RecordingAudioFunc: NSObject, ObservableObject{
     private var audioEngine = AVAudioEngine()
     private var audioPlayerNode = AVAudioPlayerNode()
-    private var audioFile: AVAudioFile!
+//    private var audioFile: AVAudioFile!
     private var audioFormat: AVAudioFormat?
     var beepPlayer: AVAudioPlayer?
     var audioPath: URL!
@@ -20,7 +20,7 @@ class RecordingAudioFunc: NSObject, ObservableObject{
 
     override init() {
         super.init()
-//        setupAudioPlayer()
+        setupAudioPlayer()
     }
 
     func setupAudioPlayer(){
@@ -34,11 +34,12 @@ class RecordingAudioFunc: NSObject, ObservableObject{
         }
     }
     
-    func getRecordedAudioData (url: String, recordingId: Int, completion: @escaping (Result<String, Error>) -> Void) {
+    func getRecordedAudioData (url: String, recordingId: Int) {
         let setURL = url + String(recordingId)
         
         guard let validURL = URL(string: setURL) else {
-            completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+            print("invalid url")
+//            completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
             return
         }
 
@@ -47,12 +48,14 @@ class RecordingAudioFunc: NSObject, ObservableObject{
 
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
-                completion(.failure(error))
+                print(error)
+//                completion(.failure(error))
                 return
             }
 
             guard let httpResponse = response as? HTTPURLResponse else {
-                completion(.failure(NSError(domain: "Invalid response", code: 0, userInfo: nil)))
+                print("invalid response")
+//                completion(.failure(NSError(domain: "Invalid response", code: 0, userInfo: nil)))
                 return
             }
 
@@ -61,12 +64,13 @@ class RecordingAudioFunc: NSObject, ObservableObject{
 
             guard httpResponse.statusCode == 200 else {
                 print("Upload failed with status code: \(httpResponse.statusCode)")
-                completion(.failure(NSError(domain: "Invalid response", code: httpResponse.statusCode, userInfo: nil)))
+//                completion(.failure(NSError(domain: "Invalid response", code: httpResponse.statusCode, userInfo: nil)))
                 return
             }
 
             guard let data = data else {
-                completion(.failure(NSError(domain: "No data received", code: 0, userInfo: nil)))
+                print("no data received")
+//                completion(.failure(NSError(domain: "No data received", code: 0, userInfo: nil)))
                 return
             }
             
@@ -74,12 +78,43 @@ class RecordingAudioFunc: NSObject, ObservableObject{
                 print("Response Body: \(responseString)")
                 return
             }
-            completion(.success("successssssss"))
             DispatchQueue.main.async {
-                self.playAudioStream(data: data)
+                self.playAudio(data: data)
             }
             
         }.resume()
+    }
+
+    private func playAudio(data: Data) {
+        do {
+            // Create AVAudioFormat based on the known format of the audio data
+            let format = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: 44100, channels: 2, interleaved: false)
+            self.audioFormat = format
+            
+            // Create AVAudioPCMBuffer
+            let frameCapacity = AVAudioFrameCount(data.count) / format!.streamDescription.pointee.mBytesPerFrame
+            guard let buffer = AVAudioPCMBuffer(pcmFormat: format!, frameCapacity: frameCapacity) else {
+                print("Failed to create PCM buffer")
+                return
+            }
+            buffer.frameLength = frameCapacity
+            
+            // Copy audio data to PCM buffer
+            data.withUnsafeBytes { audioBytes in
+                let audioBuffer = buffer.audioBufferList.pointee.mBuffers
+                memcpy(audioBuffer.mData, audioBytes.baseAddress, Int(audioBuffer.mDataByteSize))
+            }
+            
+            audioPlayerNode.scheduleBuffer(buffer) {
+                self.isPlaying = false
+            }
+
+            audioPlayerNode.play()
+            isPlaying = true
+//            startProgressTimer(duration: Double(buffer.frameLength) / format.sampleRate)
+        } catch {
+            print("Error playing audio: \(error)")
+        }
     }
 
     func playAudioStream(data: Data) {
@@ -101,24 +136,24 @@ class RecordingAudioFunc: NSObject, ObservableObject{
     }
 
 
-    func audioPlay(from url: URL){
-        setupAudioPlayer()
-        do {
-            audioFile = try AVAudioFile(forReading: url)
-            print("audio play path : \(url)")
-            if let audioFile = audioFile {
-                audioPlayerNode.scheduleFile(audioFile, at: nil,  completionCallbackType: .dataPlayedBack) {
-                    _ in
-                    self.isPlaying = false
-                    print("Finished playing.")
-                }
-                audioPlayerNode.play()
-                isPlaying = true
-            }
-        } catch {
-            print("Error playing audio: \(error)")
-        }
-    }
+//    func audioPlay(from url: URL){
+//        setupAudioPlayer()
+//        do {
+//            audioFile = try AVAudioFile(forReading: url)
+//            print("audio play path : \(url)")
+//            if let audioFile = audioFile {
+//                audioPlayerNode.scheduleFile(audioFile, at: nil,  completionCallbackType: .dataPlayedBack) {
+//                    _ in
+//                    self.isPlaying = false
+//                    print("Finished playing.")
+//                }
+//                audioPlayerNode.play()
+//                isPlaying = true
+//            }
+//        } catch {
+//            print("Error playing audio: \(error)")
+//        }
+//    }
 
     func dismiss(){
         audioEngine.stop()

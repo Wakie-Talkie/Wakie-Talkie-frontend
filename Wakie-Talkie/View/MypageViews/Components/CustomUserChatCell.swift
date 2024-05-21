@@ -12,6 +12,9 @@ struct CustomUserChatCell: View {
     var body: some View {
         Text(text)
             .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 30))
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.horizontal)
+            .background(Color.white)
     }
 }
 
