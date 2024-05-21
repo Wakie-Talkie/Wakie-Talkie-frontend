@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct ProfileView: View {
+    @Environment(\.dismiss) var dismiss
     @State private var isPresentingProfileEdit = false
     @State private var isPresentingRecodings = false
     @State private var isPresentingAiVoice = false
     @State private var isPresentingLogout = false
-    @State private var recordDataFetcher = RecordDataFetcher()
+//    @State private var recordDataFetcher = RecordDataFetcher()
 //    @EnvironmentObject var aiProfileDataFetcher : AIProfileDataFetcher
-    @State private var recordDatas:[Record] = []
+//    @State private var recordDatas:[Record] = []
     @State private var aiProfileDatas:[AIProfile] = []
     
     @ObservedObject var userData = UserDataFetcher()
@@ -33,6 +34,23 @@ struct ProfileView: View {
                     }
                 }
                 VStack(alignment: .leading) {
+                    HStack {
+                        Button(action: {dismiss()}, label: {
+                            Text("<")
+                                .fontWeight(.thin)
+                                .font(.system(size: 25))
+                                .foregroundColor(Color("Black"))
+                                .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 0))
+                        })
+                        Spacer()
+                        Text("마이페이지")
+                            .fontWeight(.bold)
+                            .font(.system(size: 25))
+                            .padding(EdgeInsets(top: 30, leading: 0, bottom: 30, trailing: 0))
+                        Spacer()
+                        Text("")
+                            .padding(EdgeInsets(top: 30, leading: 0, bottom: 30, trailing: 30))
+                    }
                     HStack {
                         CustomCircleImg(imageUrl: userData.user?.profileImg, size: 90)
                             .padding()
@@ -98,15 +116,15 @@ struct ProfileView: View {
                 ProfileEditView()
             }
             .navigationDestination(isPresented: $isPresentingRecodings){
-                CallRecodView(recordList: recordDatas)
+                CallRecodView(/*recordList: recordDatas*/)
             }
             .navigationDestination(isPresented: $isPresentingAiVoice){
                 AiVoiceView()
             }
         }
         .onAppear(perform: {
-            recordDataFetcher.fetchRecords()
-            recordDatas = recordDataFetcher.records?.sorted{$0.date < $1.date} ?? []
+//            recordDataFetcher.fetchRecords()
+//            recordDatas = recordDataFetcher.records?.sorted{$0.date < $1.date} ?? []
             userData.loadUserData()
 //            aiProfileData.loadAiProfileData()
 //            aiProfileDataFetcher.getAIProfiles()

@@ -74,6 +74,7 @@ struct AudioFileDataUploader{
             }
         }
     }
+    
     func callEndData(model: UploadRecordingModel, completion: @escaping (Result< String, Error>) -> Void){
         guard let validURL = URL(string: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/call/end/") else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))

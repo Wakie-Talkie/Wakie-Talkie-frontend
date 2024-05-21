@@ -9,8 +9,11 @@ import SwiftUI
 
 struct CallRecodView: View {
     @Environment(\.dismiss) var dismiss
-    @State var recordList: [Record] = []
+    //    @State var recordList: [Recording] = []
     @State private var lastDate:String = ""
+    
+    @ObservedObject var recordData = RecordingDataFetcher()
+    
     var body: some View {
         VStack(spacing: 0){
             HStack {
@@ -31,12 +34,12 @@ struct CallRecodView: View {
                     .padding(EdgeInsets(top: 30, leading: 0, bottom: 30, trailing: 30))
             }
             ScrollView{
-                ForEach(recordList.indices, id: \.self) { index in
-                    let binding = $recordList[index]  // Creating a Binding<Record>
+                ForEach(recordData.records.indices ?? [].indices, id: \.self) { index in
+                    let binding = $recordData.records[index]
                     VStack{
-                        if (index == 0)||((index != 0)&&(binding.date.wrappedValue != $recordList[index-1].date.wrappedValue)) {
+                        if (index == 0)||((index != 0)&&(binding.date.wrappedValue != $recordData.records[index-1].date.wrappedValue)) {
                             HStack {
-                                Text(extractFormattedTime(from: binding.date.wrappedValue))
+                                Text(binding.date.wrappedValue)
                                     .fontWeight(.medium)
                                 .font(.system(size: 18))
                                 .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing: 0))
@@ -48,42 +51,13 @@ struct CallRecodView: View {
                 }
             }
         }
+        .onAppear(perform: {
+            recordData.loadRecordData()}
+        )
+        .onChange(of: recordData.records){
+            print(recordData.records)
+            print("profile nickname!!!! : \(recordData.records[0].id)")
+        }
         .navigationBarBackButtonHidden(true)
     }
-    private func extractFormattedTime(from date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M월 d일"
-        dateFormatter.locale = Locale(identifier: "ko_KR")
-        
-        return dateFormatter.string(from: date)
-    }
-}
-
-struct CallRecordTestView: View{
-    @State var recordDatas: [Record] = [
-        Record(id: "record1",
-               userId: "eunhwa813",
-               aiProfile: AIProfile(id: 1, nickname: "Alexis",profileImg: "ai_profile_me1", description: "like watching animation and go out for a walk.", language: 1),
-               date: Date.now, recordedTime: "10:13"),
-        Record(id: "record2",
-               userId: "eunhwa813",
-               aiProfile: AIProfile(id: 2, nickname: "Sandy",profileImg: "ai_profile_me2",description: "LUV U", language: 1),
-               date: Date.now, recordedTime: "12:3"),
-        Record(id: "record3",
-               userId: "eunhwa813",
-               aiProfile: AIProfile(id: 1, nickname: "Alexis",profileImg: "ai_profile_me1", description: "like watching animation and go out for a walk.", language: 1),
-               date: Date.now, recordedTime: "10:13"),
-        Record(id: "record4",
-               userId: "eunhwa813",
-               aiProfile: AIProfile(id: 2, nickname: "Sandy",profileImg: "ai_profile_me2",description: "LUV U", language: 1),
-               date: Date.now, recordedTime: "9:3")
-    ]
-
-    var body: some View{
-        CallRecodView(recordList: recordDatas)
-    }
-}
-
-#Preview {
-    CallRecordTestView()
 }
