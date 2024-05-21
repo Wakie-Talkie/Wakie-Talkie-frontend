@@ -20,7 +20,7 @@ struct VocabCell: View{
                         .stroke(Color("Accent3").opacity(0.3), lineWidth: 2)
                 )
             HStack(spacing: 15){
-                Text(vocabData.vocab)
+                Text(vocabData.word)
                     .foregroundColor(Color("Black"))
                     .font(.system(size: 25))
                     .fontWeight(.medium)
@@ -38,7 +38,7 @@ struct VocabCell: View{
 }
 
 struct VocabCellTestView: View{
-    @State var vocab: Vocab = Vocab(id: "vocab1",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성")
+    @State var vocab: Vocab = Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
     var body: some View{
         VocabCell(vocabData: $vocab)
     }

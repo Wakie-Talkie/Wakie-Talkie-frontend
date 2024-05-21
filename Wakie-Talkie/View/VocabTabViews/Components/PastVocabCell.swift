@@ -9,7 +9,8 @@ import SwiftUI
 
 struct PastVocabCell: View{
     @Binding var pastVocabData: Vocab
-    @State var numOfVocab: Int
+    var numOfVocab: Int
+    var date: String
     var body: some View{
         ZStack{
             RoundedRectangle(cornerRadius: 20)
@@ -22,13 +23,13 @@ struct PastVocabCell: View{
                 )
             VStack {
                 HStack {
-                    Text(extractFormattedTime(from: pastVocabData.time))
+                    Text(date)
                         .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
                     Spacer()
                 }
                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 3, trailing: 0))
                 HStack(spacing: 15){
-                    Text(pastVocabData.vocab + " 외 " + String(numOfVocab) + "개")
+                    Text(pastVocabData.word + " 외 " + String(numOfVocab) + "개")
                         .foregroundColor(Color("Black"))
                         .font(.system(size: 25))
                         .fontWeight(.medium)
@@ -44,22 +45,15 @@ struct PastVocabCell: View{
             }.padding([.horizontal])
         }
     }
-    
-    func extractFormattedTime(from date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy MM dd h:mm a"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        
-        return dateFormatter.string(from: date)
-    }
-    
 }
 
 struct PastVocabCellTestView: View{
-    @State var vocab: Vocab = Vocab(id: "vocab1",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성")
+    
+    @State var vocab: Vocab = Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
     @State var numOfVocab: Int = 3
+    @State var date: String = "2024-05-21"
     var body: some View{
-        PastVocabCell(pastVocabData: $vocab,numOfVocab: numOfVocab)
+        PastVocabCell(pastVocabData: $vocab,numOfVocab: numOfVocab, date: date)
     }
 }
 

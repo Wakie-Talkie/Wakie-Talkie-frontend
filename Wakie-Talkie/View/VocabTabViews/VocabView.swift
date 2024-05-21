@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct VocabView: View {
-    @State var vocabs: [Vocab]
+    @State var vocabList: VocabList
     @State private var isPresentingCallView = false
     @State private var isPresentingPastVocab = false
     @Binding var changeTab: Int
@@ -31,7 +31,7 @@ struct VocabView: View {
                         .font(.system(size: 25))
                         .padding(EdgeInsets(top: 30, leading: 0, bottom: 20, trailing: 0))
                     
-                    if vocabs.isEmpty {
+                    if vocabList.wordList.isEmpty {
                         Spacer()
                         Text("전화하고 오시면 이용할 수 있어요!")
                             .foregroundColor(Color("Black"))
@@ -62,17 +62,18 @@ struct VocabView: View {
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
                         
                         ScrollView {
-                            ForEach($vocabs){ vocab in
-                                NavigationLink(destination: VocabDetailView(vocabData: vocab)
+                            ForEach(vocabList.wordList.indices ?? [].indices, id: \.self){ index in
+                                let binding = $vocabList.wordList[index]
+                                NavigationLink(destination: VocabDetailView(vocabData: binding)
                                 ){
-                                    VocabCell(vocabData: vocab)
+                                    VocabCell(vocabData: binding)
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
                                 }
                             }
                         }
                     }
                     
-                    if vocabs.isEmpty {
+                    if vocabList.wordList.isEmpty {
                         CustomButtonBig(text: "전화하러 가기", action: {
                             changeTab = 1
                         }, color: Color("Black"), isActive: .constant(true))
@@ -87,36 +88,29 @@ struct VocabView: View {
                     }
                 }
             }
-            .fullScreenCover(isPresented: $isPresentingPastVocab){
-                PastVocabView(vocabs: vocabs)
+//            .fullScreenCover(isPresented: $isPresentingPastVocab){
+//                PastVocabView( vocabListDatas: vocabList)
+////            }
+            .navigationDestination(isPresented: $isPresentingPastVocab){
+                PastVocabView(vocabListDatas: [vocabList])
             }
-//            .navigationDestination(isPresented: $isPresentingPastVocab){
-//                PastVocabView(vocabs: vocabs)
-//            }
         }
     }
 }
 
 struct VocabTestView: View{
-    @State var vocabDatas: [Vocab] = [
-        Vocab(id: "vocab1",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성"),
-        Vocab(id: "vocab2",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성"),
-        Vocab(id: "vocab3",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성"),
-        Vocab(id: "vocab4",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성"),
-        Vocab(id: "vocab5",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성"),
-    ]
+    @State var vocalList: VocabList = VocabList(id: 1, userId: 1, recordingId: 1, date: "2024-05-21", wordList: [
+        Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+        Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+        Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+        Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+        Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
+    ])
+    
     @State private var int: Int = 3
     var body: some View{
-        VocabView(vocabs: vocabDatas,changeTab: $int)
+        VocabView(vocabList: vocalList,changeTab: $int)
 //        VocabView(vocabs: [])
-    }
-    func transformToDate(dateString: String) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy MM dd h:mm a"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        
-        let date = dateFormatter.date(from: dateString)
-        return date!
     }
 }
 

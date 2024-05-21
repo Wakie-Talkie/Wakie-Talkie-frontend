@@ -25,8 +25,10 @@
 		504611F12BF091C3006161EB /* JSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504611F02BF091C2006161EB /* JSONConverter.swift */; };
 		5058A7792BFC2567002D4B8E /* CallRecordAudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A7782BFC2567002D4B8E /* CallRecordAudioView.swift */; };
 		5058A77C2BFC3DEA002D4B8E /* RecordingAudioFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A77B2BFC3DEA002D4B8E /* RecordingAudioFunc.swift */; };
+		5058A77E2BFCC37E002D4B8E /* VocabDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A77D2BFCC37E002D4B8E /* VocabDetailCell.swift */; };
+		5058A7822BFCC56D002D4B8E /* VocabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A7812BFCC56D002D4B8E /* VocabModel.swift */; };
 		5065F8DE2BE88CF1009E6EDB /* VocabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DD2BE88CF1009E6EDB /* VocabView.swift */; };
-		5065F8E02BE88E26009E6EDB /* VocabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DF2BE88E26009E6EDB /* VocabModel.swift */; };
+		5065F8E02BE88E26009E6EDB /* VocabListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DF2BE88E26009E6EDB /* VocabListModel.swift */; };
 		5065F8E22BE88F94009E6EDB /* VocabDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */; };
 		5065F8E52BE89465009E6EDB /* VocabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E42BE89465009E6EDB /* VocabCell.swift */; };
 		5065F8E72BE8A275009E6EDB /* PastVocabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E62BE8A275009E6EDB /* PastVocabView.swift */; };
@@ -99,8 +101,10 @@
 		504611F02BF091C2006161EB /* JSONConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = JSONConverter.swift; path = "Wakie-Talkie/Utilities/JSONConverter.swift"; sourceTree = SOURCE_ROOT; };
 		5058A7782BFC2567002D4B8E /* CallRecordAudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallRecordAudioView.swift; sourceTree = "<group>"; };
 		5058A77B2BFC3DEA002D4B8E /* RecordingAudioFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingAudioFunc.swift; sourceTree = "<group>"; };
+		5058A77D2BFCC37E002D4B8E /* VocabDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabDetailCell.swift; sourceTree = "<group>"; };
+		5058A7812BFCC56D002D4B8E /* VocabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabModel.swift; sourceTree = "<group>"; };
 		5065F8DD2BE88CF1009E6EDB /* VocabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabView.swift; sourceTree = "<group>"; };
-		5065F8DF2BE88E26009E6EDB /* VocabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabModel.swift; sourceTree = "<group>"; };
+		5065F8DF2BE88E26009E6EDB /* VocabListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabListModel.swift; sourceTree = "<group>"; };
 		5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VocabDataFetcher.swift; path = "Wakie-Talkie/Model/VocabDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
 		5065F8E42BE89465009E6EDB /* VocabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabCell.swift; sourceTree = "<group>"; };
 		5065F8E62BE8A275009E6EDB /* PastVocabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastVocabView.swift; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 			children = (
 				5065F8E42BE89465009E6EDB /* VocabCell.swift */,
 				5065F8EA2BE8EFFB009E6EDB /* PastVocabCell.swift */,
+				5058A77D2BFCC37E002D4B8E /* VocabDetailCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -325,7 +330,8 @@
 				AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */,
 				AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */,
 				AE9F0C2E2BC3F38A007B2B1E /* AlarmTempModel.swift */,
-				5065F8DF2BE88E26009E6EDB /* VocabModel.swift */,
+				5065F8DF2BE88E26009E6EDB /* VocabListModel.swift */,
+				5058A7812BFCC56D002D4B8E /* VocabModel.swift */,
 				50C7A1C02BEB11AC00743D9E /* RecordingModel.swift */,
 				AE91B3F42BEB8A34008B8CFB /* AlarmModel.swift */,
 				AE0BF2402BF092AA008016AA /* HTTPMethod.swift */,
@@ -522,6 +528,7 @@
 				50C7A1C52BEB378800743D9E /* AiVoiceCell.swift in Sources */,
 				50C7A1C12BEB11AC00743D9E /* RecordingModel.swift in Sources */,
 				5016492F2BDA168700A5EE32 /* CallPopupView.swift in Sources */,
+				5058A7822BFCC56D002D4B8E /* VocabModel.swift in Sources */,
 				50F726422BC655A800078A6D /* WakieTalkieApp.swift in Sources */,
 				50F7264E2BC676AC00078A6D /* AlarmCell.swift in Sources */,
 				503754702BF8D03100817459 /* AudioFileDataUploader.swift in Sources */,
@@ -532,6 +539,7 @@
 				5016492D2BDA029F00A5EE32 /* AIProfileCell.swift in Sources */,
 				5058A77C2BFC3DEA002D4B8E /* RecordingAudioFunc.swift in Sources */,
 				AE9F0C3D2BC3FA6D007B2B1E /* CallView.swift in Sources */,
+				5058A77E2BFCC37E002D4B8E /* VocabDetailCell.swift in Sources */,
 				5013022E2BE0F27300F20086 /* AudioEngineFunc.swift in Sources */,
 				501649312BDA18CF00A5EE32 /* AIProfileDataFetcher.swift in Sources */,
 				50C7A1B32BEA6F4B00743D9E /* CustomCircleImg.swift in Sources */,
@@ -546,7 +554,7 @@
 				50C7A1B72BEA7E7800743D9E /* CallRecodView.swift in Sources */,
 				AE9F0C2F2BC3F38A007B2B1E /* AlarmTempModel.swift in Sources */,
 				AE228E772BDE14DC00B35657 /* ReceiveCallView.swift in Sources */,
-				5065F8E02BE88E26009E6EDB /* VocabModel.swift in Sources */,
+				5065F8E02BE88E26009E6EDB /* VocabListModel.swift in Sources */,
 				50F726482BC66D0400078A6D /* AddAlarmView.swift in Sources */,
 				50C7A1C32BEB122700743D9E /* RecordingDataFetcher.swift in Sources */,
 				5065F8DE2BE88CF1009E6EDB /* VocabView.swift in Sources */,

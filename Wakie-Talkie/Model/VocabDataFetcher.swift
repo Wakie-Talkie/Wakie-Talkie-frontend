@@ -10,23 +10,15 @@ import Foundation
 
 class VocabDataFetcher: ObservableObject {
     @Published var vocabs: [Vocab]?
-    
-    func fetchVocabs(){
-        let fetchVocabs = [
-            Vocab(id: "vocab1",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성"),
-            Vocab(id: "vocab2",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성"),
-            Vocab(id: "vocab3",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성"),
-            Vocab(id: "vocab4",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성"),
-            Vocab(id: "vocab5",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성"),
-        ]
-        self.vocabs = fetchVocabs
-    }
-    func transformToDate(dateString: String) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy MM dd h:mm a"
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        
-        let date = dateFormatter.date(from: dateString)
-        return date!
-    }
+//    func getAiProfileData(completion: @escaping ([Vocab]) -> Void){
+//
+//        HTTPManager.requestGET(url:
+//        "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/"
+//
+//        ) { data in
+//            guard let data: [AIProfile] = JSONConverter.decodeJsonArray(data: data) else { return
+//            }
+//            completion(data)
+//        }
+//    }
 }

@@ -10,13 +10,13 @@ import SwiftUI
 struct VocabDetailView: View {
     @Binding var vocabData: Vocab
     var body: some View {
-        Text(vocabData.vocab)
-        Text(vocabData.meaning)
+        Text(vocabData.word)
+        Text(vocabData.koreanMeaning)
     }
 }
 
 struct VocabDetailTestView:View{
-    @State private var vocab: Vocab = Vocab(id: "vocab1",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성")
+    @State private var vocab: Vocab = Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
     var body: some View{
         VocabDetailView(vocabData: $vocab)
     }

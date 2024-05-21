@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PastVocabView: View {
     @Environment(\.dismiss) var dismiss
-    @State var vocabs:[Vocab]
+    @State var vocabListDatas: [VocabList]
     
     var body: some View {
         VStack(spacing: 0){
@@ -31,8 +31,8 @@ struct PastVocabView: View {
                     .padding(EdgeInsets(top: 30, leading: 0, bottom: 30, trailing: 30))
             }
             ScrollView {
-                ForEach($vocabs){ vocab in
-                    PastVocabCell(pastVocabData: vocab,numOfVocab: vocabs.count)
+                ForEach($vocabListDatas){ vocab in
+                    PastVocabCell(pastVocabData: vocab.wordList[0],numOfVocab: vocab.wordList.count, date: "2024-05-21")
                         .padding(EdgeInsets(top: 0, leading: 10, bottom: 20, trailing: 10))
                 }
             }
@@ -41,16 +41,39 @@ struct PastVocabView: View {
 }
 
 struct PastVocabTestView: View{
-    @State var vocabDatas: [Vocab] = [
-        Vocab(id: "vocab1",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성"),
-        Vocab(id: "vocab2",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성"),
-        Vocab(id: "vocab3",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성"),
-        Vocab(id: "vocab4",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성"),
-        Vocab(id: "vocab5",userId: "eunhwa813",time: Date.now, vocab: "Concurrency", meaning: "동시성"),
+    @State var vocabListDatas: [VocabList] = [
+        VocabList(id: 1, userId: 1, recordingId: 1, date: "2024-05-21", wordList: [
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
+        ]),
+        VocabList(id: 1, userId: 1, recordingId: 1, date: "2024-05-21", wordList: [
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
+        ]),
+        VocabList(id: 1, userId: 1, recordingId: 1, date: "2024-05-21", wordList: [
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
+        ]),
+        VocabList(id: 1, userId: 1, recordingId: 1, date: "2024-05-21", wordList: [
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
+            Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
+        ])
     ]
     @State private var int: Int = 3
     var body: some View{
-        PastVocabView(vocabs: vocabDatas)
+        PastVocabView(vocabListDatas: vocabListDatas)
 //        VocabView(vocabs: [])
     }
 //    func transformToDate(dateString: String) -> Date {
