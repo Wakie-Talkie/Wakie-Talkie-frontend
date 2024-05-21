@@ -40,6 +40,34 @@ final class JSONConverter{
         }
     }
     
+    static func decodeVocabListJson<T: Codable>(data: Data) -> T? {
+        do {
+            let result = try JSONDecoder().decode(T.self, from: data)
+            return result
+        } catch let error as DecodingError {
+            switch error {
+            case .dataCorrupted(let context):
+                print(context.codingPath, context.debugDescription, context.underlyingError ?? "", separator: "\n")
+            case .keyNotFound(let key, let context):
+                print("Key '\(key)' not found:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            case .valueNotFound(let value, let context):
+                print("Value '\(value)' not found:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            case .typeMismatch(let type, let context):
+                print("Type '\(type)' mismatch:", context.debugDescription)
+                print("codingPath:", context.codingPath)
+            @unknown default:
+                print("Unknown decoding error")
+            }
+            return nil
+        } catch {
+            print("Unexpected error:", error)
+            return nil
+        }
+    }
+    
+    
     static func encodeJson<T:Codable>(param: T) -> Data? {
         do {
             let result = try JSONEncoder().encode(param)

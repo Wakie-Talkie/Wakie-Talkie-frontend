@@ -93,6 +93,7 @@ struct VocabView: View {
             }
             .onAppear(perform: {
                 recentVocabList.loadRecentVocabListData(userID:1)
+                recentVocabList.loadVocabListDatas()
             })
             .onChange(of: recentVocabList.vocabListData){
                 vocabList = recentVocabList.vocabListData?.wordList ?? []

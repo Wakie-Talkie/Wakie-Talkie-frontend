@@ -19,5 +19,17 @@ struct VocabList: Identifiable, Codable, Equatable {
         case recordingId = "recording_id"
         case wordList = "word_list"
     }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(Int.self, forKey: .id)
+        userId = try container.decode(Int.self, forKey: .userId)
+        recordingId = try container.decode(Int.self, forKey: .recordingId)
+        date = try container.decode(String.self, forKey: .date)
+        
+        let vocabListString = try container.decode(String.self, forKey: .wordList)
+        let vocabListData = Data(vocabListString.utf8)
+        wordList = try JSONDecoder().decode([Vocab].self, from: vocabListData)
+    }
 }
 
