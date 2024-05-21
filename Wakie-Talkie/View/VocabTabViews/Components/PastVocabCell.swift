@@ -47,16 +47,16 @@ struct PastVocabCell: View{
     }
 }
 
-struct PastVocabCellTestView: View{
-    
-    @State var vocab: Vocab = Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
-    @State var numOfVocab: Int = 3
-    @State var date: String = "2024-05-21"
-    var body: some View{
-        PastVocabCell(pastVocabData: $vocab,numOfVocab: numOfVocab, date: date)
-    }
-}
-
-#Preview {
-    PastVocabCellTestView()
-}
+//struct PastVocabCellTestView: View{
+//    
+//    @State var vocab: Vocab = Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
+//    @State var numOfVocab: Int = 3
+//    @State var date: String = "2024-05-21"
+//    var body: some View{
+//        PastVocabCell(pastVocabData: $vocab,numOfVocab: numOfVocab, date: date)
+//    }
+//}
+//
+//#Preview {
+//    PastVocabCellTestView()
+//}

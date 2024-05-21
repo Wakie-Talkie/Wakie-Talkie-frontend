@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct VocabView: View {
-    @State var vocabList: VocabList
+//    @State var vocabList: VocabList
     @State private var isPresentingCallView = false
     @State private var isPresentingPastVocab = false
     @Binding var changeTab: Int
+    
+    @State private var vocabList:[Vocab] = []
+    @StateObject var recentVocabList = VocabDataFetcher()
     //@State private var selectedAlarm: Alarm?
     var body: some View {
         NavigationStack {
@@ -31,7 +34,7 @@ struct VocabView: View {
                         .font(.system(size: 25))
                         .padding(EdgeInsets(top: 30, leading: 0, bottom: 20, trailing: 0))
                     
-                    if vocabList.wordList.isEmpty {
+                    if vocabList.isEmpty {
                         Spacer()
                         Text("전화하고 오시면 이용할 수 있어요!")
                             .foregroundColor(Color("Black"))
@@ -62,8 +65,8 @@ struct VocabView: View {
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
                         
                         ScrollView {
-                            ForEach(vocabList.wordList.indices ?? [].indices, id: \.self){ index in
-                                let binding = $vocabList.wordList[index]
+                            ForEach(vocabList.indices ?? [].indices, id: \.self) { index in
+                                let binding = $vocabList[index]
                                 NavigationLink(destination: VocabDetailView(vocabData: binding)
                                 ){
                                     VocabCell(vocabData: binding)
@@ -73,7 +76,7 @@ struct VocabView: View {
                         }
                     }
                     
-                    if vocabList.wordList.isEmpty {
+                    if vocabList.isEmpty {
                         CustomButtonBig(text: "전화하러 가기", action: {
                             changeTab = 1
                         }, color: Color("Black"), isActive: .constant(true))
@@ -88,32 +91,18 @@ struct VocabView: View {
                     }
                 }
             }
+            .onAppear(perform: {
+                recentVocabList.loadRecentVocabListData(userID:1)
+            })
+            .onChange(of: recentVocabList.vocabListData){
+                vocabList = recentVocabList.vocabListData?.wordList ?? []
+                print(vocabList)
+            }
 //            .fullScreenCover(isPresented: $isPresentingPastVocab){
 //                PastVocabView( vocabListDatas: vocabList)
-////            }
-            .navigationDestination(isPresented: $isPresentingPastVocab){
-                PastVocabView(vocabListDatas: [vocabList])
-            }
+//            }
+//            .navigationDestination(isPresented: $isPresentingPastVocab){
+//            }
         }
     }
-}
-
-struct VocabTestView: View{
-    @State var vocalList: VocabList = VocabList(id: 1, userId: 1, recordingId: 1, date: "2024-05-21", wordList: [
-        Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
-        Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
-        Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
-        Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
-        Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
-    ])
-    
-    @State private var int: Int = 3
-    var body: some View{
-        VocabView(vocabList: vocalList,changeTab: $int)
-//        VocabView(vocabs: [])
-    }
-}
-
-#Preview {
-    VocabTestView()
 }

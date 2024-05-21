@@ -22,7 +22,7 @@ struct CallRecordTextView: View {
     @State private var chatCells: [ChatCell] = []
     @State private var conversationScript: String = ""
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var recordData = RecordingDataFetcher()
+    @StateObject var recordData = RecordingDataFetcher()
 //    @State var isPresentRecordAudioView: Bool = false
     
     var body: some View {

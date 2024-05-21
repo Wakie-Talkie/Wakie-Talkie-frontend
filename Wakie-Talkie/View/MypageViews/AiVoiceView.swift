@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AiVoiceView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var aiProfileData = AIProfileDataFetcher()
+    @StateObject var aiProfileData = AIProfileDataFetcher()
     //private var aiVoiceList: [AIProfile] = []
     var body: some View {
         VStack(spacing: 0){

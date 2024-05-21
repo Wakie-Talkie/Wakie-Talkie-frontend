@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CallView: View {
 //    @EnvironmentObject var aiDataFetcher: AIProfileDataFetcher
-    //@ObservedObject var aiProfileData = AIProfileDataFetcher()
+    //@StateObject var aiProfileData = AIProfileDataFetcher()
     @State private var selection: AIProfile? = nil
     @State private var showModal: Bool = false
     

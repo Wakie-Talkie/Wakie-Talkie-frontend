@@ -12,7 +12,7 @@ struct CallRecodView: View {
     //    @State var recordList: [Recording] = []
     @State private var lastDate:String = ""
     
-    @ObservedObject var recordData = RecordingDataFetcher()
+    @StateObject var recordData = RecordingDataFetcher()
     
     var body: some View {
         VStack(spacing: 0){
