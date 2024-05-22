@@ -95,11 +95,11 @@ struct CallRecordTextView: View {
         .onChange(of: conversationScript){
             chatCells = parseChat(text: conversationScript)
         }
+        .navigationBarBackButtonHidden(true)
 //        .fullScreenCover(isPresented: $isPresentRecordAudioView, content: {
 //
 //        })
     }
-    
     func parseChat(text: String) -> [ChatCell] {
         var chatCells: [ChatCell] = []
         let lines = text.split(separator: "\n").map { String($0) }

@@ -37,13 +37,13 @@ struct VocabCell: View{
     }
 }
 
-struct VocabCellTestView: View{
-    @State var vocab: Vocab = Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
-    var body: some View{
-        VocabCell(vocabData: $vocab)
-    }
-}
+//struct VocabCellTestView: View{
+//    @State var vocab: Vocab = Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
+//    var body: some View{
+//        VocabCell(vocabData: $vocab)
+//    }
+//}
 
-#Preview {
-    VocabCellTestView()
-}
+//#Preview {
+//    VocabCellTestView()
+//}

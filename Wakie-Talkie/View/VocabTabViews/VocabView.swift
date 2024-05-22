@@ -70,7 +70,7 @@ struct VocabView: View {
                                 NavigationLink(destination: VocabDetailView(vocabData: binding)
                                 ){
                                     VocabCell(vocabData: binding)
-                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
+                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                                 }
                             }
                         }
@@ -93,7 +93,6 @@ struct VocabView: View {
             }
             .onAppear(perform: {
                 recentVocabList.loadRecentVocabListData(userID:1)
-                recentVocabList.loadVocabListDatas()
             })
             .onChange(of: recentVocabList.vocabListData){
                 vocabList = recentVocabList.vocabListData?.wordList ?? []
@@ -102,8 +101,9 @@ struct VocabView: View {
 //            .fullScreenCover(isPresented: $isPresentingPastVocab){
 //                PastVocabView( vocabListDatas: vocabList)
 //            }
-//            .navigationDestination(isPresented: $isPresentingPastVocab){
-//            }
+            .navigationDestination(isPresented: $isPresentingPastVocab){
+                PastVocabView()
+            }
         }
     }
 }

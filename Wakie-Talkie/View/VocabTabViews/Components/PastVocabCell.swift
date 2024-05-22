@@ -12,51 +12,60 @@ struct PastVocabCell: View{
     var numOfVocab: Int
     var date: String
     var body: some View{
-        ZStack{
-            RoundedRectangle(cornerRadius: 20)
+//        ZStack{
+            
+            HStack{
+                VStack {
+                    HStack {
+                        Text(date)
+                            .foregroundColor(Color("Black"))
+                            .font(.system(size: 16))
+                            .fontWeight(.thin)
+                            .padding(EdgeInsets(top: 15, leading: 25, bottom: 5, trailing: 0))
+                        Spacer()
+                    }
+                    HStack(alignment: .bottom, spacing: 15){
+                        Text(pastVocabData.word)
+                            .foregroundColor(Color("Black"))
+                            .font(.system(size: 25))
+                            .fontWeight(.medium)
+                            .padding(EdgeInsets(top: 0, leading: 25, bottom: 20, trailing: 0))
+                        Text("외 " + String(numOfVocab) + "개")
+                            .foregroundColor(Color("Black"))
+                            .font(.system(size: 22))
+                            .fontWeight(.medium)
+                            .padding(EdgeInsets(top: 0, leading: -5, bottom: 20, trailing: 0))
+                        Spacer()
+                    }
+                }
+                Spacer()
+                Text(">")
+                    .foregroundColor(Color("Black"))
+                    .font(.system(size: 20))
+                    .fontWeight(.thin)
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 20))
+            }
+            .background(RoundedRectangle(cornerRadius: 20)
                 .fill(Color("Accent3").opacity(0.6))
                 .frame(maxWidth: .infinity)
-                .frame(height: 100)
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
                         .stroke(Color("Accent3").opacity(0.6), lineWidth: 2)
-                )
-            VStack {
-                HStack {
-                    Text(date)
-                        .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
-                    Spacer()
-                }
-                .padding(EdgeInsets(top: 5, leading: 0, bottom: 3, trailing: 0))
-                HStack(spacing: 15){
-                    Text(pastVocabData.word + " 외 " + String(numOfVocab) + "개")
-                        .foregroundColor(Color("Black"))
-                        .font(.system(size: 25))
-                        .fontWeight(.medium)
-                        .padding(EdgeInsets(top: 0, leading: 15, bottom: 0, trailing: 0))
-                    Spacer()
-                    Text(">")
-                        .foregroundColor(Color("Black"))
-                        .font(.system(size: 20))
-                        .fontWeight(.thin)
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 15))
-                }
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
-            }.padding([.horizontal])
-        }
+                ))
+        
+//        }
     }
 }
 
-//struct PastVocabCellTestView: View{
-//    
-//    @State var vocab: Vocab = Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
-//    @State var numOfVocab: Int = 3
-//    @State var date: String = "2024-05-21"
-//    var body: some View{
-//        PastVocabCell(pastVocabData: $vocab,numOfVocab: numOfVocab, date: date)
-//    }
-//}
-//
-//#Preview {
-//    PastVocabCellTestView()
-//}
+struct PastVocabCellTestView: View{
+    @State var vocab: Vocab = Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
+    @State var num: Int = 4
+    @State var dateStr: String = "2024-05-22"
+    var body: some View{
+        PastVocabCell(pastVocabData: $vocab,numOfVocab: num,date: dateStr)
+    }
+}
+
+#Preview {
+    PastVocabCellTestView()
+}

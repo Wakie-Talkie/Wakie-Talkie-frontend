@@ -1,15 +1,15 @@
 //
-//  VocabDetailView.swift
+//  VocabDetailListView.swift
 //  Wakie-Talkie
 //
-//  Created by 이은화 on 5/6/24.
+//  Created by 이은화 on 5/22/24.
 //
 
 import SwiftUI
 
-struct VocabDetailView: View {
+struct VocabDetailListView: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var vocabData: Vocab
+    @Binding var vocabListData: VocabList
     var body: some View {
         VStack{
             HStack {
@@ -29,21 +29,14 @@ struct VocabDetailView: View {
                 Text("")
                     .padding(EdgeInsets(top: 30, leading: 0, bottom: 30, trailing: 30))
             }
-            VocabDetailCell(vocabData: $vocabData)
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-            Spacer()
+            ScrollView{
+                ForEach(vocabListData.wordList.indices ?? [].indices, id: \.self) {index in
+                    VocabDetailCell(vocabData: $vocabListData.wordList[index])
+                        .padding(EdgeInsets(top: 0, leading: 10, bottom: 10, trailing: 10))
+                }
+            }
         }
         .navigationBarBackButtonHidden(true)
     }
 }
 
-struct VocabDetailTestView:View{
-    @State private var vocab: Vocab
-//    = Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
-    var body: some View{
-        VocabDetailView(vocabData: $vocab)
-    }
-}
-//#Preview {
-//    VocabDetailTestView()
-//}

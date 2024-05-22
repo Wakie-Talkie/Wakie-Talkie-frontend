@@ -52,14 +52,14 @@ struct VocabDetailCell: View {
             .frame(maxWidth: .infinity))
     }
 }
-struct VocabDetailCellTestView: View{
-    @State var vocab: Vocab = Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
-    
-    var body: some View{
-        VocabDetailCell(vocabData: $vocab)
-    }
-}
-
-#Preview {
-    VocabDetailCellTestView()
-}
+//struct VocabDetailCellTestView: View{
+//    @State var vocab: Vocab = Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
+//    
+//    var body: some View{
+//        VocabDetailCell(vocabData: $vocab)
+//    }
+//}
+//
+//#Preview {
+//    VocabDetailCellTestView()
+//}
