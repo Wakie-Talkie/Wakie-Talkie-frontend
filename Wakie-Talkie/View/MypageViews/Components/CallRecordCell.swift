@@ -45,13 +45,3 @@ struct CallRecordCell: View {
         return arr[0]+"분 "+arr[1]+"초"
     }
 }
-//struct CallRecordCellTestView: View{
-//    @State var record: Recording = Recording(id: 1, userId: 1, aiPartnerId: 1, date: "2024-05-21", callingTime: "00:54", convertedTextFile: "", recordedAudioFile: "", language: 1)
-//    var body: some View{
-//        CallRecordCell(recordData: $record)
-//    }
-//}
-//
-//#Preview {
-//    CallRecordCellTestView()
-//}

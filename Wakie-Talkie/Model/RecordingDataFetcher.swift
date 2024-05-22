@@ -11,6 +11,7 @@ import Foundation
 class RecordingDataFetcher: ObservableObject {
     @Published var records: [Recording] = []
     @Published var script: String = ""
+    @Published var audioData: Data?
     func loadRecordData() {
         getRecordData { [weak self] recordData in
             DispatchQueue.main.async {
@@ -34,10 +35,10 @@ class RecordingDataFetcher: ObservableObject {
     func loadTextData(recordingId: Int){
         getRecordedTextData(url: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/recordings/text/", recordingId: recordingId){ result in
             switch result {
-            case .success(let result):
+            case .success(let resultText):
                 DispatchQueue.main.async {
-                    self.script = result
-                    print("response url!!!!!! \(result)")
+                    self.script = resultText
+                    print("response url!!!!!! \(resultText)")
                 }
             case .failure(let error):
                 print("Upload failed: \(error)")
@@ -88,7 +89,21 @@ class RecordingDataFetcher: ObservableObject {
         }.resume()
     }
     
-    func getRecordedAudioData (url: String, recordingId: Int, completion: @escaping (Result<URL, Error>) -> Void) {
+    func loadRecordedAudioData(recordingId: Int){
+        getRecordedAudioData(url: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/recordings/record/", recordingId: recordingId){ result in
+            switch result {
+            case .success(let data):
+                DispatchQueue.main.async {
+                    self.audioData = data
+                    print("response url!!!!!! \(data)")
+                }
+            case .failure(let error):
+                print("Upload failed: \(error)")
+            }
+        }
+    }
+    
+    func getRecordedAudioData (url: String, recordingId: Int, completion: @escaping (Result<Data, Error>) -> Void) {
         let setURL = url + String(recordingId)
         
         guard let validURL = URL(string: setURL) else {
@@ -123,20 +138,21 @@ class RecordingDataFetcher: ObservableObject {
                 completion(.failure(NSError(domain: "No data received", code: 0, userInfo: nil)))
                 return
             }
+            completion(.success(data))
             
-            if let responseString = String(data: data, encoding: .utf8) {
-                print("Response Body: \(responseString)")
-            }
+//            if let responseString = String(data: data, encoding: .utf8) {
+//                print("Response Body: \(responseString)")
+//            }
 
-            let tempFileURL = FileManager.default.temporaryDirectory.appendingPathComponent("combined_recording.mp3")
-            do {
-                try data.write(to: tempFileURL)
-                print("data type?? : \(type(of: data))")
-                completion(.success(tempFileURL))
-                print("temp file path:: \(tempFileURL)")
-            } catch {
-                completion(.failure(error))
-            }
+//            let tempFileURL = FileManager.default.temporaryDirectory.appendingPathComponent("combined_recording.mp3")
+//            do {
+//                try data.write(to: tempFileURL)
+//                print("data type?? : \(type(of: data))")
+//                completion(.success(tempFileURL))
+//                print("temp file path:: \(tempFileURL)")
+//            } catch {
+//                completion(.failure(error))
+//            }
         }.resume()
     }
 }

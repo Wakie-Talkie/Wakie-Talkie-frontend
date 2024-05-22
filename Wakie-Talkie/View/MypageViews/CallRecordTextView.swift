@@ -20,6 +20,7 @@ struct CallRecordTextView: View {
     @State private var conversationScript: String = ""
     @Environment(\.dismiss) var dismiss
     @StateObject var recordData = RecordingDataFetcher()
+    @StateObject private var recordingAudioFunc = RecordingAudioFunc()
     
     var body: some View {
         NavigationStack {
@@ -60,15 +61,57 @@ struct CallRecordTextView: View {
                             }
                         }
                     }
+                    VStack {
+                        ProgressView(value: recordingAudioFunc.progress, total: recordingAudioFunc.duration)
+                            .progressViewStyle(LinearProgressViewStyle(tint: .pink))
+                            .padding()
+                        
+                        HStack {
+                            Button(action: {
+                                recordingAudioFunc.skipBackward(by: 10)
+                            }) {
+                                Image(systemName: "gobackward.10")
+                                    .font(.system(size: 24))
+                            }
+                            .padding()
+                            
+                            Button(action: {
+                                if recordingAudioFunc.isPlaying {
+                                    recordingAudioFunc.pause()
+                                } else {
+                                    recordingAudioFunc.play()
+                                }
+                            }) {
+                                Image(systemName: recordingAudioFunc.isPlaying ? "pause.circle.fill" : "play.circle.fill")
+                                    .font(.system(size: 48))
+                            }
+                            .padding()
+                            
+                            Button(action: {
+                                recordingAudioFunc.skipForward(by: 10)
+                            }) {
+                                Image(systemName: "goforward.10")
+                                    .font(.system(size: 24))
+                            }
+                            .padding()
+                        }
+                    }
+                    .padding()
                 }
             }
         }
         .onAppear(perform: {
             recordData.loadTextData(recordingId: recordId)
+            recordData.loadRecordedAudioData(recordingId: recordId)
         })
         .onChange(of: recordData.script){
             conversationScript = recordData.script
             chatCells = parseChat(text: conversationScript)
+        }
+        .onChange(of: recordData.audioData){
+            if (recordData.audioData != nil){
+                recordingAudioFunc.loadAudio(data: recordData.audioData!)
+            }
         }
         .navigationBarBackButtonHidden(true)
     }
