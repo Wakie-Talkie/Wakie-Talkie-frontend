@@ -17,7 +17,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AV
     var soundPlayer: AVAudioPlayer?
     var levelTimer: Timer?
     let silenceThreshold: Float = -27.0 // dB
-    let maxSilenceDuration: TimeInterval = 2 // 최대 지속 시간 (초)
+    let maxSilenceDuration: TimeInterval = 1.5 // 최대 지속 시간 (초)
     var silenceStartTime: Date?
 
     override init() {
@@ -62,6 +62,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AV
             audioRecorder?.isMeteringEnabled = true
             audioRecorder?.record()
             self.isRecording = self.audioRecorder?.isRecording ?? false
+            silenceStartTime = Date()
             startLevelTimer()
         } catch {
             finishRecording(success: false)
@@ -91,11 +92,15 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AV
                 if Date().timeIntervalSince(silenceStartTime) >= maxSilenceDuration {
                     finishRecording(success: true)
                 }
+                print("=== if\(silenceStartTime)")
+                print("=== if 시간차 \(Date().timeIntervalSince(silenceStartTime))")
             } else {
                 silenceStartTime = Date()
+                print("=== else문이라서 date초기화에욤\(String(describing: silenceStartTime))")
             }
         } else {
-            silenceStartTime = nil
+            silenceStartTime = Date() // nil이어서 오류나는거같은데
+            print("=== nil이어욤\(String(describing: silenceStartTime))")
         }
     }
 
@@ -120,7 +125,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AV
             self.audioFilePath = paths[0].appending(path:(dateFormatter.string(from: Date.now)+".wav"))
         return audioFilePath!
     }
-    
+
     func playCallSoundAndStartRecording() {
         guard let callSoundPath = Bundle.main.url(forResource: "dialtone", withExtension: "wav") else {
             print("dialtone.wav 파일을 찾을 수 없습니다.")
@@ -135,7 +140,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AV
             print("dialtone.wav 파일을 재생하는 중 오류 발생: \(error)")
         }
     }
-    
+
     func playPartnerSoundAndStartRecording(for partnerId: Int) {
             let fileNames = [
                 1: "alloys",
@@ -159,7 +164,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AV
                 print("파트너 파일을 재생하는 중 오류 발생: \(error)")
             }
         }
-    
+
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         if player == soundPlayer {
             print("dialtone.wav 파일 재생 완료")
