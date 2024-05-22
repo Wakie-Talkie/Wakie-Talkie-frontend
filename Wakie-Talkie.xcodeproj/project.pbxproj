@@ -30,6 +30,7 @@
 		5058A7862BFDAF5F002D4B8E /* CustomProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A7852BFDAF5F002D4B8E /* CustomProgressBar.swift */; };
 		5058A7882BFDB49A002D4B8E /* CustomProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A7872BFDB49A002D4B8E /* CustomProgressViewStyle.swift */; };
 		5058A78A2BFDF253002D4B8E /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A7892BFDF253002D4B8E /* LocalData.swift */; };
+		5058A78C2BFE0DBE002D4B8E /* AlarmAICell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A78B2BFE0DBE002D4B8E /* AlarmAICell.swift */; };
 		5065F8DE2BE88CF1009E6EDB /* VocabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DD2BE88CF1009E6EDB /* VocabView.swift */; };
 		5065F8E02BE88E26009E6EDB /* VocabListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DF2BE88E26009E6EDB /* VocabListModel.swift */; };
 		5065F8E22BE88F94009E6EDB /* VocabDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */; };
@@ -109,6 +110,7 @@
 		5058A7852BFDAF5F002D4B8E /* CustomProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressBar.swift; sourceTree = "<group>"; };
 		5058A7872BFDB49A002D4B8E /* CustomProgressViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressViewStyle.swift; sourceTree = "<group>"; };
 		5058A7892BFDF253002D4B8E /* LocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
+		5058A78B2BFE0DBE002D4B8E /* AlarmAICell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAICell.swift; sourceTree = "<group>"; };
 		5065F8DD2BE88CF1009E6EDB /* VocabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabView.swift; sourceTree = "<group>"; };
 		5065F8DF2BE88E26009E6EDB /* VocabListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabListModel.swift; sourceTree = "<group>"; };
 		5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VocabDataFetcher.swift; path = "Wakie-Talkie/Model/VocabDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
@@ -328,6 +330,7 @@
 			children = (
 				50F7264B2BC66D9B00078A6D /* CustomButtonCircle.swift */,
 				50F7264D2BC676AC00078A6D /* AlarmCell.swift */,
+				5058A78B2BFE0DBE002D4B8E /* AlarmAICell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				5065F8E02BE88E26009E6EDB /* VocabListModel.swift in Sources */,
 				50F726482BC66D0400078A6D /* AddAlarmView.swift in Sources */,
 				50C7A1C32BEB122700743D9E /* RecordingDataFetcher.swift in Sources */,
+				5058A78C2BFE0DBE002D4B8E /* AlarmAICell.swift in Sources */,
 				5065F8DE2BE88CF1009E6EDB /* VocabView.swift in Sources */,
 				50F726402BC6525B00078A6D /* OnboardingView.swift in Sources */,
 			);
@@ -707,7 +711,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wakie-Talkie/Preview Content\"";
-				DEVELOPMENT_TEAM = 57QLLZQ6H9;
+				DEVELOPMENT_TEAM = CT9F24W469;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Wakie-Talkie/Info.plist";
@@ -741,7 +745,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wakie-Talkie/Preview Content\"";
-				DEVELOPMENT_TEAM = 57QLLZQ6H9;
+				DEVELOPMENT_TEAM = CT9F24W469;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Wakie-Talkie/Info.plist";

@@ -12,7 +12,7 @@ import SwiftData
 struct AlarmView: View {
     @State private var isPresentingAddAlarm = false
     @State private var isPresentingMypage = false
-    
+    @StateObject var aiProfileData = AIProfileDataFetcher()
     @Query private var alarms: [Alarm]
     
     var body: some View {
@@ -78,10 +78,16 @@ struct AlarmView: View {
                 }
             }
             .navigationDestination(isPresented: $isPresentingAddAlarm){
-                AddAlarmView()
+                AddAlarmView(aiProfiles: aiProfileData.aiProfiles ?? [])
             }
             .navigationDestination(isPresented: $isPresentingMypage){
                 ProfileView()
+            }
+            .onAppear{
+                aiProfileData.loadAiProfileData()
+            }
+            .onChange(of: aiProfileData.aiProfiles){
+                
             }
         }
     }

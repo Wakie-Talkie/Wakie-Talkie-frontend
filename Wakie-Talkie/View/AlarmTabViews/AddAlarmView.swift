@@ -24,13 +24,14 @@ struct AddAlarmView: View {
     @State private var editingHour: String = ""
     @State private var editingMin: String = ""
     @State private var language: String = ""
+    @State private var aiUserId: Int = 1
     @State private var repeatDays: [Bool] = [false, false, false, false, false, false, false]
     @State private var userId: String = "eunhwa813"
     
     @State private var alarm = Alarm() //SD
     @Environment(\.modelContext) var context
-    @Query private var alarmList: [Alarm]
-    
+    @Query var alarmList: [Alarm]
+    @State var aiProfiles: [AIProfile]
     var body: some View {
         VStack() {
 //            HStack{
@@ -133,10 +134,14 @@ struct AddAlarmView: View {
                         Text("대화할 친구")
                             .font(.system(size: 20))
                             .fontWeight(.medium)
-                        HStack(alignment: .top, spacing: 13){
-                            
+                       
+                        ForEach(aiProfiles){ profile in
+                            AiVoiceCell(aiProfile: profile, action: {
+                                aiUserId = profile.id
+                                //아직 어떻게 로직 짜야할지 모르겠음
+                            }, isActive: .constant(true))
                         }
-                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 60, trailing: 30))
+                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 10, trailing: 0))
                         
                     }.padding(EdgeInsets(top: 30, leading: 30, bottom: 0, trailing: 0))
                 }
@@ -154,7 +159,7 @@ struct AddAlarmView: View {
                     alarm.isOn = true
                     alarm.language = language
                     alarm.repeatDays = repeatDays
-                    
+                    alarm.aiProfileId = aiUserId
                     context.insert(alarm)
                     
                     AlarmManager.scheduleNextAlarm(alarms: alarmList)
