@@ -11,6 +11,7 @@ import AVFoundation
 class AudioEngineFunc: NSObject, ObservableObject{
     private var audioEngine = AVAudioEngine()
     private var audioPlayerNode = AVAudioPlayerNode()
+    private var audioFileBuffer: AVAudioPCMBuffer?
     private var audioFile: AVAudioFile!
     private var audioFormat: AVAudioFormat?
     var beepPlayer: AVAudioPlayer?
@@ -26,7 +27,7 @@ class AudioEngineFunc: NSObject, ObservableObject{
     func setupAudioPlayer(){
         print("셋업됐니??????????")
         audioEngine.attach(audioPlayerNode)
-        audioEngine.connect(audioPlayerNode, to: audioEngine.outputNode, format: nil)
+        audioEngine.connect(audioPlayerNode, to: audioEngine.outputNode, format: AVAudioFormat(standardFormatWithSampleRate: 24000, channels: 1))
         do {
             try audioEngine.start()
         } catch {
@@ -35,17 +36,25 @@ class AudioEngineFunc: NSObject, ObservableObject{
     }
 
     func playAudioStream(data: Data) {
-        audioFormat = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 2)
-        let buffer = AVAudioPCMBuffer(pcmFormat: audioFormat!, frameCapacity: AVAudioFrameCount(data.count) / audioFormat!.streamDescription.pointee.mBytesPerFrame)!
-        buffer.frameLength = buffer.frameCapacity
-
-        data.withUnsafeBytes { (audioBytes: UnsafeRawBufferPointer) in
-            memcpy(buffer.audioBufferList.pointee.mBuffers.mData, audioBytes.baseAddress, Int(buffer.frameLength) * Int(audioFormat!.streamDescription.pointee.mBytesPerFrame))
+        do {
+            let audioFile = try AVAudioFile(forReading: data.toTempURL())
+            self.audioFile = audioFile
+            let format = audioFile.processingFormat
+            print(format)
+            let frameCount = AVAudioFrameCount(audioFile.length)
+            let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: frameCount)!
+            
+            try audioFile.read(into: buffer)
+            audioFileBuffer = buffer
+        } catch {
+            print("Error loading audio: \(error)")
         }
 
-        audioPlayerNode.scheduleBuffer(buffer) {
-            self.isPlaying = false
-            print("Finished playing.")
+        if (audioFileBuffer != nil){
+            audioPlayerNode.scheduleBuffer(audioFileBuffer!) {
+                self.isPlaying = false
+                print("Finished playing.")
+            }
         }
 
         audioPlayerNode.play()
@@ -92,8 +101,6 @@ class AudioEngineFunc: NSObject, ObservableObject{
     }
 
 }
-
-
 
 extension AudioEngineFunc: AVAudioPlayerDelegate {
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
