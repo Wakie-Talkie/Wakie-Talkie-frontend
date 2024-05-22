@@ -47,6 +47,7 @@ struct CallRecodView: View {
                             }
                         }
                         CallRecordCell(recordData: binding)
+                            .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))
                     }
                 }
             }

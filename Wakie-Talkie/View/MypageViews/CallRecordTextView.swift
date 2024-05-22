@@ -13,9 +13,6 @@ enum ChatCell {
 }
 
 struct CallRecordTextView: View {
-    @Binding var isTextViewActive: Bool
-    @Binding var isRecordViewActive: Bool
-//    @Binding var path: NavigationPath
     @Binding var recordId: Int
     var dateTime: String
     
@@ -23,7 +20,6 @@ struct CallRecordTextView: View {
     @State private var conversationScript: String = ""
     @Environment(\.dismiss) var dismiss
     @StateObject var recordData = RecordingDataFetcher()
-//    @State var isPresentRecordAudioView: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -64,41 +60,17 @@ struct CallRecordTextView: View {
                             }
                         }
                     }
-                    
-                    CustomButtonBig(text: "녹음 듣기", action: {
-                        isTextViewActive = false
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                            isRecordViewActive = true
-                        }
-                    }, color: Color("Black"), isActive: .constant(true))
-                    .frame(alignment: .bottom)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                 }
             }
         }
         .onAppear(perform: {
-            print("text appearrr")
-            recordData.getRecordedTextData(url: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/recordings/text/", recordingId: recordId) { result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success(let resultText):
-                        DispatchQueue.main.async {
-                            conversationScript = resultText
-                            print("response url!!!!!! \(resultText)")
-                        }
-                    case .failure(let error):
-                        print("Upload failed: \(error)")
-                    }
-                }
-            }
+            recordData.loadTextData(recordingId: recordId)
         })
-        .onChange(of: conversationScript){
+        .onChange(of: recordData.script){
+            conversationScript = recordData.script
             chatCells = parseChat(text: conversationScript)
         }
         .navigationBarBackButtonHidden(true)
-//        .fullScreenCover(isPresented: $isPresentRecordAudioView, content: {
-//
-//        })
     }
     func parseChat(text: String) -> [ChatCell] {
         var chatCells: [ChatCell] = []

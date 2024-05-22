@@ -116,23 +116,14 @@ struct ProfileView: View {
                 ProfileEditView()
             }
             .navigationDestination(isPresented: $isPresentingRecodings){
-                CallRecodView(/*recordList: recordDatas*/)
+                CallRecodView()
             }
             .navigationDestination(isPresented: $isPresentingAiVoice){
                 AiVoiceView()
             }
         }
         .onAppear(perform: {
-//            recordDataFetcher.fetchRecords()
-//            recordDatas = recordDataFetcher.records?.sorted{$0.date < $1.date} ?? []
             userData.loadUserData()
-//            aiProfileData.loadAiProfileData()
-//            aiProfileDataFetcher.getAIProfiles()
-//            aiProfileDatas = aiProfileData.aiProfiles?.sorted{$0.language < $1.language} ?? []
         })
     }
 }
-
-//#Preview {
-//    ProfileView()
-//}

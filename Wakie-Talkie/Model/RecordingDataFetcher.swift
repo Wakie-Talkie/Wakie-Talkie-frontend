@@ -10,7 +10,7 @@ import Foundation
 
 class RecordingDataFetcher: ObservableObject {
     @Published var records: [Recording] = []
-    
+    @Published var script: String = ""
     func loadRecordData() {
         getRecordData { [weak self] recordData in
             DispatchQueue.main.async {
@@ -28,6 +28,20 @@ class RecordingDataFetcher: ObservableObject {
             guard let data: [Recording] = JSONConverter.decodeJsonArray(data: data) else { return
             }
             completion(data)
+        }
+    }
+    
+    func loadTextData(recordingId: Int){
+        getRecordedTextData(url: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/recordings/text/", recordingId: recordingId){ result in
+            switch result {
+            case .success(let result):
+                DispatchQueue.main.async {
+                    self.script = result
+                    print("response url!!!!!! \(result)")
+                }
+            case .failure(let error):
+                print("Upload failed: \(error)")
+            }
         }
     }
     

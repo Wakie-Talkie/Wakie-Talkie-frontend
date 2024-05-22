@@ -8,18 +8,9 @@
 import SwiftUI
 
 struct MainTabView: View {
-//    @StateObject private var aiProfileDataFetcher = AIProfileDataFetcher()
-//    @StateObject private var vocabDataFetcher = VocabDataFetcher()
     @State private var selectedTab = 2
     @State private var navigateToReceiveCall = false
-//    @State var vocalList: VocabList = VocabList(id: 1, userId: 1, recordingId: 1, date: "2024-05-21", wordList: [
-//        Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
-//        Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
-//        Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
-//        Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans."),
-//        Vocab(word: "packed", koreanMeaning: "가득 찬", antonym: "empty", synonym: "filled", sentence: "The stadium was packed with excited fans.")
-//    ])
-    
+
     var body: some View {
         NavigationStack {
             VStack {
@@ -31,7 +22,7 @@ struct MainTabView: View {
                     AlarmView()
                 default:
 //                    ProfileView()
-                    VocabView(/*vocabList: vocalList ,*/changeTab: $selectedTab)
+                    VocabView(changeTab: $selectedTab)
                 }
                 
                 HStack(alignment: .center){
@@ -50,12 +41,9 @@ struct MainTabView: View {
                                 .foregroundStyle(.black)
                                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
                         }
-                        
                     }
                     .padding(EdgeInsets(top: 0, leading: 40, bottom: 0, trailing: 0))
-                    
                     Spacer()
-                    
                     Button(action: {
                         self.selectedTab = 2
                     }) {
@@ -96,9 +84,6 @@ struct MainTabView: View {
                 .background(Color("Main").opacity(0.7))
                 
             }
-//            .onAppear {
-//                vocabDataFetcher.fetchVocabs()
-//            }
             .onReceive(NotificationCenter.default.publisher(for: .init("TriggerReceiveCallView"))) { _ in
                 navigateToReceiveCall = true
                 print("ALARMVIEW: navigateToReceivecall true")
