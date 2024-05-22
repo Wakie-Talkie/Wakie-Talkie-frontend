@@ -17,7 +17,7 @@ class AudioPlayerFunc: NSObject,ObservableObject, AVAudioPlayerDelegate{
         super.init()
     }
     
-    func setupAudioPlayer(audioFilePath: URL!) {
+    func setupAudioPlayer(audioFilePath: URL) {
         do {
             print("prepare to play \(audioFilePath)")
             audioPlayer = try AVAudioPlayer(contentsOf: audioFilePath)
@@ -27,7 +27,9 @@ class AudioPlayerFunc: NSObject,ObservableObject, AVAudioPlayerDelegate{
             print("Failed to play")
         }
     }
-    func playAudio(){
+    
+    func playAudio(audioFilePath: URL){
+        setupAudioPlayer(audioFilePath: audioFilePath)
         if (audioPlayer != nil && !audioPlayer.isPlaying){
             self.isPlayerPlaying = true
             audioPlayer.play()
@@ -35,8 +37,12 @@ class AudioPlayerFunc: NSObject,ObservableObject, AVAudioPlayerDelegate{
             print("audioPlayer nilll")
         }
     }
+    func stopAudio(){
+        audioPlayer.stop()
+    }
 
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        audioPlayer.stop()
         print("Did finish Playing")
         self.isPlayerPlaying = false
     }

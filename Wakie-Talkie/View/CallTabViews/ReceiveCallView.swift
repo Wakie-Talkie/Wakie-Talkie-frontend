@@ -15,7 +15,8 @@ struct ReceiveCallView: View {
     @State var aiProfile: AIProfile
     @State private var callReceived: Bool = false
     @StateObject private var audioRecorder: AudioRecordingFunc = AudioRecordingFunc()
-    @State private var audioEngine: AudioEngineFunc? = nil
+//    @State private var audioEngine: AudioEngineFunc? = nil
+    @StateObject private var audioPlayer: AudioPlayerFunc = AudioPlayerFunc()
     private let audioFileDataUploader = AudioFileDataUploader()
     private let postModel = UploadRecordingModel(userId: 1, aiPartnerId: 3) //temp
     @State var isGeneratingResponse: Bool = false
@@ -77,10 +78,11 @@ struct ReceiveCallView: View {
                 
                 if callReceived {
                     CustomButtonBig(text: "전화 끊기", action: {
-                        print("너 전화 끊기 눌렀다 - ReceiveCallView")
+                        audioFileDataUploader.callEndFunc(model: postModel)
+                        self.callReceived = false
                         self.audioRecorder.finishRecording(success: true)
-                        audioRecorder.dismiss()
-                        audioEngine?.dismiss()
+                        audioRecorder.stopRecorder()
+                        audioPlayer.stopAudio()
                         dismiss()
                     }, color: Color("Accent1"), isActive: .constant(true))
                 }
@@ -101,10 +103,10 @@ struct ReceiveCallView: View {
             }
         }.onAppear{
             print("뉴 오디오 엔진 레스고")
-            let newAudioEngine = AudioEngineFunc()
-            newAudioEngine.setupAudioPlayer()
-            audioEngine = newAudioEngine
-            audioEngine?.isPlaying = true
+//            let newAudioEngine = AudioEngineFunc()
+//            newAudioEngine.setupAudioPlayer()
+//            audioEngine = newAudioEngine
+//            audioEngine?.isPlaying = true
             print("뉴 오디오 엔진 할당됐음?아마도..")
 //            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
 //               // audioFileDataUploader.callStartFunc()
@@ -117,15 +119,16 @@ struct ReceiveCallView: View {
             if(!self.audioRecorder.isRecording){
                 self.isGeneratingResponse = true
                 if(audioRecorder.audioFilePath != nil){
-                    audioFileDataUploader.uploadAudioFile(url: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/upload-audio/" , model: postModel, audioFilePath: audioRecorder.audioFilePath?.path() ?? "") { result in
+                    audioFileDataUploader.uploadAudioFile(model: postModel, audioFilePath: audioRecorder.audioFilePath?.path() ?? "") { result in
                         DispatchQueue.main.async {
                             self.isGeneratingResponse = false
                             switch result {
-                            case .success(let responseURL):
-                                DispatchQueue.main.async {
-                                    print("response url!!!!!! \(responseURL)")
-                                    audioEngine!.audioPlay(from: responseURL)
-                                }
+                            case .success(let url):
+                                audioPlayer.playAudio(audioFilePath: url)
+//                                DispatchQueue.main.async {
+//                                    print("response url!!!!!! \(responseURL)")
+//                                    audioEngine!.audioPlay(from: responseURL)
+//                                }
                             case .failure(let error):
                                 print("Upload failed: \(error)")
                             }
@@ -135,13 +138,13 @@ struct ReceiveCallView: View {
                 }
             }
         }
-        .onChange(of: self.audioEngine?.isPlaying){
-            if(!(self.audioEngine!.isPlaying)){
+        .onChange(of: self.audioPlayer.isPlayerPlaying){
+            if(!(self.audioPlayer.isPlayerPlaying)){
                 //print("2. answer, 파일 재생이 끝났나요? ", self.audioEngine?.isPlaying)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // 이걸 하거나 아니면 재생하는 이펙트 소리에 공백 1초정도 추가하기
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // 이걸 하거나 아니면 재생하는 이펙트 소리에 공백 1초정도 추가하기
                     print("여긴가?.. 온체인지")
                     audioRecorder.startRecording()
-                }
+//                }
             }
         }
     }
