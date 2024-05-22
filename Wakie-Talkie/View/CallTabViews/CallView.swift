@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CallView: View {
 //    @EnvironmentObject var aiDataFetcher: AIProfileDataFetcher
-    //@StateObject var aiProfileData = AIProfileDataFetcher()
+    @StateObject var aiProfileData = AIProfileDataFetcher()
     @State private var selection: AIProfile? = nil
     @State private var showModal: Bool = false
     
@@ -48,18 +48,18 @@ struct CallView: View {
                     }
                     
                 }.padding(EdgeInsets(top: 40, leading: 0, bottom: 30, trailing: 0))
-                CallPopupView(aiProfile: AIProfile(id:1, nickname: "bb", profileImg: nil, description: "aaa", language: 1))
+//                CallPopupView(aiProfile: AIProfile(id:1, nickname: "bb", profileImg: nil, description: "aaa", language: 1))
                 
                 //여기서 이제 언어 별 ai 띄우도록 거르는 function
                 ScrollView {
-//                    ForEach(aiProfileData.aiProfiles?.indices ?? [].indices, id: \.self){ index in
-//                        AIProfileCell(aiData: aiProfileData.aiProfiles![index])
-//                                .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
-//                                .onTapGesture {
-//                                    self.showModal = true
-//                                    self.selection = aiProfileData.aiProfiles![index]
-//                                }
-//                    }
+                    ForEach(aiProfileData.aiProfiles?.indices ?? [].indices, id: \.self){ index in
+                        AIProfileCell(aiData: aiProfileData.aiProfiles![index])
+                                .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
+                                .onTapGesture {
+                                    self.showModal = true
+                                    self.selection = aiProfileData.aiProfiles![index]
+                                }
+                    }
                 }
                 .sheet(isPresented: $showModal){
                     if let selectedItem = selection{
@@ -70,14 +70,14 @@ struct CallView: View {
                 Spacer()
             }
         }
-//        .onAppear{
-////            aiDataFetcher.getAIProfiles()
-//            aiProfileData.loadAiProfileData()
-//        }
-//        .onChange(of: aiProfileData.aiProfiles){
+        .onAppear{
+//            aiDataFetcher.getAIProfiles()
+            aiProfileData.loadAiProfileData()
+        }
+        .onChange(of: aiProfileData.aiProfiles){
 //            print(aiProfileData.aiProfiles)
 //            print("profile nickname!!!! : \(aiProfileData.aiProfiles?[0].nickname)")
-//        }
+        }
     }
 }
 struct CallTestView: View{

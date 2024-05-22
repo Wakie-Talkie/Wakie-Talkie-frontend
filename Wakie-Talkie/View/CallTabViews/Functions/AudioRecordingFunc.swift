@@ -17,7 +17,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AV
     var soundPlayer: AVAudioPlayer?
     var levelTimer: Timer?
     let silenceThreshold: Float = -27.0 // dB
-    let maxSilenceDuration: TimeInterval = 1.5 // 최대 지속 시간 (초)
+    let maxSilenceDuration: TimeInterval = 5 // 최대 지속 시간 (초)
     var silenceStartTime: Date?
 
     override init() {

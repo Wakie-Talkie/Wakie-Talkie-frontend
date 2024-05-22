@@ -42,7 +42,7 @@ struct CallPopupView: View {
             }, color: Color("Black"), isActive: .constant(true))
         }
         .fullScreenCover(isPresented: $startCalling){
-            SendCallView(aiProfile: aiProfile)
+            SendCallView(aiProfile: aiProfile, postModel: UploadRecordingModel(userId: 1, aiPartnerId: aiProfile.id))
         }
     }
 }

@@ -11,18 +11,19 @@ struct CallRecordCell: View {
     @Binding var recordData: Recording
     @State private var isPresentRecordTextView: Bool = false
     @State private var path = NavigationPath()
+    @State private var aiUserLocalData = LocalData()
 //    @State private var isTextViewActive = false
     var body: some View{
         NavigationStack(path: $path) {
             HStack(spacing: 15){
-                CustomCircleImg(imageUrl: "ai_profile_me1",showEditBtn: false, size: 70)
+                CustomCircleImg(imageUrl: aiUserLocalData.aiUserData.profileImg ,showEditBtn: false, size: 70)
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                 VStack(alignment: .leading){
-                    Text("\(recordData.aiPartnerId)")
+                    Text("\(aiUserLocalData.aiUserData.nickname)")
                         .fontWeight(.medium)
                         .font(.system(size: 20))
                         .foregroundColor(Color("Black"))
-                    Text(String(recordData.language) + " - " + transTime(time: recordData.callingTime))
+                    Text(String(recordData.language == 1 ? "ENGLISH" : "NONE") + " - " + transTime(time: recordData.callingTime))
                         .fontWeight(.light)
                         .font(.system(size: 16))
                         .foregroundColor(Color("Black"))
@@ -33,7 +34,6 @@ struct CallRecordCell: View {
                      isPresentRecordTextView = true
                  }, isActive: .constant(true))
             }
-            .frame(width: .infinity)
             .padding(5)
         }
         .navigationDestination(isPresented: $isPresentRecordTextView){

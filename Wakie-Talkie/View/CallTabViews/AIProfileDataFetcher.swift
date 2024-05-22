@@ -10,7 +10,7 @@ import Foundation
 
 class AIProfileDataFetcher: ObservableObject {
     @Published var aiProfiles: [AIProfile]?
-
+    @Published var aiProfile: AIProfile?
     func loadAiProfileData() {
         getAiProfileData { [weak self] aiProfilesData in
             DispatchQueue.main.async {
@@ -38,6 +38,16 @@ class AIProfileDataFetcher: ObservableObject {
             }
         }
     }
+    
+    func loadAiProilDataById(aiUserId: Int){
+        getAiProfileDataById(aiUserId: aiUserId) { [weak self] aiProfilesData in
+            DispatchQueue.main.async {
+                self?.aiProfile = aiProfilesData
+                // 여기에서 UI 업데이트를 트리거할 수 있습니다.
+                // 예: NotificationCenter를 사용하거나, SwiftUI에서는 @Published 프로퍼티를 업데이트할 수 있습니다.
+            }
+        }
+    }
 
     func getAiProfileData(completion: @escaping ([AIProfile]) -> Void){
 
@@ -46,6 +56,17 @@ class AIProfileDataFetcher: ObservableObject {
 
         ) { data in
             guard let data: [AIProfile] = JSONConverter.decodeJsonArray(data: data) else { return
+            }
+            completion(data)
+        }
+    }
+    
+    func getAiProfileDataById(aiUserId: Int,completion: @escaping (AIProfile) -> Void){
+        HTTPManager.requestGET(url:
+        "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/\(aiUserId)"
+
+        ) { data in
+            guard let data: AIProfile = JSONConverter.decodeJson(data: data) else { return
             }
             completion(data)
         }

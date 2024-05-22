@@ -14,7 +14,7 @@ struct SendCallView: View {
     @StateObject private var audioRecorder: AudioRecordingFunc = AudioRecordingFunc()
     @StateObject private var audioEngine: AudioEngineFunc = AudioEngineFunc()
     private let audioFileDataUploader = AudioFileDataUploader()
-    private let postModel = UploadRecordingModel(userId: 1, aiPartnerId: 1)
+    @State var postModel:UploadRecordingModel
     @State var isGeneratingResponse: Bool = false
     @State var isGeneratingRecord: Bool = false
 
@@ -125,20 +125,20 @@ struct SendCallView: View {
         .onChange(of: self.audioEngine.isPlaying){
             if(!self.audioEngine.isPlaying){
                 print("2. answer, 파일 재생이 끝났나요? ", self.audioEngine.isPlaying)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // 이걸 하거나 아니면 재생하는 이펙트 소리에 공백 1초정도 추가하기
-                    audioRecorder.startRecording()
-                }
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // 이걸 하거나 아니면 재생하는 이펙트 소리에 공백 1초정도 추가하기
+                audioRecorder.startRecording()
+//                }
             }
         }
     }
 }
-struct CallingTestView: View{
-    @State var aipofileData: AIProfile =
-        AIProfile(id: 1, nickname: "Alexis",profileImg: "ai_profile_img", description: "like watching animation and go out for a walk.", language: 1)
-    var body: some View{
-        SendCallView(aiProfile: aipofileData)
-    }
-}
+//struct CallingTestView: View{
+//    @State var aipofileData: AIProfile =
+//        AIProfile(id: 1, nickname: "Alexis",profileImg: "ai_profile_img", description: "like watching animation and go out for a walk.", language: 1)
+//    var body: some View{
+//        SendCallView(aiProfile: aipofileData)
+//    }
+//}
 //#Preview {
 //    CallingTestView()
 //}

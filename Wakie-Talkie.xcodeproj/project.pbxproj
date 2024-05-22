@@ -29,6 +29,7 @@
 		5058A7842BFD6E78002D4B8E /* VocabDetailListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A7832BFD6E78002D4B8E /* VocabDetailListView.swift */; };
 		5058A7862BFDAF5F002D4B8E /* CustomProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A7852BFDAF5F002D4B8E /* CustomProgressBar.swift */; };
 		5058A7882BFDB49A002D4B8E /* CustomProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A7872BFDB49A002D4B8E /* CustomProgressViewStyle.swift */; };
+		5058A78A2BFDF253002D4B8E /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A7892BFDF253002D4B8E /* LocalData.swift */; };
 		5065F8DE2BE88CF1009E6EDB /* VocabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DD2BE88CF1009E6EDB /* VocabView.swift */; };
 		5065F8E02BE88E26009E6EDB /* VocabListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DF2BE88E26009E6EDB /* VocabListModel.swift */; };
 		5065F8E22BE88F94009E6EDB /* VocabDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */; };
@@ -107,6 +108,7 @@
 		5058A7832BFD6E78002D4B8E /* VocabDetailListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabDetailListView.swift; sourceTree = "<group>"; };
 		5058A7852BFDAF5F002D4B8E /* CustomProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressBar.swift; sourceTree = "<group>"; };
 		5058A7872BFDB49A002D4B8E /* CustomProgressViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressViewStyle.swift; sourceTree = "<group>"; };
+		5058A7892BFDF253002D4B8E /* LocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
 		5065F8DD2BE88CF1009E6EDB /* VocabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabView.swift; sourceTree = "<group>"; };
 		5065F8DF2BE88E26009E6EDB /* VocabListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabListModel.swift; sourceTree = "<group>"; };
 		5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VocabDataFetcher.swift; path = "Wakie-Talkie/Model/VocabDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
@@ -342,6 +344,7 @@
 				AE91B3F42BEB8A34008B8CFB /* AlarmModel.swift */,
 				AE0BF2402BF092AA008016AA /* HTTPMethod.swift */,
 				5037546D2BF8C3C000817459 /* UploadRecordingModel.swift */,
+				5058A7892BFDF253002D4B8E /* LocalData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				503754822BFB9F1A00817459 /* CallRecordTextView.swift in Sources */,
 				501649332BDA292C00A5EE32 /* SendCallView.swift in Sources */,
 				5065F8E72BE8A275009E6EDB /* PastVocabView.swift in Sources */,
+				5058A78A2BFDF253002D4B8E /* LocalData.swift in Sources */,
 				AE228E792BDE2CD200B35657 /* AlarmTimer.swift in Sources */,
 				50C7A1C52BEB378800743D9E /* AiVoiceCell.swift in Sources */,
 				5058A7862BFDAF5F002D4B8E /* CustomProgressBar.swift in Sources */,

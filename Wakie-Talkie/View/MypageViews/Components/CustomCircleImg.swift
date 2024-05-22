@@ -64,7 +64,7 @@ struct CustomCircleImg: View {
         }.frame(width: size,height: size)
     }
 }
-
-#Preview {
-    CustomCircleImg(imageUrl: "ai_profile_me1", showEditBtn: true, size: 120)
-}
+//
+//#Preview {
+//    CustomCircleImg(imageUrl: "ai_profile_me1", showEditBtn: true, size: 120)
+//}
