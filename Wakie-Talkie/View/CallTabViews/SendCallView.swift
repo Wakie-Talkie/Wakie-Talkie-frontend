@@ -104,18 +104,16 @@ struct SendCallView: View {
             if(!self.audioRecorder.isRecording){
                 self.isGeneratingResponse = true
                 if(audioRecorder.audioFilePath != nil){
-                    audioFileDataUploader.uploadAudioFile(url: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/upload-audio/" , model: postModel, audioFilePath: audioRecorder.audioFilePath?.path() ?? "") { result in
-                        DispatchQueue.main.async {
-                            self.isGeneratingResponse = false
-                            switch result {
-                            case .success(let responseURL):
-                                DispatchQueue.main.async {
-                                    print("response url!!!!!! \(responseURL)")
-                                    audioEngine.audioPlay(from: responseURL)
-                                }
-                            case .failure(let error):
-                                print("Upload failed: \(error)")
+                    audioFileDataUploader.getRecordedAudioData(model: postModel, audioFilePath: audioRecorder.audioFilePath?.path() ?? ""){ result in
+                        switch result {
+                        case .success(let data):
+                            DispatchQueue.main.async {
+                                audioEngine.playAudioStream(data: data)
+//                                self.audioData = data
+                                print("response url!!!!!! \(data)")
                             }
+                        case .failure(let error):
+                            print("Upload failed: \(error)")
                         }
                     }
                     print("start player")
