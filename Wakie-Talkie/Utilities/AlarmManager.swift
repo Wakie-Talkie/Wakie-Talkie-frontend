@@ -105,7 +105,7 @@ class AlarmManager {
         let content = UNMutableNotificationContent()
         content.title = "Alarm for \(alarm.language)"
         content.body = "제 전화를 받아주세요!"
-        content.sound = UNNotificationSound.default
+        content.sound = UNNotificationSound(named: UNNotificationSoundName(rawValue: "telephoneRing.wav"))
 
         var dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
         if let second = dateComponents.second {

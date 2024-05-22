@@ -26,6 +26,10 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AV
         setupAudioSession()
     }
 
+    func dismiss(){
+        audioRecorder?.stop()
+        print(" & recorder stop?????")
+    }
     private func setupAudioSession() {
         do {
             try recordingSession.setCategory(.playAndRecord, options: [.defaultToSpeaker])

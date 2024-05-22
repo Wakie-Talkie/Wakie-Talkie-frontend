@@ -77,7 +77,9 @@ struct ReceiveCallView: View {
                 
                 if callReceived {
                     CustomButtonBig(text: "전화 끊기", action: {
+                        print("너 전화 끊기 눌렀다 - ReceiveCallView")
                         self.audioRecorder.finishRecording(success: true)
+                        audioRecorder.dismiss()
                         audioEngine?.dismiss()
                         dismiss()
                     }, color: Color("Accent1"), isActive: .constant(true))

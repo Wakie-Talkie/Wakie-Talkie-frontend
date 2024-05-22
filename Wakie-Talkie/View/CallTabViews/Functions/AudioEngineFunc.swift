@@ -82,8 +82,22 @@ class AudioEngineFunc: NSObject, ObservableObject{
     }
 
     func dismiss(){
+        audioPlayerNode.pause()
+        print(" & node pause?????")
+        audioEngine.pause()
+        print(" & engine pause?????")
+        audioPlayerNode.stop()
+        print(" & node pause?????")
         audioEngine.stop()
+        print(" & engine pause?????")
+        audioEngine.reset()
+//
+//        audioPlayerNode.stop()
+//        print(" & node stop?????")
+//        audioEngine.stop()
+//        print(" & engine stop?????")
         isPlaying = false
+
     }
     func playBeep() {
         guard let beepPath = Bundle.main.url(forResource: "mute", withExtension: "wav") else {

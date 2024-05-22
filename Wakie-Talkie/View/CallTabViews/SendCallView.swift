@@ -70,13 +70,19 @@ struct SendCallView: View {
                 
 
                 if callReceived{
-                    Text("decibel \(audioRecorder.dbLevel)")
+                    //Text("decibel \(audioRecorder.dbLevel)")
                     Text(self.audioRecorder.isRecording ? "recording" : "player")
                     CustomButtonBig(text: "전화 끊기", action: {
+                        print("너 전화 끊기 눌렀다 - SendCallView")
                         audioFileDataUploader.callEndFunc(model: postModel)
+                        print("끊기 눌렀다 & audioFileDataUploader")
                         self.callReceived = false
                         self.audioRecorder.finishRecording(success: true)
+                        print(" & audioRecorder finish Recording")
+                        audioRecorder.dismiss()
+                        print(" & audioRecorder.dismiss")
                         audioEngine.dismiss()
+                        print(" & audioEngine.dismiss")
                         dismiss()
                     }, color: Color("Accent1"), isActive: .constant(true))
                 }
@@ -104,16 +110,18 @@ struct SendCallView: View {
             if(!self.audioRecorder.isRecording){
                 self.isGeneratingResponse = true
                 if(audioRecorder.audioFilePath != nil){
-                    audioFileDataUploader.getRecordedAudioData(model: postModel, audioFilePath: audioRecorder.audioFilePath?.path() ?? ""){ result in
-                        switch result {
-                        case .success(let data):
-                            DispatchQueue.main.async {
-                                audioEngine.playAudioStream(data: data)
-//                                self.audioData = data
-                                print("response url!!!!!! \(data)")
+                    audioFileDataUploader.uploadAudioFile(url: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/upload-audio/" , model: postModel, audioFilePath: audioRecorder.audioFilePath?.path() ?? "") { result in
+                        DispatchQueue.main.async {
+                            self.isGeneratingResponse = false
+                            switch result {
+                            case .success(let responseURL):
+                                DispatchQueue.main.async {
+                                    print("response url!!!!!! \(responseURL)")
+                                    audioEngine.audioPlay(from: responseURL)
+                                }
+                            case .failure(let error):
+                                print("Upload failed: \(error)")
                             }
-                        case .failure(let error):
-                            print("Upload failed: \(error)")
                         }
                     }
                     print("start player")

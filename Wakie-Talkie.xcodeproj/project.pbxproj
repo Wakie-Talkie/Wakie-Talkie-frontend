@@ -83,6 +83,7 @@
 		AEB791722BFA6D8C00EB06A4 /* alloys.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEB791692BFA6C1300EB06A4 /* alloys.mp3 */; };
 		AEB791732BFA6D8C00EB06A4 /* mute.wav in Resources */ = {isa = PBXBuildFile; fileRef = AEB791582BFA566B00EB06A4 /* mute.wav */; };
 		AEB791742BFA6D8C00EB06A4 /* dialtone.wav in Resources */ = {isa = PBXBuildFile; fileRef = AEB7916B2BFA6C1300EB06A4 /* dialtone.wav */; };
+		AEC457C42BFE1F390038F40D /* telephoneRing.wav in Resources */ = {isa = PBXBuildFile; fileRef = AEC457C32BFE1F390038F40D /* telephoneRing.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -165,6 +166,7 @@
 		AEB7916A2BFA6C1300EB06A4 /* onyx.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onyx.mp3; sourceTree = "<group>"; };
 		AEB7916B2BFA6C1300EB06A4 /* dialtone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dialtone.wav; sourceTree = "<group>"; };
 		AEB7916C2BFA6C1300EB06A4 /* echo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = echo.mp3; sourceTree = "<group>"; };
+		AEC457C32BFE1F390038F40D /* telephoneRing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = telephoneRing.wav; path = "../../../../Desktop/2024-01/캡스톤/audioAssets/telephoneRing.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -419,6 +421,7 @@
 		AEB791652BFA6C0100EB06A4 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				AEC457C32BFE1F390038F40D /* telephoneRing.wav */,
 				AEB7916C2BFA6C1300EB06A4 /* echo.mp3 */,
 				AEB791672BFA6C1300EB06A4 /* fable.mp3 */,
 				AEB791662BFA6C1300EB06A4 /* nova.mp3 */,
@@ -495,6 +498,7 @@
 				AEB7916F2BFA6D8C00EB06A4 /* nova.mp3 in Resources */,
 				AEB791702BFA6D8C00EB06A4 /* onyx.mp3 in Resources */,
 				AEB791712BFA6D8C00EB06A4 /* shimmer.mp3 in Resources */,
+				AEC457C42BFE1F390038F40D /* telephoneRing.wav in Resources */,
 				AEB791722BFA6D8C00EB06A4 /* alloys.mp3 in Resources */,
 				AEB791732BFA6D8C00EB06A4 /* mute.wav in Resources */,
 				AEB791742BFA6D8C00EB06A4 /* dialtone.wav in Resources */,
