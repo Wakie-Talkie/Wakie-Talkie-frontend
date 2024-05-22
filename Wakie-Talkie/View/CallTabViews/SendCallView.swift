@@ -12,7 +12,8 @@ struct SendCallView: View {
     @State var aiProfile: AIProfile
     @State private var callReceived: Bool = false
     @StateObject private var audioRecorder: AudioRecordingFunc = AudioRecordingFunc()
-    @StateObject private var audioEngine: AudioEngineFunc = AudioEngineFunc()
+    @StateObject private var audioPlayer: AudioPlayerFunc = AudioPlayerFunc()
+//    @StateObject private var audioEngine: AudioEngineFunc = AudioEngineFunc()
     private let audioFileDataUploader = AudioFileDataUploader()
     @State var postModel:UploadRecordingModel
     @State var isGeneratingResponse: Bool = false
@@ -76,7 +77,8 @@ struct SendCallView: View {
                         audioFileDataUploader.callEndFunc(model: postModel)
                         self.callReceived = false
                         self.audioRecorder.finishRecording(success: true)
-                        audioEngine.dismiss()
+                        audioRecorder.dismiss()
+                        audioPlayer.dismiss()
                         dismiss()
                     }, color: Color("Accent1"), isActive: .constant(true))
                 }
@@ -104,14 +106,15 @@ struct SendCallView: View {
             if(!self.audioRecorder.isRecording){
                 self.isGeneratingResponse = true
                 if(audioRecorder.audioFilePath != nil){
-                    audioFileDataUploader.getRecordedAudioData(model: postModel, audioFilePath: audioRecorder.audioFilePath?.path() ?? ""){ result in
+                    audioFileDataUploader.uploadAudioFile(model: postModel, audioFilePath: audioRecorder.audioFilePath?.path() ?? ""){ result in
                         switch result {
-                        case .success(let data):
-                            DispatchQueue.main.async {
-                                audioEngine.playAudioStream(data: data)
+                        case .success(let url):
+                            audioPlayer.playAudio(audioFilePath: url)
+//                            DispatchQueue.main.async {
+//                                audioEngine.playAudioStream(data: data)
 //                                self.audioData = data
-                                print("response url!!!!!! \(data)")
-                            }
+//                                print("response url!!!!!! \(data)")
+//                            }
                         case .failure(let error):
                             print("Upload failed: \(error)")
                         }
@@ -120,9 +123,9 @@ struct SendCallView: View {
                 }
             }
         }
-        .onChange(of: self.audioEngine.isPlaying){
-            if(!self.audioEngine.isPlaying){
-                print("2. answer, 파일 재생이 끝났나요? ", self.audioEngine.isPlaying)
+        .onChange(of: self.audioPlayer.isPlayerPlaying){
+            if(!self.audioPlayer.isPlayerPlaying){
+                print("2. answer, 파일 재생이 끝났나요? ", self.audioPlayer.isPlayerPlaying)
 //                DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // 이걸 하거나 아니면 재생하는 이펙트 소리에 공백 1초정도 추가하기
                 audioRecorder.startRecording()
 //                }

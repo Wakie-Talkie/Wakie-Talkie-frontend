@@ -140,7 +140,9 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AV
             print("dialtone.wav 파일을 재생하는 중 오류 발생: \(error)")
         }
     }
-
+    func dismiss(){
+        audioRecorder?.stop()
+    }
     func playPartnerSoundAndStartRecording(for partnerId: Int) {
             let fileNames = [
                 1: "alloys",
