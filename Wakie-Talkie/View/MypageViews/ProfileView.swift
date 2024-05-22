@@ -36,12 +36,9 @@ struct ProfileView: View {
                 VStack(alignment: .leading) {
                     HStack {
                         Button(action: {dismiss()}, label: {
-                            Text("<")
-                                .fontWeight(.thin)
-                                .font(.system(size: 25))
-                                .foregroundColor(Color("Black"))
-                                .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 0))
+                            Image("back_btn")
                         })
+                        .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 0))
                         Spacer()
                         Text("마이페이지")
                             .fontWeight(.bold)

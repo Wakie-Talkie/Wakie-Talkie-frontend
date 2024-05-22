@@ -27,6 +27,8 @@
 		5058A77E2BFCC37E002D4B8E /* VocabDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A77D2BFCC37E002D4B8E /* VocabDetailCell.swift */; };
 		5058A7822BFCC56D002D4B8E /* VocabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A7812BFCC56D002D4B8E /* VocabModel.swift */; };
 		5058A7842BFD6E78002D4B8E /* VocabDetailListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A7832BFD6E78002D4B8E /* VocabDetailListView.swift */; };
+		5058A7862BFDAF5F002D4B8E /* CustomProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A7852BFDAF5F002D4B8E /* CustomProgressBar.swift */; };
+		5058A7882BFDB49A002D4B8E /* CustomProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A7872BFDB49A002D4B8E /* CustomProgressViewStyle.swift */; };
 		5065F8DE2BE88CF1009E6EDB /* VocabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DD2BE88CF1009E6EDB /* VocabView.swift */; };
 		5065F8E02BE88E26009E6EDB /* VocabListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DF2BE88E26009E6EDB /* VocabListModel.swift */; };
 		5065F8E22BE88F94009E6EDB /* VocabDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */; };
@@ -103,6 +105,8 @@
 		5058A77D2BFCC37E002D4B8E /* VocabDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabDetailCell.swift; sourceTree = "<group>"; };
 		5058A7812BFCC56D002D4B8E /* VocabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabModel.swift; sourceTree = "<group>"; };
 		5058A7832BFD6E78002D4B8E /* VocabDetailListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabDetailListView.swift; sourceTree = "<group>"; };
+		5058A7852BFDAF5F002D4B8E /* CustomProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressBar.swift; sourceTree = "<group>"; };
+		5058A7872BFDB49A002D4B8E /* CustomProgressViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressViewStyle.swift; sourceTree = "<group>"; };
 		5065F8DD2BE88CF1009E6EDB /* VocabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabView.swift; sourceTree = "<group>"; };
 		5065F8DF2BE88E26009E6EDB /* VocabListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabListModel.swift; sourceTree = "<group>"; };
 		5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VocabDataFetcher.swift; path = "Wakie-Talkie/Model/VocabDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
@@ -300,6 +304,8 @@
 				50C7A1C42BEB378800743D9E /* AiVoiceCell.swift */,
 				503754832BFC0B9900817459 /* CustomAiChatCell.swift */,
 				503754852BFC0BC400817459 /* CustomUserChatCell.swift */,
+				5058A7852BFDAF5F002D4B8E /* CustomProgressBar.swift */,
+				5058A7872BFDB49A002D4B8E /* CustomProgressViewStyle.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -526,6 +532,7 @@
 				5065F8E72BE8A275009E6EDB /* PastVocabView.swift in Sources */,
 				AE228E792BDE2CD200B35657 /* AlarmTimer.swift in Sources */,
 				50C7A1C52BEB378800743D9E /* AiVoiceCell.swift in Sources */,
+				5058A7862BFDAF5F002D4B8E /* CustomProgressBar.swift in Sources */,
 				50C7A1C12BEB11AC00743D9E /* RecordingModel.swift in Sources */,
 				5016492F2BDA168700A5EE32 /* CallPopupView.swift in Sources */,
 				5058A7822BFCC56D002D4B8E /* VocabModel.swift in Sources */,
@@ -549,6 +556,7 @@
 				504611F12BF091C3006161EB /* JSONConverter.swift in Sources */,
 				503754862BFC0BC400817459 /* CustomUserChatCell.swift in Sources */,
 				50158D2D2BDEA1FA0086BF05 /* AudioPlayerFunc.swift in Sources */,
+				5058A7882BFDB49A002D4B8E /* CustomProgressViewStyle.swift in Sources */,
 				50C7A1B92BEA7E9600743D9E /* AiVoiceView.swift in Sources */,
 				5058A7842BFD6E78002D4B8E /* VocabDetailListView.swift in Sources */,
 				50F7264C2BC66D9B00078A6D /* CustomButtonCircle.swift in Sources */,

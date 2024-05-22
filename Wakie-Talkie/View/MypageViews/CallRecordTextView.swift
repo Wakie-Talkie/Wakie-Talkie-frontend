@@ -35,13 +35,13 @@ struct CallRecordTextView: View {
                 }
                 VStack{
                     HStack {
-                        Button(action: {dismiss()}, label: {
-                            Text("<")
-                                .fontWeight(.thin)
-                                .font(.system(size: 25))
-                                .foregroundColor(Color("Black"))
-                                .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 0))
+                        Button(action: {
+                            recordingAudioFunc.dismiss()
+                            dismiss()
+                        }, label: {
+                            Image("back_btn")
                         })
+                        .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 0))
                         Spacer()
                         Text(dateTime)
                             .fontWeight(.bold)
@@ -61,42 +61,10 @@ struct CallRecordTextView: View {
                             }
                         }
                     }
-                    VStack {
-                        ProgressView(value: recordingAudioFunc.progress, total: recordingAudioFunc.duration)
-                            .progressViewStyle(LinearProgressViewStyle(tint: .pink))
-                            .padding()
-                        
-                        HStack {
-                            Button(action: {
-                                recordingAudioFunc.skipBackward(by: 10)
-                            }) {
-                                Image(systemName: "gobackward.10")
-                                    .font(.system(size: 24))
-                            }
-                            .padding()
-                            
-                            Button(action: {
-                                if recordingAudioFunc.isPlaying {
-                                    recordingAudioFunc.pause()
-                                } else {
-                                    recordingAudioFunc.play()
-                                }
-                            }) {
-                                Image(systemName: recordingAudioFunc.isPlaying ? "pause.circle.fill" : "play.circle.fill")
-                                    .font(.system(size: 48))
-                            }
-                            .padding()
-                            
-                            Button(action: {
-                                recordingAudioFunc.skipForward(by: 10)
-                            }) {
-                                Image(systemName: "goforward.10")
-                                    .font(.system(size: 24))
-                            }
-                            .padding()
-                        }
-                    }
-                    .padding()
+                    
+                    CustomProgressBar(recordingAudioFunc: recordingAudioFunc)
+                        .padding(EdgeInsets(top: 10, leading: 0, bottom: 30, trailing: 0))
+                        .background(Color.white)
                 }
             }
         }

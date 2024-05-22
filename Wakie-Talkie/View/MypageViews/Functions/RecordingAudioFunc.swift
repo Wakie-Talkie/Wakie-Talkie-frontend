@@ -102,6 +102,11 @@ class RecordingAudioFunc: NSObject,ObservableObject {
         seek(to: newTime)
     }
     
+    func dismiss(){
+        audioEngine.stop()
+        isPlaying = false
+    }
+    
     private func seek(to time: Double) {
         guard let audioFile = audioFile else { return }
         
