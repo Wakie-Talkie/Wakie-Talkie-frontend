@@ -109,10 +109,16 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AV
     }
 
     func finishRecording(success: Bool) {
-        audioRecorder?.stop()
+        if self.isRecording{
+            audioRecorder?.stop()
+        }
         self.isRecording = self.audioRecorder?.isRecording ?? false
-        levelTimer?.invalidate()
-        levelTimer = nil
+        if(levelTimer != nil){
+            if (levelTimer!.isValid){
+                levelTimer?.invalidate()
+            }
+            levelTimer = nil
+        }
         if success {
             print("Recording finished successfully.")
         } else {
@@ -135,7 +141,6 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AV
             print("dialtone.wav 파일을 찾을 수 없습니다.")
             return
         }
-
         do {
             soundPlayer = try AVAudioPlayer(contentsOf: callSoundPath)
             soundPlayer?.delegate = self

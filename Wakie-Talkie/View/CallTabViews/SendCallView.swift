@@ -74,15 +74,17 @@ struct SendCallView: View {
                     Text(self.audioRecorder.isRecording ? "recording" : "player")
                     CustomButtonBig(text: "전화 끊기", action: {
                         print("너 전화 끊기 눌렀다 - SendCallView")
-                        audioFileDataUploader.callEndFunc(model: postModel)
+                        
                         print("끊기 눌렀다 & audioFileDataUploader")
                         self.callReceived = false
                         self.audioRecorder.finishRecording(success: true)
+                        print("record 꺼짐!!!! upload api 보내나..?")
                         print(" & audioRecorder finish Recording")
-                        audioRecorder.dismiss()
+//                        audioRecorder.dismiss()
                         print(" & audioRecorder.dismiss")
                         audioEngine.dismiss()
                         print(" & audioEngine.dismiss")
+                        audioFileDataUploader.callEndFunc(model: postModel)
                         dismiss()
                     }, color: Color("Accent1"), isActive: .constant(true))
                 }
@@ -111,6 +113,7 @@ struct SendCallView: View {
                 self.isGeneratingResponse = true
                 if(audioRecorder.audioFilePath != nil){
                     audioFileDataUploader.uploadAudioFile(url: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/upload-audio/" , model: postModel, audioFilePath: audioRecorder.audioFilePath?.path() ?? "") { result in
+                        print("api upload audio")
                         DispatchQueue.main.async {
                             self.isGeneratingResponse = false
                             switch result {

@@ -35,8 +35,9 @@ class VocabDataFetcher: ObservableObject {
         "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/vocab-lists/"
 //           "http://127.0.0.1:8000/vocab-lists/recent/"
         ) { data in
-            guard let data: [VocabList] = JSONConverter.decodeVocabListJsonArray(data: data) else {return}
             print(data)
+            guard let data: [VocabList] = JSONConverter.decodeVocabListJsonArray(data: data) else {return}
+            
             completion(data)
         }
     }
@@ -47,6 +48,7 @@ class VocabDataFetcher: ObservableObject {
 //                               "http://127.0.0.1:8000/vocab-lists/recent/\(userID)"
         ) { data in
 //            guard let data: VocabList = JSONConverter.decodeJson(data: data) else {return}
+            print(data)
             guard let data: VocabList = JSONConverter.decodeVocabListJson(data: data) else {return}
             print(data)
             completion(data)

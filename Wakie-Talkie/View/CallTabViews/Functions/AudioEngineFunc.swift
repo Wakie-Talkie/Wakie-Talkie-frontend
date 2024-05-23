@@ -82,20 +82,22 @@ class AudioEngineFunc: NSObject, ObservableObject{
     }
 
     func dismiss(){
-        audioPlayerNode.pause()
-        print(" & node pause?????")
-        audioEngine.pause()
-        print(" & engine pause?????")
-        audioPlayerNode.stop()
-        print(" & node pause?????")
-        audioEngine.stop()
-        print(" & engine pause?????")
+        if(audioPlayerNode.isPlaying){
+            audioPlayerNode.pause()
+            print(" & node pause?????")
+            audioPlayerNode.stop()
+            print(" & node stop?????")
+        }
+        if (audioEngine.isRunning){
+//            audioEngine.pause()
+            print(" & engine pause?????")
+            audioEngine.stop()
+            print(" & engine stop?????")
+        }
+        
+        audioEngine.disconnectNodeInput(audioPlayerNode)
+        audioPlayerNode.reset()
         audioEngine.reset()
-//
-//        audioPlayerNode.stop()
-//        print(" & node stop?????")
-//        audioEngine.stop()
-//        print(" & engine stop?????")
         isPlaying = false
 
     }
