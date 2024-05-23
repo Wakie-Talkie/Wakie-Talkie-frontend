@@ -82,7 +82,6 @@ struct SendCallView: View {
                         self.audioRecorder.finishRecording(success: true)
                         print("record 꺼짐!!!! upload api 보내나..?")
                         print(" & audioRecorder finish Recording")
-//                        audioRecorder.dismiss()
                         print(" & audioRecorder.dismiss")
                         audioEngine.dismiss()
                         print(" & audioEngine.dismiss")
