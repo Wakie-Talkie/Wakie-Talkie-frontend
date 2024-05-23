@@ -15,7 +15,8 @@ struct ReceiveCallView: View {
     @State var aiProfile: AIProfile
     @State private var callReceived: Bool = false
     @StateObject private var audioRecorder: AudioRecordingFunc = AudioRecordingFunc()
-    @State private var audioEngine: AudioEngineFunc? = nil
+    @StateObject private var audioEngine: AudioEngineFunc = AudioEngineFunc()
+//    @State private var audioEngine: AudioEngineFunc? = nil
     private let audioFileDataUploader = AudioFileDataUploader()
     private let postModel = UploadRecordingModel(userId: 1, aiPartnerId: 3) //temp
     @State var isGeneratingResponse: Bool = false
@@ -87,7 +88,10 @@ struct ReceiveCallView: View {
                         print("record 꺼짐!!!! upload api 보내나..?")
                         print(" & audioRecorder finish Recording")
                         print(" & audioRecorder.dismiss")
-                        audioEngine?.dismiss()
+//                        if (audioEngine != nil){
+//                            audioEngine?.dismiss()
+//                        }
+                        audioEngine.dismiss()
                         print(" & audioEngine.dismiss")
                         dismiss()
                     }, color: Color("Accent1"), isActive: .constant(true))
@@ -109,13 +113,13 @@ struct ReceiveCallView: View {
             }
         }.onAppear{
             print("뉴 오디오 엔진 레스고")
-            let newAudioEngine = AudioEngineFunc()
-            newAudioEngine.setupAudioPlayer()
-            audioEngine = newAudioEngine
-            audioEngine?.isPlaying = true
+//            let newAudioEngine = AudioEngineFunc()
+//            newAudioEngine.setupAudioPlayer()
+//            audioEngine = newAudioEngine
+           // audioEngine.isPlaying = true
             print("뉴 오디오 엔진 할당됐음?아마도..")
+            audioFileDataUploader.callStartFunc(model: postModel)
 //            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//               // audioFileDataUploader.callStartFunc()
 //                audioRecorder.playCallSoundAndStartRecording()
 //            }
         }
@@ -132,7 +136,7 @@ struct ReceiveCallView: View {
                             case .success(let responseURL):
                                 DispatchQueue.main.async {
                                     print("response url!!!!!! \(responseURL)")
-                                    audioEngine!.audioPlay(from: responseURL)
+                                    audioEngine.audioPlay(from: responseURL)
                                 }
                             case .failure(let error):
                                 print("Upload failed: \(error)")
@@ -143,13 +147,13 @@ struct ReceiveCallView: View {
                 }
             }
         }
-        .onChange(of: self.audioEngine?.isPlaying){
-            if(!self.isDismissed && !(self.audioEngine!.isPlaying)){
+        .onChange(of: self.audioEngine.isPlaying){
+            if(!self.isDismissed && !(self.audioEngine.isPlaying)){
                 //print("2. answer, 파일 재생이 끝났나요? ", self.audioEngine?.isPlaying)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // 이걸 하거나 아니면 재생하는 이펙트 소리에 공백 1초정도 추가하기
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { // 이걸 하거나 아니면 재생하는 이펙트 소리에 공백 1초정도 추가하기
                     print("여긴가?.. 온체인지")
                     audioRecorder.startRecording()
-                }
+//                }
             }
         }
     }

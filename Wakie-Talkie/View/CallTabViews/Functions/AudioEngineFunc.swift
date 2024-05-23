@@ -124,6 +124,7 @@ extension AudioEngineFunc: AVAudioPlayerDelegate {
             print("mute.mp3 파일 재생 완료")
             DispatchQueue.main.async {
                 self.isPlaying = false
+                
             }
         }
     }

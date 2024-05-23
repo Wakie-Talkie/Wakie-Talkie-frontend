@@ -31,7 +31,6 @@
 		5058A7882BFDB49A002D4B8E /* CustomProgressViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A7872BFDB49A002D4B8E /* CustomProgressViewStyle.swift */; };
 		5058A78A2BFDF253002D4B8E /* LocalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A7892BFDF253002D4B8E /* LocalData.swift */; };
 		5058A78C2BFE0DBE002D4B8E /* AlarmAICell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5058A78B2BFE0DBE002D4B8E /* AlarmAICell.swift */; };
-		5058A78E2BFE29A8002D4B8E /* telephoneRing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 5058A78D2BFE29A8002D4B8E /* telephoneRing.wav */; };
 		5065F8DE2BE88CF1009E6EDB /* VocabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DD2BE88CF1009E6EDB /* VocabView.swift */; };
 		5065F8E02BE88E26009E6EDB /* VocabListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8DF2BE88E26009E6EDB /* VocabListModel.swift */; };
 		5065F8E22BE88F94009E6EDB /* VocabDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */; };
@@ -84,6 +83,7 @@
 		AEB791722BFA6D8C00EB06A4 /* alloys.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = AEB791692BFA6C1300EB06A4 /* alloys.mp3 */; };
 		AEB791732BFA6D8C00EB06A4 /* mute.wav in Resources */ = {isa = PBXBuildFile; fileRef = AEB791582BFA566B00EB06A4 /* mute.wav */; };
 		AEB791742BFA6D8C00EB06A4 /* dialtone.wav in Resources */ = {isa = PBXBuildFile; fileRef = AEB7916B2BFA6C1300EB06A4 /* dialtone.wav */; };
+		AEC457CA2BFF2A6D0038F40D /* telephoneRing.wav in Resources */ = {isa = PBXBuildFile; fileRef = AEC457C92BFF2A6D0038F40D /* telephoneRing.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,7 +112,6 @@
 		5058A7872BFDB49A002D4B8E /* CustomProgressViewStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressViewStyle.swift; sourceTree = "<group>"; };
 		5058A7892BFDF253002D4B8E /* LocalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalData.swift; sourceTree = "<group>"; };
 		5058A78B2BFE0DBE002D4B8E /* AlarmAICell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmAICell.swift; sourceTree = "<group>"; };
-		5058A78D2BFE29A8002D4B8E /* telephoneRing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = telephoneRing.wav; path = ../../../Downloads/telephoneRing.wav; sourceTree = "<group>"; };
 		5065F8DD2BE88CF1009E6EDB /* VocabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabView.swift; sourceTree = "<group>"; };
 		5065F8DF2BE88E26009E6EDB /* VocabListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocabListModel.swift; sourceTree = "<group>"; };
 		5065F8E12BE88F94009E6EDB /* VocabDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = VocabDataFetcher.swift; path = "Wakie-Talkie/Model/VocabDataFetcher.swift"; sourceTree = SOURCE_ROOT; };
@@ -167,6 +166,7 @@
 		AEB7916A2BFA6C1300EB06A4 /* onyx.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = onyx.mp3; sourceTree = "<group>"; };
 		AEB7916B2BFA6C1300EB06A4 /* dialtone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dialtone.wav; sourceTree = "<group>"; };
 		AEB7916C2BFA6C1300EB06A4 /* echo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = echo.mp3; sourceTree = "<group>"; };
+		AEC457C92BFF2A6D0038F40D /* telephoneRing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = telephoneRing.wav; path = "../../../../Desktop/2024-01/캡스톤/audioAssets/telephoneRing.wav"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -421,7 +421,7 @@
 		AEB791652BFA6C0100EB06A4 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
-				5058A78D2BFE29A8002D4B8E /* telephoneRing.wav */,
+				AEC457C92BFF2A6D0038F40D /* telephoneRing.wav */,
 				AEB7916C2BFA6C1300EB06A4 /* echo.mp3 */,
 				AEB791672BFA6C1300EB06A4 /* fable.mp3 */,
 				AEB791662BFA6C1300EB06A4 /* nova.mp3 */,
@@ -498,10 +498,10 @@
 				AEB7916F2BFA6D8C00EB06A4 /* nova.mp3 in Resources */,
 				AEB791702BFA6D8C00EB06A4 /* onyx.mp3 in Resources */,
 				AEB791712BFA6D8C00EB06A4 /* shimmer.mp3 in Resources */,
-				5058A78E2BFE29A8002D4B8E /* telephoneRing.wav in Resources */,
 				AEB791722BFA6D8C00EB06A4 /* alloys.mp3 in Resources */,
 				AEB791732BFA6D8C00EB06A4 /* mute.wav in Resources */,
 				AEB791742BFA6D8C00EB06A4 /* dialtone.wav in Resources */,
+				AEC457CA2BFF2A6D0038F40D /* telephoneRing.wav in Resources */,
 				50142C1E2BBD050A00791488 /* Preview Assets.xcassets in Resources */,
 				50142C1B2BBD050A00791488 /* Assets.xcassets in Resources */,
 			);
@@ -715,7 +715,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wakie-Talkie/Preview Content\"";
-				DEVELOPMENT_TEAM = CT9F24W469;
+				DEVELOPMENT_TEAM = 57QLLZQ6H9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Wakie-Talkie/Info.plist";
@@ -749,7 +749,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Wakie-Talkie/Preview Content\"";
-				DEVELOPMENT_TEAM = CT9F24W469;
+				DEVELOPMENT_TEAM = 57QLLZQ6H9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Wakie-Talkie/Info.plist";
