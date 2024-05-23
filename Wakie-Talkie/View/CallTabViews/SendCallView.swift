@@ -11,6 +11,7 @@ struct SendCallView: View {
     @Environment(\.dismiss) var dismiss
     @State var aiProfile: AIProfile
     @State private var callReceived: Bool = false
+    @State private var isDismissed: Bool = false
     @StateObject private var audioRecorder: AudioRecordingFunc = AudioRecordingFunc()
     @StateObject private var audioEngine: AudioEngineFunc = AudioEngineFunc()
     private let audioFileDataUploader = AudioFileDataUploader()
@@ -73,8 +74,9 @@ struct SendCallView: View {
                     //Text("decibel \(audioRecorder.dbLevel)")
                     Text(self.audioRecorder.isRecording ? "recording" : "player")
                     CustomButtonBig(text: "전화 끊기", action: {
+                        self.isDismissed = true
                         print("너 전화 끊기 눌렀다 - SendCallView")
-                        
+                        audioFileDataUploader.callEndFunc(model: postModel)
                         print("끊기 눌렀다 & audioFileDataUploader")
                         self.callReceived = false
                         self.audioRecorder.finishRecording(success: true)
@@ -84,7 +86,7 @@ struct SendCallView: View {
                         print(" & audioRecorder.dismiss")
                         audioEngine.dismiss()
                         print(" & audioEngine.dismiss")
-                        audioFileDataUploader.callEndFunc(model: postModel)
+                        
                         dismiss()
                     }, color: Color("Accent1"), isActive: .constant(true))
                 }
@@ -109,7 +111,7 @@ struct SendCallView: View {
         .onChange(of: self.audioRecorder.isRecording){
             self.isGeneratingRecord = self.audioRecorder.isRecording
            // print("is it recording? " + String(self.audioRecorder.isRecording))
-            if(!self.audioRecorder.isRecording){
+            if(!self.isDismissed && !self.audioRecorder.isRecording){
                 self.isGeneratingResponse = true
                 if(audioRecorder.audioFilePath != nil){
                     audioFileDataUploader.uploadAudioFile(url: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/upload-audio/" , model: postModel, audioFilePath: audioRecorder.audioFilePath?.path() ?? "") { result in
@@ -132,7 +134,7 @@ struct SendCallView: View {
             }
         }
         .onChange(of: self.audioEngine.isPlaying){
-            if(!self.audioEngine.isPlaying){
+            if(!self.isDismissed && !self.audioEngine.isPlaying){
                 print("2. answer, 파일 재생이 끝났나요? ", self.audioEngine.isPlaying)
 //                DispatchQueue.main.asyncAfter(deadline: .now() + 2) { // 이걸 하거나 아니면 재생하는 이펙트 소리에 공백 1초정도 추가하기
                 audioRecorder.startRecording()
