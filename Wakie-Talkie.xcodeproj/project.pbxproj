@@ -62,6 +62,10 @@
 		AE228E742BDB96A100B35657 /* AlarmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E732BDB96A100B35657 /* AlarmManager.swift */; };
 		AE228E772BDE14DC00B35657 /* ReceiveCallView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E762BDE14DC00B35657 /* ReceiveCallView.swift */; };
 		AE228E792BDE2CD200B35657 /* AlarmTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE228E782BDE2CD200B35657 /* AlarmTimer.swift */; };
+		AE2B12202C0C5B1500735C14 /* MakeAIProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE2B121F2C0C5B1500735C14 /* MakeAIProfileView.swift */; };
+		AE3E0B492C0D5B5D00FE483B /* MakeAIProfileEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3E0B482C0D5B5D00FE483B /* MakeAIProfileEditView.swift */; };
+		AE3E0B4B2C0D69E200FE483B /* CustomTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3E0B4A2C0D69E200FE483B /* CustomTextView.swift */; };
+		AE3E0B4E2C0D8CC100FE483B /* DocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3E0B4D2C0D8CC100FE483B /* DocumentPicker.swift */; };
 		AE91B3F52BEB8A34008B8CFB /* AlarmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE91B3F42BEB8A34008B8CFB /* AlarmModel.swift */; };
 		AE9F0C2B2BC3F253007B2B1E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */; };
 		AE9F0C2D2BC3F369007B2B1E /* AIProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */; };
@@ -145,6 +149,10 @@
 		AE228E752BDBDC1000B35657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		AE228E762BDE14DC00B35657 /* ReceiveCallView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveCallView.swift; sourceTree = "<group>"; };
 		AE228E782BDE2CD200B35657 /* AlarmTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmTimer.swift; sourceTree = "<group>"; };
+		AE2B121F2C0C5B1500735C14 /* MakeAIProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAIProfileView.swift; sourceTree = "<group>"; };
+		AE3E0B482C0D5B5D00FE483B /* MakeAIProfileEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAIProfileEditView.swift; sourceTree = "<group>"; };
+		AE3E0B4A2C0D69E200FE483B /* CustomTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextView.swift; sourceTree = "<group>"; };
+		AE3E0B4D2C0D8CC100FE483B /* DocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentPicker.swift; sourceTree = "<group>"; };
 		AE91B3F42BEB8A34008B8CFB /* AlarmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmModel.swift; sourceTree = "<group>"; };
 		AE9F0C2A2BC3F253007B2B1E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		AE9F0C2C2BC3F369007B2B1E /* AIProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIProfileModel.swift; sourceTree = "<group>"; };
@@ -337,6 +345,16 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		AE3E0B4C2C0D8C4200FE483B /* MakeAIProfileViews */ = {
+			isa = PBXGroup;
+			children = (
+				AE3E0B482C0D5B5D00FE483B /* MakeAIProfileEditView.swift */,
+				AE2B121F2C0C5B1500735C14 /* MakeAIProfileView.swift */,
+				AE3E0B4D2C0D8CC100FE483B /* DocumentPicker.swift */,
+			);
+			path = MakeAIProfileViews;
+			sourceTree = "<group>";
+		};
 		AE9F0C232BC3EFB5007B2B1E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +375,7 @@
 		AE9F0C242BC3F056007B2B1E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AE3E0B4C2C0D8C4200FE483B /* MakeAIProfileViews */,
 				AE9F0C292BC3F078007B2B1E /* Components */,
 				5065F8DC2BE88CD5009E6EDB /* VocabTabViews */,
 				5016492A2BD9FB7A00A5EE32 /* CallTabViews */,
@@ -364,6 +383,7 @@
 				50C7A1B02BEA6EC300743D9E /* MypageViews */,
 				AE9F0C342BC3F95A007B2B1E /* LoginView.swift */,
 				AE9F0C362BC3FA31007B2B1E /* MainTabView.swift */,
+				AE3E0B4A2C0D69E200FE483B /* CustomTextView.swift */,
 				50F7263F2BC6525B00078A6D /* OnboardingView.swift */,
 			);
 			path = View;
@@ -520,6 +540,7 @@
 				AE9F0C352BC3F95A007B2B1E /* LoginView.swift in Sources */,
 				5037546E2BF8C3C000817459 /* UploadRecordingModel.swift in Sources */,
 				AE9F0C312BC3F8B0007B2B1E /* CustomTextField.swift in Sources */,
+				AE3E0B492C0D5B5D00FE483B /* MakeAIProfileEditView.swift in Sources */,
 				AE9F0C2B2BC3F253007B2B1E /* UserModel.swift in Sources */,
 				5065F8EB2BE8EFFB009E6EDB /* PastVocabCell.swift in Sources */,
 				504611EF2BF0706B006161EB /* HTTPManager.swift in Sources */,
@@ -533,12 +554,14 @@
 				AE9F0C2D2BC3F369007B2B1E /* AIProfileModel.swift in Sources */,
 				501649362BDA7A3800A5EE32 /* AudioRecordingFunc.swift in Sources */,
 				AE9F0C372BC3FA31007B2B1E /* MainTabView.swift in Sources */,
+				AE3E0B4B2C0D69E200FE483B /* CustomTextView.swift in Sources */,
 				AE9F0C332BC3F8C2007B2B1E /* CustomButtonBig.swift in Sources */,
 				50C7A1B52BEA7C6D00743D9E /* ProfileEditView.swift in Sources */,
 				50F726522BC6BB9700078A6D /* ModifyAlarmView.swift in Sources */,
 				AE91B3F52BEB8A34008B8CFB /* AlarmModel.swift in Sources */,
 				503754822BFB9F1A00817459 /* CallRecordTextView.swift in Sources */,
 				501649332BDA292C00A5EE32 /* SendCallView.swift in Sources */,
+				AE3E0B4E2C0D8CC100FE483B /* DocumentPicker.swift in Sources */,
 				5065F8E72BE8A275009E6EDB /* PastVocabView.swift in Sources */,
 				5058A78A2BFDF253002D4B8E /* LocalData.swift in Sources */,
 				AE228E792BDE2CD200B35657 /* AlarmTimer.swift in Sources */,
@@ -562,6 +585,7 @@
 				501649312BDA18CF00A5EE32 /* AIProfileDataFetcher.swift in Sources */,
 				50C7A1B32BEA6F4B00743D9E /* CustomCircleImg.swift in Sources */,
 				AE0BF2432BF0986F008016AA /* UserDataFetcher.swift in Sources */,
+				AE2B12202C0C5B1500735C14 /* MakeAIProfileView.swift in Sources */,
 				5065F8E22BE88F94009E6EDB /* VocabDataFetcher.swift in Sources */,
 				AEB7914F2BF9CA9600EB06A4 /* DotsAnimationCell.swift in Sources */,
 				504611F12BF091C3006161EB /* JSONConverter.swift in Sources */,

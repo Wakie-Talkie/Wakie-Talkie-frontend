@@ -18,7 +18,7 @@ struct ReceiveCallView: View {
     @StateObject private var audioEngine: AudioEngineFunc = AudioEngineFunc()
 //    @State private var audioEngine: AudioEngineFunc? = nil
     private let audioFileDataUploader = AudioFileDataUploader()
-    private let postModel = UploadRecordingModel(userId: 1, aiPartnerId: 3) //temp
+    private let postModel = UploadRecordingModel(userId: 1, aiPartnerId: 1) //temp
     @State var isGeneratingResponse: Bool = false
     @State var isGeneratingRecord: Bool = false
     @State private var isDismissed: Bool = false
@@ -97,11 +97,11 @@ struct ReceiveCallView: View {
                     }, color: Color("Accent1"), isActive: .constant(true))
                 }
                 else{
-                    Text("Speak " + String(aiProfile.language))
-                        .fontWeight(.regular)
-                        .font(.system(size: 20))
-                        .foregroundColor(Color("Black"))
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 15, trailing: 0))
+//                    Text("Speak " + String(aiProfile.language))
+//                        .fontWeight(.regular)
+//                        .font(.system(size: 20))
+//                        .foregroundColor(Color("Black"))
+//                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 15, trailing: 0))
                     CustomButtonBig(text: "전화 받기", action: { callReceived = true //dismiss()
                         print("이게 트리거되는거야???")
                         audioRecorder.playPartnerSoundAndStartRecording(for: postModel.aiPartnerId)
@@ -147,6 +147,7 @@ struct ReceiveCallView: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
         .onChange(of: self.audioEngine.isPlaying){
             if(!self.isDismissed && !(self.audioEngine.isPlaying)){
                 //print("2. answer, 파일 재생이 끝났나요? ", self.audioEngine?.isPlaying)

@@ -91,7 +91,7 @@ struct MainTabView: View {
             .navigationDestination(isPresented: $navigateToReceiveCall) {
                 ReceiveCallView(
                                 navigateToReceiveCall: $navigateToReceiveCall,
-                                aiProfile: AIProfile(id: 1, nickname: "Alexis",profileImg: "ai_profile_img", description: "like watching animation and go out for a walk.", language: 1)
+                                aiProfile: AIProfile(id: 1, nickname: "Alloy",profileImg: "profile", description: "hi i love watching movies", language: 1)
                 )
             }
         }

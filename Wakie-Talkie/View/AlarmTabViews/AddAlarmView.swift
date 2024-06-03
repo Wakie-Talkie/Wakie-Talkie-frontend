@@ -68,14 +68,14 @@ struct AddAlarmView: View {
                                         .background(Color.white)
                                         .cornerRadius(5)
                                         .shadow(radius: 1)
-                                        .frame(maxWidth:50,maxHeight: 30)
+                                        .frame(maxWidth:60,maxHeight: 30)
                                     Text(":")
                                     TextField(editingMin, text: $editingMin)
                                         .padding()
                                         .background(Color.white)
                                         .cornerRadius(5)
                                         .shadow(radius: 1)
-                                        .frame(maxHeight: 30)
+                                        .frame(maxWidth:60,maxHeight: 30)
                                 }
                             }
                             Spacer()
@@ -186,3 +186,4 @@ struct AddAlarmView: View {
         .navigationBarBackButtonHidden(true)
     }
 }
+
