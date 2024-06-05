@@ -13,7 +13,7 @@ struct CallView: View {
     @State private var selection: AIProfile? = nil
     @State private var showModal: Bool = false
     
-    @State private var languages: [String] = ["영어", "한국어", "중국어", "일본어"]
+    @State private var languages: [String] = ["영어", "한국어", "일본어", "중국어"]
     @State private var isLanguageSelected: [Bool] = [false, false, false, false]
     var body: some View {
         ZStack{
@@ -40,8 +40,11 @@ struct CallView: View {
                                     isLanguageSelected[i] = false
                                 }else{
                                     isLanguageSelected[i] = true
-                                   // aiProfileData.loadAiProfileDataFromLang(language: i+1)
-                                    //click한 언어 별로 알맞은 aiprofile들 띄워주는 funciton
+                                    if i > 1 {
+                                        aiProfileData.loadAiProfileDataFromLang(language: i+2)
+                                    }else {
+                                        aiProfileData.loadAiProfileDataFromLang(language: i+1)
+                                    }
                                 }
                             }
                         }, isActive: $isLanguageSelected[index])

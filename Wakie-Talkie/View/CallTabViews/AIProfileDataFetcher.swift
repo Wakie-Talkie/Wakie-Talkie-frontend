@@ -29,6 +29,7 @@ class AIProfileDataFetcher: ObservableObject {
             }
         }
     }
+    // en:1 ko:2 ja:4 zh:5
     func loadAiProfileDataFromLang(language: Int) {
         getAiProfileDataFromLang(language: language) { [weak self] aiProfilesData in
             DispatchQueue.main.async {
