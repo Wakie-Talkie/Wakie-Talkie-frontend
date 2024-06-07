@@ -78,7 +78,7 @@ struct AlarmView: View {
                 }
             }
             .navigationDestination(isPresented: $isPresentingAddAlarm){
-                AddAlarmView(aiProfiles: aiProfileData.aiProfiles ?? [])
+                AddAlarmView(isAIProfileSelected: Array(repeating: false, count: (aiProfileData.aiProfiles ?? []).count), aiProfiles: aiProfileData.aiProfiles ?? [])
             }
             .navigationDestination(isPresented: $isPresentingMypage){
                 ProfileView()

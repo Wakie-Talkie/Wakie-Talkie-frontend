@@ -71,8 +71,6 @@ struct ReceiveCallView: View {
                 
                 if isGeneratingResponse {
                     DotsAnimationCell()
-                    //Text("답변을 만들고 있어요")
-                    
                 } else if isGeneratingRecord {
                     DecibelAnimationCell(audioRecorder: audioRecorder)
                 }
@@ -88,20 +86,12 @@ struct ReceiveCallView: View {
                         print("record 꺼짐!!!! upload api 보내나..?")
                         print(" & audioRecorder finish Recording")
                         print(" & audioRecorder.dismiss")
-//                        if (audioEngine != nil){
-//                            audioEngine?.dismiss()
-//                        }
                         audioEngine.dismiss()
                         print(" & audioEngine.dismiss")
                         dismiss()
                     }, color: Color("Accent1"), isActive: .constant(true))
                 }
                 else{
-//                    Text("Speak " + String(aiProfile.language))
-//                        .fontWeight(.regular)
-//                        .font(.system(size: 20))
-//                        .foregroundColor(Color("Black"))
-//                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 15, trailing: 0))
                     CustomButtonBig(text: "전화 받기", action: { callReceived = true //dismiss()
                         print("이게 트리거되는거야???")
                         audioRecorder.playPartnerSoundAndStartRecording(for: postModel.aiPartnerId)

@@ -27,6 +27,7 @@ struct AddAlarmView: View {
     @State private var aiUserId: Int = 1
     @State private var repeatDays: [Bool] = [false, false, false, false, false, false, false]
     @State private var userId: String = "eunhwa813"
+    @State var isAIProfileSelected: [Bool]
     
     @State private var alarm = Alarm() //SD
     @Environment(\.modelContext) var context
@@ -134,13 +135,20 @@ struct AddAlarmView: View {
                         Text("대화할 친구")
                             .font(.system(size: 20))
                             .fontWeight(.medium)
-                       
-                        ForEach(aiProfiles){ profile in
-                            AiVoiceCell(aiProfile: profile, action: {
-                                aiUserId = profile.id
-                                //아직 어떻게 로직 짜야할지 모르겠음
-                            }, isActive: .constant(true))
+
+                        ForEach(0..<aiProfiles.count, id: \.self) { index in
+                            AiVoiceCell(aiProfile: aiProfiles[index], action: {
+                                aiUserId = aiProfiles[index].id
+                                for i in 0..<aiProfiles.count {
+                                    if i != index {
+                                        isAIProfileSelected[i] = false
+                                    }else{
+                                        isAIProfileSelected[i] = true
+                                    }
+                                }
+                            }, isActive: $isAIProfileSelected[index])
                         }
+                       
                         .padding(EdgeInsets(top: 5, leading: 0, bottom: 10, trailing: 0))
                         
                     }.padding(EdgeInsets(top: 30, leading: 30, bottom: 0, trailing: 0))
