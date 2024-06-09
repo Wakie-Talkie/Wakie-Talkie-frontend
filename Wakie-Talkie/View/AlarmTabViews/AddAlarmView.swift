@@ -13,11 +13,12 @@ struct AddAlarmView: View {
     @EnvironmentObject var alarmTimer: AlarmTimer
     
     @State private var week: [String] = ["일", "월", "화", "수", "목", "금","토"]
-    @State private var languages: [String] = ["영어", "한국어", "중국어", "일본어"]
-    @State private var translatedLanguages: [String] = ["ENGLISH", "KOREAN", "CHINESE", "JAPANESE"]
+    @State private var languages: [String] = ["영어", "한국어", "일본어", "중국어"]
+    @State private var translatedLanguages: [String] = ["ENGLISH", "KOREAN", "JAPANESE", "CHINESE"]
     @State private var isAmActive: Bool = false
     @State private var isPmActive: Bool = false
     @State private var isLanguageSelected: [Bool] = [false, false, false, false]
+    @State private var selectedLanguageIndex: Int = 0
     @State private var time: Date = Date()
     @State private var alarmTime: String = "12:00"
     @State private var isEditing: Bool = false
@@ -124,7 +125,14 @@ struct AddAlarmView: View {
                                             isLanguageSelected[i] = false
                                         }else{
                                             isLanguageSelected[i] = true
+                                            print(isLanguageSelected)
                                             language = translatedLanguages[i]
+                                            if i < 2 {
+                                                selectedLanguageIndex = i + 1
+                                            } else {
+                                                selectedLanguageIndex = i + 2
+                                            }
+                                            print("선택된 인덱스:", selectedLanguageIndex)
                                         }
                                     }
                                 }, isActive: $isLanguageSelected[index])
@@ -137,16 +145,18 @@ struct AddAlarmView: View {
                             .fontWeight(.medium)
 
                         ForEach(0..<aiProfiles.count, id: \.self) { index in
-                            AiVoiceCell(aiProfile: aiProfiles[index], action: {
-                                aiUserId = aiProfiles[index].id
-                                for i in 0..<aiProfiles.count {
-                                    if i != index {
-                                        isAIProfileSelected[i] = false
-                                    }else{
-                                        isAIProfileSelected[i] = true
+                            if aiProfiles[index].language == selectedLanguageIndex {
+                                AiVoiceCell(aiProfile: aiProfiles[index], action: {
+                                    aiUserId = aiProfiles[index].id
+                                    for i in 0..<aiProfiles.count {
+                                        if i != index {
+                                            isAIProfileSelected[i] = false
+                                        }else{
+                                            isAIProfileSelected[i] = true
+                                        }
                                     }
-                                }
-                            }, isActive: $isAIProfileSelected[index])
+                                }, isActive: $isAIProfileSelected[index])
+                            }
                         }
                        
                         .padding(EdgeInsets(top: 5, leading: 0, bottom: 10, trailing: 0))
@@ -171,7 +181,9 @@ struct AddAlarmView: View {
                     context.insert(alarm)
                     
                     AlarmManager.scheduleNextAlarm(alarms: alarmList)
+                    alarmTimer.updateNextAlarmDate(alarm: AlarmManager.findNextAlarm(alarms: alarmList))
                     alarmTimer.updateNextAlarmTime(time:(AlarmManager.findNextAlarmTime(alarms: alarmList) ) ?? Calendar.current.date(from: DateComponents(year: 2099, month: 1, day: 1))!)
+                    
                     dismiss()
                 }
             }, color: Color("Black"), isActive: .constant(true))

@@ -7,12 +7,10 @@
 
 import Foundation
 import UserNotifications
-import SwiftData
+import Combine
 
-class AlarmManager {
-    static let shared = AlarmManager()
-    
-    
+class AlarmManager: ObservableObject {
+
     static func scheduleNextAlarm(alarms: [Alarm]) {
         let center = UNUserNotificationCenter.current()
         
@@ -23,7 +21,6 @@ class AlarmManager {
             print("No alarms to schedule")
             return
         }
-        print("Next alarm : \(nextAlarm)")
         scheduleAlarmNotifications(alarm: nextAlarm)
     }
     
@@ -48,7 +45,6 @@ class AlarmManager {
             if timeInterval < minimumTimeInterval {
                 minimumTimeInterval = timeInterval
                 closestAlarm = alarm
-                print("CLOSEST NOW: \(String(describing: closestAlarm))")
             }
         }
 //        print("= = = = ")

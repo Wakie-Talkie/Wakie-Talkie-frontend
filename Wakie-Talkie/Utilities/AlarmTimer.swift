@@ -11,6 +11,7 @@ import Combine
 // App 상태 관리
 class AlarmTimer: ObservableObject {
     @Published var nextAlarmTime: Date?
+    @Published var nextAlarmData: Alarm?
     private var timer: AnyCancellable?
 
     init() {
@@ -25,6 +26,10 @@ class AlarmTimer: ObservableObject {
         nextAlarmTime = time
         print("AlarmTimer :  \(String(describing: nextAlarmTime))")
 
+    }
+    
+    func updateNextAlarmDate(alarm: Alarm?){
+        nextAlarmData = alarm
     }
     
     func checkTime() {

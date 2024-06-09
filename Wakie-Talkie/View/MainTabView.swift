@@ -10,6 +10,8 @@ import SwiftUI
 struct MainTabView: View {
     @State private var selectedTab = 2
     @State private var navigateToReceiveCall = false
+    @StateObject var aiProfileData = AIProfileDataFetcher()
+    @EnvironmentObject var alarmTimer: AlarmTimer
 
     var body: some View {
         NavigationStack {
@@ -82,16 +84,19 @@ struct MainTabView: View {
                 .frame(height: 50, alignment: .bottom)
                 .padding(EdgeInsets(top: 15, leading: 0, bottom: -10, trailing: 0))
                 .background(Color("Main").opacity(0.7))
-                
             }
             .onReceive(NotificationCenter.default.publisher(for: .init("TriggerReceiveCallView"))) { _ in
-                navigateToReceiveCall = true
-                print("ALARMVIEW: navigateToReceivecall true")
+                aiProfileData.loadAiProilDataById(aiUserId:  alarmTimer.nextAlarmData?.aiProfileId ?? 1)
+                if aiProfileData.aiProfile != nil {
+                    navigateToReceiveCall = true
+                }
             }
             .navigationDestination(isPresented: $navigateToReceiveCall) {
                 ReceiveCallView(
                                 navigateToReceiveCall: $navigateToReceiveCall,
-                                aiProfile: AIProfile(id: 1, nickname: "Alloy",profileImg: "profile", description: "hi i love watching movies", language: 1)
+                                postModel: UploadRecordingModel(userId: 1, aiPartnerId: alarmTimer.nextAlarmData?.aiProfileId ?? 1),
+                                aiProfile:  aiProfileData.aiProfile ??
+                                    AIProfile(id: 1, nickname: "Alloy",profileImg: "profile", description: "how are you?", language: 1)
                 )
             }
         }

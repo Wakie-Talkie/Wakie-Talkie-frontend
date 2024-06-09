@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 class AIProfileDataFetcher: ObservableObject {
     @Published var aiProfiles: [AIProfile]?
