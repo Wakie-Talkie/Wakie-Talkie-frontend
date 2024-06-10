@@ -12,13 +12,13 @@ struct ReceiveCallView: View {
     @Binding var navigateToReceiveCall: Bool
     
     @Environment(\.dismiss) var dismiss
+    @State var postModel: UploadRecordingModel
     @State var aiProfile: AIProfile
     @State private var callReceived: Bool = false
     @StateObject private var audioRecorder: AudioRecordingFunc = AudioRecordingFunc()
     @StateObject private var audioEngine: AudioEngineFunc = AudioEngineFunc()
-//    @State private var audioEngine: AudioEngineFunc? = nil
+    //    @State private var audioEngine: AudioEngineFunc? = nil
     private let audioFileDataUploader = AudioFileDataUploader()
-    private let postModel = UploadRecordingModel(userId: 1, aiPartnerId: 1) //temp
     @State var isGeneratingResponse: Bool = false
     @State var isGeneratingRecord: Bool = false
     @State private var isDismissed: Bool = false
