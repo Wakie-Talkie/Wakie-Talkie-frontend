@@ -28,7 +28,7 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AV
 
     func dismiss(){
         audioRecorder?.stop()
-        print(" & recorder stop?????")
+        //print(" & recorder stop?????")
     }
     private func setupAudioSession() {
         do {
@@ -46,10 +46,10 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AV
     }
 
     func startRecording() {
-        print("==레코딩 시작!!!")
+        //print("==레코딩 시작!!!")
         let audioFilename = getDocumentsDirectory()
         self.audioFilePath = audioFilename
-        print("오디오파일경로를 만들엇어용 \(self.audioFilePath)")
+        //print("오디오파일경로를 만들엇어용 \(self.audioFilePath)")
         let settings = [
             AVFormatIDKey: Int(kAudioFormatLinearPCM),
             AVSampleRateKey: 44100,
@@ -96,15 +96,15 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AV
                 if Date().timeIntervalSince(silenceStartTime) >= maxSilenceDuration {
                     finishRecording(success: true)
                 }
-                print("=== if\(silenceStartTime)")
-                print("=== if 시간차 \(Date().timeIntervalSince(silenceStartTime))")
+               // print("=== if\(silenceStartTime)")
+                //print("=== if 시간차 \(Date().timeIntervalSince(silenceStartTime))")
             } else {
                 silenceStartTime = Date()
-                print("=== else문이라서 date초기화에욤\(String(describing: silenceStartTime))")
+             //   print("=== else문이라서 date초기화에욤\(String(describing: silenceStartTime))")
             }
         } else {
             silenceStartTime = Date() // nil이어서 오류나는거같은데
-            print("=== nil이어욤\(String(describing: silenceStartTime))")
+          //  print("=== nil이어욤\(String(describing: silenceStartTime))")
         }
     }
 

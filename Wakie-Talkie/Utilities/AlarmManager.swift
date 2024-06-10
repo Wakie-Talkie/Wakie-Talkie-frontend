@@ -45,6 +45,7 @@ class AlarmManager: ObservableObject {
             if timeInterval < minimumTimeInterval {
                 minimumTimeInterval = timeInterval
                 closestAlarm = alarm
+           //     print("CLOSEST NOW: \(String(describing: closestAlarm))")
             }
         }
 //        print("= = = = ")

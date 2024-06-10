@@ -13,6 +13,7 @@ class AIProfileDataFetcher: ObservableObject {
     @Published var aiProfiles: [AIProfile]?
     @Published var aiProfile: AIProfile?
     func loadAiProfileData() {
+//        self.aiProfiles = [AIProfile(id: 1, nickname: "a", description: "b", language: 1),AIProfile(id: 2, nickname: "b", language: 2), AIProfile(id: 3, nickname: "ccc",description: "kk", language: 4) ]
         getAiProfileData { [weak self] aiProfilesData in
             DispatchQueue.main.async {
                 self?.aiProfiles = aiProfilesData

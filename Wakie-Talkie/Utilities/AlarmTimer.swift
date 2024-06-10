@@ -30,6 +30,7 @@ class AlarmTimer: ObservableObject {
     
     func updateNextAlarmDate(alarm: Alarm?){
         nextAlarmData = alarm
+        print("!!!!!!!!!!!!!!알람 업뎃!!!!!!!!!!")
     }
     
     func checkTime() {
