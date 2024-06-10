@@ -117,13 +117,26 @@ struct MakeAIProfileEditView: View {
                     }, isActive: $isAmActive)
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 30))
                 }
-                    CustomButtonBig(text: "추가하기", action: {
-                        dismiss()
-                    }, color: Color("Black"), isActive: .constant(true))
-                    .frame(alignment: .bottom)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
-                    
+                if let selectedFileURL = selectedFileURL {
+                    HStack {
+                        Text("첨부된 파일:")
+                            .fontWeight(.light)
+                            .font(.system(size:16))
+                            .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0))
+                        Text(selectedFileURL.lastPathComponent)
+                            .fontWeight(.light)
+                            .font(.system(size:16))
+                            .padding(20)
+                            
+                        Spacer()
+                    }
+                }
                 
+                CustomButtonBig(text: "추가하기", action: {
+                    dismiss()
+                }, color: Color("Black"), isActive: .constant(true))
+                .frame(alignment: .bottom)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
             }
         }
         .sheet(isPresented: $showDocumentPicker) {
