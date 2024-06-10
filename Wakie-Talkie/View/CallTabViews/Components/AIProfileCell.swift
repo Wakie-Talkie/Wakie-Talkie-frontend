@@ -53,7 +53,7 @@ struct AIProfileCell: View{
 }
 
 struct AICellTestView: View{
-    @State var aiProfile: AIProfile = AIProfile(id: 1, nickname: "Alexis",profileImg: "AIProfileImg",description: "I like watching animation and go out for a walk.", language: 1)
+    @State var aiProfile: AIProfile = AIProfile(id: 1, nickname: "Alexis",profileImg: "AIProfileImg",aiType: "openai", description: "I like watching animation and go out for a walk.", language: 1)
     var body: some View{
         AIProfileCell(aiData: aiProfile)
     }

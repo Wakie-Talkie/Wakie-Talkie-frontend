@@ -49,7 +49,7 @@ struct CallPopupView: View {
 
 struct CallPopupTestView: View{
     @State var aipofileData: AIProfile =
-        AIProfile(id: 1, nickname: "Alexis",profileImg: "ai_profile_img", description: "like watching animation and go out for a walk.", language: 1)
+        AIProfile(id: 1, nickname: "Alexis",profileImg: "ai_profile_img", aiType: "openai", description: "like watching animation and go out for a walk.", language: 1)
     var body: some View{
         CallPopupView(aiProfile: aipofileData)
     }

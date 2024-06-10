@@ -11,6 +11,7 @@ struct MakeAIProfileView: View {
     @Environment(\.dismiss) var dismiss
     @State private var isPresentingAIProfileEditView = false
 
+
     
     var body: some View {
         ZStack{

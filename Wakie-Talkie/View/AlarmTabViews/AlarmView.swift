@@ -85,6 +85,7 @@ struct AlarmView: View {
             }
             .onAppear{
                 aiProfileData.loadAiProfileData()
+                
             }
             .onChange(of: aiProfileData.aiProfiles){
                 

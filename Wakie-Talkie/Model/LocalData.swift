@@ -7,5 +7,5 @@
 
 import Foundation
 class LocalData {
-    let aiUserData: AIProfile = AIProfile(id: 1, nickname: "alloy", profileImg: "ai_profile_me2", description: "Hi i love watching movies", language: 1)
+    let aiUserData: AIProfile = AIProfile(id: 1, nickname: "alloy", profileImg: "ai_profile_me2", aiType: "openai", description: "Hi i love watching movies", language: 1)
 }

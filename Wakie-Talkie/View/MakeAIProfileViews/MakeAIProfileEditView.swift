@@ -11,10 +11,19 @@ import SwiftUI
 struct MakeAIProfileEditView: View {
     @Environment(\.dismiss) var dismiss
     @State private var islanguageSelected: [Bool] = [false,false,false,false,false]
+    @State var aiProfileData = AIProfileDataFetcher()
     @State private var inputText: String = ""
     @State private var isAmActive: Bool = true
     @State private var showDocumentPicker = false
     @State private var selectedFileURL: URL?
+    @State private var nickname: String = ""
+    
+    private func selectLanguage(at index: Int) {
+        for i in 0..<islanguageSelected.count {
+            islanguageSelected[i] = (i == index)
+        }
+    }
+    
     
     var body: some View {
         ScrollView{            
@@ -39,12 +48,13 @@ struct MakeAIProfileEditView: View {
                     .font(.system(size: 25))
                     .foregroundColor(Color("Black"))
                     .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 0))
-                    Text("nickname")
-                        .fontWeight(.light)
-                        .font(.system(size: 25))
-                        .foregroundColor(Color("Black"))
-                        .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 0))
-                    
+                TextField("nickname", text: $nickname)
+                    .fontWeight(.light)
+                    .font(.system(size: 25))
+                    .foregroundColor(Color("Black"))
+                    .background(Color.clear)
+                    .textFieldStyle(PlainTextFieldStyle())
+                    .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 0))
                 Spacer()
             }
             VStack(){
@@ -58,23 +68,20 @@ struct MakeAIProfileEditView: View {
                 }
                 HStack{
                     CustomLanguageButton(text: "영어", action: {
-                        islanguageSelected[0] = !islanguageSelected[0]
+                        selectLanguage(at: 0)
                     }, isActive: $islanguageSelected[0])
                     CustomLanguageButton(text: "한국어", action: {
-                        islanguageSelected[1] = !islanguageSelected[1]
+                        selectLanguage(at: 1)
                     }, isActive: $islanguageSelected[1])
-                    CustomLanguageButton(text: "일본어", action: {
-                        islanguageSelected[2] = !islanguageSelected[2]
-                    }, isActive: $islanguageSelected[2])
                     Spacer()
                 }
                 .padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 0))
                 HStack{
-                    CustomLanguageButton(text: "프랑스어", action: {
-                        islanguageSelected[3] = !islanguageSelected[3]
+                    CustomLanguageButton(text: "일본어", action: {
+                        selectLanguage(at: 3)
                     }, isActive: $islanguageSelected[3])
-                    CustomLanguageButton(text: "어쩌구저어", action: {
-                        islanguageSelected[4] = !islanguageSelected[4]
+                    CustomLanguageButton(text: "중국어", action: {
+                        selectLanguage(at: 4)
                     }, isActive: $islanguageSelected[4])
                     Spacer()
                 }
@@ -133,6 +140,15 @@ struct MakeAIProfileEditView: View {
                 }
                 
                 CustomButtonBig(text: "추가하기", action: {
+                    aiProfileData.postCustomAiProfile(nickname: nickname, profileImage: nil, description: inputText, language: 1) { result in
+                        print("PROFILEEEE")
+                        print(result)
+                    }
+                    aiProfileData.postCustomAiProfileFile(voiceFileURL: selectedFileURL, nickname: nickname) { result in
+                        print("FILEEEEE")
+                        print("hhh")
+                    }
+                    //aiType: custom추가해야함
                     dismiss()
                 }, color: Color("Black"), isActive: .constant(true))
                 .frame(alignment: .bottom)
@@ -145,8 +161,4 @@ struct MakeAIProfileEditView: View {
                     }
                 }
     }
-}
-
-#Preview{
-    MakeAIProfileEditView()
 }

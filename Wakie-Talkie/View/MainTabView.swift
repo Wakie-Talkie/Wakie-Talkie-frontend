@@ -96,7 +96,7 @@ struct MainTabView: View {
                                 navigateToReceiveCall: $navigateToReceiveCall,
                                 postModel: UploadRecordingModel(userId: 1, aiPartnerId: alarmTimer.nextAlarmData?.aiProfileId ?? 1),
                                 aiProfile:  aiProfileData.aiProfile ??
-                                    AIProfile(id: 1, nickname: "Alloy",profileImg: "profile", description: "how are you?", language: 1)
+                                AIProfile(id: 1, nickname: "Alloy",profileImg: "profile", aiType: "openai", description: "how are you?", language: 1)
                 )
             }
         }

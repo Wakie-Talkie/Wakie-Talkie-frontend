@@ -67,17 +67,17 @@ struct AiVoiceView: View {
     }
 }
 
-struct AiVoiceTestView: View{
-    @State var aipofileData: [AIProfile] = [
-        AIProfile(id: 1, nickname: "Alexis",profileImg: "ai_profile_me1", description: "like watching animation and go out for a walk.", language: 1),
-        AIProfile(id: 1, nickname: "Sandy",profileImg: "ai_profile_me2",description: "FUCK YOU", language: 1),
-        AIProfile(id: 3, nickname: "七星",profileImg: "ai_profile_me3",description: "因縁は 偶然に 尋ねて", language: 2),
-        AIProfile(id: 4, nickname: "フレーズ",profileImg: "ai_profile_me1",description: "時は 人を 待たず", language: 2)
-    ]
-    var body: some View{
-        AiVoiceView()
-    }
-}
+//struct AiVoiceTestView: View{
+//    @State var aipofileData: [AIProfile] = [
+//        AIProfile(id: 1, nickname: "Alexis",profileImg: "ai_profile_me1", description: "like watching animation and go out for a walk.", language: 1),
+//        AIProfile(id: 1, nickname: "Sandy",profileImg: "ai_profile_me2",description: "FUCK YOU", language: 1),
+//        AIProfile(id: 3, nickname: "七星",profileImg: "ai_profile_me3",description: "因縁は 偶然に 尋ねて", language: 2),
+//        AIProfile(id: 4, nickname: "フレーズ",profileImg: "ai_profile_me1",description: "時は 人を 待たず", language: 2)
+//    ]
+//    var body: some View{
+//        AiVoiceView()
+//    }
+//}
 
 //#Preview {
 //    AiVoiceTestView()
