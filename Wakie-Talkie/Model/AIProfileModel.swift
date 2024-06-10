@@ -16,8 +16,9 @@ struct AIProfile: Identifiable, Codable, Equatable {
     var language: Int      // 외래키(FK) 대신 연관된 언어의 ID나 이름을 저장
     
     enum CodingKeys: String, CodingKey {
-        case id, nickname, aiType,description, language
+        case id, nickname, description, language
         case profileImg = "profile_img"
+        case aiType = "ai_type"
     }
     
     init(id: Int, nickname: String, profileImg: String? = nil, aiType: String, description: String? = nil, language: Int) {

@@ -127,11 +127,9 @@ struct AddAlarmView: View {
                                             isLanguageSelected[i] = true
                                             print(isLanguageSelected)
                                             language = translatedLanguages[i]
-                                            if i < 2 {
-                                                selectedLanguageIndex = i + 1
-                                            } else {
-                                                selectedLanguageIndex = i + 2
-                                            }
+                                            
+                                            selectedLanguageIndex = i + 1
+                                           
                                             print("선택된 인덱스:", selectedLanguageIndex)
                                         }
                                     }

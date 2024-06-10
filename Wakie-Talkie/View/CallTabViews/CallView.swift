@@ -40,11 +40,7 @@ struct CallView: View {
                                     isLanguageSelected[i] = false
                                 }else{
                                     isLanguageSelected[i] = true
-                                    if i > 1 {
-                                        aiProfileData.loadAiProfileDataFromLang(language: i+2)
-                                    }else {
-                                        aiProfileData.loadAiProfileDataFromLang(language: i+1)
-                                    }
+                                    aiProfileData.loadAiProfileDataFromLang(language: i+1)
                                 }
                             }
                         }, isActive: $isLanguageSelected[index])
