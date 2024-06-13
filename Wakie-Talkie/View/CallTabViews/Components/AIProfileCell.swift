@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AIProfileCell: View{
     var aiData: AIProfile
+    private let aiProfileDataFetcher = AIProfileDataFetcher()
+    @StateObject private var audioEngine: AudioEngineFunc = AudioEngineFunc()
     var body: some View{
         ZStack{
             RoundedRectangle(cornerRadius: 20)
@@ -42,6 +44,22 @@ struct AIProfileCell: View{
                 }
                 Button {
                     //aiprofile의 설명을 예시로 읽어주는 function -> 그냥 AIProfileDB에 예시 음성 파일 박아두면 될듯?
+                    print("Button clicked!!!!!! \(aiData.id)")
+                    aiProfileDataFetcher.getAiSampleAudio(aiUserId: aiData.id){
+                        result in
+                        print("get sample audio")
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success(let responseURL):
+                                DispatchQueue.main.async {
+                                    print("response url!!!!!! \(responseURL)")
+                                    audioEngine.audioPlay(from: responseURL)
+                                }
+                            case .failure(let error):
+                                print("Upload failed: \(error)")
+                            }
+                        }
+                    }
                 }label: {
                     Image(systemName: "speaker.wave.3.fill")
                         .foregroundColor(Color("Black"))

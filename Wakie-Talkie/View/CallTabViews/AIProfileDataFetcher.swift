@@ -88,6 +88,57 @@ class AIProfileDataFetcher: ObservableObject {
         }
     }
     
+    func getAiSampleAudio(aiUserId: Int, completion: @escaping (Result< URL, Error>) -> Void){
+        let setURL = "http://localhost:8000/ai-users/get-sample-audio/\(aiUserId)"
+        
+        guard let validURL = URL(string: setURL) else {
+            completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
+            return
+        }
+
+        var request = URLRequest(url: validURL)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                completion(.failure(NSError(domain: "Invalid response", code: 0, userInfo: nil)))
+                return
+            }
+
+            print("Response Status Code: \(httpResponse.statusCode)")
+            print("Response Headers: \(httpResponse.allHeaderFields)")
+
+            guard httpResponse.statusCode == 200 else {
+                print("Upload failed with status code: \(httpResponse.statusCode)")
+                completion(.failure(NSError(domain: "Invalid response", code: httpResponse.statusCode, userInfo: nil)))
+                return
+            }
+
+            guard let data = data else {
+                completion(.failure(NSError(domain: "No data received", code: 0, userInfo: nil)))
+                return
+            }
+//            completion(.success(data))
+            
+            if let responseString = String(data: data, encoding: .utf8) {
+                print("Response Body: \(responseString)")
+            }
+
+            let tempFileURL = FileManager.default.temporaryDirectory.appendingPathComponent("response_sample.wav")
+            do {
+                try data.write(to: tempFileURL)
+                completion(.success(tempFileURL))
+                print("temp file path:: \(tempFileURL)")
+            } catch {
+                completion(.failure(error))
+            }
+        }.resume()
+    }
     func postCustomAiProfile( nickname: String, profileImage: UIImage?, description: String?, language: Int, completion: @escaping (Result< String, Error>) -> Void) {
         let setURL = "http://localhost:8000/ai-users/"
 //        "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/"
@@ -102,16 +153,16 @@ class AIProfileDataFetcher: ObservableObject {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let boundary = UUID().uuidString
-            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
             
-            let httpBody = createMultipartBody(boundary: boundary, parameters: [
-                "nickname": nickname,
-                "ai_type": "custom",
-                "description": description ?? "",
-                "language": "\(language)"
-            ], image: profileImage, imageKey: "profile_img")
-            
-            request.httpBody = httpBody
+        let httpBody = createMultipartBody(boundary: boundary, parameters: [
+            "nickname": nickname,
+            "ai_type": "custom",
+            "description": description ?? "",
+            "language": "\(language)"
+        ], image: profileImage, imageKey: "profile_img")
+        
+        request.httpBody = httpBody
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
