@@ -11,15 +11,17 @@ struct CallRecordCell: View {
     @Binding var recordData: Recording
     @State private var isPresentRecordTextView: Bool = false
     @State private var path = NavigationPath()
-    @State private var aiUserLocalData = LocalData()
+    @StateObject var aiProfileData = AIProfileDataFetcher()
+    
+//    @State private var aiUserLocalData = LocalData()
 //    @State private var isTextViewActive = false
     var body: some View{
         NavigationStack(path: $path) {
             HStack(spacing: 15){
-                CustomCircleImg(imageUrl: aiUserLocalData.aiUserData.profileImg ,showEditBtn: false, size: 70)
+                CustomCircleImg(imageUrl: aiProfileData.aiProfile?.profileImg ,showEditBtn: false, size: 70)
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                 VStack(alignment: .leading){
-                    Text("\(aiUserLocalData.aiUserData.nickname)")
+                    Text(aiProfileData.aiProfile?.nickname ?? "failed")
                         .fontWeight(.medium)
                         .font(.system(size: 20))
                         .foregroundColor(Color("Black"))
@@ -35,6 +37,14 @@ struct CallRecordCell: View {
                  }, isActive: .constant(true))
             }
             .padding(5)
+            .onAppear{
+    //            aiDataFetcher.getAIProfiles()
+                aiProfileData.loadAiProilDataById(aiUserId: recordData.aiPartnerId)
+            }
+            .onChange(of: aiProfileData.aiProfile){
+    //            print(aiProfileData.aiProfiles)
+    //            print("profile nickname!!!! : \(aiProfileData.aiProfiles?[0].nickname)")
+            }
         }
         .navigationDestination(isPresented: $isPresentRecordTextView){
             CallRecordTextView(recordId: $recordData.id, dateTime: "\(recordData.date) \(recordData.callingTime)")
