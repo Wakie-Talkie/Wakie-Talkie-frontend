@@ -11,6 +11,7 @@ struct AiVoiceView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var aiProfileData = AIProfileDataFetcher()
     @State private var isPresentingAIProfileView = false
+    @State private var languages: [String] = ["영어", "한국어", "일본어", "중국어"]
     //private var aiVoiceList: [AIProfile] = []
     var body: some View {
         NavigationStack{
@@ -34,7 +35,7 @@ struct AiVoiceView: View {
                         VStack{
                             if (index == 0)||((index != 0)&&(aiProfileData.aiProfiles![index].language != aiProfileData.aiProfiles![index-1].language)) {
                                 HStack {
-                                    Text(String(aiProfileData.aiProfiles![index].language))
+                                    Text(languages[aiProfileData.aiProfiles![index].language-1])
                                         .fontWeight(.medium)
                                         .font(.system(size: 18))
                                         .padding(EdgeInsets(top: 20, leading: 25, bottom: 0, trailing: 0))

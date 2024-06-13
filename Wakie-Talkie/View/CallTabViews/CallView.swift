@@ -55,7 +55,6 @@ struct CallView: View {
                         AIProfileCell(aiData: aiProfileData.aiProfiles![index])
                                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                                 .onTapGesture {
-                                    self.showModal = true
                                     self.selection = aiProfileData.aiProfiles![index]
                                 }
                     }
@@ -76,6 +75,9 @@ struct CallView: View {
         .onChange(of: aiProfileData.aiProfiles){
 //            print(aiProfileData.aiProfiles)
 //            print("profile nickname!!!! : \(aiProfileData.aiProfiles?[0].nickname)")
+        }
+        .onChange(of: selection){
+            self.showModal = true
         }
     }
 }
