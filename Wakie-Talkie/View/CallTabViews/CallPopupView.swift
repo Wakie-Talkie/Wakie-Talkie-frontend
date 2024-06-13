@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CallPopupView: View {
+    @State var languages = ["", "English", "Korean", "Japanese", "Chinese"]
     @State var aiProfile: AIProfile
     @State private var startCalling: Bool = false
     var body: some View {
@@ -33,7 +34,7 @@ struct CallPopupView: View {
                 .foregroundColor(Color("Black"))
                 .frame(width:250, alignment: .center)
             Spacer()
-            Text("Speak " + String(aiProfile.language))
+            Text("Speak " + String(languages[aiProfile.language]))
                 .fontWeight(.light)
                 .font(.system(size: 20))
                 .foregroundColor(Color("Black"))
