@@ -119,7 +119,8 @@ struct ReceiveCallView: View {
             if(!self.isDismissed && !self.audioRecorder.isRecording){
                 self.isGeneratingResponse = true
                 if(audioRecorder.audioFilePath != nil){
-                    audioFileDataUploader.uploadAudioFile(url: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/upload-audio/" , model: postModel, audioFilePath: audioRecorder.audioFilePath?.path() ?? "") { result in
+//                    "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/upload-audio/"
+                    audioFileDataUploader.uploadAudioFile(url:  "http://localhost:8000/upload-audio/" , model: postModel, audioFilePath: audioRecorder.audioFilePath?.path() ?? "") { result in
                         DispatchQueue.main.async {
                             self.isGeneratingResponse = false
                             switch result {

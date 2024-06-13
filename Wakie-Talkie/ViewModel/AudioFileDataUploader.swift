@@ -24,7 +24,8 @@ class AudioFileDataUploader: ObservableObject{
     }
     
     func getRecordedAudioData (model: UploadRecordingModel,audioFilePath: String, completion: @escaping (Result<Data, Error>) -> Void) {
-        let setURL = "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/upload-audio/"
+        let setURL = "http://localhost:8000/upload-audio/"
+//        "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/upload-audio/"
         
         guard let validURL = URL(string: setURL) else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
@@ -111,7 +112,9 @@ class AudioFileDataUploader: ObservableObject{
         }
     }
     func callStartData(model: UploadRecordingModel, completion: @escaping (Result< String, Error>) -> Void){
-        guard let validURL = URL(string: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/call/start/") else {
+        guard let validURL = URL(string: "http://localhost:8000/call/start/"
+//                                    "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/call/start/"
+        ) else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
             return
         }
@@ -169,7 +172,9 @@ class AudioFileDataUploader: ObservableObject{
     }
     
     func callEndData(model: UploadRecordingModel, completion: @escaping (Result< String, Error>) -> Void){
-        guard let validURL = URL(string: "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/call/end/") else {
+        guard let validURL = URL(string: "http://localhost:8000/call/end/"
+//                                    "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/call/end/"
+        ) else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
             return
         }
@@ -257,7 +262,7 @@ class AudioFileDataUploader: ObservableObject{
         // Add audio file part
         body.append("--\(boundary)\r\n".data(using: .utf8)!)
         body.append("Content-Disposition: form-data; name=\"recorded_audio_file\"; filename=\"\(audioFileURL.lastPathComponent)\"\r\n".data(using: .utf8)!)
-        body.append("Content-Type: audio/m4a\r\n\r\n".data(using: .utf8)!)
+        body.append("Content-Type: audio/wav\r\n\r\n".data(using: .utf8)!)
         body.append(audioFileData)
         body.append("\r\n".data(using: .utf8)!)
 
@@ -300,7 +305,7 @@ class AudioFileDataUploader: ObservableObject{
                 print("Response Body: \(responseString)")
             }
 
-            let tempFileURL = FileManager.default.temporaryDirectory.appendingPathComponent("response_audio.mp3")
+            let tempFileURL = FileManager.default.temporaryDirectory.appendingPathComponent("response_audio.wav")
             do {
                 try data.write(to: tempFileURL)
                 completion(.success(tempFileURL))

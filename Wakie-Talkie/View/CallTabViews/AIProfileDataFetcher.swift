@@ -55,8 +55,8 @@ class AIProfileDataFetcher: ObservableObject {
     }
 
     func getAiProfileData(completion: @escaping ([AIProfile]) -> Void){
-        HTTPManager.requestGET(url:
-        "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/"
+        HTTPManager.requestGET(url: "http://localhost:8000/ai-users/"
+//        "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/"
         ) { data in
             guard let data: [AIProfile] = JSONConverter.decodeJsonArray(data: data)
             else {
@@ -68,8 +68,8 @@ class AIProfileDataFetcher: ObservableObject {
     }
     
     func getAiProfileDataById(aiUserId: Int,completion: @escaping (AIProfile) -> Void){
-        HTTPManager.requestGET(url:
-        "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/\(aiUserId)"
+        HTTPManager.requestGET(url: "http://localhost:8000/ai-users/\(aiUserId)"
+//        "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/\(aiUserId)"
 
         ) { data in
             guard let data: AIProfile = JSONConverter.decodeJson(data: data) else { return
@@ -79,8 +79,8 @@ class AIProfileDataFetcher: ObservableObject {
     }
 
     func getAiProfileDataFromLang(language: Int, completion: @escaping ([AIProfile]) -> Void){
-        HTTPManager.requestGET(url:
-       "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/language/\(language)/"
+        HTTPManager.requestGET(url: "http://localhost:8000/ai-users/\(language)/"
+//       "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/language/\(language)/"
         ) { data in
             guard let data: [AIProfile] = JSONConverter.decodeJsonArray(data: data) else { return
             }
@@ -89,7 +89,8 @@ class AIProfileDataFetcher: ObservableObject {
     }
     
     func postCustomAiProfile( nickname: String, profileImage: URL?, description: String?, language: Int, completion: @escaping (Result< String, Error>) -> Void) {
-        let setURL = "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/"
+        let setURL = "http://localhost:8000/ai-users/"
+//        "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/"
         
         guard let validURL = URL(string: setURL) else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))
@@ -133,7 +134,8 @@ class AIProfileDataFetcher: ObservableObject {
     
     // custom ai 만들 때 파일을 업로드하는 코드.
     func postCustomAiProfileFile(voiceFileURL: URL?, nickname: String, completion: @escaping (Result< String, Error>) -> Void) {
-        let setURL = "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/upload-ai-voice/"
+        let setURL = "http://localhost:8000/ai-users/upload-ai-voice/"
+//        "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/upload-ai-voice/"
         
         guard let validURL = URL(string: setURL) else {
             completion(.failure(NSError(domain: "Invalid URL", code: 0, userInfo: nil)))

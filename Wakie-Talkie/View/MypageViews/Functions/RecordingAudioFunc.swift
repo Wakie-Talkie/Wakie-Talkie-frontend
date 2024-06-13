@@ -34,6 +34,25 @@ class RecordingAudioFunc: NSObject,ObservableObject {
             print("Error starting audio engine: \(error)")
         }
     }
+    func prepareAudio(from url: URL){
+        do {
+            audioFile = try AVAudioFile(forReading: url)
+            print("audio play path : \(url)")
+            if let audioFile = audioFile {
+                duration = Double(audioFile.length) / audioFile.processingFormat.sampleRate
+                                
+                audioPlayerNode.scheduleFile(audioFile, at: nil,  completionCallbackType: .dataPlayedBack) {
+                    _ in
+                    //self.isPlaying = false
+                    print("Finished playing.")
+                }
+//                audioPlayerNode.play()
+//                isPlaying = true
+            }
+        } catch {
+            print("Error playing audio: \(error)")
+        }
+    }
     
     func loadAudio(data: Data) {
         do {
@@ -53,9 +72,9 @@ class RecordingAudioFunc: NSObject,ObservableObject {
     }
     
     func play() {
-        guard let buffer = audioFileBuffer else { return }
+//        guard let buffer = audioFileBuffer else { return }
         
-        audioPlayerNode.scheduleBuffer(buffer, at: nil, options: .loops, completionHandler: nil)
+//        audioPlayerNode.scheduleBuffer(buffer, at: nil, options: .loops, completionHandler: nil)
         audioPlayerNode.play()
         isPlaying = true
         

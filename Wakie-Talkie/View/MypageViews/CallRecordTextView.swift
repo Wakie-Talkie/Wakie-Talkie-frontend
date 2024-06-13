@@ -70,17 +70,31 @@ struct CallRecordTextView: View {
         }
         .onAppear(perform: {
             recordData.loadTextData(recordingId: recordId)
-            recordData.loadRecordedAudioData(recordingId: recordId)
+            recordData.getRecordedAudioData(url: "http://localhost:8000/recordings/record/", recordingId: recordId){
+                result in
+                print("api get record")
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let responseURL):
+                        DispatchQueue.main.async {
+                            print("response url!!!!!! \(responseURL)")
+                            recordingAudioFunc.prepareAudio(from: responseURL)
+                        }
+                    case .failure(let error):
+                        print("Upload failed: \(error)")
+                    }
+                }
+            }
         })
         .onChange(of: recordData.script){
             conversationScript = recordData.script
             chatCells = parseChat(text: conversationScript)
         }
-        .onChange(of: recordData.audioData){
-            if (recordData.audioData != nil){
-                recordingAudioFunc.loadAudio(data: recordData.audioData!)
-            }
-        }
+//        .onChange(of: recordData.audioData){
+//            if (recordData.audioData != nil){
+//                recordingAudioFunc.loadAudio(data: recordData.audioData!)
+//            }
+//        }
         .navigationBarBackButtonHidden(true)
     }
     func parseChat(text: String) -> [ChatCell] {

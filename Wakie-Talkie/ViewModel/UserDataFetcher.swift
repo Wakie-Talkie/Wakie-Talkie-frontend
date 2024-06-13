@@ -22,8 +22,8 @@ final class UserDataFetcher: ObservableObject {
     }
 
     func getUserData(completion: @escaping (User) -> Void){
-        HTTPManager.requestGET(url:
-            "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/users/1/"
+        HTTPManager.requestGET(url: "http://localhost:8000/users/1/"
+//                                "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/users/1/"
         ) { data in
             guard let data: User = JSONConverter.decodeJson(data: data) else { return
             }
