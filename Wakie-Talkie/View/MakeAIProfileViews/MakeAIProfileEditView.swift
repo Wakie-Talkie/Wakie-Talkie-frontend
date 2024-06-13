@@ -106,8 +106,7 @@ struct MakeAIProfileEditView: View {
                                 text: $inputText,
                                 placeholder: "성격, 취미 등... 자유롭게 적어주세요",
                                 placeholderColor: UIColor.lightGray,
-                                textColor: UIColor(Color("Grey3")),
-                                borderColor: UIColor(Color("Grey3")),
+                                borderColor: UIColor(Color("Grey3")) ,
                                 height: 137
                             )
                             .frame(height: 137)
