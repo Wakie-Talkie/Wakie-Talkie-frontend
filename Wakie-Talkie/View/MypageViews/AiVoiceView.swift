@@ -60,7 +60,7 @@ struct AiVoiceView: View {
                 aiProfileData.loadAiProfileSortedData()
             }
             .navigationDestination(isPresented: $isPresentingAIProfileView){
-                MakeAIProfileView()
+                MakeAIProfileEditView()
             }
             .navigationBarBackButtonHidden(true)
         }

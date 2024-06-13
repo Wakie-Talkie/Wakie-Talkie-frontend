@@ -18,6 +18,7 @@ struct SendCallView: View {
     @State var postModel:UploadRecordingModel
     @State var isGeneratingResponse: Bool = false
     @State var isGeneratingRecord: Bool = false
+    @State var languages = ["", "English", "Korean", "Japanese", "Chinese"]
 
     var body: some View {
         ZStack{
@@ -72,7 +73,7 @@ struct SendCallView: View {
 
                 if callReceived{
                     //Text("decibel \(audioRecorder.dbLevel)")
-                    Text(self.audioRecorder.isRecording ? "recording" : "player")
+                    
                     CustomButtonBig(text: "전화 끊기", action: {
                         self.isDismissed = true
                         print("너 전화 끊기 눌렀다 - SendCallView")
@@ -90,7 +91,7 @@ struct SendCallView: View {
                     }, color: Color("Accent1"), isActive: .constant(true))
                 }
                 else{
-                    Text("Speak " + String(aiProfile.language))
+                    Text("Speak " + String(languages[aiProfile.language]))
                         .fontWeight(.regular)
                         .font(.system(size: 20))
                         .foregroundColor(Color("Black"))
