@@ -17,6 +17,7 @@ struct MakeAIProfileEditView: View {
     @State private var showDocumentPicker = false
     @State private var selectedFileURL: URL?
     @State private var nickname: String = ""
+    @State private var language: Int = 1
     
     private func selectLanguage(at index: Int) {
         for i in 0..<islanguageSelected.count {
@@ -69,9 +70,11 @@ struct MakeAIProfileEditView: View {
                 HStack{
                     CustomLanguageButton(text: "영어", action: {
                         selectLanguage(at: 0)
+                        language = 1
                     }, isActive: $islanguageSelected[0])
                     CustomLanguageButton(text: "한국어", action: {
                         selectLanguage(at: 1)
+                        language = 2
                     }, isActive: $islanguageSelected[1])
                     Spacer()
                 }
@@ -79,9 +82,11 @@ struct MakeAIProfileEditView: View {
                 HStack{
                     CustomLanguageButton(text: "일본어", action: {
                         selectLanguage(at: 3)
+                        language = 3
                     }, isActive: $islanguageSelected[3])
                     CustomLanguageButton(text: "중국어", action: {
                         selectLanguage(at: 4)
+                        language = 4
                     }, isActive: $islanguageSelected[4])
                     Spacer()
                 }
@@ -139,7 +144,7 @@ struct MakeAIProfileEditView: View {
                 }
                 
                 CustomButtonBig(text: "추가하기", action: {
-                    aiProfileData.postCustomAiProfile(nickname: nickname, profileImage: nil, description: inputText, language: 1) { result in
+                    aiProfileData.postCustomAiProfile(nickname: nickname, profileImage: nil, description: inputText, language: language) { result in
                         print("PROFILEEEE")
                         print(result)
                     }
