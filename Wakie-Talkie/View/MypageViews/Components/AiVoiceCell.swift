@@ -28,7 +28,13 @@ struct AiVoiceCell: View {
                     .lineLimit(2)
             }
             Spacer()
-            CustomButtonSmall(text: isActive ? "선택됨" : "선택", action: action, isActive: $isActive)
+            Button {
+                //aiprofile의 설명을 예시로 읽어주는 function -> 그냥 AIProfileDB에 예시 음성 파일 박아두면 될듯?
+            }label: {
+                Image(systemName: "speaker.wave.3.fill")
+                    .foregroundColor(Color("Black"))
+                    .font(.system(size: 20))
+            }
         }
         .frame(minWidth: 300,minHeight: 100)
         .padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 25))
