@@ -88,7 +88,7 @@ class AIProfileDataFetcher: ObservableObject {
         }
     }
     
-    func postCustomAiProfile( nickname: String, profileImage: URL?, description: String?, language: Int, completion: @escaping (Result< String, Error>) -> Void) {
+    func postCustomAiProfile( nickname: String, profileImage: UIImage?, description: String?, language: Int, completion: @escaping (Result< String, Error>) -> Void) {
         let setURL = "http://localhost:8000/ai-users/"
 //        "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/"
         
@@ -101,19 +101,17 @@ class AIProfileDataFetcher: ObservableObject {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let json: [String: Any] = [
+        let boundary = UUID().uuidString
+            request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+            
+            let httpBody = createMultipartBody(boundary: boundary, parameters: [
                 "nickname": nickname,
-                "profile_img": profileImage?.absoluteString ?? NSNull(),
                 "ai_type": "custom",
-                "description": description ?? NSNull(),
-                "language": language
-        ]
-        guard let httpBody = try? JSONSerialization.data(withJSONObject: json, options: []) else {
-                completion(.failure(NSError(domain: "JSON Serialization Error", code: 0, userInfo: nil)))
-                return
-        }
-        
-        request.httpBody = httpBody
+                "description": description ?? "",
+                "language": "\(language)"
+            ], image: profileImage, imageKey: "profile_img")
+            
+            request.httpBody = httpBody
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -130,6 +128,28 @@ class AIProfileDataFetcher: ObservableObject {
             
         task.resume()
         
+    }
+    
+    func createMultipartBody(boundary: String, parameters: [String: String], image: UIImage?, imageKey: String) -> Data {
+        var body = Data()
+        
+        for (key, value) in parameters {
+            body.append("--\(boundary)\r\n".data(using: .utf8)!)
+            body.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n".data(using: .utf8)!)
+            body.append("\(value)\r\n".data(using: .utf8)!)
+        }
+        
+        if let image = image, let imageData = image.jpegData(compressionQuality: 1.0) {
+            body.append("--\(boundary)\r\n".data(using: .utf8)!)
+            body.append("Content-Disposition: form-data; name=\"\(imageKey)\"; filename=\"profile.jpg\"\r\n".data(using: .utf8)!)
+            body.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
+            body.append(imageData)
+            body.append("\r\n".data(using: .utf8)!)
+        }
+        
+        body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+        
+        return body
     }
     
     // custom ai 만들 때 파일을 업로드하는 코드.

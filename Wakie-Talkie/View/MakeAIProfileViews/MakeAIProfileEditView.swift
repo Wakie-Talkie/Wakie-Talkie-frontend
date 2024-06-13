@@ -155,9 +155,10 @@ struct MakeAIProfileEditView: View {
             }
         }
         .sheet(isPresented: $showDocumentPicker) {
-                    DocumentPicker { url in
-                        self.selectedFileURL = url
-                    }
-                }
+            DocumentPicker { url in
+                self.selectedFileURL = url
+            }
+        }
+        .navigationBarHidden(true)
     }
 }
