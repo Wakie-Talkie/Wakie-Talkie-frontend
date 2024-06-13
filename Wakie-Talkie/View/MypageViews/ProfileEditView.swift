@@ -13,6 +13,7 @@ struct ProfileEditView: View {
     
     @ObservedObject var userData = UserDataFetcher()
     @ObservedObject var aiProfileData = AIProfileDataFetcher()
+    @State private var nickname: String = ""
     
     var body: some View {
         VStack(spacing: 0){
@@ -39,13 +40,19 @@ struct ProfileEditView: View {
                     .foregroundColor(Color("Black"))
                     .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 0))
                 if let nickname = userData.user?.nickname {
-                    Text("\(nickname)")
+                    TextField("\(nickname)", text: $nickname)
                         .fontWeight(.light)
                         .font(.system(size: 25))
                         .foregroundColor(Color("Black"))
-                        .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 0))
+                        .background(Color.clear)
+                        .textFieldStyle(PlainTextFieldStyle())
+//                    Text("\(nickname)")
+//                        .fontWeight(.light)
+//                        .font(.system(size: 25))
+//                        .foregroundColor(Color("Black"))
+//                        .padding(EdgeInsets(top: 30, leading: 30, bottom: 30, trailing: 0))
                 }
-                Text("밍밍망")
+               
                     
                 Spacer()
             }
@@ -90,6 +97,9 @@ struct ProfileEditView: View {
             .padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
             
         }
+        .onAppear(perform: {
+            userData.loadUserData()
+        })
         .navigationBarBackButtonHidden(true)
     }
 }
