@@ -79,7 +79,7 @@ class AIProfileDataFetcher: ObservableObject {
     }
 
     func getAiProfileDataFromLang(language: Int, completion: @escaping ([AIProfile]) -> Void){
-        HTTPManager.requestGET(url: "http://localhost:8000/ai-users/\(language)/"
+        HTTPManager.requestGET(url: "http://localhost:8000/ai-users/language/\(language)/"
 //       "http://ec2-3-37-108-96.ap-northeast-2.compute.amazonaws.com:8000/ai-users/language/\(language)/"
         ) { data in
             guard let data: [AIProfile] = JSONConverter.decodeJsonArray(data: data) else { return
