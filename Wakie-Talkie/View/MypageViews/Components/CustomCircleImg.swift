@@ -11,6 +11,7 @@ struct CustomCircleImg: View {
     var imageUrl: String?
     var showEditBtn: Bool = false
     var size: CGFloat
+    var shadow: CGFloat?
     
     var body: some View {
         ZStack {
@@ -22,14 +23,14 @@ struct CustomCircleImg: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: size, height: size)
                             .clipShape(Circle())
-                            .shadow(radius: 3)
+                            .shadow(radius: shadow ?? 3)
                     } else if phase.error != nil {
                         Image("profile") // 기본 이미지
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(width: size, height: size)
                             .clipShape(Circle())
-                            .shadow(radius: 3)
+                            .shadow(radius: shadow ?? 3)
                     } else {
                         ProgressView() // 로딩 중 표시
                     }
@@ -40,7 +41,7 @@ struct CustomCircleImg: View {
                     .aspectRatio(contentMode: .fill)
                     .frame(width: size, height: size)
                     .clipShape(Circle())
-                    .shadow(radius: 3)
+                    .shadow(radius: shadow ?? 3)
             }
             if showEditBtn {
                 HStack {
