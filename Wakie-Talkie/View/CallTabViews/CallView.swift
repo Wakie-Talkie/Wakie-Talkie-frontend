@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CallView: View {
-//    @EnvironmentObject var aiDataFetcher: AIProfileDataFetcher
     @StateObject var aiProfileData = AIProfileDataFetcher()
     @State private var selection: AIProfile? = nil
     @State private var showModal: Bool = false
@@ -47,7 +46,6 @@ struct CallView: View {
                     }
                     
                 }.padding(EdgeInsets(top: 40, leading: 0, bottom: 30, trailing: 0))
-//                CallPopupView(aiProfile: AIProfile(id:1, nickname: "bb", profileImg: nil, description: "aaa", language: 1))
                 
                 //여기서 이제 언어 별 ai 띄우도록 거르는 function
                 ScrollView {

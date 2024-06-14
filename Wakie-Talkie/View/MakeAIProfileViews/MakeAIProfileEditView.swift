@@ -21,14 +21,14 @@ struct MakeAIProfileEditView: View {
     @State private var selectedImageURL: URL?
     @State private var nickname: String = ""
     @State private var language: Int = 1
-    
+
     private func selectLanguage(at index: Int) {
         for i in 0..<islanguageSelected.count {
             islanguageSelected[i] = (i == index)
         }
     }
-    
-    
+
+
     var body: some View {
         ScrollView{
             HStack{
@@ -78,9 +78,13 @@ struct MakeAIProfileEditView: View {
                         language = 1
                     }, isActive: $islanguageSelected[0])
                     CustomLanguageButton(text: "한국어", action: {
+
                         selectLanguage(at: 1)
                         language = 2
                     }, isActive: $islanguageSelected[1])
+                    CustomLanguageButton(text: "한국어", action: {
+                        selectLanguage(at: 2)
+                    }, isActive: $islanguageSelected[2])
                     Spacer()
                 }
                 .padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 0))
@@ -143,13 +147,14 @@ struct MakeAIProfileEditView: View {
                             .fontWeight(.light)
                             .font(.system(size:16))
                             .padding(20)
-                        
+
                         Spacer()
                     }
                 }
-                
+
                 CustomButtonBig(text: "추가하기", action: {
                     aiProfileData.postCustomAiProfile(nickname: nickname, profileImage: selectedImage, description: inputText, language: language) { result in
+
                         print("PROFILEEEE")
                         print(result)
                     }
@@ -181,7 +186,7 @@ struct MakeAIProfileEditView: View {
         // Ensure we can access the file
         url.startAccessingSecurityScopedResource()
         defer { url.stopAccessingSecurityScopedResource() }
-        
+
         if let imageData = try? Data(contentsOf: url), let image = UIImage(data: imageData) {
             self.selectedImage = image
         } else {
