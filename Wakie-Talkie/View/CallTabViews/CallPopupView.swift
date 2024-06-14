@@ -17,7 +17,7 @@ struct CallPopupView: View {
                 .fontWeight(.bold)
                 .font(.system(size: 25))
                 .padding(EdgeInsets(top: 30, leading: 0, bottom: 30, trailing: 0))
-            CustomCircleImg(imageUrl: aiProfile.profileImg ?? "", size: 80, shadow: 0)
+            CustomCircleImg(imageUrl: aiProfile.profileImg ?? "", size: 80, shadow: 0, action:{})
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 15, trailing: 0))
 //            Image(aiProfile.profileImg ?? "ai_profile_img")
 //                .resizable()

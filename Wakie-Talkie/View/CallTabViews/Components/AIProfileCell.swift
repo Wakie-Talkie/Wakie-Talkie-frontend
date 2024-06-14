@@ -22,7 +22,7 @@ struct AIProfileCell: View{
                         .stroke(Color("Stroke").opacity(0.3), lineWidth: 2)
                 )
             HStack(spacing: 15){
-                CustomCircleImg(imageUrl: aiData.profileImg ?? "", size: 80, shadow: 0)
+                CustomCircleImg(imageUrl: aiData.profileImg ?? "", size: 80, shadow: 0, action: {})
 //                Image(aiData.profileImg ?? "ai_profile_img")
 //                    .resizable()
 //                    .aspectRatio(contentMode: .fill)

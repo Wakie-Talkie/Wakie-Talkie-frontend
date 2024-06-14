@@ -27,7 +27,7 @@ struct AddAiVoiceView: View {
                 Text("")
                     .padding(EdgeInsets(top: 30, leading: 0, bottom: 30, trailing: 30))
             }
-            CustomCircleImg(imageUrl: "ai_profile_me1",showEditBtn: true, size: 150)
+            CustomCircleImg(imageUrl: "ai_profile_me1",showEditBtn: true, size: 150, action: {})
                 .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
             ScrollView{
                 HStack(){

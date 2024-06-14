@@ -49,7 +49,7 @@ struct ProfileView: View {
                             .padding(EdgeInsets(top: 30, leading: 0, bottom: 30, trailing: 30))
                     }
                     HStack {
-                        CustomCircleImg(imageUrl: userData.user?.profileImg, size: 90)
+                        CustomCircleImg(imageUrl: userData.user?.profileImg, size: 90, action: {})
                             .padding()
                         VStack(alignment: .leading) {
                             if let nickname = userData.user?.nickname {

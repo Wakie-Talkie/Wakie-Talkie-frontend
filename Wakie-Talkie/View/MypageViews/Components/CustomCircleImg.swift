@@ -12,6 +12,7 @@ struct CustomCircleImg: View {
     var showEditBtn: Bool = false
     var size: CGFloat
     var shadow: CGFloat?
+    var action: () -> Void
     
     var body: some View {
         ZStack {
@@ -48,7 +49,7 @@ struct CustomCircleImg: View {
                     Spacer()
                     VStack {
                         Spacer()
-                        Button(action: {}){
+                        Button(action: action){
                             Image(systemName: "pencil")
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)

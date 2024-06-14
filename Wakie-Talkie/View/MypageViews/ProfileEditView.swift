@@ -31,7 +31,7 @@ struct ProfileEditView: View {
                 Text("")
                     .padding(EdgeInsets(top: 30, leading: 0, bottom: 30, trailing: 30))
             }
-            CustomCircleImg(imageUrl: userData.user?.profileImg,showEditBtn: true, size: 150)
+            CustomCircleImg(imageUrl: userData.user?.profileImg,showEditBtn: true, size: 150, action: {})
                 .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
             HStack(){
                 Text("닉네임")

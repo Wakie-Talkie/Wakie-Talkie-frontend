@@ -31,7 +31,7 @@ struct DocumentPicker: UIViewControllerRepresentable {
     }
 
     func makeUIViewController(context: Context) -> UIDocumentPickerViewController {
-        let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [UTType.audio])
+        let documentPicker = UIDocumentPickerViewController(forOpeningContentTypes: [UTType.audio, UTType.image])
         documentPicker.delegate = context.coordinator
         return documentPicker
     }

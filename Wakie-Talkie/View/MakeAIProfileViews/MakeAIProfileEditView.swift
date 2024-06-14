@@ -15,7 +15,10 @@ struct MakeAIProfileEditView: View {
     @State private var inputText: String = ""
     @State private var isAmActive: Bool = true
     @State private var showDocumentPicker = false
+    @State private var showImgPicker = false
     @State private var selectedFileURL: URL?
+    @State private var selectedImage: UIImage? = nil
+    @State private var selectedImageURL: URL?
     @State private var nickname: String = ""
     @State private var language: Int = 1
     
@@ -27,7 +30,7 @@ struct MakeAIProfileEditView: View {
     
     
     var body: some View {
-        ScrollView{            
+        ScrollView{
             HStack{
                 Button(action: {dismiss()}, label: {
                     Image("back_btn")
@@ -41,8 +44,10 @@ struct MakeAIProfileEditView: View {
                 Text("")
                     .padding(EdgeInsets(top: 30, leading: 0, bottom: 30, trailing: 30))
             }
-            CustomCircleImg(imageUrl: "profile", showEditBtn: true, size: 150)
-                .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
+            CustomCircleImg(imageUrl: selectedImageURL?.absoluteString ?? "profile", showEditBtn: true, size: 150, action: {
+                showImgPicker.toggle()
+            })
+            .padding(EdgeInsets(top: 20, leading: 0, bottom: 20, trailing: 0))
             HStack(){
                 Text("AI 이름")
                     .fontWeight(.medium)
@@ -64,7 +69,7 @@ struct MakeAIProfileEditView: View {
                         .fontWeight(.medium)
                         .font(.system(size: 25))
                         .foregroundColor(Color("Black"))
-                    .padding(EdgeInsets(top: 30, leading: 30, bottom: 10, trailing: 0))
+                        .padding(EdgeInsets(top: 30, leading: 30, bottom: 10, trailing: 0))
                     Spacer()
                 }
                 HStack{
@@ -96,7 +101,7 @@ struct MakeAIProfileEditView: View {
                         .fontWeight(.medium)
                         .font(.system(size: 25))
                         .foregroundColor(Color("Black"))
-                    .padding(EdgeInsets(top: 30, leading: 30, bottom: 5, trailing: 0))
+                        .padding(EdgeInsets(top: 30, leading: 30, bottom: 5, trailing: 0))
                     Spacer()
                 }
                 HStack{
@@ -104,29 +109,29 @@ struct MakeAIProfileEditView: View {
                         .fontWeight(.light)
                         .font(.system(size: 16))
                         .foregroundColor(Color("Black"))
-                    .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0))
+                        .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0))
                     Spacer()
                 }
                 CustomTextView(
-                                text: $inputText,
-                                placeholder: "성격, 취미 등... 자유롭게 적어주세요",
-                                placeholderColor: UIColor.lightGray,
-                                borderColor: UIColor(Color("Grey3")) ,
-                                height: 137
-                            )
-                            .frame(height: 137)
-                            .padding()
+                    text: $inputText,
+                    placeholder: "성격, 취미 등... 자유롭게 적어주세요",
+                    placeholderColor: UIColor.lightGray,
+                    borderColor: UIColor(Color("Grey3")) ,
+                    height: 137
+                )
+                .frame(height: 137)
+                .padding()
                 HStack{
                     Text("AI 목소리")
                         .fontWeight(.medium)
                         .font(.system(size: 25))
                         .foregroundColor(Color("Black"))
-                    .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0))
+                        .padding(EdgeInsets(top: 0, leading: 30, bottom: 0, trailing: 0))
                     Spacer()
                     CustomButtonSmall(text: "파일 첨부하기", action: {
                         showDocumentPicker.toggle()
                     }, isActive: $isAmActive)
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 30))
+                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 30))
                 }
                 if let selectedFileURL = selectedFileURL {
                     HStack {
@@ -138,13 +143,13 @@ struct MakeAIProfileEditView: View {
                             .fontWeight(.light)
                             .font(.system(size:16))
                             .padding(20)
-                            
+                        
                         Spacer()
                     }
                 }
                 
                 CustomButtonBig(text: "추가하기", action: {
-                    aiProfileData.postCustomAiProfile(nickname: nickname, profileImage: nil, description: inputText, language: language) { result in
+                    aiProfileData.postCustomAiProfile(nickname: nickname, profileImage: selectedImage, description: inputText, language: language) { result in
                         print("PROFILEEEE")
                         print(result)
                     }
@@ -164,6 +169,23 @@ struct MakeAIProfileEditView: View {
                 self.selectedFileURL = url
             }
         }
+        .sheet(isPresented: $showImgPicker) {
+            DocumentPicker { url in
+                self.selectedImageURL = url
+                loadImage(from: url)
+            }
+        }
         .navigationBarHidden(true)
+    }
+    private func loadImage(from url: URL) {
+        // Ensure we can access the file
+        url.startAccessingSecurityScopedResource()
+        defer { url.stopAccessingSecurityScopedResource() }
+        
+        if let imageData = try? Data(contentsOf: url), let image = UIImage(data: imageData) {
+            self.selectedImage = image
+        } else {
+            print("Failed to load image")
+        }
     }
 }

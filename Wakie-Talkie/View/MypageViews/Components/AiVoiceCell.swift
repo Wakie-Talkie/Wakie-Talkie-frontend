@@ -15,7 +15,7 @@ struct AiVoiceCell: View {
     @Binding var isActive: Bool
     var body: some View{
         HStack(spacing: 15){
-            CustomCircleImg(imageUrl: aiProfile.profileImg ?? "ai_profile_me1", size: 70)
+            CustomCircleImg(imageUrl: aiProfile.profileImg ?? "ai_profile_me1", size: 70, action: {})
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
             VStack(alignment: .leading){
                 Text(aiProfile.nickname)

@@ -13,7 +13,7 @@ struct CustomAiChatCell: View {
     
     var body: some View {
         HStack{
-            CustomCircleImg(imageUrl: imgUrl,showEditBtn: false, size: 60)
+            CustomCircleImg(imageUrl: imgUrl,showEditBtn: false, size: 60, action: {})
                 .padding(EdgeInsets(top: 10, leading: 30, bottom: 10, trailing: 15))
             Text(text)
                 .padding(EdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 30))

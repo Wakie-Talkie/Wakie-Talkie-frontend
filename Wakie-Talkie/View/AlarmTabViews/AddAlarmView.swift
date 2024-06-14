@@ -144,7 +144,7 @@ struct AddAlarmView: View {
 
                         ForEach(0..<aiProfiles.count, id: \.self) { index in
                             if aiProfiles[index].language == selectedLanguageIndex {
-                                AiVoiceCell(aiProfile: aiProfiles[index], action: {
+                                AlarmAICell(aiProfile: aiProfiles[index], action: {
                                     aiUserId = aiProfiles[index].id
                                     for i in 0..<aiProfiles.count {
                                         if i != index {

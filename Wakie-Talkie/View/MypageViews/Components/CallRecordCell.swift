@@ -18,7 +18,7 @@ struct CallRecordCell: View {
     var body: some View{
         NavigationStack(path: $path) {
             HStack(spacing: 15){
-                CustomCircleImg(imageUrl: aiProfileData.aiProfile?.profileImg ,showEditBtn: false, size: 70)
+                CustomCircleImg(imageUrl: aiProfileData.aiProfile?.profileImg ,showEditBtn: false, size: 70, action: {})
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                 VStack(alignment: .leading){
                     Text(aiProfileData.aiProfile?.nickname ?? "failed")
