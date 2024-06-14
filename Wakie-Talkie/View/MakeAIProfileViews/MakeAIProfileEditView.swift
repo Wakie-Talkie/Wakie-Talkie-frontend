@@ -78,13 +78,9 @@ struct MakeAIProfileEditView: View {
                         language = 1
                     }, isActive: $islanguageSelected[0])
                     CustomLanguageButton(text: "한국어", action: {
-
                         selectLanguage(at: 1)
                         language = 2
                     }, isActive: $islanguageSelected[1])
-                    CustomLanguageButton(text: "한국어", action: {
-                        selectLanguage(at: 2)
-                    }, isActive: $islanguageSelected[2])
                     Spacer()
                 }
                 .padding(EdgeInsets(top: 0, leading: 25, bottom: 0, trailing: 0))

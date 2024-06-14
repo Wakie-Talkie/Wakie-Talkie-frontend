@@ -12,7 +12,7 @@ struct CallRecordCell: View {
     @State private var isPresentRecordTextView: Bool = false
     @State private var path = NavigationPath()
     @StateObject var aiProfileData = AIProfileDataFetcher()
-    
+    @State private var language = ["ENGLISH", "KOREAN", "JAPANESE", "CHINESE"]
 //    @State private var aiUserLocalData = LocalData()
 //    @State private var isTextViewActive = false
     var body: some View{
@@ -25,7 +25,7 @@ struct CallRecordCell: View {
                         .fontWeight(.medium)
                         .font(.system(size: 20))
                         .foregroundColor(Color("Black"))
-                    Text(String(recordData.language == 1 ? "ENGLISH" : "NONE") + " - " + transTime(time: recordData.callingTime))
+                    Text(language[recordData.language - 1] + " - " + transTime(time: recordData.callingTime))
                         .fontWeight(.light)
                         .font(.system(size: 16))
                         .foregroundColor(Color("Black"))
@@ -47,7 +47,7 @@ struct CallRecordCell: View {
             }
         }
         .navigationDestination(isPresented: $isPresentRecordTextView){
-            CallRecordTextView(recordId: $recordData.id, dateTime: "\(recordData.date) \(recordData.callingTime)")
+            CallRecordTextView(recordId: $recordData.id, aiUserId: $recordData.aiPartnerId ,dateTime: "\(recordData.date) \(recordData.callingTime)")
         }
     }
     func transTime(time: String)-> String{

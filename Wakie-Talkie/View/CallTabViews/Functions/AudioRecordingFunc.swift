@@ -152,9 +152,9 @@ class AudioRecordingFunc:NSObject, AVAudioRecorderDelegate, ObservableObject, AV
 
     func playPartnerSoundAndStartRecording(for partnerId: Int) {
             let fileNames = [
-                1: "alloys",
-                2: "echo",
-                3: "fable",
+                36: "alloys",
+                37: "echo",
+                38: "fable",
                 4: "nova",
                 5: "onyx",
                 6: "shimmer"

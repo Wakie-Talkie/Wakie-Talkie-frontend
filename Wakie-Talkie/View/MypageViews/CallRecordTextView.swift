@@ -14,12 +14,15 @@ enum ChatCell {
 
 struct CallRecordTextView: View {
     @Binding var recordId: Int
+    @Binding var aiUserId: Int
     var dateTime: String
+    @State private var imgUrl: String?
     
     @State private var chatCells: [ChatCell] = []
     @State private var conversationScript: String = ""
     @Environment(\.dismiss) var dismiss
     @StateObject var recordData = RecordingDataFetcher()
+    @StateObject var aiUserData = AIProfileDataFetcher()
     @StateObject private var recordingAudioFunc = RecordingAudioFunc()
     
     var body: some View {
@@ -57,7 +60,7 @@ struct CallRecordTextView: View {
                             case .user(let text):
                                 CustomUserChatCell(text: text)
                             case .assistant(let text):
-                                CustomAiChatCell(text: text)
+                                CustomAiChatCell(imgUrl: imgUrl,text: text)
                             }
                         }
                     }
@@ -86,6 +89,12 @@ struct CallRecordTextView: View {
                 }
             }
         })
+        .onAppear{
+            aiUserData.loadAiProilDataById(aiUserId: aiUserId)
+        }
+        .onChange(of: aiUserData.aiProfile){
+            imgUrl = aiUserData.aiProfile?.profileImg
+        }
         .onChange(of: recordData.script){
             conversationScript = recordData.script
             chatCells = parseChat(text: conversationScript)
