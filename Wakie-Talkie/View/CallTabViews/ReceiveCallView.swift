@@ -49,12 +49,7 @@ struct ReceiveCallView: View {
                         .font(.system(size: 25))
                         .padding(EdgeInsets(top: 30, leading: 0, bottom: 80, trailing: 0))
                 }
-                Image(aiProfile.profileImg ?? "ai_profile_img")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .scaledToFill()
-                    .frame(width: 160, height: 160)
-                    .clipShape(Circle())
+                CustomCircleImg(imageUrl: aiProfile.profileImg ?? "", size: 160, shadow: 0, action:{})
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 20, trailing: 0))
                 Text(aiProfile.nickname)
                     .fontWeight(.medium)
